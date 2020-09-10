@@ -428,5 +428,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+*.iml 
+
 >>>>>>> 06d8acfbf7e6af12e52398c43d61a0d420ccc1e7
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,macos,maven,linux,intellij
