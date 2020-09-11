@@ -6,7 +6,7 @@ import org.junit.Test;
 public class ProjectTest {
 	private static final int NUM_INCREMENTATIONS = 128;
 
-	@Test
+	/*@Test
 	public void testIncrementResult() {
 		final Project project = new Project();
 
@@ -15,5 +15,5 @@ public class ProjectTest {
 		}
 
 		Assert.assertEquals(NUM_INCREMENTATIONS, project.getPresses());
-	}
+	}*/
 }

@@ -8,7 +8,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <artifactId>projecttemplate</artifactId>
   <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>ProjectTemplate</name>
+  <name>Main</name>
   <build>
     <plugins>
       <plugin>
@@ -38,7 +38,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 <version>4.11</version>
 <scope>test</scope>
 </dependency>
-<dependency>
+
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-fxml</artifactId>
+          <version>16-ea+1</version>
+      </dependency>
+
+      <dependency>
     <groupId>org.openjfx</groupId>
     <artifactId>javafx-controls</artifactId>
     <version>14</version>
