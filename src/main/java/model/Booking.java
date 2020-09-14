@@ -6,6 +6,11 @@ public class Booking {
     private iBorrower pilot;
 
     private int startTime;
-    private int endTime;
+    private int weekday;
+
+    public Booking(int start, int day) {
+        startTime = start;
+        weekday = day;
+    }
 
 }
