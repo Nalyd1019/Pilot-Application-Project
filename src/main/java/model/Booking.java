@@ -6,11 +6,11 @@ public class Booking {
     private iBorrower pilot;
 
     private int startTime;
-    private int weekday;
+    private int day;
 
-    public Booking(iBookable bookedPlane, iBorrower currentPilot, int start, int day) {
-        startTime = start;
-        weekday = day;
+    public Booking(int startTime, int day) {
+        this.startTime = startTime;
+        this.day = day;
     }
 
 }
