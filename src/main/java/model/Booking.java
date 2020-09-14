@@ -8,7 +8,7 @@ public class Booking {
     private int startTime;
     private int weekday;
 
-    public Booking(int start, int day) {
+    public Booking(iBookable bookedPlane, iBorrower currentPilot, int start, int day) {
         startTime = start;
         weekday = day;
     }
