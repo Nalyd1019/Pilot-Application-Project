@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlyingClub {
-    private List<Pilot> pilots;
+    private List<Pilot> pilots = new ArrayList<>();
     private BookingHandler bookingHandler;
     private List<Airplane> airplanes = new ArrayList<>();
 
@@ -23,5 +23,11 @@ public class FlyingClub {
         airplanes.add(airplane);
     }
 
+    public List<Airplane> getAirplanes() {
+        return airplanes;
+    }
 
+    public List<Pilot> getPilots() {
+        return pilots;
+    }
 }
