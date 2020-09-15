@@ -16,10 +16,23 @@ public class BookingHandler {
     }
 
 
-    public void createBooking(int startTime, int day, iBorrower pilot, iBookable airplane) {
-        Booking booking = new Booking(startTime, day, pilot, airplane);
-        bookings.add(booking);
+    public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
+        {
+            if (timeIsAvailable()) {
+                Booking booking = new Booking(startTime, day, pilotEmail, airplaneRegistration);
+                bookings.add(booking);
+            } // TODO - fix else-statement
+        }
     }
 
+        public void removeBooking () {
+        }
+
+
+        // TODO - fix this method
+        public boolean timeIsAvailable() {
+            // if another booking on the same day (in list bookings) starts at the same time, the slot is booked, return false
+            return true;
+        }
 }
 
