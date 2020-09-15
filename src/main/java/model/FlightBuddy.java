@@ -30,6 +30,11 @@ public class FlightBuddy {
 
     }
 
-
+    protected void createPilot(String password, String passwordconfirmation,String name, String email, FlyingClub flyingClub){
+        currentClub = flyingClub;
+        currentUser = new Pilot(password,passwordconfirmation,name,email);
+        if (currentUser.nameSet())
+        currentClub.addMember(currentUser);
+    }
 
 }
