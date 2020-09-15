@@ -7,17 +7,19 @@ public class Booking {
     private String pilotEmail;
     private String airplaneRegistration;
 
-
     private int startTime;
     private int day;
 
-    // TODO - vad konstruktorn ska ta som input för pilot/flygplan
+    // pilot.getMail TODO - now getEmail returns void, change to String
+
+    // TODO - what constructor will take
    /* public Booking(int startTime, int day, iBorrower pilot, iBookable airplane) {
         this.startTime = startTime;
         this.day = day;
         this.pilot = pilot;
         this.airplane = airplane;
     } */
+
 
    public Booking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
        this.startTime = startTime;
