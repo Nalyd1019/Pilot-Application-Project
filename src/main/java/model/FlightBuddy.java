@@ -6,9 +6,9 @@ import java.util.List;
 public class FlightBuddy {
 
 
-    private static List<FlyingClub> flyingclubs = new ArrayList<>();
-    private static Pilot currentUser;
-    private static FlyingClub currentClub;
+    private List<FlyingClub> flyingclubs = new ArrayList<>();
+    private Pilot currentUser;
+    private FlyingClub currentClub;
 
     public void initializeClubs(){
         FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingHandler());
@@ -35,6 +35,18 @@ public class FlightBuddy {
         currentUser = new Pilot(password,passwordconfirmation,name,email);
         if (currentUser.nameSet())
         currentClub.addMember(currentUser);
+    }
+
+    private boolean logIn(String email, String password){
+        for (FlyingClub flyingclub : flyingclubs) {
+            int n = flyingclub.getPilots().size();
+            for (int j = 0; j < n; j++) {
+                if (flyingclub.getPilots().get(j).validateLogin(email, password)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }
