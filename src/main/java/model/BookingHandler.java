@@ -18,7 +18,7 @@ public class BookingHandler {
 
     public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
         {
-            if (timeIsAvailable()) {
+            if (timeIsAvailable(day, startTime)) {
                 Booking booking = new Booking(startTime, day, pilotEmail, airplaneRegistration);
                 bookings.add(booking);
             } // TODO - fix else-statement
@@ -30,9 +30,22 @@ public class BookingHandler {
 
 
         // TODO - fix this method
-        public boolean timeIsAvailable() {
-            // if another booking on the same day (in list bookings) starts at the same time, the slot is booked, return false
-            return true;
+        public boolean timeIsAvailable(int day, int startTime) {
+
+            for (Booking booking:bookings){
+                if (booking.getDay() != day || booking.getStartTime() != startTime){
+                    return true;
+                }
+            }
+
+            if (bookings.size() == 0){
+                return true;
+            }
+            return false;
         }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
 }
 

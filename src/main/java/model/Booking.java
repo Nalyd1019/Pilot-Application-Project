@@ -28,5 +28,11 @@ public class Booking {
        this.airplaneRegistration = airplaneRegistration;
    }
 
+    public int getDay() {
+        return day;
+    }
 
+    public int getStartTime() {
+        return startTime;
+    }
 }
