@@ -45,4 +45,8 @@ public class Booking {
 
     public String getAirplaneRegistration() { return airplaneRegistration;
     }
+
+    public int getBookingID() {
+        return bookingID;
+    }
 }

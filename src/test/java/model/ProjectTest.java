@@ -78,4 +78,18 @@ public class ProjectTest {
 		assertTrue(bookingHandler.getAirplanesBookings("GHL-01").size() == 3);
 	}
 
+	@Test
+	public void removeBookingTest(){
+		BookingHandler bookingHandler = new BookingHandler();
+
+		bookingHandler.createBooking(1, 14, "malin@mail.com", "GHL-01");
+		bookingHandler.createBooking(4, 16, "lisa@mail.com", "GHL-01");
+		bookingHandler.createBooking(2, 14, "lisa@mail.com", "GHL-01");
+
+		bookingHandler.removeBooking(1);
+
+		assertEquals(2, bookingHandler.getBookings().size());
+
+	}
+
 }
