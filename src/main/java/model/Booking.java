@@ -6,6 +6,8 @@ public class Booking {
     private iBorrower pilot;
     private String pilotEmail;
     private String airplaneRegistration;
+    private int bookingID;
+    private static int  nextID = 0;
 
     private int startTime;
     private int day;
@@ -26,6 +28,8 @@ public class Booking {
        this.day = day;
        this.pilotEmail = pilotEmail;
        this.airplaneRegistration = airplaneRegistration;
+       this.bookingID = nextID;
+       nextID++;
    }
 
     public int getDay() {
@@ -34,5 +38,15 @@ public class Booking {
 
     public int getStartTime() {
         return startTime;
+    }
+
+    public String getPilotEmail() { return pilotEmail;
+    }
+
+    public String getAirplaneRegistration() { return airplaneRegistration;
+    }
+
+    public int getBookingID() {
+        return bookingID;
     }
 }

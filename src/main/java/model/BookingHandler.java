@@ -1,7 +1,9 @@
 package model;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class BookingHandler {
 
@@ -16,6 +18,17 @@ public class BookingHandler {
     }
 
 
+    public Booking getBooking(int id) throws NoSuchElementException {
+        for (Booking booking:bookings){
+            if (booking.getBookingID() == id){
+                return booking;
+            }
+        }
+
+        throw new NoSuchElementException("Vi hittar tyvärr ingen bokning med detta ID");
+    }
+
+
     public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
         {
             if (timeIsAvailable(day, startTime)) {
@@ -25,11 +38,35 @@ public class BookingHandler {
         }
     }
 
-        public void removeBooking () {
+        public void removeBooking(int id) {
+            Booking booking = getBooking(id);
+            bookings.remove(booking);
         }
 
 
-        // TODO - fix this method
+
+        public List<Booking> getUsersBookings(String pilotEmail){
+        List<Booking> usersBookings = new ArrayList<>();
+        for(Booking booking : this.bookings) {
+            if(pilotEmail.equals(booking.getPilotEmail())){
+                usersBookings.add(booking);
+            }
+        }
+        return usersBookings;
+        }
+
+
+        public List<Booking> getAirplanesBookings(String registration){
+        List<Booking> airplanesBookings = new ArrayList<>();
+        for(Booking booking : this.bookings) {
+            if(registration.equals(booking.getAirplaneRegistration())){
+                airplanesBookings.add(booking);
+            }
+        }
+        return airplanesBookings;
+    }
+
+
         public boolean timeIsAvailable(int day, int startTime) {
 
             for (Booking booking:bookings){
