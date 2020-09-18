@@ -92,4 +92,10 @@ public class ProjectTest {
 
 	}
 
+	@Test
+	public void nameSetTest(){
+		Pilot pilot = new Pilot("hej","hej","jo","sen");
+		assertTrue(pilot.nameSet());
+	}
+
 }
