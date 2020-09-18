@@ -34,7 +34,7 @@ public class ProjectTest {
 	public void createBookingTest(){
 		BookingHandler bookingHandler = new BookingHandler();
 
-		bookingHandler.createBooking(1, 14, "hej@mail.com", "GHL-01",1);
+		bookingHandler.createBooking(1, 14, "hej@mail.com", "GHL-01");
 		assertTrue(bookingHandler.getBookings().size() == 1);
 	}
 
@@ -42,8 +42,8 @@ public class ProjectTest {
 	public void createTwoBookingsTest(){
 		BookingHandler bookingHandler = new BookingHandler();
 
-		bookingHandler.createBooking(1, 14, "hej@mail.com", "GHL-01",1);
-		bookingHandler.createBooking(1, 14, "hej@mail.com", "GHL-01",1);
+		bookingHandler.createBooking(1, 14, "hej@mail.com", "GHL-01");
+		bookingHandler.createBooking(1, 14, "hej@mail.com", "GHL-01");
 		assertFalse(bookingHandler.getBookings().size() == 2);
 	}
 
@@ -51,8 +51,8 @@ public class ProjectTest {
 	public void createTwoBookingsTest2(){
 		BookingHandler bookingHandler = new BookingHandler();
 
-		bookingHandler.createBooking(1, 14, "hej@mail.com", "GHL-01",1);
-		bookingHandler.createBooking(2, 14, "hej@mail.com", "GHL-01",1);
+		bookingHandler.createBooking(1, 14, "hej@mail.com", "GHL-01");
+		bookingHandler.createBooking(2, 14, "hej@mail.com", "GHL-01");
 		assertTrue(bookingHandler.getBookings().size() == 2);
 	}
 
