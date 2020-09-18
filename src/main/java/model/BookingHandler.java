@@ -16,10 +16,10 @@ public class BookingHandler {
     }
 
 
-    public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration, int bookingID) {
+    public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
         {
             if (timeIsAvailable(day, startTime)) {
-                Booking booking = new Booking(startTime, day, pilotEmail, airplaneRegistration, bookingID);
+                Booking booking = new Booking(startTime, day, pilotEmail, airplaneRegistration);
                 bookings.add(booking);
             } // TODO - fix else-statement
         }
@@ -37,6 +37,16 @@ public class BookingHandler {
         }
         return usersBookings;
         }
+
+        public List<Booking> getAirplanesBookings(String registration){
+        List<Booking> airplanesBookings = new ArrayList<>();
+        for(Booking booking : this.bookings) {
+            if(registration.equals(booking.getAirplaneRegistration())){
+                airplanesBookings.add(booking);
+            }
+        }
+        return airplanesBookings;
+    }
 
 
         public boolean timeIsAvailable(int day, int startTime) {

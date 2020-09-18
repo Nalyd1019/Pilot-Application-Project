@@ -7,7 +7,7 @@ public class Booking {
     private String pilotEmail;
     private String airplaneRegistration;
     private int bookingID;
-    private int nextID = 0;
+    private static int  nextID = 0;
 
     private int startTime;
     private int day;
@@ -23,7 +23,7 @@ public class Booking {
     } */
 
 
-   public Booking(int startTime, int day, String pilotEmail, String airplaneRegistration, int bookingID) {
+   public Booking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
        this.startTime = startTime;
        this.day = day;
        this.pilotEmail = pilotEmail;
@@ -41,5 +41,8 @@ public class Booking {
     }
 
     public String getPilotEmail() { return pilotEmail;
+    }
+
+    public String getAirplaneRegistration() { return airplaneRegistration;
     }
 }
