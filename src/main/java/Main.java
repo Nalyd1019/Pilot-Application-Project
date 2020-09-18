@@ -1,9 +1,11 @@
+import data.JSONSerializer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.FlightBuddy;
+import model.FlyingClub;
 
 public final class Main extends Application {
 	public Main() {
@@ -30,7 +32,18 @@ public final class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		FlightBuddy flightBuddy = new FlightBuddy();
-		flightBuddy.initializeClubs();
+		//flightBuddy.initializeClubs();
+
+
+
+		JSONSerializer js = new JSONSerializer();
+		flightBuddy.setFlyingclubs(js.getFlyingClubs());
+		js.serializeToJson(flightBuddy.getFlyingclubs());
+
+		FlyingClub fc = flightBuddy.getFlyingclubs().get(0);
+
+
+
 
 
 		Parent root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));

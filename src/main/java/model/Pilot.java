@@ -24,5 +24,6 @@ public class Pilot {
     public boolean validateLogin(String email, String password){
         return this.email.equals(email) && this.password.equals(password);
     }
+
 }
 
