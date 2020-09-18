@@ -42,7 +42,7 @@ public class BookingHandler {
             Booking booking = getBooking(id);
             bookings.remove(booking);
         }
-        
+
 
 
         public List<Booking> getUsersBookings(String pilotEmail){
