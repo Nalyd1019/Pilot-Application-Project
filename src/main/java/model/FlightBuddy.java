@@ -10,7 +10,19 @@ public class FlightBuddy {
     private Pilot currentUser;
     private FlyingClub currentClub;
 
-    public void initializeClubs(){
+    private FlightBuddy(){
+        initializeClubs();
+    }
+
+    private static class FlightBuddyHolder{
+        private static FlightBuddy instance = new FlightBuddy();
+    }
+
+    public static FlightBuddy getInstance(){
+        return FlightBuddyHolder.instance;
+    }
+
+    private void initializeClubs(){
         FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingHandler());
         skovdeFlygklubb.addPlane(new Airplane("SE-UKE", new Logbook()));
         skovdeFlygklubb.addPlane(new Airplane("SE-UDU", new Logbook()));
@@ -23,6 +35,7 @@ public class FlightBuddy {
         FlyingClub falbygdensFlygklubb= new FlyingClub("Falbygdens Flygklubb", new BookingHandler());
         falbygdensFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         falbygdensFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
+        falbygdensFlygklubb.addMember(new Pilot("hej","hej","Knall","kalleknall@gmail.com"));
 
         flyingclubs.add(skovdeFlygklubb);
         flyingclubs.add(borasFlygklubb);
@@ -37,7 +50,7 @@ public class FlightBuddy {
         currentClub.addMember(currentUser);
     }
 
-    private boolean logIn(String email, String password){
+    public boolean validateLogIn(String email, String password){
         for (FlyingClub flyingclub : flyingclubs) {
             int n = flyingclub.getPilots().size();
             for (int j = 0; j < n; j++) {
