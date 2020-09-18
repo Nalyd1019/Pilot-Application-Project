@@ -24,7 +24,7 @@ public class ProjectTest {
 	}
 	@Test
 	public void createNewUser(){
-	FlightBuddy flightBuddy = new FlightBuddy();
+	FlightBuddy flightBuddy = FlightBuddy.getInstance();
 	FlyingClub flyingClub = new FlyingClub("Borås Flygklubb", new BookingHandler());
 	flightBuddy.createPilot("Kalle","Kalle","Karl","karl1337@email.com",flyingClub);
 		assertEquals(1, flyingClub.getPilots().size());
