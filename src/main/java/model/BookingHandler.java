@@ -16,10 +16,10 @@ public class BookingHandler {
     }
 
 
-    public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
+    public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration, int bookingID) {
         {
             if (timeIsAvailable(day, startTime)) {
-                Booking booking = new Booking(startTime, day, pilotEmail, airplaneRegistration);
+                Booking booking = new Booking(startTime, day, pilotEmail, airplaneRegistration, bookingID);
                 bookings.add(booking);
             } // TODO - fix else-statement
         }
@@ -28,8 +28,17 @@ public class BookingHandler {
         public void removeBooking () {
         }
 
+        public List<Booking> getUsersBookings(String pilotEmail){
+        List<Booking> usersBookings = new ArrayList<>();
+        for(Booking booking : this.bookings) {
+            if(pilotEmail.equals(booking.getPilotEmail())){
+                usersBookings.add(booking);
+            }
+        }
+        return usersBookings;
+        }
 
-        // TODO - fix this method
+
         public boolean timeIsAvailable(int day, int startTime) {
 
             for (Booking booking:bookings){
