@@ -29,22 +29,37 @@ public class BookingHandler {
     }
 
 
+    /**
+     * Method that creates a booking and adds it to the list with all bookings.
+     * @param startTime the time the booking starts.
+     * @param day the day of the booked time, 1 is monday and 7 is sunday.
+     * @param pilotEmail the pilot's email-address, his login
+     * @param airplaneRegistration the booked airplanes registration
+     */
     public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
         {
             if (timeIsAvailable(day, startTime)) {
                 Booking booking = new Booking(startTime, day, pilotEmail, airplaneRegistration);
                 bookings.add(booking);
-            } // TODO - fix else-statement
+            } // TODO - fix else-statement?
         }
     }
 
+    /**
+     * A method that takes the id of a booking and removes that booking from the list of bookings
+     * @param id The id of the booking that is to be removed
+     */
         public void removeBooking(int id) {
             Booking booking = getBooking(id);
             bookings.remove(booking);
         }
 
 
-
+    /**
+     * Method that returns a list of all bookings a certain pilot has made
+     * @param pilotEmail the pilot's email
+     * @return ist of the bookings that pilot has made
+     */
         public List<Booking> getUsersBookings(String pilotEmail){
         List<Booking> usersBookings = new ArrayList<>();
         for(Booking booking : this.bookings) {
@@ -55,8 +70,12 @@ public class BookingHandler {
         return usersBookings;
         }
 
-
-        public List<Booking> getAirplanesBookings(String registration){
+    /**
+     * Method that returns a lust of all bookings made on an airplane
+     * @param registration the airplane's registration
+     * @return list of the bookings of that airplane
+     */
+    public List<Booking> getAirplanesBookings(String registration){
         List<Booking> airplanesBookings = new ArrayList<>();
         for(Booking booking : this.bookings) {
             if(registration.equals(booking.getAirplaneRegistration())){
@@ -67,6 +86,12 @@ public class BookingHandler {
     }
 
 
+    /**
+     * Method that checks if a certain time is already booked
+     * @param day the day of the week of the booking
+     * @param startTime the time that the booking will start
+     * @return true if the times is available, meaning it is not booked
+     */
         public boolean timeIsAvailable(int day, int startTime) {
 
             for (Booking booking:bookings){
@@ -81,6 +106,10 @@ public class BookingHandler {
             return false;
         }
 
+    /**
+     * Method that returns all bookings made
+     * @return list of all bookings made
+     */
     public List<Booking> getBookings() {
         return bookings;
     }
