@@ -17,7 +17,12 @@ public class BookingHandler {
         bookings = new ArrayList<>();
     }
 
-
+    /**
+     * Method that returns a booking based on its ID
+     * @param id the id of the booking
+     * @return a booking
+     * @throws NoSuchElementException if there is no booking with the requested id
+     */
     public Booking getBooking(int id) throws NoSuchElementException {
         for (Booking booking:bookings){
             if (booking.getBookingID() == id){
