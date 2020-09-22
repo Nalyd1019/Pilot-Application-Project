@@ -23,6 +23,11 @@ public class Logbook {
         flights.add(flight);
     }
 
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
     /**
      * Method that returns all entries with the specific airplane's registration.
      * @param registration the airplanes registration

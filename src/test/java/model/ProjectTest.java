@@ -3,6 +3,7 @@ package model;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 import static junit.framework.TestCase.*;
 
 public class ProjectTest {
@@ -98,5 +99,15 @@ public class ProjectTest {
 		Pilot pilot = new Pilot("hej","hej","jo","sen");
 		assertTrue(pilot.nameSet());
 	}
+
+	/* // TODO - problem med Date
+	@Test
+	public void logbookTest(){
+		Logbook logbook = new Logbook();
+		logbook.addLogbookEntry(,2,34,2,"GBG","STHLM", "Regn", "SE-543");
+	assertEquals(1, logbook.getFlights().size());
+	}
+	*/
+
 
 }
