@@ -11,7 +11,7 @@ import java.util.List;
 
 public class JSONSerializer {
 
-    private static String savedData = "src/main/resources/savedData.json";
+    private static String savedData = "src/main/java/resources/savedData.json";
 
     public void serializeToJson(List<FlyingClub> flyingClubList) throws IOException {
 
