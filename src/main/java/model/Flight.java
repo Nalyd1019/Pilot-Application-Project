@@ -7,17 +7,17 @@ public class Flight {
     private int nHours;
     private int nMinutes;
     private int nStarts;
-    private String place;
+    private String departurePlace;
     private String destination;
     private String comment;
     private String airplaneRegistration;
 
-    public Flight(Date date, int nHours, int nMinutes, int nStarts, String place, String destination, String comment, String airplaneRegistration) {
+    public Flight(Date date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration) {
         this.date = date;
         this.nHours = nHours;
         this.nMinutes = nMinutes;
         this.nStarts = nStarts;
-        this.place = place;
+        this.departurePlace = departurePlace;
         this.destination = destination;
         this.comment = comment;
         this.airplaneRegistration = airplaneRegistration;
@@ -29,5 +29,9 @@ public class Flight {
 
     public String getDestination() {
         return destination;
+    }
+
+    public String getDeparturePlace() {
+        return departurePlace;
     }
 }

@@ -13,13 +13,13 @@ public class Logbook {
      * @param nHours how many hours the flight lasted
      * @param nMinutes how many minutes the flight lasted
      * @param nStarts the amounts of starts on the flight (??)
-     * @param place // TODO - vad är detta, flygplatsen?
+     * @param departurePlace the place of departure
      * @param destination the destination of the flight
      * @param comment any comments by the pilot
      * @param airplaneRegistration the registration of the aircraft
      */
-    public void addLogbookEntry(Date date, int nHours, int nMinutes, int nStarts, String place, String destination, String comment, String airplaneRegistration) {
-        Flight flight = new Flight(date, nHours, nMinutes, nStarts, place, destination, comment, airplaneRegistration);
+    public void addLogbookEntry(Date date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration) {
+        Flight flight = new Flight(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration);
         flights.add(flight);
     }
 
@@ -53,6 +53,23 @@ public class Logbook {
         return destinationEntries;
     }
 
+
+    /**
+     * Method that returns all entries from a specific place
+     * @param departurePlace the place of departure in the entry
+     * @return list of entries with departures from that place
+     */
+    public List<Flight> getPlaceEntries(String departurePlace) {
+        List<Flight> placeEntries = new ArrayList<>();
+        for(Flight fli : flights){
+            if(departurePlace.equals(fli.getDeparturePlace())) {
+                placeEntries.add(fli);
+            }
+        }
+        return placeEntries;
+    }
+
+    
 
 
 }
