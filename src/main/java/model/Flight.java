@@ -34,4 +34,8 @@ public class Flight {
     public String getDeparturePlace() {
         return departurePlace;
     }
+
+    public int getnHours() {
+        return nHours;
+    }
 }
