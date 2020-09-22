@@ -1,6 +1,5 @@
 package model;
 
-import data.PasswordAuthentication;
 
 import java.util.ArrayList;
 import java.util.List;
