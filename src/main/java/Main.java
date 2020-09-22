@@ -28,6 +28,8 @@ public final class Main extends Application {
 
 		JSONSerializer js = new JSONSerializer();
 		flightBuddy.setFlyingclubs(js.getFlyingClubs());
+		if (flightBuddy.getFlyingclubs().size()==0)
+			flightBuddy.initializeClubs();
 
 
 

@@ -69,5 +69,26 @@
       }
     ],
     "clubName": "Falbygdens Flygklubb"
+  },
+  {
+    "pilots": [
+      {
+        "logbook": {},
+        "licenses": [],
+        "password": "123",
+        "name": "Test Pilot",
+        "email": "test@gmail.com"
+      }
+    ],
+    "bookingHandler": {
+      "bookings": []
+    },
+    "airplanes": [
+      {
+        "logbook": {},
+        "registration": "SE-LLB"
+      }
+    ],
+    "clubName": "Herrljunga Flygklubb"
   }
 ]
