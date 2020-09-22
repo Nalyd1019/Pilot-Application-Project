@@ -32,20 +32,7 @@ public class LoginController implements Initializable {
     @FXML
     public void logIn(Event event){
         if (flightBuddy.validateLogIn(emailTextField.getText(),passwordTextField.getText())){
-            Parent tableViewParent = null;
-            try {
-                tableViewParent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("startPage.fxml")));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            assert tableViewParent != null;
-            Scene tableViewScene = new Scene(tableViewParent);
-
-            //This line gets the Stage information
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-            window.setScene(tableViewScene);
-            window.show();
+            ViewNavigator.LoadView(ViewNavigator.START);
         }
     }
 }
