@@ -26,4 +26,8 @@ public class Flight {
     public String getAirplaneRegistration() {
         return airplaneRegistration;
     }
+
+    public String getDestination() {
+        return destination;
+    }
 }

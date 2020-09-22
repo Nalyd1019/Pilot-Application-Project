@@ -38,6 +38,21 @@ public class Logbook {
         return airplanesEntries;
     }
 
+    /**
+     * Method that returns all entries too a specific destination
+     * @param destination the destination of the entry
+     * @return list of entries to that destination
+     */
+    public List<Flight> getDestinationEntries(String destination) {
+        List<Flight> destinationEntries = new ArrayList<>();
+        for(Flight fli : flights){
+            if(destination.equals(fli.getDestination())) {
+                destinationEntries.add(fli);
+            }
+        }
+        return destinationEntries;
+    }
+
 
 
 }
