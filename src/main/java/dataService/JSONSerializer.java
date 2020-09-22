@@ -1,19 +1,17 @@
-package data;
+package dataService;
 
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
-import model.Flight;
 import model.FlyingClub;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONSerializer {
+class JSONSerializer implements IdataService {
 
     private static String savedData = "src/main/java/resources/savedData.json";
 
-    public void serializeToJson(List<FlyingClub> flyingClubList) throws IOException {
+    public void save(List<FlyingClub> flyingClubList) throws IOException {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
        String json= gson.toJson(flyingClubList);
@@ -23,7 +21,7 @@ public class JSONSerializer {
        writer.close();
     }
 
-    public List<FlyingClub> getFlyingClubs() throws FileNotFoundException {
+    public List<FlyingClub> load() throws FileNotFoundException {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonArray jsonList = gson.fromJson(new FileReader(savedData), JsonArray.class);

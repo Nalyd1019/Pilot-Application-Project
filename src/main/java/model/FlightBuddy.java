@@ -36,7 +36,7 @@ public class FlightBuddy {
     /**
      * method (should) no longer used
      */
-    private void initializeClubs(){
+    public void initializeClubs(){
         FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingHandler());
         skovdeFlygklubb.addPlane(new Airplane("SE-UKE", new Logbook()));
         skovdeFlygklubb.addPlane(new Airplane("SE-UDU", new Logbook()));
@@ -49,13 +49,11 @@ public class FlightBuddy {
         FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingHandler());
         borasFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
+        createPilot("123", "123", "Test", "test@gmail.com", borasFlygklubb);
 
         flyingclubs.add(skovdeFlygklubb);
         flyingclubs.add(borasFlygklubb);
         flyingclubs.add(falbygdensFlygklubb);
-
-        createPilot("pw123", "pw123", "Daniel Johansson", "dan.joh@gmail.com", borasFlygklubb);
-        createPilot("jagjag123", "jagjag123", "Dylan Osolian", "apaapa@gmail.com", skovdeFlygklubb);
 
     }
 

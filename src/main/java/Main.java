@@ -1,12 +1,12 @@
 import controller.ViewNavigator;
-import data.JSONSerializer;
+import dataService.IdataService;
+import dataService.ServiceFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.FlightBuddy;
-import model.FlyingClub;
 
 import java.io.IOException;
 
@@ -28,7 +28,6 @@ public final class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		stage = primaryStage;
-
 		initializeData();
 		initializeStage();
 
@@ -38,8 +37,8 @@ public final class Main extends Application {
 	@Override
 	public void stop() throws IOException {
 		FlightBuddy flightBuddy = FlightBuddy.getInstance();
-		JSONSerializer js = new JSONSerializer();
-		js.serializeToJson(flightBuddy.getFlyingclubs());
+		IdataService idataService = ServiceFactory.getService();
+		idataService.save(flightBuddy.getFlyingclubs());
 	}
 
 	private void initializeStage() throws Exception{
@@ -55,8 +54,10 @@ public final class Main extends Application {
 	}
 	private void initializeData() throws Exception{
 		FlightBuddy flightBuddy = FlightBuddy.getInstance();
-		JSONSerializer js = new JSONSerializer();
-		flightBuddy.setFlyingclubs(js.getFlyingClubs());
+		IdataService idataService = ServiceFactory.getService();
+		flightBuddy.setFlyingclubs(idataService.load());
+		if (flightBuddy.getFlyingclubs().size()==0)
+			flightBuddy.initializeClubs();
 	}
 
 
