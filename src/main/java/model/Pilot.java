@@ -42,7 +42,7 @@ public class Pilot {
     }
 
     public int getTotalNStarts(){
-        return logbook.getNumberOfStarts(email);
+        return logbook.getPilotNumberOfStarts(email);
     }
 
 

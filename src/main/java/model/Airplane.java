@@ -41,7 +41,7 @@ public class Airplane {
      * @return total flight time in minutes
      */
     public int getTotalFlightTime(){
-        return logbook.getTotalMinutes(registration);
+        return logbook.getAirplaneTotalMinutes(registration);
     }
 
 }

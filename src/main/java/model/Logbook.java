@@ -108,7 +108,7 @@ public class Logbook {
      * @param registration the registration of the airplane
      * @return total number of hours
      */
-    private int getFlightHours(String registration) {
+    private int getAirplaneFlightHours(String registration) {
         int hours = 0;
         for (Flight flight : getAirplanesEntries(registration)) {
             hours = hours + flight.getnHours();
@@ -122,7 +122,7 @@ public class Logbook {
      * @param registration registration of the airplane
      * @return amount of minutes an airplane has been flying
      */
-    private int getFlightMinutes(String registration) {
+    private int getAirplaneFlightMinutes(String registration) {
         int minutes = 0;
         for (Flight flight : getAirplanesEntries(registration)) {
             minutes = minutes + flight.getnMinutes();
@@ -135,18 +135,17 @@ public class Logbook {
      * @param registration
      * @return the total amount of time an airplane has been flying, in minutes
      */
-    public int getTotalMinutes(String registration){
-        int hoursToMinutes = getFlightHours(registration) * 60;
-        return getFlightMinutes(registration) + hoursToMinutes;
+    public int getAirplaneTotalMinutes(String registration){
+        int hoursToMinutes = getAirplaneFlightHours(registration) * 60;
+        return getAirplaneFlightHours(registration) + hoursToMinutes;
     }
-
 
     /**
      * Returns the amount of starts a pilot has made.
      * @param pilotEmail the email of the pilot in question
      * @return the number of starts this pilot
      */
-    public int getNumberOfStarts(String pilotEmail){
+    public int getPilotNumberOfStarts(String pilotEmail){
         int nStarts = 0;
         for (Flight flight : getPilotsEntries(pilotEmail)) {
             nStarts = nStarts + flight.getnStarts();
