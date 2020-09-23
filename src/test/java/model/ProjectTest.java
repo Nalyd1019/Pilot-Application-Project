@@ -111,11 +111,12 @@ public class ProjectTest {
 	}
 
 	@Test
-	public void airplaneHoursTest(){
+	public void airplaneFlightTimeTest(){
 		Logbook logbook = new Logbook();
 		logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),3,34,2,"GBG","STHLM", "Regn", "SE-543");
+		logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.SEPTEMBER,3),1,2,2,"GBG","STHLM", "Regn", "SE-543");
 		Airplane airplane = new Airplane("SE-543", logbook);
-		assertEquals(180+34, airplane.getTotalFlightTime());
+		assertEquals(276, airplane.getTotalFlightTime());
 	}
 
 

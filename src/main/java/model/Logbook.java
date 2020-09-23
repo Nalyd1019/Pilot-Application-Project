@@ -18,7 +18,7 @@ public class Logbook {
     }
 
 
-    // TODO - just nu använder jag gregorian calendar, är det dumt, använda int istället? 
+    // TODO - just nu använder jag gregorian calendar, är det dumt, använda int istället?
 
 
     /**
@@ -88,7 +88,11 @@ public class Logbook {
         return placeEntries;
     }
 
-
+    /**
+     * Get total amount of hours an airplane has been flying
+     * @param registration the registration of the airplane
+     * @return total number of hours
+     */
     private int getFlightHours(String registration) {
         int hours = 0;
         for (Flight flight : getAirplanesEntries(registration)) {
@@ -97,6 +101,12 @@ public class Logbook {
         return hours;
     }
 
+
+    /**
+     * Get amount of minutes an airplane has been flying - no hours included!
+     * @param registration registration of the airplane
+     * @return amount of minutes an airplane has been flying
+     */
     private int getFlightMinutes(String registration) {
         int minutes = 0;
         for (Flight flight : getAirplanesEntries(registration)) {
@@ -105,7 +115,11 @@ public class Logbook {
         return minutes;
     }
 
-
+    /**
+     * Method that reutrns total amount of minutes an airplane has been flying - minutes + hours
+     * @param registration
+     * @return the total amount of time an airplane has been flying, in minutes
+     */
     public int getTotalMinutes(String registration){
         int hoursToMinutes = getFlightHours(registration) * 60;
         return getFlightMinutes(registration) + hoursToMinutes;
