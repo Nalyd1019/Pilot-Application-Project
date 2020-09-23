@@ -119,6 +119,21 @@ public class ProjectTest {
 		assertEquals(276, airplane.getTotalFlightTime());
 	}
 
+	@Test
+	public void checkNeededSoonTest(){
+		Logbook logbook = new Logbook();
+		logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),0,10001,2,"GBG","STHLM", "Regn", "SE-543");
+		Airplane airplane = new Airplane("SE-543", logbook);
+		assertTrue(airplane.isCheckNeededSoon());
+	}
+
+	@Test
+	public void checkNeededNowTest(){
+		Logbook logbook = new Logbook();
+		logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),0,15001,2,"GBG","STHLM", "Regn", "SE-543");
+		Airplane airplane = new Airplane("SE-543", logbook);
+		assertTrue(airplane.isCheckNeededdNow());
+	}
 
 
 }

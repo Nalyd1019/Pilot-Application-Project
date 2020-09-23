@@ -13,9 +13,35 @@ public class Airplane {
 
     }
 
+
+    //FLYGTIMMAR 250 H = 15000 MINUTER
+    // ÅRSTILLSYN - HALVÅRSTILLSYN: två olika rutiner
+    // Hur checkar man av att man har gjort tillsynen
+
+    // TODO - dåligt namn
+
+    /**
+     * Method to see if check is needed soon
+     * @return true if flight time is over 10000 minutes
+     */
+    public boolean isCheckNeededSoon(){
+        return getTotalFlightTime() > 10000;
+    }
+
+    /**
+     * Method to see if check is needed now
+     * @return true if flight time is over 15000 minutes
+     */
+    public boolean isCheckNeededdNow(){
+        return getTotalFlightTime() > 15000;
+    }
+
+    /**
+     * Method that gives total flight time for a specific airplane
+     * @return total flight time in minutes
+     */
     public int getTotalFlightTime(){
         return logbook.getTotalMinutes(registration);
     }
-
 
 }
