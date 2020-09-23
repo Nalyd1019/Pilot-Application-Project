@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
+import java.util.Calendar;
+
 import static junit.framework.TestCase.*;
 
 public class ProjectTest {
@@ -100,14 +102,15 @@ public class ProjectTest {
 		assertTrue(pilot.nameSet());
 	}
 
-	/* // TODO - problem med Date
+	// TODO - problem med Date - testar med Calendar
 	@Test
 	public void logbookTest(){
+		Calendar calendar = Calendar.getInstance();
 		Logbook logbook = new Logbook();
-		logbook.addLogbookEntry(,2,34,2,"GBG","STHLM", "Regn", "SE-543");
+		logbook.addLogbookEntry(calendar.getTime(),2,34,2,"GBG","STHLM", "Regn", "SE-543");
 	assertEquals(1, logbook.getFlights().size());
 	}
-	*/
+
 
 
 }

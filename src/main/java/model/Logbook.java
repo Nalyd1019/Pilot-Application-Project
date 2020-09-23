@@ -5,7 +5,16 @@ import java.util.Date;
 import java.util.List;
 
 public class Logbook {
+
     private List<Flight> flights;
+
+    public Logbook(List<Flight> flights) {
+        this.flights = flights;
+    }
+
+    public Logbook(){
+        flights = new ArrayList<>();
+    }
 
     /**
      *
