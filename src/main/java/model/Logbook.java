@@ -32,8 +32,8 @@ public class Logbook {
      * @param comment any comments by the pilot
      * @param airplaneRegistration the registration of the aircraft
      */
-    public void addLogbookEntry(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration) {
-        Flight flight = new Flight(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration);
+    public void addLogbookEntry(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
+        Flight flight = new Flight(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
         flights.add(flight);
     }
 
@@ -126,7 +126,30 @@ public class Logbook {
     }
 
 
+    /**
+     * Returns the amount of starts a pilot has made.
+     * @param pilotEmail the email of the pilot in question
+     * @return the number of starts this pilot
+     */
+    public int getNumberOfStarts(String pilotEmail){
+        int nStarts = 0;
+        for (Flight flight : getPilotsEntries(pilotEmail)) {
+            nStarts = nStarts + flight.getnStarts();
+        }
+        return nStarts;
+    }
 
+    
+    // TODO - javadoc it
+    public List<Flight> getPilotsEntries(String pilotEmail) {
+        List<Flight> pilotsEntries = new ArrayList<>();
+        for(Flight fli : flights){
+            if(pilotEmail.equals(fli.getPilotEmail())) {
+                pilotsEntries.add(fli);
+            }
+        }
+        return pilotsEntries;
+    }
 
 
 }
