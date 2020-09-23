@@ -14,13 +14,13 @@ public class Airplane {
 
     }
 
-    /* TODO - airplane gets dependency to flight...
-    public int getFlightHours() {
-        int hours = 0;
-        for (Flight flight : logbook.getAirplanesEntries(registration)) {
-            hours = hours + flight.getnHours();
-        }
-        return hours;
-    } */
+    public int getTotalHours(){
+        return logbook.getFlightHours(registration);
+    }
+
+    public int getTotalMinutes(){
+        return logbook.getFlightMinutes(registration);
+    }
+
 
 }

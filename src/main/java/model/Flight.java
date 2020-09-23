@@ -1,9 +1,10 @@
 package model;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Flight {
-    private Date date;
+    private GregorianCalendar date;
     private int nHours;
     private int nMinutes;
     private int nStarts;
@@ -12,7 +13,7 @@ public class Flight {
     private String comment;
     private String airplaneRegistration;
 
-    public Flight(Date date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration) {
+    public Flight(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration) {
         this.date = date;
         this.nHours = nHours;
         this.nMinutes = nMinutes;
@@ -37,5 +38,9 @@ public class Flight {
 
     public int getnHours() {
         return nHours;
+    }
+
+    public int getnMinutes() {
+        return nMinutes;
     }
 }
