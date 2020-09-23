@@ -132,7 +132,7 @@ public class ProjectTest {
 		Logbook logbook = new Logbook();
 		logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),0,15001,2,"GBG","STHLM", "Regn", "SE-543");
 		Airplane airplane = new Airplane("SE-543", logbook);
-		assertTrue(airplane.isCheckNeededdNow());
+		assertTrue(airplane.isCheckNeededNow());
 	}
 
 

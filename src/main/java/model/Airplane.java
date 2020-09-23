@@ -17,6 +17,7 @@ public class Airplane {
     //FLYGTIMMAR 250 H = 15000 MINUTER
     // ÅRSTILLSYN - HALVÅRSTILLSYN: två olika rutiner
     // Hur checkar man av att man har gjort tillsynen
+    // Tillsyn var 500de timma
 
     // TODO - dåligt namn
 
@@ -32,7 +33,7 @@ public class Airplane {
      * Method to see if check is needed now
      * @return true if flight time is over 15000 minutes
      */
-    public boolean isCheckNeededdNow(){
+    public boolean isCheckNeededNow(){
         return getTotalFlightTime() > 15000;
     }
 
