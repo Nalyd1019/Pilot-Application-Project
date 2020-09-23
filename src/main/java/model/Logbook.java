@@ -137,7 +137,7 @@ public class Logbook {
      */
     public int getAirplaneTotalMinutes(String registration){
         int hoursToMinutes = getAirplaneFlightHours(registration) * 60;
-        return getAirplaneFlightHours(registration) + hoursToMinutes;
+        return getAirplaneFlightMinutes(registration) + hoursToMinutes;
     }
 
     /**

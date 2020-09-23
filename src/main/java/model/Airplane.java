@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Airplane {
@@ -43,5 +46,16 @@ public class Airplane {
     public int getTotalFlightTime(){
         return logbook.getAirplaneTotalMinutes(registration);
     }
+
+
+    /*
+    public boolean isYearlyCheckNeeded() {
+    }
+    */
+
+
+    /*
+    public boolean isSixMonthCheckNeeded() {
+    }*/
 
 }
