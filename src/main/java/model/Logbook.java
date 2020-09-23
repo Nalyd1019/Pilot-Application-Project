@@ -139,7 +139,7 @@ public class Logbook {
         return nStarts;
     }
 
-    
+
     // TODO - javadoc it
     public List<Flight> getPilotsEntries(String pilotEmail) {
         List<Flight> pilotsEntries = new ArrayList<>();
