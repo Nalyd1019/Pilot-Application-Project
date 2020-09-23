@@ -144,4 +144,11 @@ public class ProjectTest {
 	}
 
 
+	@Test
+	public void getPilotsNStarts() {
+		Pilot pilot = new Pilot("a", "a", "bosse", "test@gmail.com");
+		pilot.getLogbook().addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),2,34,5,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
+		assertEquals(5, pilot.getTotalNStarts());
+	}
+
 }

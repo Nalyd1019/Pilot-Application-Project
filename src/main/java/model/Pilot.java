@@ -1,11 +1,12 @@
 package model;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pilot {
-    private Logbook logbook = new Logbook();
+   private Logbook logbook = new Logbook();
     private List<License> licenses = new ArrayList<>();
     private String password;
     private String name;
@@ -38,6 +39,15 @@ public class Pilot {
     public boolean validateLogin(String email, String password){
         return this.email.equals(email) && this.password.equals(password);
   //      return this.email.equals(email) && passwordAuthentication.authenticate(password.toCharArray(), this.password);
+    }
+
+    public int getTotalNStarts(){
+        return logbook.getNumberOfStarts(email);
+    }
+
+
+    public Logbook getLogbook() {
+        return logbook;
     }
 }
 

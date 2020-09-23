@@ -19,7 +19,6 @@ public class Airplane {
     // Hur checkar man av att man har gjort tillsynen
     // Tillsyn var 500de timma
 
-    // TODO - dåligt namn
 
     /**
      * Method to see if check is needed soon

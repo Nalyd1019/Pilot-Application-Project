@@ -58,6 +58,21 @@ public class Logbook {
     }
 
     /**
+     * Method that gets all entries made by a specific pilot
+     * @param pilotEmail the pilots email, the way to identify the pilot who made the entry
+     * @return all entries made by that pilot
+     */
+    public List<Flight> getPilotsEntries(String pilotEmail) {
+        List<Flight> pilotsEntries = new ArrayList<>();
+        for(Flight fli : flights){
+            if(pilotEmail.equals(fli.getPilotEmail())) {
+                pilotsEntries.add(fli);
+            }
+        }
+        return pilotsEntries;
+    }
+
+    /**
      * Method that returns all entries too a specific destination
      * @param destination the destination of the entry
      * @return list of entries to that destination
@@ -138,18 +153,5 @@ public class Logbook {
         }
         return nStarts;
     }
-
-
-    // TODO - javadoc it
-    public List<Flight> getPilotsEntries(String pilotEmail) {
-        List<Flight> pilotsEntries = new ArrayList<>();
-        for(Flight fli : flights){
-            if(pilotEmail.equals(fli.getPilotEmail())) {
-                pilotsEntries.add(fli);
-            }
-        }
-        return pilotsEntries;
-    }
-
 
 }
