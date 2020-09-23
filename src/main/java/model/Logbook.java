@@ -17,6 +17,10 @@ public class Logbook {
         flights = new ArrayList<>();
     }
 
+
+    // TODO - just nu använder jag gregorian calendar, är det dumt, använda int istället? 
+
+
     /**
      *
      * @param date the date of the flight
@@ -85,7 +89,7 @@ public class Logbook {
     }
 
 
-    public int getFlightHours(String registration) {
+    private int getFlightHours(String registration) {
         int hours = 0;
         for (Flight flight : getAirplanesEntries(registration)) {
             hours = hours + flight.getnHours();
@@ -93,13 +97,21 @@ public class Logbook {
         return hours;
     }
 
-    public int getFlightMinutes(String registration) {
+    private int getFlightMinutes(String registration) {
         int minutes = 0;
         for (Flight flight : getAirplanesEntries(registration)) {
             minutes = minutes + flight.getnMinutes();
         }
         return minutes;
     }
+
+
+    public int getTotalMinutes(String registration){
+        int hoursToMinutes = getFlightHours(registration) * 60;
+        return getFlightMinutes(registration) + hoursToMinutes;
+    }
+
+
 
 
 

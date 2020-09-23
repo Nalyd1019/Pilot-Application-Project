@@ -1,6 +1,5 @@
 package model;
 
-
 import java.util.List;
 
 public class Airplane {
@@ -14,12 +13,8 @@ public class Airplane {
 
     }
 
-    public int getTotalHours(){
-        return logbook.getFlightHours(registration);
-    }
-
-    public int getTotalMinutes(){
-        return logbook.getFlightMinutes(registration);
+    public int getTotalFlightTime(){
+        return logbook.getTotalMinutes(registration);
     }
 
 

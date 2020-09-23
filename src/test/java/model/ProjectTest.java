@@ -103,12 +103,19 @@ public class ProjectTest {
 		assertTrue(pilot.nameSet());
 	}
 
-	// TODO - problem med Date - testar med Calendar
 	@Test
 	public void logbookTest(){
 		Logbook logbook = new Logbook();
 		logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),2,34,2,"GBG","STHLM", "Regn", "SE-543");
 	assertEquals(1, logbook.getFlights().size());
+	}
+
+	@Test
+	public void airplaneHoursTest(){
+		Logbook logbook = new Logbook();
+		logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),3,34,2,"GBG","STHLM", "Regn", "SE-543");
+		Airplane airplane = new Airplane("SE-543", logbook);
+		assertEquals(180+34, airplane.getTotalFlightTime());
 	}
 
 
