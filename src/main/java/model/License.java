@@ -1,4 +1,48 @@
 package model;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+
 public class License {
+
+    private String licenseName;
+    private LocalDate expirationDate;
+    private boolean soonExpired = false;
+    private boolean expired = false;
+
+    LocalDate date = LocalDate.now();
+
+
+
+    public License(String licenseName, LocalDate expirationDate){
+        this.licenseName = licenseName;
+        this.expirationDate = expirationDate;
+        checkIfExpiredSoon();
+        checkIfExpired();
+    }
+
+
+    public void checkIfExpiredSoon(){
+        for (int i = 0; i < 7; i++){
+            if (date.plusDays(i) == expirationDate){
+                soonExpired = true;
+            }
+        }
+    }
+
+    public void checkIfExpired(){
+        if(date.isAfter(expirationDate)) {
+            expired = true;
+        }
+    }
+
+
+    public boolean isSoonExpired() {
+        return soonExpired;
+    }
+
+    public boolean isExpired() {
+        return expired;
+    }
 }

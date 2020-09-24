@@ -11,7 +11,7 @@ import static junit.framework.TestCase.*;
 
 public class ProjectTest {
 	private static final int NUM_INCREMENTATIONS = 128;
-
+/*
 	@Test
 	public void addPlaneTest(){
 		FlyingClub skovdeMotorFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingHandler());
@@ -95,7 +95,7 @@ public class ProjectTest {
 
 		assertEquals(2, bookingHandler.getBookings().size());
 
-	}
+	}*/
 
 	@Test
 	public void nameSetTest(){
@@ -103,7 +103,7 @@ public class ProjectTest {
 		assertTrue(pilot.nameSet());
 	}
 
-	@Test
+/*	@Test
 	public void logbookTest(){
 		Logbook logbook = new Logbook();
 		logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),2,34,2,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
@@ -150,6 +150,8 @@ public class ProjectTest {
 		pilot.getLogbook().addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),2,34,5,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
 		assertEquals(5, pilot.getTotalNStarts());
 	}
+
+ */
 
 
 }

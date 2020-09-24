@@ -39,6 +39,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             <mainClass>HelloFX</mainClass>
         </configuration>
     </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>9</source>
+                <target>9</target>
+            </configuration>
+        </plugin>
     </plugins>
   </build>
   <dependencies>

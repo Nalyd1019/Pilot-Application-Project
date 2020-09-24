@@ -4,6 +4,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public class Pilot {
    private Logbook logbook = new Logbook();
@@ -48,6 +49,32 @@ public class Pilot {
 
     public Logbook getLogbook() {
         return logbook;
+    }
+
+
+
+
+    public void addLicense(String name, LocalDate expirationDate){
+        License license = new License(name, expirationDate);
+        licenses.add(license);
+    }
+
+    public void checkLicenseExpiration(){
+        List<License> licenses = new ArrayList<>();
+
+        for (License license : licenses){
+            if (license.isSoonExpired()){
+                System.out.println("Den här licensen kommer snart gå ut");
+            } else if (license.isExpired()){
+                System.out.println("Den här licensen har gått ut");
+            } else {
+                System.out.println("Den här licensen går inte ur snart");
+            }
+        }
+    }
+
+      public List<License> getLicenses() {
+            return licenses;
     }
 }
 
