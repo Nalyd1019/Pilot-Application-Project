@@ -19,7 +19,7 @@
             <TextField fx:id="passwordTextField" layoutX="142.0" layoutY="178.0" />
             <Label alignment="CENTER" layoutX="213.0" layoutY="271.0" text="eller" textAlignment="CENTER" />
             <Button fx:id="logInButton" layoutX="190.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#logIn" text="Logga in" />
-            <Button fx:id="createAccountButton" layoutX="178.0" layoutY="302.0" mnemonicParsing="false" text="Skapa konto" />
+            <Button fx:id="createAccountButton" layoutX="178.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#onClickNewUser" text="Skapa konto" />
          </children>
       </AnchorPane>
    </children>

@@ -11,6 +11,7 @@ import java.net.URL;
 public class ViewNavigator {
     public static final String LOGIN = "loginPage.fxml";
     public static final String START = "startPage.fxml";
+    public static final String NEWUSER = "accountWizard.fxml";
 
     private static Stage mainStage;
 
