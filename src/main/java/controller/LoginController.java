@@ -35,4 +35,8 @@ public class LoginController implements Initializable {
             ViewNavigator.LoadView(ViewNavigator.START);
         }
     }
+    @FXML
+    public void onClickNewUser(Event event){
+        ViewNavigator.LoadView(ViewNavigator.NEWUSER);
+    }
 }

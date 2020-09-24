@@ -30,4 +30,8 @@ public class FlyingClub {
     public List<Pilot> getPilots() {
         return pilots;
     }
+
+    public String getClubName() {
+        return clubName;
+    }
 }
