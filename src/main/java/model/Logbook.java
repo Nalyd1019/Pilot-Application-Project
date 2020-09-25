@@ -17,9 +17,6 @@ public class Logbook {
     }
 
 
-    // TODO - just nu använder jag gregorian calendar, är det dumt, använda int istället?
-
-
     /**
      *
      * @param date the date of the flight

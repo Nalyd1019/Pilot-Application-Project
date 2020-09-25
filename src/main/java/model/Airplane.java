@@ -13,7 +13,6 @@ public class Airplane {
     public Airplane(String registration, Logbook logbook){
         this.registration = registration;
         this.logbook = logbook;
-
     }
 
 
