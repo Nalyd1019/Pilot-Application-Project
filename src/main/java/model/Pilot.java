@@ -12,9 +12,10 @@ public class Pilot implements iBorrower{
     private String password;
     private String name;
     private String email;
+    private int startHours; // TODO lägg till denna i konstruktor
+    private int nStarts;
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
 
-    //TODO - lägg till instansvariabel som är startHours?
     // TODO - lägg till en instansvariabel som är hur många starter piloten har gjort
 
     public Pilot(String password1, String password2, String name, String email) {
@@ -46,8 +47,7 @@ public class Pilot implements iBorrower{
     }
 
     public int getTotalNStarts(){
-        // TODO - Lägg till de starter som piloten har från början här också!
-        return logbook.getPilotNumberOfStarts(email);
+        return logbook.getPilotNumberOfStarts(email) + nStarts;
     }
 
 
@@ -56,12 +56,12 @@ public class Pilot implements iBorrower{
     }
 
 
-    /* TODO - Såhär kan metoden som ger flygtid se ut om man har en variabel starttid i Pilot
+    // TODO - Såhär kan metoden som ger flygtid se ut om man har en variabel starttid i Pilot
     public int getPilotFlightTime(){
        int startHoursToMinutes = startHours * 60;
-       return logbook.getPilotTotalMinutes() + startHoursToMinutes;
+       return logbook.getPilotTotalMinutes(email) + startHoursToMinutes;
     }
-     */
+
 
 
 
