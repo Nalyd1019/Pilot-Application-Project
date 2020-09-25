@@ -76,5 +76,9 @@ public class Pilot {
       public List<License> getLicenses() {
             return licenses;
     }
+
+    public String getEmail() {
+        return email;
+    }
 }
 
