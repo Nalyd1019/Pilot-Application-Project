@@ -136,6 +136,29 @@ public class Logbook {
         return getAirplaneFlightMinutes(registration) + hoursToMinutes;
     }
 
+    
+    private int getPilotFlightHours(String email){
+        int hours = 0;
+        for (Flight flight : getPilotsEntries(email)) {
+            hours = hours + flight.getnHours();
+        }
+        return hours;
+    }
+
+    private int getPilotFlightMinutes(String email){
+        int minutes = 0;
+        for (Flight flight : getPilotsEntries(email)) {
+            minutes = minutes + flight.getnHours();
+        }
+        return minutes;
+    }
+
+    public int getPilotTotalMinutes(String email){
+        int hoursToMinutes = getPilotFlightHours(email) * 60;
+        return hoursToMinutes + getPilotFlightMinutes(email);
+    }
+
+
     /**
      * Returns the amount of starts a pilot has made.
      * @param pilotEmail the email of the pilot in question
