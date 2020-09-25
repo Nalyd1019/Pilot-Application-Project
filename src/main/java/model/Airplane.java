@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class Airplane {
+public class Airplane implements iBookable{
 
     private Logbook logbook;
     private String registration;

@@ -19,6 +19,14 @@ public class LogbookTest {
     }
 
     @Test
+    public void getDestinationTest() {
+        Logbook logbook = new Logbook();
+        logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),2,34,2,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
+        logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),2,34,2,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
+        assertEquals(2, logbook.getDestinationEntries("STHLM").size());
+    }
+
+    @Test
     public void airplaneFlightTimeTest(){
         Logbook logbook = new Logbook();
         logbook.addLogbookEntry(new GregorianCalendar(2020, Calendar.FEBRUARY,2),3,34,2,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");

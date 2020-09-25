@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 
-public class Pilot {
+public class Pilot implements iBorrower{
    private Logbook logbook = new Logbook();
     private List<License> licenses = new ArrayList<>();
     private String password;
@@ -15,6 +15,7 @@ public class Pilot {
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
 
     //TODO - lägg till instansvariabel som är startHours?
+    // TODO - lägg till en instansvariabel som är hur många starter piloten har gjort
 
     public Pilot(String password1, String password2, String name, String email) {
         if (password1.equals(password2)) {               //så att användaren skriver in rätt lösen båda gångerna
@@ -45,6 +46,7 @@ public class Pilot {
     }
 
     public int getTotalNStarts(){
+        // TODO - Lägg till de starter som piloten har från början här också!
         return logbook.getPilotNumberOfStarts(email);
     }
 
@@ -59,8 +61,10 @@ public class Pilot {
        int startHoursToMinutes = startHours * 60;
        return logbook.getPilotTotalMinutes() + startHoursToMinutes;
     }
-
      */
+
+
+
 
     public void addLicense(String name, LocalDate expirationDate){
         License license = new License(name, expirationDate);
