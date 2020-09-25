@@ -1,18 +1,16 @@
 package model;
 
-public class Booking {
+public final class Booking {
 
     private iBookable airplane;
     private iBorrower pilot;
-    private String pilotEmail;
-    private String airplaneRegistration;
-    private int bookingID;
-    private static int  nextID = 0;
+    private final String pilotEmail;
+    private final String airplaneRegistration;
+    private final int bookingID;
+    private static int  nextID = 0; // TODO - blir detta ett problem för immutability?
 
-    private int startTime;
-    private int day;
-
-    // pilot.getMail TODO - now getEmail returns void, change to String
+    private final int startTime;
+    private final int day;
 
     // TODO - what constructor will take
    /* public Booking(int startTime, int day, iBorrower pilot, iBookable airplane) {
@@ -23,7 +21,7 @@ public class Booking {
     } */
 
 
-   public Booking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
+   Booking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
        this.startTime = startTime;
        this.day = day;
        this.pilotEmail = pilotEmail;
@@ -32,21 +30,23 @@ public class Booking {
        nextID++;
    }
 
-    public int getDay() {
+    int getDay() {
         return day;
     }
 
-    public int getStartTime() {
+    int getStartTime() {
         return startTime;
     }
 
-    public String getPilotEmail() { return pilotEmail;
+    String getPilotEmail() { return pilotEmail;
     }
 
-    public String getAirplaneRegistration() { return airplaneRegistration;
+    String getAirplaneRegistration() { return airplaneRegistration;
     }
 
-    public int getBookingID() {
+    int getBookingID() {
         return bookingID;
     }
+
+
 }

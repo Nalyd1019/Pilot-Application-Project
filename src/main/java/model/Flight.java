@@ -1,21 +1,20 @@
 package model;
 
-import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Flight {
-    private GregorianCalendar date;
-    private int nHours;
-    private int nMinutes;
-    private int nStarts;
-    private String departurePlace;
-    private String destination;
-    private String comment;
-    private String airplaneRegistration;
-    private String pilotEmail;
+public final class Flight {
+    private GregorianCalendar gregorianCalendar;
+    private final int nHours;
+    private final int nMinutes;
+    private final int nStarts;
+    private final String departurePlace;
+    private final String destination;
+    private final String comment;
+    private final String airplaneRegistration;
+    private final String pilotEmail;
 
-    public Flight(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
-        this.date = date;
+    public Flight(GregorianCalendar gregorianCalendar, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
+        this.gregorianCalendar = gregorianCalendar;
         this.nHours = nHours;
         this.nMinutes = nMinutes;
         this.nStarts = nStarts;
@@ -52,5 +51,13 @@ public class Flight {
 
     public String getPilotEmail() {
         return pilotEmail;
+    }
+
+    public GregorianCalendar getGregorianCalendar() {
+        return gregorianCalendar;
+    }
+
+    public String getComment() {
+        return comment;
     }
 }
