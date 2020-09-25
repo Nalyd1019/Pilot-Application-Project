@@ -14,6 +14,8 @@ public class Pilot {
     private String email;
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
 
+    //TODO - lägg till instansvariabel som är startHours?
+
     public Pilot(String password1, String password2, String name, String email) {
         if (password1.equals(password2)) {               //så att användaren skriver in rätt lösen båda gångerna
             password = password1;
@@ -52,7 +54,13 @@ public class Pilot {
     }
 
 
+    /* TODO - Såhär kan metoden som ger flygtid se ut om man har en variabel starttid i Pilot
+    public int getPilotFlightTime(){
+       int startHoursToMinutes = startHours * 60;
+       return logbook.getPilotTotalMinutes() + startHoursToMinutes;
+    }
 
+     */
 
     public void addLicense(String name, LocalDate expirationDate){
         License license = new License(name, expirationDate);
