@@ -127,7 +127,7 @@ public class Logbook {
     }
 
     /**
-     * Method that reutrns total amount of minutes an airplane has been flying - minutes + hours
+     * Method that returns total amount of minutes an airplane has been flying - minutes + hours
      * @param registration
      * @return the total amount of time an airplane has been flying, in minutes
      */
@@ -136,7 +136,11 @@ public class Logbook {
         return getAirplaneFlightMinutes(registration) + hoursToMinutes;
     }
 
-    
+    /**
+     * Method that returns amount of hours a pilot has been flying - no minutes
+     * @param email the pilots email
+     * @return the amount of hours
+     */
     private int getPilotFlightHours(String email){
         int hours = 0;
         for (Flight flight : getPilotsEntries(email)) {
@@ -145,6 +149,11 @@ public class Logbook {
         return hours;
     }
 
+    /**
+     * Method that returns the amount of minutes a pilot has been flying - no hours included
+     * @param email the pilots email
+     * @return the amount of minutes
+     */
     private int getPilotFlightMinutes(String email){
         int minutes = 0;
         for (Flight flight : getPilotsEntries(email)) {
@@ -153,6 +162,11 @@ public class Logbook {
         return minutes;
     }
 
+    /**
+     * Method that returns the amount of time a pilot has been flying - hours and minutes
+      * @param email the pilots email
+     * @return the amount of time a pilot has been flying, in minutes
+     */
     public int getPilotTotalMinutes(String email){
         int hoursToMinutes = getPilotFlightHours(email) * 60;
         return hoursToMinutes + getPilotFlightMinutes(email);
