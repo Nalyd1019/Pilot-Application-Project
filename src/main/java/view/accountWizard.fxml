@@ -25,6 +25,23 @@
             <Label layoutX="333.0" layoutY="183.0" text="Lösenords verifiering" />
             <Label fx:id="emailErrorLabel" layoutX="413.0" layoutY="117.0" prefHeight="17.0" prefWidth="127.0" />
          </children></AnchorPane>
+      <AnchorPane fx:id="pageThree" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #b2d1bb;">
+         <children>
+            <Button layoutX="199.0" layoutY="73.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="1" />
+            <Button layoutX="283.0" layoutY="73.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="2" />
+            <Button layoutX="361.0" layoutY="73.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="3" />
+            <Label fx:id="nStartsLabel" layoutX="170.0" layoutY="138.0" text="Antal starter" />
+            <Label fx:id="flightHoursLabel" layoutX="328.0" layoutY="138.0" text="Flygtimmar" />
+            <TextField fx:id="nStartsTextField" layoutX="170.0" layoutY="166.0" prefHeight="10.0" prefWidth="98.0" />
+            <TextField fx:id="flightHoursTextField" layoutX="310.0" layoutY="167.0" prefHeight="10.0" prefWidth="98.0" />
+            <Button layoutX="275.0" layoutY="276.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeDone" text="Klar" />
+            <Button layoutX="273.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeBack" text="Tillbaka" />
+            <Label layoutX="321.0" layoutY="204.0" text="Medical utgår" />
+            <Label layoutX="161.0" layoutY="204.0" text="Flygcertifikat utgår" />
+            <TextField layoutX="168.0" layoutY="232.0" prefHeight="10.0" prefWidth="98.0" />
+            <TextField layoutX="309.0" layoutY="233.0" prefHeight="10.0" prefWidth="98.0" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="pageOne" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c1d4de;">
          <children>
             <Button layoutX="199.0" layoutY="73.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="1" AnchorPane.leftAnchor="199.0" AnchorPane.topAnchor="73.0" />
@@ -36,23 +53,6 @@
             <TextField layoutX="229.0" layoutY="228.0" />
             <Button fx:id="firstPageNext" layoutX="273.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#onClickfirstPageNext" text="Nästa" />
             <Button layoutX="272.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#onClickpageOneBack" text="Tillbaka" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="pageThree" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #b2d1bb;">
-         <children>
-            <Button layoutX="199.0" layoutY="73.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="1" />
-            <Button layoutX="283.0" layoutY="73.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="2" />
-            <Button layoutX="361.0" layoutY="73.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="3" />
-            <Label layoutX="190.0" layoutY="138.0" text="Antal starter" />
-            <Label layoutX="328.0" layoutY="138.0" text="Flygtimmar" />
-            <TextField fx:id="nStartsTextField" layoutX="170.0" layoutY="166.0" prefHeight="10.0" prefWidth="98.0" />
-            <TextField fx:id="flightHoursTextField" layoutX="310.0" layoutY="167.0" prefHeight="10.0" prefWidth="98.0" />
-            <Button layoutX="275.0" layoutY="276.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeDone" text="Klar" />
-            <Button layoutX="273.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeBack" text="Tillbaka" />
-            <Label layoutX="321.0" layoutY="204.0" text="Medical utgår" />
-            <Label layoutX="161.0" layoutY="204.0" text="Flygcertifikat utgår" />
-            <TextField layoutX="168.0" layoutY="232.0" prefHeight="10.0" prefWidth="98.0" />
-            <TextField layoutX="309.0" layoutY="233.0" prefHeight="10.0" prefWidth="98.0" />
          </children>
       </AnchorPane>
    </children>

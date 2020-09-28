@@ -34,9 +34,12 @@ public class AccountController implements Initializable {
     @FXML private Label emailErrorLabel;
     @FXML private TextField nStartsTextField;
     @FXML private TextField flightHoursTextField;
+    @FXML private Label nStartsLabel;
+    @FXML private Label flightHoursLabel;
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
     private Pilot pilot;
+    private FlyingClub flyingClub;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,6 +55,7 @@ public class AccountController implements Initializable {
 
     }
     @FXML public void onClickfirstPageNext(Event event){
+        flyingClub = nameToFlyingClub(flyingClubComboBox.getSelectionModel().getSelectedItem());
         pageTwo.toFront();
     }
     @FXML public void onClickpageOneBack(Event event){
@@ -70,7 +74,14 @@ public class AccountController implements Initializable {
         pageTwo.toFront();
     }
     @FXML public void onClickpageThreeDone(Event event){
-        ViewNavigator.LoadView(ViewNavigator.START);
+        boolean nStarts = validFlightTime(nStartsTextField);
+        boolean flightHours = validFlightTime(flightHoursTextField);
+        if (nStarts&&flightHours){
+            pilot.setnStarts(Integer.parseInt(nStartsTextField.getText()));
+            pilot.setStartHours(Integer.parseInt(flightHoursTextField.getText()));
+            flyingClub.addMember(pilot);
+            ViewNavigator.LoadView(ViewNavigator.START);
+        }
     }
     private boolean checkUserInput(){
         return (!userExists() && (pageTwoPasswordTextField.getText().equals(pageTwoPasswordVerificationTextField.getText())));
@@ -82,16 +93,41 @@ public class AccountController implements Initializable {
                 for (int j = 0; j < n; j++) {
                     if (flyingclub.getPilots().get(j).getEmail().equals(pageTwoEmailTextField.getText())) {
                         emailErrorLabel.setText("Email redan registrerad");
-                        errorColorChange(emailErrorLabel);
+                        errorLabelColorChange(emailErrorLabel);
+                        errorTextFieldColorChange(pageTwoEmailTextField);
                         return true;
                     }
                 }
             }
         return false;
     }
-    private void errorColorChange(Label label){
-        label.setTextFill(Color.RED);
-        label.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID,
+    private void errorTextFieldColorChange(TextField textField){
+        textField.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID,
                 CornerRadii.EMPTY, new BorderWidths(1))));
+    }
+    private void errorLabelColorChange(Label label){
+        label.setTextFill(Color.RED);
+    }
+
+    private boolean validFlightTime(TextField textField){
+        try {
+            if (Integer.parseInt(textField.getText())<0){
+                errorTextFieldColorChange(textField);
+                return false;
+        }
+        }        //Totalt wack
+        catch (NumberFormatException e){
+            errorTextFieldColorChange(textField);
+            return false;
+        }
+        return true;
+    }
+    private FlyingClub nameToFlyingClub(String s){
+        for (int i =0; i<flightBuddy.getFlyingclubs().size(); i++){
+            if (flightBuddy.getFlyingclubs().get(i).getClubName().equals(s)){
+                return flightBuddy.getFlyingclubs().get(i);
+            }
+        }
+        return null;
     }
 }
