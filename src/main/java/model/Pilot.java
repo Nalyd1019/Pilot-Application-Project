@@ -3,6 +3,7 @@ package model;
 
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.time.LocalDate;
 
@@ -53,6 +54,22 @@ public class Pilot implements iBorrower{
 
     public Logbook getLogbook() {
         return logbook;
+    }
+
+    /**
+     * Method that creates a entry in the logbook
+     * @param date date of the flight
+     * @param nHours hours the flight lasted
+     * @param nMinutes minutes the flight lasted
+     * @param nStarts amounts of start in the flight
+     * @param departurePlace the departure place of the flight
+     * @param destination the flights destination
+     * @param comment any comments made by the pilot
+     * @param airplaneRegistration the registration of the airplane
+     * @param pilotEmail the pilots email
+     */
+    public void createLogbookEntry(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail ){
+        logbook.addLogbookEntry(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
     }
 
 
