@@ -13,11 +13,10 @@ public class Pilot implements iBorrower{
     private String password;
     private String name;
     private String email;
-    private int startHours; // TODO lägg till denna i konstruktor
+    private int startHours;
     private int nStarts;
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
-
-    // TODO - lägg till en instansvariabel som är hur många starter piloten har gjort
+    
 
     public Pilot(String password1, String password2, String name, String email) {
         if (password1.equals(password2)) {               //så att användaren skriver in rätt lösen båda gångerna
@@ -108,6 +107,15 @@ public class Pilot implements iBorrower{
 
     public String getEmail() {
         return email;
+    }
+
+
+    public void setStartHours(int startHours) {
+        this.startHours = startHours;
+    }
+
+    public void setnStarts(int nStarts) {
+        this.nStarts = nStarts;
     }
 }
 
