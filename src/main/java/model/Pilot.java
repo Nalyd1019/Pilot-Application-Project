@@ -1,16 +1,22 @@
 package model;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class Pilot {
-    private Logbook logbook = new Logbook();
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.time.LocalDate;
+
+public class Pilot implements iBorrower{
+   private Logbook logbook = new Logbook();
     private List<License> licenses = new ArrayList<>();
     private String password;
     private String name;
     private String email;
+    private int startHours;
+    private int nStarts;
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
+    
 
     public Pilot(String password1, String password2, String name, String email) {
         if (password1.equals(password2)) {               //så att användaren skriver in rätt lösen båda gångerna
@@ -38,6 +44,78 @@ public class Pilot {
     public boolean validateLogin(String email, String password){
         return this.email.equals(email) && this.password.equals(password);
   //      return this.email.equals(email) && passwordAuthentication.authenticate(password.toCharArray(), this.password);
+    }
+
+    public int getTotalNStarts(){
+        return logbook.getPilotNumberOfStarts(email) + nStarts;
+    }
+
+
+    public Logbook getLogbook() {
+        return logbook;
+    }
+
+    /**
+     * Method that creates a entry in the logbook
+     * @param date date of the flight
+     * @param nHours hours the flight lasted
+     * @param nMinutes minutes the flight lasted
+     * @param nStarts amounts of start in the flight
+     * @param departurePlace the departure place of the flight
+     * @param destination the flights destination
+     * @param comment any comments made by the pilot
+     * @param airplaneRegistration the registration of the airplane
+     * @param pilotEmail the pilots email
+     */
+    public void createLogbookEntry(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail ){
+        logbook.addLogbookEntry(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
+    }
+
+
+    // TODO - Såhär kan metoden som ger flygtid se ut om man har en variabel starttid i Pilot
+    public int getPilotFlightTime(){
+       int startHoursToMinutes = startHours * 60;
+       return logbook.getPilotTotalMinutes(email) + startHoursToMinutes;
+    }
+
+
+
+
+
+    public void addLicense(String name, LocalDate expirationDate){
+        License license = new License(name, expirationDate);
+        licenses.add(license);
+    }
+
+    public void checkLicenseExpiration(){
+        List<License> licenses = new ArrayList<>();
+
+        for (License license : licenses){
+            if (license.isSoonExpired()){
+                System.out.println("Den här licensen kommer snart gå ut");
+            } else if (license.isExpired()){
+                System.out.println("Den här licensen har gått ut");
+            } else {
+                System.out.println("Den här licensen går inte ur snart");
+            }
+        }
+    }
+
+      public List<License> getLicenses() {
+            return licenses;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+
+    public void setStartHours(int startHours) {
+        this.startHours = startHours;
+    }
+
+    public void setnStarts(int nStarts) {
+        this.nStarts = nStarts;
     }
 }
 

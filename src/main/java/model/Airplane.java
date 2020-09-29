@@ -1,9 +1,11 @@
 package model;
 
-
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
-public class Airplane {
+public class Airplane implements iBookable{
 
     private Logbook logbook;
     private String registration;
@@ -11,16 +13,48 @@ public class Airplane {
     public Airplane(String registration, Logbook logbook){
         this.registration = registration;
         this.logbook = logbook;
-
     }
 
-    /* TODO - airplane gets dependency to flight...
-    public int getFlightHours() {
-        int hours = 0;
-        for (Flight flight : logbook.getAirplanesEntries(registration)) {
-            hours = hours + flight.getnHours();
-        }
-        return hours;
-    } */
+
+    //FLYGTIMMAR 250 H = 15000 MINUTER
+    // ÅRSTILLSYN - HALVÅRSTILLSYN: två olika rutiner
+    // Hur checkar man av att man har gjort tillsynen
+    // Tillsyn var 500de timma
+
+
+    /**
+     * Method to see if check is needed soon
+     * @return true if flight time is over 10000 minutes
+     */
+    public boolean isCheckNeededSoon(){
+        return getTotalFlightTime() > 10000;
+    }
+
+    /**
+     * Method to see if check is needed now
+     * @return true if flight time is over 15000 minutes
+     */
+    public boolean isCheckNeededNow(){
+        return getTotalFlightTime() > 15000;
+    }
+
+    /**
+     * Method that gives total flight time for a specific airplane
+     * @return total flight time in minutes
+     */
+    public int getTotalFlightTime(){
+        return logbook.getAirplaneTotalMinutes(registration);
+    }
+
+
+    /*
+    public boolean isYearlyCheckNeeded() {
+    }
+    */
+
+
+    /*
+    public boolean isSixMonthCheckNeeded() {
+    }*/
 
 }

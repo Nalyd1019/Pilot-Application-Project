@@ -1,19 +1,20 @@
 package model;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
-public class Flight {
-    private Date date;
-    private int nHours;
-    private int nMinutes;
-    private int nStarts;
-    private String departurePlace;
-    private String destination;
-    private String comment;
-    private String airplaneRegistration;
+public final class Flight {
+    private GregorianCalendar gregorianCalendar;
+    private final int nHours;
+    private final int nMinutes;
+    private final int nStarts;
+    private final String departurePlace;
+    private final String destination;
+    private final String comment;
+    private final String airplaneRegistration;
+    private final String pilotEmail;
 
-    public Flight(Date date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration) {
-        this.date = date;
+    public Flight(GregorianCalendar gregorianCalendar, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
+        this.gregorianCalendar = gregorianCalendar;
         this.nHours = nHours;
         this.nMinutes = nMinutes;
         this.nStarts = nStarts;
@@ -21,6 +22,7 @@ public class Flight {
         this.destination = destination;
         this.comment = comment;
         this.airplaneRegistration = airplaneRegistration;
+        this.pilotEmail = pilotEmail;  // TODO - Ska denna vara här - eller ska den sättas via currentUser?
     }
 
     public String getAirplaneRegistration() {
@@ -37,5 +39,25 @@ public class Flight {
 
     public int getnHours() {
         return nHours;
+    }
+
+    public int getnMinutes() {
+        return nMinutes;
+    }
+
+    public int getnStarts() {
+        return nStarts;
+    }
+
+    public String getPilotEmail() {
+        return pilotEmail;
+    }
+
+    public GregorianCalendar getGregorianCalendar() {
+        return gregorianCalendar;
+    }
+
+    public String getComment() {
+        return comment;
     }
 }

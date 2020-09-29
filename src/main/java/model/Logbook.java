@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Logbook {
@@ -16,6 +16,7 @@ public class Logbook {
         flights = new ArrayList<>();
     }
 
+
     /**
      *
      * @param date the date of the flight
@@ -27,8 +28,8 @@ public class Logbook {
      * @param comment any comments by the pilot
      * @param airplaneRegistration the registration of the aircraft
      */
-    public void addLogbookEntry(Date date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration) {
-        Flight flight = new Flight(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration);
+    public void addLogbookEntry(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
+        Flight flight = new Flight(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
         flights.add(flight);
     }
 
@@ -50,6 +51,21 @@ public class Logbook {
             }
         }
         return airplanesEntries;
+    }
+
+    /**
+     * Method that gets all entries made by a specific pilot
+     * @param pilotEmail the pilots email, the way to identify the pilot who made the entry
+     * @return all entries made by that pilot
+     */
+    public List<Flight> getPilotsEntries(String pilotEmail) {
+        List<Flight> pilotsEntries = new ArrayList<>();
+        for(Flight fli : flights){
+            if(pilotEmail.equals(fli.getPilotEmail())) {
+                pilotsEntries.add(fli);
+            }
+        }
+        return pilotsEntries;
     }
 
     /**
@@ -83,7 +99,91 @@ public class Logbook {
         return placeEntries;
     }
 
+    /**
+     * Get total amount of hours an airplane has been flying
+     * @param registration the registration of the airplane
+     * @return total number of hours
+     */
+    private int getAirplaneFlightHours(String registration) {
+        int hours = 0;
+        for (Flight flight : getAirplanesEntries(registration)) {
+            hours = hours + flight.getnHours();
+        }
+        return hours;
+    }
 
 
+    /**
+     * Get amount of minutes an airplane has been flying - no hours included!
+     * @param registration registration of the airplane
+     * @return amount of minutes an airplane has been flying
+     */
+    private int getAirplaneFlightMinutes(String registration) {
+        int minutes = 0;
+        for (Flight flight : getAirplanesEntries(registration)) {
+            minutes = minutes + flight.getnMinutes();
+        }
+        return minutes;
+    }
+
+    /**
+     * Method that returns total amount of minutes an airplane has been flying - minutes + hours
+     * @param registration
+     * @return the total amount of time an airplane has been flying, in minutes
+     */
+    public int getAirplaneTotalMinutes(String registration){
+        int hoursToMinutes = getAirplaneFlightHours(registration) * 60;
+        return getAirplaneFlightMinutes(registration) + hoursToMinutes;
+    }
+
+    /**
+     * Method that returns amount of hours a pilot has been flying - no minutes
+     * @param email the pilots email
+     * @return the amount of hours
+     */
+    private int getPilotFlightHours(String email){
+        int hours = 0;
+        for (Flight flight : getPilotsEntries(email)) {
+            hours = hours + flight.getnHours();
+        }
+        return hours;
+    }
+
+    /**
+     * Method that returns the amount of minutes a pilot has been flying - no hours included
+     * @param email the pilots email
+     * @return the amount of minutes
+     */
+    private int getPilotFlightMinutes(String email){
+        int minutes = 0;
+        for (Flight flight : getPilotsEntries(email)) {
+            minutes = minutes + flight.getnHours();
+        }
+        return minutes;
+    }
+
+    /**
+     * Method that returns the amount of time a pilot has been flying - hours and minutes
+      * @param email the pilots email
+     * @return the amount of time a pilot has been flying, in minutes
+     */
+    public int getPilotTotalMinutes(String email){
+        int hoursToMinutes = getPilotFlightHours(email) * 60;
+        return hoursToMinutes + getPilotFlightMinutes(email);
+    }
+
+
+    /**
+     * Returns the amount of starts a pilot has made.
+     * @param pilotEmail the email of the pilot in question
+     * @return the number of starts this pilot
+     */
+    public int getPilotNumberOfStarts(String pilotEmail){
+        int nStarts = 0;
+        for (Flight flight : getPilotsEntries(pilotEmail)) {
+            nStarts = nStarts + flight.getnStarts();
+        }
+        return nStarts;
+    }
 
 }

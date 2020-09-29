@@ -15,6 +15,7 @@ public class ViewNavigator {
     public static final String ACCOUNT = "myAccountPage.fxml";
     public static final String CLUB = "myClubPage.fxml";
     public static final String LOG = "myLogbook.fxml";
+    public static final String NEWUSER = "accountWizard.fxml";
 
     private static String CURRENT_PAGE = "loginPage.fxml";
     private static Stage mainStage;
