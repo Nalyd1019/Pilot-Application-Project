@@ -11,6 +11,9 @@ public class Airplane implements iBookable{
     private Logbook logbook;
     private String registration;
 
+    boolean isTimeForYearlyCheckNow = false;
+    boolean isTimeForYearlyCheckSoon = false;
+
     public Airplane(String registration, Logbook logbook){
         this.registration = registration;
         this.logbook = logbook;
@@ -47,25 +50,35 @@ public class Airplane implements iBookable{
         return logbook.getAirplaneTotalMinutes(registration);
     }
 
+/*
+    public void inspectYearlyCheck(){
+        int currentYear = LocalDate.now().getYear();
+        LocalDate todaysDate = LocalDate.now();
+        LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10,9 );
 
+        if(todaysDate.isAfter(yearlyCheckDate)) {
+            isTimeForYearlyCheckSoon = false;
+            isTimeForYearlyCheckNow = true;
+        } else if(LocalDate.now().plusDays(8).isAfter(yearlyCheckDate)) {
+            isTimeForYearlyCheckSoon = true;
+        }
+    }
 
-    public boolean isYearlyCheckNeeded() {
+ */
+
+    public boolean isTimeForYearlyCheckNow() {
         int currentYear = LocalDate.now().getYear();
         LocalDate todaysDate = LocalDate.now();
         LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10, 1);
         return (todaysDate.isEqual(yearlyCheckDate));
-    }
+}
 
 
-    // TODO - java doc + testing
-    public boolean isYearlyCheckSoon(){
+    public boolean isTimeForYearlyCheckSoon(){
         int currentYear = LocalDate.now().getYear();
         LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10, 1);
         return(LocalDate.now().plusDays(8).isAfter(yearlyCheckDate));
     }
 
-    /*
-    public boolean isSixMonthCheckNeeded() {
-    }*/
 
 }

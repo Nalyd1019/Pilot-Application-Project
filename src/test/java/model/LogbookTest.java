@@ -6,8 +6,7 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 
 public class LogbookTest {
@@ -66,6 +65,5 @@ public class LogbookTest {
         pilot.getLogbook().addLogbookEntry(LocalDate.of(2020, 2, 2),2,34,5,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
         assertEquals(5, pilot.getTotalNStarts());
     }
-
 
 }
