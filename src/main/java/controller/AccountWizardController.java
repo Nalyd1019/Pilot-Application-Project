@@ -4,14 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.event.Event;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import model.FlightBuddy;
 import model.FlyingClub;
 import model.Pilot;
@@ -36,6 +32,7 @@ public class AccountWizardController implements Initializable {
     @FXML private TextField flightHoursTextField;
     @FXML private Label nStartsLabel;
     @FXML private Label flightHoursLabel;
+    @FXML private TextField flyingClubPasswordTextField;
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
     private Pilot pilot;
@@ -56,7 +53,19 @@ public class AccountWizardController implements Initializable {
     }
     @FXML public void onClickfirstPageNext(Event event){
         flyingClub = nameToFlyingClub(flyingClubComboBox.getSelectionModel().getSelectedItem());
-        pageTwo.toFront();
+        if (flyingClub != null){
+            confirmedControlColorChange(flyingClubComboBox);
+            if (flyingClub.getPassword().equals(flyingClubPasswordTextField.getText())){
+                confirmedControlColorChange(flyingClubPasswordTextField);
+                pageTwo.toFront();
+            }
+            else{
+                errorControlColorChange(flyingClubPasswordTextField);
+            }
+        }
+        else{
+            errorControlColorChange(flyingClubComboBox);
+        }
     }
     @FXML public void onClickpageOneBack(Event event){
         ViewNavigator.LoadView(ViewNavigator.LOGIN);
@@ -80,31 +89,47 @@ public class AccountWizardController implements Initializable {
             pilot.setnStarts(Integer.parseInt(nStartsTextField.getText()));
             pilot.setStartHours(Integer.parseInt(flightHoursTextField.getText()));
             flyingClub.addMember(pilot);
+            flightBuddy.setCurrentUser(pilot);
+            flightBuddy.setCurrentClub(flyingClub);
             ViewNavigator.LoadView(ViewNavigator.START);
         }
     }
     private boolean checkUserInput(){
-        return (!userExists() && (pageTwoPasswordTextField.getText().equals(pageTwoPasswordVerificationTextField.getText())));
+        boolean exists = !userExists();
+        boolean equalPassword = equalPassword();
+        boolean validName = validName();
+        return exists&&equalPassword&&validName;
     }
+    //Flyttas till modellen?
     private boolean userExists(){
-        List<FlyingClub> flyingclubs = flightBuddy.getFlyingclubs();
+        if (emptyTextField(pageTwoEmailTextField)) {
+            return true;
+        }
+            List<FlyingClub> flyingclubs = flightBuddy.getFlyingclubs();
             for (FlyingClub flyingclub : flyingclubs) {
                 int n = flyingclub.getPilots().size();
                 for (int j = 0; j < n; j++) {
                     if (flyingclub.getPilots().get(j).getEmail().equals(pageTwoEmailTextField.getText())) {
                         emailErrorLabel.setText("Email redan registrerad");
                         errorLabelColorChange(emailErrorLabel);
-                        errorTextFieldColorChange(pageTwoEmailTextField);
+                        errorControlColorChange(pageTwoEmailTextField);
                         return true;
                     }
                 }
             }
         return false;
     }
-    private void errorTextFieldColorChange(TextField textField){
-        textField.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID,
-                CornerRadii.EMPTY, new BorderWidths(1))));
+    private void errorControlColorChange(Control control){
+        controlColorChange(control, Color.RED);
     }
+    private void confirmedControlColorChange(Control control){
+        controlColorChange(control,Color.GREEN);
+    }
+    private void controlColorChange(Control control, Color color){
+        control.setBorder(new Border(new BorderStroke(color, BorderStrokeStyle.SOLID,
+                CornerRadii.EMPTY,new BorderWidths(1))));
+    }
+
     private void errorLabelColorChange(Label label){
         label.setTextFill(Color.RED);
     }
@@ -112,12 +137,12 @@ public class AccountWizardController implements Initializable {
     private boolean validFlightTime(TextField textField){
         try {
             if (Integer.parseInt(textField.getText())<0){
-                errorTextFieldColorChange(textField);
+                errorControlColorChange(textField);
                 return false;
         }
         }        //Totalt wack
         catch (NumberFormatException e){
-            errorTextFieldColorChange(textField);
+            errorControlColorChange(textField);
             return false;
         }
         return true;
@@ -129,5 +154,31 @@ public class AccountWizardController implements Initializable {
             }
         }
         return null;
+    }
+    private boolean equalPassword(){
+        if (!emptyTextField(pageTwoPasswordTextField)&& pageTwoPasswordTextField.getText().equals(pageTwoPasswordVerificationTextField.getText())){
+            confirmedControlColorChange(pageTwoPasswordTextField);
+            confirmedControlColorChange(pageTwoPasswordVerificationTextField);
+            return true;
+        }
+        errorControlColorChange(pageTwoPasswordTextField);
+        errorControlColorChange(pageTwoPasswordVerificationTextField);
+        return false;
+    }
+    private boolean validName(){
+        if (!pageTwoNameTextField.getText().isEmpty()){
+            confirmedControlColorChange(pageTwoNameTextField);
+            return true;
+        }
+        errorControlColorChange(pageTwoNameTextField);
+        return false;
+    }
+    private boolean emptyTextField(TextField textField){
+        if (textField.getText().isEmpty()){
+            errorControlColorChange(textField);
+            return true;
+        }
+        confirmedControlColorChange(textField);
+        return false;
     }
 }
