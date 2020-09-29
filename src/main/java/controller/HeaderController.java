@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -20,9 +21,42 @@ public class HeaderController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO : set links to change fxml root when clicked
+        logoImage.setImage(new Image(getClass().getClassLoader().getResourceAsStream("GliderSilhouette.png")));
+        startLink.setOnMouseClicked(mouseEvent -> ViewNavigator.LoadView(ViewNavigator.START));
+        clubLink.setOnMouseClicked(mouseEvent -> ViewNavigator.LoadView(ViewNavigator.CLUB));
+        accountLink.setOnMouseClicked(mouseEvent -> ViewNavigator.LoadView(ViewNavigator.ACCOUNT));
+        logbookLink.setOnMouseClicked(mouseEvent -> ViewNavigator.LoadView(ViewNavigator.LOG));
+        bookingLink.setOnMouseClicked(mouseEvent -> ViewNavigator.LoadView(ViewNavigator.BOOKING));
+        logoutLink.setOnMouseClicked(mouseEvent -> logout());
+
+        //setLinkBold(ViewNavigator.getCurrentPage());
 
     }
 
+    private void logout(){
+        //currentuser = null
+        //loadview(loginpage)?
+    }
+
     //TODO: add method to make link bold+underlined when clicked
+    private void setLinkBold(String currentPage) {
+        switch (currentPage) {
+            case ViewNavigator.START:
+                startLink.setStyle("-fx-font-weight: bold; -fx-underline: true;");
+                break;
+            case ViewNavigator.CLUB:
+                clubLink.setStyle("-fx-font-weight: bold; -fx-underline: true;");
+                break;
+            case ViewNavigator.ACCOUNT:
+                accountLink.setStyle("-fx-font-weight: bold; -fx-underline: true;");
+                break;
+            case ViewNavigator.LOG:
+                logbookLink.setStyle("-fx-font-weight: bold; -fx-underline: true;");
+                break;
+            case ViewNavigator.BOOKING:
+                bookingLink.setStyle("-fx-font-weight: bold; -fx-underline: true;");
+                break;
+        }
+    }
+
 }

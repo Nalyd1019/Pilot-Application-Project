@@ -1,0 +1,23 @@
+* {
+    -primarycolor1: #7CAD6C;
+    -backgroundcolor1: #C4C4C4;
+    -backgroundcolor2: #E5E5E5;
+}
+
+.header-text {
+    -fx-font-size: 16;
+    -fx-text-fill: #000000;
+
+}
+
+.header-background {
+    -fx-background-color: -backgroundcolor1;
+}
+
+.background {
+    -fx-background-color: -backgroundcolor2;
+}
+
+.windows {
+    -fx-background-color: #FFFFFF;
+}

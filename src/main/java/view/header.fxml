@@ -2,22 +2,17 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="1221.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="1221.0" styleClass="header-background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HeaderController">
    <children>
-      <ImageView fitHeight="71.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <image>
-            <Image url="@/resources/GliderSilhouette.png" />
-         </image>
-      </ImageView>
-      <HBox alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="808.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="logoImage" fitHeight="71.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <HBox alignment="CENTER_RIGHT" prefHeight="76.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Hyperlink prefHeight="62.0" text="Start">
+            <Hyperlink fx:id="startLink" prefHeight="62.0" styleClass="header-text" stylesheets="@stylesheet.css" text="Start">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
@@ -25,7 +20,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink prefHeight="62.0" text="Min Klubb ">
+            <Hyperlink fx:id="clubLink" prefHeight="62.0" styleClass="header-text" stylesheets="@stylesheet.css" text="Min Klubb ">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
@@ -33,7 +28,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink prefHeight="62.0" text="Min Loggbok">
+            <Hyperlink fx:id="logbookLink" prefHeight="62.0" styleClass="header-text" stylesheets="@stylesheet.css" text="Min Loggbok">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
@@ -41,7 +36,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink prefHeight="62.0" text="Mitt Konto">
+            <Hyperlink fx:id="accountLink" prefHeight="62.0" styleClass="header-text" stylesheets="@stylesheet.css" text="Mitt Konto">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
@@ -49,7 +44,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink prefHeight="62.0" text="Boka Flygtid">
+            <Hyperlink fx:id="bookingLink" prefHeight="62.0" styleClass="header-text" stylesheets="@stylesheet.css" text="Boka Flygtid">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
@@ -57,7 +52,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink prefHeight="62.0" text="Logga Ut">
+            <Hyperlink fx:id="logoutLink" prefHeight="62.0" styleClass="header-text" stylesheets="@stylesheet.css" text="Logga Ut">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>

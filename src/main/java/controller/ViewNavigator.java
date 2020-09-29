@@ -11,7 +11,12 @@ import java.net.URL;
 public class ViewNavigator {
     public static final String LOGIN = "loginPage.fxml";
     public static final String START = "startPage.fxml";
+    public static final String BOOKING = "bookingPage.fxml";
+    public static final String ACCOUNT = "myAccountPage.fxml";
+    public static final String CLUB = "myClubPage.fxml";
+    public static final String LOG = "myLogbook.fxml";
 
+    private static String CURRENT_PAGE = "loginPage.fxml";
     private static Stage mainStage;
 
 
@@ -21,8 +26,8 @@ public class ViewNavigator {
 
     public static void LoadView(String fxml){
         try {
-            URL location = ViewNavigator.class.getResource(fxml);
             Parent root = FXMLLoader.load(ViewNavigator.class.getClassLoader().getResource(fxml));
+            CURRENT_PAGE = fxml;
             System.out.println(root);
             mainStage.getScene().setRoot(root);
         } catch (IOException e) {
@@ -30,5 +35,11 @@ public class ViewNavigator {
             e.printStackTrace();
         }
     }
+
+    public static String getCurrentPage(){
+        return CURRENT_PAGE;
+    }
+
+
 }
 
