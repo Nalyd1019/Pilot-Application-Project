@@ -67,7 +67,7 @@ public class Pilot implements iBorrower{
      * @param airplaneRegistration the registration of the airplane
      * @param pilotEmail the pilots email
      */
-    public void createLogbookEntry(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail ){
+    public void createLogbookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail ){
         logbook.addLogbookEntry(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
     }
 

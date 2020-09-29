@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -28,7 +29,7 @@ public class Logbook {
      * @param comment any comments by the pilot
      * @param airplaneRegistration the registration of the aircraft
      */
-    public void addLogbookEntry(GregorianCalendar date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
+    public void addLogbookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
         Flight flight = new Flight(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
         flights.add(flight);
     }
