@@ -2,10 +2,11 @@ package model;
 
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.time.LocalDate;
+
 
 public class Pilot implements iBorrower{
    private Logbook logbook = new Logbook();
@@ -81,7 +82,6 @@ public class Pilot implements iBorrower{
 
 
 
-
     public void addLicense(String name, LocalDate expirationDate){
         License license = new License(name, expirationDate);
         licenses.add(license);
@@ -101,8 +101,8 @@ public class Pilot implements iBorrower{
         }
     }
 
-      public List<License> getLicenses() {
-            return licenses;
+    public List<License> getLicenses() {
+        return licenses;
     }
 
     public String getEmail() {
