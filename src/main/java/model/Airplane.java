@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -47,11 +48,21 @@ public class Airplane implements iBookable{
     }
 
 
-    /*
-    public boolean isYearlyCheckNeeded() {
-    }
-    */
 
+    public boolean isYearlyCheckNeeded() {
+        int currentYear = LocalDate.now().getYear();
+        LocalDate todaysDate = LocalDate.now();
+        LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10, 1);
+        return (todaysDate.isEqual(yearlyCheckDate));
+    }
+
+
+    // TODO - java doc + testing
+    public boolean isYearlyCheckSoon(){
+        int currentYear = LocalDate.now().getYear();
+        LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10, 1);
+        return(LocalDate.now().plusDays(8).isAfter(yearlyCheckDate));
+    }
 
     /*
     public boolean isSixMonthCheckNeeded() {

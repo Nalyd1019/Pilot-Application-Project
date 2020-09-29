@@ -67,4 +67,5 @@ public class LogbookTest {
         assertEquals(5, pilot.getTotalNStarts());
     }
 
+
 }
