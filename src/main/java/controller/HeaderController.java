@@ -35,7 +35,7 @@ public class HeaderController implements Initializable {
 
     private void logout(){
         //currentuser = null
-        //loadview(loginpage)?
+        ViewNavigator.LoadView(ViewNavigator.LOGIN);
     }
 
     //TODO: add method to make link bold+underlined when clicked
