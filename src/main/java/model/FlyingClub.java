@@ -46,4 +46,8 @@ public class FlyingClub {
     public String getClubName() {
         return clubName;
     }
+
+    public String getPassword() {
+        return password;
+    }
 }

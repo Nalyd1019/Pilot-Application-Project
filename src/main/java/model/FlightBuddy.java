@@ -46,7 +46,7 @@ public class FlightBuddy {
         falbygdensFlygklubb.addPlane(new Airplane("SE-UND", new Logbook()));
         falbygdensFlygklubb.addPlane(new Airplane("SE-SKV", new Logbook()));
 
-        FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingHandler());
+        FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingHandler(),"hej");
         borasFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
         createPilot("123", "123", "Test", "test@gmail.com", borasFlygklubb);
@@ -106,5 +106,13 @@ public class FlightBuddy {
      */
     public void setFlyingclubs(List<FlyingClub> flyingclubs) {
         this.flyingclubs = flyingclubs;
+    }
+
+    public void setCurrentUser(Pilot currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public void setCurrentClub(FlyingClub currentClub) {
+        this.currentClub = currentClub;
     }
 }
