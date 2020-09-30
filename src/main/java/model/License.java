@@ -48,6 +48,14 @@ public class License {
     public boolean isExpired() {
         return expired;
     }
+
+    public String getLicenseName() {
+        return licenseName;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
 }
 
 

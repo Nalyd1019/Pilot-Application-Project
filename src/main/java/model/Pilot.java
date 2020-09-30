@@ -117,5 +117,13 @@ public class Pilot implements iBorrower{
     public void setnStarts(int nStarts) {
         this.nStarts = nStarts;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
 
