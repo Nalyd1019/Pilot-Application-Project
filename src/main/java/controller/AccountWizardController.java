@@ -134,28 +134,22 @@ public class AccountWizardController implements Initializable {
         }
     }
     private boolean checkUserInput(){
-        boolean exists = !userExists();
+        boolean exists = !emailExists();
         boolean equalPassword = equalPassword();
         boolean validName = validName();
         return exists&&equalPassword&&validName;
     }
     //Flyttas till modellen?
-    private boolean userExists(){
+    private boolean emailExists(){
         if (emptyTextField(pageTwoEmailTextField)) {
             return true;
         }
-            List<FlyingClub> flyingclubs = flightBuddy.getFlyingclubs();
-            for (FlyingClub flyingclub : flyingclubs) {
-                int n = flyingclub.getPilots().size();
-                for (int j = 0; j < n; j++) {
-                    if (flyingclub.getPilots().get(j).getEmail().equals(pageTwoEmailTextField.getText())) {
-                        emailErrorLabel.setText("Email redan registrerad");
+            if (flightBuddy.userExists(pageTwoEmailTextField.getText())){
                         errorLabelColorChange(emailErrorLabel);
+                        emailErrorLabel.setText("Email redan registrerad");
                         errorControlColorChange(pageTwoEmailTextField);
                         return true;
                     }
-                }
-            }
         return false;
     }
     private void errorControlColorChange(Control control){

@@ -92,6 +92,18 @@ public class FlightBuddy {
         return false;
     }
 
+    public boolean userExists(String email){
+        for (FlyingClub flyingclub : flyingclubs) {
+            int n = flyingclub.getPilots().size();
+            for (int j = 0; j < n; j++) {
+                if (flyingclub.getPilots().get(j).getEmail().equals(email)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     /**
      * getter for the list of flyingClubs
      * @return the list of all the flyingClubs
@@ -114,5 +126,9 @@ public class FlightBuddy {
 
     public void setCurrentClub(FlyingClub currentClub) {
         this.currentClub = currentClub;
+    }
+
+    public Pilot getCurrentUser() {
+        return currentUser;
     }
 }
