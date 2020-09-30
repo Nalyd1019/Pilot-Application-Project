@@ -50,7 +50,8 @@ public class Airplane implements iBookable{
         return logbook.getAirplaneTotalMinutes(registration);
     }
 
-/*
+
+    // TODO - javadoc + testing
     public void inspectYearlyCheck(){
         int currentYear = LocalDate.now().getYear();
         LocalDate todaysDate = LocalDate.now();
@@ -64,8 +65,11 @@ public class Airplane implements iBookable{
         }
     }
 
- */
+    public void yearlyCheckIsDone(){
+        isTimeForYearlyCheckNow = false;
+    }
 
+/*  // TODO - Dessa metoder är en annan variant på den ovan, utan boolean-attribut
     public boolean isTimeForYearlyCheckNow() {
         int currentYear = LocalDate.now().getYear();
         LocalDate todaysDate = LocalDate.now();
@@ -80,5 +84,6 @@ public class Airplane implements iBookable{
         return(LocalDate.now().plusDays(8).isAfter(yearlyCheckDate));
     }
 
+ */
 
 }
