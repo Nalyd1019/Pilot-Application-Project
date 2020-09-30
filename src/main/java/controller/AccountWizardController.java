@@ -10,6 +10,7 @@ import javafx.event.Event;
 import javafx.scene.paint.Color;
 import model.FlightBuddy;
 import model.FlyingClub;
+import model.License;
 import model.Pilot;
 
 import java.net.URL;
@@ -22,7 +23,6 @@ public class AccountWizardController implements Initializable {
     @FXML private AnchorPane pageTwo;
     @FXML private AnchorPane pageThree;
     @FXML private ComboBox<String> flyingClubComboBox;
-    @FXML private Button pageOneNext;
     @FXML private TextField pageTwoNameTextField;
     @FXML private TextField pageTwoEmailTextField;
     @FXML private TextField pageTwoPasswordTextField;
@@ -30,14 +30,19 @@ public class AccountWizardController implements Initializable {
     @FXML private Label emailErrorLabel;
     @FXML private TextField nStartsTextField;
     @FXML private TextField flightHoursTextField;
-    @FXML private Label nStartsLabel;
-    @FXML private Label flightHoursLabel;
     @FXML private TextField flyingClubPasswordTextField;
+    @FXML private DatePicker flightLicenseExpiration;
+    @FXML private DatePicker medicalLicenseExpiration;
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
     private Pilot pilot;
     private FlyingClub flyingClub;
 
+    /**
+     * the initialize method that runs after the contructor and the FXML fields have been injected
+     * @param url ??
+     * @param resourceBundle ??
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> options = FXCollections.observableArrayList();
@@ -47,10 +52,11 @@ public class AccountWizardController implements Initializable {
         flyingClubComboBox.getItems().addAll(options);
     }
 
-    private void flyingClubPasswordCheck(String password){
-        String currentclub = flyingClubComboBox.getSelectionModel().getSelectedItem();
-
-    }
+    /**
+     * Checks if all the fields on the first page have correct input from the user, if so, moves on to the next step in
+     * the account set-up wizard
+     * @param event any event from the user
+     */
     @FXML public void onClickfirstPageNext(Event event){
         flyingClub = nameToFlyingClub(flyingClubComboBox.getSelectionModel().getSelectedItem());
         if (flyingClub != null){
@@ -67,27 +73,60 @@ public class AccountWizardController implements Initializable {
             errorControlColorChange(flyingClubComboBox);
         }
     }
+
+    /**
+     * returns the user to the log in page
+     * @param event any event from the user
+     */
     @FXML public void onClickpageOneBack(Event event){
         ViewNavigator.LoadView(ViewNavigator.LOGIN);
     }
+
+    /**
+     * Takes the user back one step, from page two to page one
+     * @param event any event from the user
+     */
     @FXML public void onClickpageTwoBack(Event event){
         pageOne.toFront();
     }
+
+    /**
+     * Checks if all the fields on the second page have correct input from the user, if so, moves on to the next step in
+     * the account set-up wizard. Also creates a new pilot/user in order to store the information given by the user.
+     * @param event any event from the user
+     */
     @FXML public void onClickpageTwoNext(Event event){
         if (checkUserInput()) {
-            pilot = new Pilot(pageTwoPasswordTextField.toString(),pageTwoPasswordVerificationTextField.toString(),pageTwoNameTextField.toString(),pageTwoEmailTextField.toString());
+            pilot = new Pilot(pageTwoPasswordTextField.getText(),pageTwoPasswordVerificationTextField.getText(),
+                    pageTwoNameTextField.getText(),pageTwoEmailTextField.getText());
             pageThree.toFront();
         }
     }
+
+    /**
+     * Takes the user back one step, from page three to page two
+     * @param event any event from the user
+     */
     @FXML public void onClickpageThreeBack(Event event){
         pageTwo.toFront();
     }
+
+    /**
+     * This methods runs when the user press 'done' with creating a new user/pilot. The methods checks if the input in
+     * the third step of the wizard is correct, if so, finalizes the creation of the new pilot and takes the user to the
+     * main page, logged in to their new account.
+     * @param event any event from the user
+     */
     @FXML public void onClickpageThreeDone(Event event){
         boolean nStarts = validFlightTime(nStartsTextField);
         boolean flightHours = validFlightTime(flightHoursTextField);
-        if (nStarts&&flightHours){
+        boolean flyingExpiration = dateIsSelected(flightLicenseExpiration);
+        boolean medicalExpiration = dateIsSelected(medicalLicenseExpiration);
+        if (nStarts&&flightHours&&flyingExpiration&&medicalExpiration){
             pilot.setnStarts(Integer.parseInt(nStartsTextField.getText()));
             pilot.setStartHours(Integer.parseInt(flightHoursTextField.getText()));
+            pilot.addLicense(License.FLIGHT, flightLicenseExpiration.getValue());
+            pilot.addLicense(License.MEDICAL, medicalLicenseExpiration.getValue());
             flyingClub.addMember(pilot);
             flightBuddy.setCurrentUser(pilot);
             flightBuddy.setCurrentClub(flyingClub);
@@ -156,7 +195,8 @@ public class AccountWizardController implements Initializable {
         return null;
     }
     private boolean equalPassword(){
-        if (!emptyTextField(pageTwoPasswordTextField)&& pageTwoPasswordTextField.getText().equals(pageTwoPasswordVerificationTextField.getText())){
+        if (!emptyTextField(pageTwoPasswordTextField)&& pageTwoPasswordTextField.getText().equals
+                (pageTwoPasswordVerificationTextField.getText())){
             confirmedControlColorChange(pageTwoPasswordTextField);
             confirmedControlColorChange(pageTwoPasswordVerificationTextField);
             return true;
@@ -180,5 +220,13 @@ public class AccountWizardController implements Initializable {
         }
         confirmedControlColorChange(textField);
         return false;
+    }
+    private boolean dateIsSelected(DatePicker datePicker){
+        if (datePicker.getValue() == null){
+            errorControlColorChange(datePicker);
+            return false;
+        }
+        confirmedControlColorChange(datePicker);
+        return true;
     }
 }
