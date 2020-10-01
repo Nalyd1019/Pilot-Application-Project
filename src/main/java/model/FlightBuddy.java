@@ -131,4 +131,7 @@ public class FlightBuddy {
     public Pilot getCurrentUser() {
         return currentUser;
     }
+    public FlyingClub getCurrentClub() {
+        return currentClub;
+    }
 }
