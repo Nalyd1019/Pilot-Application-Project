@@ -83,7 +83,9 @@ public class Airplane implements iBookable{
         LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10, 1);
         return(LocalDate.now().plusDays(8).isAfter(yearlyCheckDate));
     }
-
  */
 
+    public String getRegistration() {
+        return registration;
+    }
 }

@@ -115,4 +115,8 @@ public class FlightBuddy {
     public void setCurrentClub(FlyingClub currentClub) {
         this.currentClub = currentClub;
     }
+
+    public FlyingClub getCurrentClub() {
+        return currentClub;
+    }
 }
