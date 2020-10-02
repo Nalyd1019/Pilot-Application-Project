@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.FlightBuddy;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public final class Main extends Application {
@@ -55,7 +57,14 @@ public final class Main extends Application {
 	private void initializeData() throws Exception{
 		FlightBuddy flightBuddy = FlightBuddy.getInstance();
 		IdataService idataService = ServiceFactory.getService();
+		File data = new File("src/main/java/resources/savedData.json");
+		data.createNewFile();
+
+		try{
 		flightBuddy.setFlyingclubs(idataService.load());
+		}catch (NullPointerException e){
+			System.out.println("Data list is empty");
+		};
 		if (flightBuddy.getFlyingclubs().size()==0)
 			flightBuddy.initializeClubs();
 	}
