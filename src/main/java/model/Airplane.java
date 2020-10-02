@@ -1,9 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Airplane implements iBookable{
@@ -18,12 +15,6 @@ public class Airplane implements iBookable{
         this.registration = registration;
         this.logbook = logbook;
     }
-
-
-    //FLYGTIMMAR 250 H = 15000 MINUTER
-    // ÅRSTILLSYN - HALVÅRSTILLSYN: två olika rutiner
-    // Hur checkar man av att man har gjort tillsynen
-    // Tillsyn var 500de timma
 
 
     /**
@@ -51,7 +42,9 @@ public class Airplane implements iBookable{
     }
 
 
-    // TODO - javadoc + testing
+    /**
+     * Method that checks if it is time for a yearly check soon or now. Date 1 week before yearlyCheckDate => check soon, after => check now.
+     */
     public void inspectYearlyCheck(){
         int currentYear = LocalDate.now().getYear();
         LocalDate todaysDate = LocalDate.now();
@@ -66,6 +59,9 @@ public class Airplane implements iBookable{
         }
     }
 
+    /**
+     * Method that set yearlyCheckNow-boolean to false when yearly check is done.
+     */
     public void yearlyCheckIsDone(){
         isTimeForYearlyCheckNow = false;
     }
