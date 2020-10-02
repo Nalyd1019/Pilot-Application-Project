@@ -2,28 +2,27 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
 
 <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1221.0" spacing="220.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fx:id="startTimeLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="13:00">
+      <Label fx:id="startTimeLabel" text="13:00">
          <font>
             <Font size="20.0" />
          </font>
-      </Text>
-      <Text fx:id="endTimeLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="15:00">
+      </Label>
+      <Label fx:id="endTimeLabel" text="15:00">
          <font>
             <Font size="20.0" />
          </font>
-      </Text>
-      <Text fx:id="AvailabilityLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Tillgänglig">
+      </Label>
+      <Label fx:id="availabilityLabel" text="Tillgänglig">
          <font>
             <Font size="20.0" />
          </font>
-      </Text>
+      </Label>
       <Button fx:id="bookButton" mnemonicParsing="false" text="Boka tid">
          <font>
             <Font size="20.0" />

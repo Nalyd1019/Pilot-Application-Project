@@ -10,8 +10,12 @@ import java.util.ResourceBundle;
 
 public class BookingController implements Initializable {
 
-    @FXML private Label flightHoursLabel;
     @FXML private ScrollPane bookingScrollPane;
+
+
+    private void updateAvailableBookings(){
+
+    }
 
 
     @Override
