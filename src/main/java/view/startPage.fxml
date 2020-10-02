@@ -11,7 +11,7 @@
       <Label layoutX="117.0" layoutY="225.0" prefHeight="29.0" prefWidth="172.0" text="Mina kommande bokningar" />
       <fx:include source="header.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <FlowPane layoutX="117.0" layoutY="254.0" prefHeight="155.0" prefWidth="389.0" styleClass="windows" />
-      <Button layoutX="257.0" layoutY="440.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" text="Boka Flygtid" />
+      <Button fx:id="bookButton" layoutX="257.0" layoutY="440.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" text="Boka Flygtid" />
       <Label layoutX="664.0" layoutY="231.0" prefHeight="18.0" prefWidth="87.0" text="Mina certifikat" />
       <FlowPane layoutX="664.0" layoutY="254.0" prefHeight="155.0" prefWidth="328.0" styleClass="windows" />
       <Label fx:id="welcomeLabel" layoutX="117.0" layoutY="123.0" prefHeight="45.0" prefWidth="572.0">
