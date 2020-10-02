@@ -1,6 +1,8 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -19,7 +21,6 @@ public class MyClubController implements Initializable {
 
     @FXML private Label clubNameLabel;
     @FXML private FlowPane airplaneListFlowPane;
-    @FXML private Button checkIsDoneButton;
 
     private FlyingClub flyingClub;
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
@@ -55,27 +56,27 @@ public class MyClubController implements Initializable {
     private void controlCheckStatus(Airplane airplane, MyClubListItem myClubListItem) {
         if(airplane.isTimeForYearlyCheckNow()){
             myClubListItem.setStyle("-fx-border-color: red;");
-            addCheckIsDoneButton(myClubListItem, airplane);
+            myClubListItem.checkIsDoneButton.toFront();
+            myClubListItem.checkIsDoneButton.setText("HEJJJJJJJJ");
+            //addCheckIsDoneButton(myClubListItem, airplane);
 
         } else if(airplane.isTimeForYearlyCheckSoon()){
             myClubListItem.setStyle("-fx-border-color: yellow;");
         }
     }
 
+
+
+
     private void addCheckIsDoneButton(MyClubListItem clubListItem, Airplane airplane){
         Button button = new Button();
         clubListItem.getChildren().add(button);
         button.setText("Kontrollen har utförts");
-        button.setOnAction(event -> onClickButton(button));
-
-    }
-
-    private void onClickButton(Button button) {
-        button.setText("hej");
     }
 
     private void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
         airplane.inspectYearlyCheck();
+        airplane.yearlyCheckIsDone();
         clubListItem.getStyleClass().clear();
         controlCheckStatus(airplane, clubListItem);
     }

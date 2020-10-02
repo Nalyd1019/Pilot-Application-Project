@@ -1,7 +1,9 @@
 package controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -14,6 +16,7 @@ public class MyClubListItem extends AnchorPane {
 
     @FXML private Label registrationLabel;
     @FXML private Label flightTimeLabel;
+    @FXML public Button checkIsDoneButton;
 
     private MyClubController myClubController;
     private Airplane airplane;
@@ -34,5 +37,11 @@ public class MyClubListItem extends AnchorPane {
         this.registrationLabel.setText(registration);
         this.flightTimeLabel.setText("Flygtid: " + String.valueOf(flightTime) + " minuter");
     }
+
+    @FXML
+    protected void onClick(Event event){
+        checkIsDoneButton.setText("Fef");
+    }
+
 
 }
