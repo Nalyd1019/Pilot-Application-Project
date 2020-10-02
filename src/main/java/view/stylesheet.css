@@ -21,3 +21,8 @@
 .windows {
     -fx-background-color: #FFFFFF;
 }
+
+.bookingTextLabel{
+    -fx-font-family: "Helvetica"; /* Vet inte om vi ska ha Helvetica, men det var den jag hittade som jag kunde göra bold.*/
+    -fx-font-weight: bold;
+}
