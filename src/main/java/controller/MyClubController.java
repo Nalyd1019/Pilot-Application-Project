@@ -1,23 +1,25 @@
 package controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import model.Airplane;
 import model.FlightBuddy;
 import model.FlyingClub;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MyClubController implements Initializable {
 
     @FXML private Label clubNameLabel;
     @FXML private FlowPane airplaneListFlowPane;
+    @FXML private Button checkIsDoneButton;
 
     private FlyingClub flyingClub;
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
@@ -43,11 +45,40 @@ public class MyClubController implements Initializable {
         List<Airplane> airplanes = flightBuddy.getCurrentClub().getAirplanes();
 
         for (Airplane airplane : airplanes) {
+            airplane.inspectYearlyCheck();
             MyClubListItem myClubListItem = listItemMap.get(airplane.getRegistration());
             airplaneListFlowPane.getChildren().add(myClubListItem);
+            controlCheckStatus(airplane, myClubListItem);
         }
     }
 
+    private void controlCheckStatus(Airplane airplane, MyClubListItem myClubListItem) {
+        if(airplane.isTimeForYearlyCheckNow()){
+            myClubListItem.setStyle("-fx-border-color: red;");
+            addCheckIsDoneButton(myClubListItem, airplane);
+
+        } else if(airplane.isTimeForYearlyCheckSoon()){
+            myClubListItem.setStyle("-fx-border-color: yellow;");
+        }
+    }
+
+    private void addCheckIsDoneButton(MyClubListItem clubListItem, Airplane airplane){
+        Button button = new Button();
+        clubListItem.getChildren().add(button);
+        button.setText("Kontrollen har utförts");
+        button.setOnAction(event -> onClickButton(button));
+
+    }
+
+    private void onClickButton(Button button) {
+        button.setText("hej");
+    }
+
+    private void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
+        airplane.inspectYearlyCheck();
+        clubListItem.getStyleClass().clear();
+        controlCheckStatus(airplane, clubListItem);
+    }
 
 
 }

@@ -9,7 +9,7 @@
    <children>
       <fx:include source="header.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Label fx:id="clubNameLabel" layoutX="120.0" layoutY="170.0" text="Flygklubb" />
-      <ScrollPane layoutX="120.0" layoutY="196.0" prefHeight="200.0" prefWidth="519.0">
+      <ScrollPane layoutX="120.0" layoutY="196.0" prefHeight="286.0" prefWidth="654.0">
          <content>
             <FlowPane fx:id="airplaneListFlowPane" prefHeight="200.0" prefWidth="200.0" />
          </content>
