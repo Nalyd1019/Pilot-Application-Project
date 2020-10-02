@@ -53,7 +53,7 @@ public class MyClubController implements Initializable {
         }
     }
 
-    private void controlCheckStatus(Airplane airplane, MyClubListItem myClubListItem) {
+    public void controlCheckStatus(Airplane airplane, MyClubListItem myClubListItem) {
         if(airplane.isTimeForYearlyCheckNow()){
             myClubListItem.setStyle("-fx-border-color: red;");
             myClubListItem.checkIsDoneButton.toFront();
@@ -67,14 +67,14 @@ public class MyClubController implements Initializable {
 
 
 
-
+// använder ej dessa för tillfället
     private void addCheckIsDoneButton(MyClubListItem clubListItem, Airplane airplane){
         Button button = new Button();
         clubListItem.getChildren().add(button);
         button.setText("Kontrollen har utförts");
     }
 
-    private void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
+     void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
         airplane.inspectYearlyCheck();
         airplane.yearlyCheckIsDone();
         clubListItem.getStyleClass().clear();

@@ -40,7 +40,7 @@ public class MyClubListItem extends AnchorPane {
 
     @FXML
     protected void onClick(Event event){
-        checkIsDoneButton.setText("Fef");
+        checkIsDoneButton.setText("Tryckt");
     }
 
 
