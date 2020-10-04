@@ -33,7 +33,7 @@ public class MyClubController implements Initializable {
         clubNameLabel.setText(flightBuddy.getCurrentClub().getClubName());
 
         for (Airplane airplane : flightBuddy.getCurrentClub().getAirplanes()) {
-            MyClubListItem myClubListItem = new MyClubListItem(airplane, airplane.getRegistration(), airplane.getTotalFlightTime());
+            MyClubListItem myClubListItem = new MyClubListItem(airplane, airplane.getRegistration(), airplane.getTotalFlightTime(), this);
             listItemMap.put(airplane.getRegistration(), myClubListItem);
         }
 
@@ -54,14 +54,18 @@ public class MyClubController implements Initializable {
     }
 
     public void controlCheckStatus(Airplane airplane, MyClubListItem myClubListItem) {
+
         if(airplane.isTimeForYearlyCheckNow()){
             myClubListItem.setStyle("-fx-border-color: red;");
             myClubListItem.checkIsDoneButton.toFront();
-            myClubListItem.checkIsDoneButton.setText("HEJJJJJJJJ");
-            //addCheckIsDoneButton(myClubListItem, airplane);
+            myClubListItem.checkIsDoneButton.setText("Kontrollen är utförd");
 
         } else if(airplane.isTimeForYearlyCheckSoon()){
             myClubListItem.setStyle("-fx-border-color: yellow;");
+
+        } else if (airplane.isThisYearsCheckDone()){
+            myClubListItem.setStyle("-fx-border-color: white");
+            myClubListItem.checkIsDoneButton.toBack();
         }
     }
 
@@ -74,12 +78,13 @@ public class MyClubController implements Initializable {
         button.setText("Kontrollen har utförts");
     }
 
+    /*
      void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
         airplane.inspectYearlyCheck();
         airplane.yearlyCheckIsDone();
         clubListItem.getStyleClass().clear();
         controlCheckStatus(airplane, clubListItem);
     }
-
+    */
 
 }

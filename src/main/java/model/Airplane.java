@@ -8,6 +8,7 @@ public class Airplane implements iBookable{
     private Logbook logbook;
     private String registration;
 
+    private boolean thisYearsCheckDone = false;
     private boolean isTimeForYearlyCheckNow = false;
     private boolean isTimeForYearlyCheckSoon = false;
 
@@ -56,14 +57,19 @@ public class Airplane implements iBookable{
         } else if(LocalDate.now().plusDays(8).isAfter(yearlyCheckDate)) {
             isTimeForYearlyCheckNow = false;
             isTimeForYearlyCheckSoon = true;
+            thisYearsCheckDone = false;
         }
     }
+
 
     /**
      * Method that set yearlyCheckNow-boolean to false when yearly check is done.
      */
     public void yearlyCheckIsDone(){
+        thisYearsCheckDone = true;
         isTimeForYearlyCheckNow = false;
+        isTimeForYearlyCheckSoon = false;
+
     }
 
 
@@ -77,5 +83,9 @@ public class Airplane implements iBookable{
 
     public boolean isTimeForYearlyCheckSoon() {
         return isTimeForYearlyCheckSoon;
+    }
+
+    public boolean isThisYearsCheckDone() {
+        return thisYearsCheckDone;
     }
 }

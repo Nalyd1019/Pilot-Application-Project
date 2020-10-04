@@ -22,7 +22,7 @@ public class MyClubListItem extends AnchorPane {
     private Airplane airplane;
 
     // test
-    public MyClubListItem(Airplane airplane, String registration, int flightTime) {
+    public MyClubListItem(Airplane airplane, String registration, int flightTime, MyClubController myClubController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("myClubPageListItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,11 +36,18 @@ public class MyClubListItem extends AnchorPane {
         this.airplane = airplane;
         this.registrationLabel.setText(registration);
         this.flightTimeLabel.setText("Flygtid: " + String.valueOf(flightTime) + " minuter");
+        this.myClubController = myClubController;
     }
 
     @FXML
     protected void onClick(Event event){
-        checkIsDoneButton.setText("Tryckt");
+        buttonIsClicked(airplane, this);
+    }
+
+    private void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
+        airplane.yearlyCheckIsDone();
+       clubListItem.getStyleClass().clear();
+        myClubController.controlCheckStatus(airplane, clubListItem);
     }
 
 
