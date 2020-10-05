@@ -59,6 +59,8 @@ public class FlightBuddy {
         flyingclubs.add(borasFlygklubb);
         flyingclubs.add(falbygdensFlygklubb);
 
+        skovdeFlygklubb.getBookingHandler().createBooking(10,3,"dyltest@gmail.com", "SE-UKE");
+
     }
 
     /**

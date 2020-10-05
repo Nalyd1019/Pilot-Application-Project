@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import model.Booking;
+import model.BookingHandler;
 import model.FlightBuddy;
 import model.License;
 
@@ -23,6 +25,9 @@ public class StartPageController implements Initializable {
     @FXML private FlowPane bookingFlowpane;
 
     private Map<String, LicenseItem> licenseItemMap = new HashMap<String, LicenseItem>();
+    private Map<Integer, BookingItem> bookingItemMap = new HashMap<>();
+
+    BookingHandler currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
 
 
     @Override
@@ -35,6 +40,13 @@ public class StartPageController implements Initializable {
             LicenseItem licenseItem = new LicenseItem(license);
             licenseItemMap.put(license.getLicenseName(),licenseItem);
         }
+
+        for (Booking booking : currentClubBookingHandler.getUsersBookings(flightBuddy.getCurrentUser().getEmail()) ){
+            BookingItem bookingItem = new BookingItem(booking);
+            bookingItemMap.put(booking.getBookingID(), bookingItem);
+        }
+
+        updateBookingList();
         updateLicenseList();
 
     }
@@ -46,6 +58,20 @@ public class StartPageController implements Initializable {
                 ViewNavigator.LoadView(ViewNavigator.BOOKING);
             }
         });
+    }
+
+    private void updateBookingList(){
+        bookingFlowpane.getChildren().clear();
+
+
+        List<Booking> bookings = currentClubBookingHandler.getUsersBookings(flightBuddy.getCurrentUser().getEmail());
+
+        for (Booking booking : bookings){
+            BookingItem bookingItem = bookingItemMap.get(booking.getBookingID());
+            bookingFlowpane.getChildren().add(bookingItem);
+        }
+
+
     }
 
     private void updateLicenseList(){

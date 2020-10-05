@@ -41,10 +41,10 @@ public final class Booking {
     String getPilotEmail() { return pilotEmail;
     }
 
-    String getAirplaneRegistration() { return airplaneRegistration;
+    public String getAirplaneRegistration() { return airplaneRegistration;
     }
 
-    int getBookingID() {
+    public int getBookingID() {
         return bookingID;
     }
 

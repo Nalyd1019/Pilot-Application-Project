@@ -50,4 +50,8 @@ public class FlyingClub {
     public String getPassword() {
         return password;
     }
+
+    public BookingHandler getBookingHandler() {
+        return bookingHandler;
+    }
 }

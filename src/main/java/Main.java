@@ -65,8 +65,11 @@ public final class Main extends Application {
 		}catch (NullPointerException e){
 			System.out.println("Data list is empty");
 		};
-		if (flightBuddy.getFlyingclubs().size()==0)
+		if (flightBuddy.getFlyingclubs().size()==0){
 			flightBuddy.initializeClubs();
+			System.out.println("Initializing with basic data");
+		}
+
 	}
 
 

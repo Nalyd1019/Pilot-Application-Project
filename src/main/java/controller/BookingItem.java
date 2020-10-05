@@ -4,21 +4,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import model.Airplane;
+import model.Booking;
 import model.License;
 
 import java.io.IOException;
 
-public class LicenseItem extends AnchorPane {
+public class BookingItem extends AnchorPane {
 
     @FXML
-    private Label licenseName;
-    @FXML
-    private Label dateLabel;
+    private Label airplaneRegLabel;
 
-
-    public LicenseItem(License license) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("licenseItem.fxml"));
+    public BookingItem(Booking booking) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("bookingItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -27,9 +24,7 @@ public class LicenseItem extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        airplaneRegLabel.setText(booking.getAirplaneRegistration());
 
-        licenseName.setText(license.getLicenseName());
-        dateLabel.setText("Utgår " + license.getExpirationDate());
     }
-
 }
