@@ -48,6 +48,8 @@ public class AccountController implements Initializable {
         return null;
     }
 
+    // TODO - skriva javadoc
+
     @FXML public void updateUserInfo() {
         Pilot pilot = flightBuddy.getCurrentUser();
         if ((!flightBuddy.userExists(emailTextField.getText()) || pilot.getEmail().equals(emailTextField.getText()))&&!emptyTextField(emailTextField)) {

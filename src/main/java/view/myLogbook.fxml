@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="774.0" prefWidth="1319.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyLogbookController">
    <children>
       <fx:include source="header.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Label layoutX="618.0" layoutY="387.0" prefHeight="29.0" prefWidth="99.0" text="LOGBOOK" />
+      <Label fx:id="logBookLabel" layoutX="168.0" layoutY="250.0" onMouseClicked="#onClickLogBookLabel" styleClass="title-text" text="Loggbok" AnchorPane.leftAnchor="90.0" />
+      <Label fx:id="statisticsLabel" layoutX="245.0" layoutY="430.0" onMouseClicked="#onClickStatisticsLabel" styleClass="title-text" text="Statistik" AnchorPane.leftAnchor="90.0" />
+      <AnchorPane fx:id="logBookAnchorPane" prefHeight="705.0" prefWidth="920.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
+         <children>
+            <Label styleClass="title-text" text="Loggbok" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="statisticsAnchorPane" prefHeight="200.0" prefWidth="920.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
+         <children>
+            <Label styleClass="title-text" text="Statistik" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0" />
+            <Label layoutX="120.0" layoutY="180.0" styleClass="text-larger" text="Du har flugit" AnchorPane.leftAnchor="100.0" />
+            <Label fx:id="hoursLabel" layoutX="245.0" layoutY="180.0" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF;" text="Label" textAlignment="RIGHT">
+               <styleClass>
+                  <String fx:value="text-larger" />
+                  <String fx:value="text-field" />
+               </styleClass>
+            </Label>
+            <Label layoutX="315.0" layoutY="180.0" styleClass="text-larger" text="h" />
+            <Label fx:id="minutesLabel" layoutX="350.0" layoutY="180.0" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF;" text="Label" textAlignment="RIGHT">
+               <styleClass>
+                  <String fx:value="text-larger" />
+                  <String fx:value="text-field" />
+               </styleClass>
+            </Label>
+            <Label layoutX="425.0" layoutY="180.0" styleClass="text-larger" text="min" />
+            <Label layoutX="100.0" layoutY="240.0" styleClass="text-larger" text="Du har" />
+            <Label fx:id="nStartsLabel" layoutX="245.0" layoutY="240.0" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #FFFFFF;" text="Label" textAlignment="RIGHT">
+               <styleClass>
+                  <String fx:value="text-larger" />
+                  <String fx:value="text-field" />
+               </styleClass>
+            </Label>
+            <Label layoutX="350.0" layoutY="240.0" styleClass="text-larger" text="starter" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
