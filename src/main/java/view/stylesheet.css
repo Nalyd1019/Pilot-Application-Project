@@ -41,4 +41,9 @@
     -fx-border-color: #000000;
     -fx-border-width: 1px;
     -fx-border-radius: 1px;
+
+.bookingTextLabel{
+    -fx-font-family: "Helvetica"; /* Vet inte om vi ska ha Helvetica, men det var den jag hittade som jag kunde göra bold.*/
+    -fx-font-weight: bold;
+
 }

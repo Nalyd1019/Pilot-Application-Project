@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="623.0" prefWidth="1221.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookingController">
+<AnchorPane prefHeight="623.0" prefWidth="1221.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookingController">
    <children>
       <fx:include source="header.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Label layoutX="597.0" layoutY="303.0" text="BOOKING" />
+      <HBox alignment="CENTER_LEFT" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1221.0" spacing="220.0">
+         <children>
+            <Label id="bookingTextLabel" text="Starttid">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label id="bookingTextLabel" text="Starttid">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label id="bookingTextLabel" text="Tillgänglighet">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </HBox>
+      <FlowPane fx:id="bookingFlowPane" layoutY="141.0" prefHeight="483.0" prefWidth="1221.0" />
    </children>
 </AnchorPane>

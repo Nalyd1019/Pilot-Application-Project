@@ -9,7 +9,7 @@ public final class Booking {
     private final int bookingID;
     private static int  nextID = 0; // TODO - blir detta ett problem för immutability?
 
-    private final int startTime;
+    private final String startTime;
     private final int day;
 
     // TODO - what constructor will take
@@ -21,7 +21,7 @@ public final class Booking {
     } */
 
 
-   Booking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
+   Booking(String startTime, int day, String pilotEmail, String airplaneRegistration) {
        this.startTime = startTime;
        this.day = day;
        this.pilotEmail = pilotEmail;
@@ -34,11 +34,11 @@ public final class Booking {
         return day;
     }
 
-    int getStartTime() {
-        return startTime;
+    public String getStartTime() {
+        return this.startTime;
     }
 
-    String getPilotEmail() { return pilotEmail;
+    String getPilotEmail() { return this.pilotEmail;
     }
 
     public String getAirplaneRegistration() { return airplaneRegistration;
@@ -47,6 +47,7 @@ public final class Booking {
     public int getBookingID() {
         return bookingID;
     }
+
 
 
 }

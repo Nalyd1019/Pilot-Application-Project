@@ -41,7 +41,7 @@ public class BookingHandler {
      * @param pilotEmail the pilot's email-address, his login
      * @param airplaneRegistration the booked airplanes registration
      */
-    public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
+    public void createBooking(String startTime, int day, String pilotEmail, String airplaneRegistration) {
         {
             if (timeIsAvailable(day, startTime)) {
                 Booking booking = new Booking(startTime, day, pilotEmail, airplaneRegistration);
@@ -97,10 +97,10 @@ public class BookingHandler {
      * @param startTime the time that the booking will start
      * @return true if the times is available, meaning it is not booked
      */
-        public boolean timeIsAvailable(int day, int startTime) {
+        public boolean timeIsAvailable(int day, String startTime) {
 
             for (Booking booking:bookings){
-                if (booking.getDay() != day || booking.getStartTime() != startTime){
+                if (booking.getDay() != day || !booking.getStartTime().equals(startTime)){
                     return true;
                 }
             }
