@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,9 @@ public class FlightBuddy {
         borasFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
         createPilot("123", "123", "Test", "test@gmail.com", borasFlygklubb);
+        Pilot p1 = new Pilot("pw","pw", "Dylan TestPilot", "dyltest@gmail.com");
+        p1.addLicense(new License(License.FLIGHT, LocalDate.now().plusYears(2)));
+        skovdeFlygklubb.addMember(p1);
 
         flyingclubs.add(skovdeFlygklubb);
         flyingclubs.add(borasFlygklubb);

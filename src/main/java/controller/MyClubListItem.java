@@ -49,6 +49,6 @@ public class MyClubListItem extends AnchorPane {
        clubListItem.getStyleClass().clear();
         myClubController.controlCheckStatus(airplane, clubListItem);
     }
-
+    
 
 }

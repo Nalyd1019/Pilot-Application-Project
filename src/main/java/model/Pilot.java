@@ -101,6 +101,10 @@ public class Pilot implements iBorrower{
         }
     }
 
+    public void addLicense(License license){
+        licenses.add(license);
+    }
+
     public List<License> getLicenses() {
         return licenses;
     }
