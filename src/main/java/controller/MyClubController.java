@@ -62,7 +62,7 @@ public class MyClubController implements Initializable {
             myClubListItem.soonCheckLabel.setText("Dags för årstillsyn");
 
         } else if(airplane.isTimeForYearlyCheckSoon()){
-            myClubListItem.setStyle("-fx-border-color: yellow;");
+            myClubListItem.setStyle("-fx-border-color: #FFCC00;");
             myClubListItem.soonCheckLabel.setText("Årstillsyn inom 1 vecka");
         } else if (airplane.isThisYearsCheckDone()){
             myClubListItem.setStyle("-fx-border-color: white");
