@@ -51,6 +51,7 @@ public class FlightBuddy {
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
         createPilot("123", "123", "Test", "test@gmail.com", borasFlygklubb);
 
+
         flyingclubs.add(skovdeFlygklubb);
         flyingclubs.add(borasFlygklubb);
         flyingclubs.add(falbygdensFlygklubb);

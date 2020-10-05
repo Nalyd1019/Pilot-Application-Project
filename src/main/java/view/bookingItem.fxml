@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1221.0" spacing="220.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="bookingItemContainer" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1221.0" spacing="220.0" type="HBox" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="startTimeLabel" text="13:00">
          <font>
@@ -23,7 +23,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="bookButton" mnemonicParsing="false" text="Boka tid">
+      <Button fx:id="bookingButton" mnemonicParsing="false" text="Boka tid">
          <font>
             <Font size="20.0" />
          </font>
@@ -32,4 +32,4 @@
    <padding>
       <Insets left="50.0" />
    </padding>
-</HBox>
+</fx:root>
