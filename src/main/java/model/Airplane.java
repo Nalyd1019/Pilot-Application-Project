@@ -49,7 +49,7 @@ public class Airplane implements iBookable{
     public void inspectYearlyCheck(){
         int currentYear = LocalDate.now().getYear();
         LocalDate todaysDate = LocalDate.now();
-        LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10,1);
+        LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10,8);
 
         if(todaysDate.isAfter(yearlyCheckDate)) {
             isTimeForYearlyCheckSoon = false;
@@ -88,4 +88,7 @@ public class Airplane implements iBookable{
     public boolean isThisYearsCheckDone() {
         return thisYearsCheckDone;
     }
+
+
+
 }
