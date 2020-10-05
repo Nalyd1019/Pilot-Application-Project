@@ -2,28 +2,20 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import model.Booking;
-import model.BookingHandler;
+import model.License;
 
-import java.awt.*;
 import java.io.IOException;
 
-public class BookingItem {
+public class BookingItem extends AnchorPane {
 
-    @FXML private HBox bookingItemContainer;
-    @FXML private Label startTimeLabel;
-    @FXML private Label endTimeLabel;
-    @FXML private Label availabilityLabel;
-    @FXML private Button bookingButton;
+    @FXML
+    private Label airplaneRegLabel;
 
-    private BookingController parentController;
-    private BookingHandler bookingHandler;
-
-    public BookingItem(BookingController parentController, BookingHandler bookingHandler){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bookingItem.fxml"));
+    public BookingItem(Booking booking) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("bookingItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -32,16 +24,14 @@ public class BookingItem {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-
-
-
+        airplaneRegLabel.setText(booking.getAirplaneRegistration());
 
     }
-
-
-
-
-
-
 }
+
+
+
+
+
+
+

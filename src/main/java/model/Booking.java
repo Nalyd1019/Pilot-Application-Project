@@ -44,7 +44,9 @@ public final class Booking {
     public String getAirplaneRegistration() { return airplaneRegistration;
     }
 
-    public int getBookingID() {}
+    public int getBookingID() {
+       return bookingID;
+    }
 
 
 
