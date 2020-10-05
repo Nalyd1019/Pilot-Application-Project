@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root fx:id="licenseItem" prefHeight="83.0" prefWidth="485.0" style="-fx-border-color: green;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="licenseName" layoutX="36.0" layoutY="33.0" text="Label" />
+      <Label fx:id="dateLabel" layoutX="351.0" layoutY="33.0" text="Label" />
+   </children>
+</fx:root>
