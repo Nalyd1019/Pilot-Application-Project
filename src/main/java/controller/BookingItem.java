@@ -11,10 +11,7 @@ import model.BookingHandler;
 import java.awt.*;
 import java.io.IOException;
 
-public class BookingItem extends HBox{
-
-    BookingController bookingController;
-    Booking booking;
+public class BookingItem {
 
     @FXML private HBox bookingItemContainer;
     @FXML private Label startTimeLabel;
@@ -22,9 +19,10 @@ public class BookingItem extends HBox{
     @FXML private Label availabilityLabel;
     @FXML private Button bookingButton;
 
+    private BookingController parentController;
+    private BookingHandler bookingHandler;
 
-
-    public BookingItem(Booking booking, BookingController bookingController){
+    public BookingItem(BookingController parentController, BookingHandler bookingHandler){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bookingItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,11 +34,7 @@ public class BookingItem extends HBox{
         }
 
 
-        this.booking = booking;
-        this.bookingController = bookingController;
 
-        startTimeLabel.setText(booking.getStartTime());
-        endTimeLabel.setText(booking.getStartTime());
 
 
     }
@@ -50,5 +44,4 @@ public class BookingItem extends HBox{
 
 
 
->>>>>>> bookingController
 }

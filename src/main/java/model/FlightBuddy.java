@@ -55,7 +55,6 @@ public class FlightBuddy {
         p1.addLicense(new License(License.FLIGHT, LocalDate.now().plusYears(2)));
         skovdeFlygklubb.addMember(p1);
 
-
         flyingclubs.add(skovdeFlygklubb);
         flyingclubs.add(borasFlygklubb);
         flyingclubs.add(falbygdensFlygklubb);
