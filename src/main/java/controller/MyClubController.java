@@ -58,11 +58,12 @@ public class MyClubController implements Initializable {
         if(airplane.isTimeForYearlyCheckNow()){
             myClubListItem.setStyle("-fx-border-color: red;");
             myClubListItem.checkIsDoneButton.toFront();
-            myClubListItem.checkIsDoneButton.setText("Kontrollen är utförd");
+            myClubListItem.checkIsDoneButton.setText("Tillsyn utförd");
+            myClubListItem.soonCheckLabel.setText("Dags för årstillsyn");
 
         } else if(airplane.isTimeForYearlyCheckSoon()){
             myClubListItem.setStyle("-fx-border-color: yellow;");
-
+            myClubListItem.soonCheckLabel.setText("Årstillsyn inom 1 vecka");
         } else if (airplane.isThisYearsCheckDone()){
             myClubListItem.setStyle("-fx-border-color: white");
             myClubListItem.checkIsDoneButton.toBack();

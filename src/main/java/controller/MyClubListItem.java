@@ -16,6 +16,7 @@ public class MyClubListItem extends AnchorPane {
 
     @FXML private Label registrationLabel;
     @FXML private Label flightTimeLabel;
+    @FXML public Label soonCheckLabel;
     @FXML public Button checkIsDoneButton;
 
     private MyClubController myClubController;

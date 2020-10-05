@@ -9,6 +9,7 @@
       <Button fx:id="checkIsDoneButton" layoutX="354.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#onClick" text="Button" />
       <Label fx:id="registrationLabel" layoutX="32.0" layoutY="14.0" text="Label" />
       <Label fx:id="flightTimeLabel" layoutX="32.0" layoutY="42.0" text="Label" />
-      <AnchorPane layoutX="284.0" layoutY="9.0" prefHeight="84.0" prefWidth="200.0" style="-fx-background-color: red;" />
+      <Label fx:id="soonCheckLabel" layoutX="32.0" layoutY="64.0" prefHeight="17.0" prefWidth="187.0" text="Label" />
+      <AnchorPane layoutX="284.0" layoutY="9.0" prefHeight="84.0" prefWidth="215.0" style="-fx-background-color: whitesmoke;" />
    </children>
 </fx:root>
