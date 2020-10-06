@@ -54,7 +54,7 @@ public class MyClubListItem extends AnchorPane {
 
     private void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
         airplane.yearlyCheckIsDone();
-       clubListItem.getStyleClass().clear();
+        clubListItem.getStyleClass().clear();
         myClubController.controlCheckStatus(airplane, clubListItem);
         soonCheckLabel.getStyleClass().remove("warning-background");
         soonCheckLabel.setText("");

@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.List;
 
 public class Airplane implements iBookable{
@@ -8,9 +9,10 @@ public class Airplane implements iBookable{
     private Logbook logbook;
     private String registration;
 
-    private boolean thisYearsCheckDone = false;
-    private boolean isTimeForYearlyCheckNow = false;
-    private boolean isTimeForYearlyCheckSoon = false;
+    private LocalDate yearlyCheckDate = LocalDate.of(2010, 10,4);
+
+    private boolean isTimeForYearlyCheckNow;
+    private boolean isTimeForYearlyCheckSoon;
 
     private int nChecks = 0;
 
@@ -48,17 +50,18 @@ public class Airplane implements iBookable{
      * Method that checks if it is time for a yearly check soon or now. Date 1 week before yearlyCheckDate => check soon, after => check now.
      */
     public void inspectYearlyCheck(){
-        int currentYear = LocalDate.now().getYear();
         LocalDate todaysDate = LocalDate.now();
-        LocalDate yearlyCheckDate = LocalDate.of(currentYear, 10,3);
 
+        // Only for testing
+        // yearlyCheckDate = LocalDate.of(2020,10,7);
+
+        if(todaysDate.plusDays(8).isAfter(yearlyCheckDate)) {
+            isTimeForYearlyCheckNow = false;
+            isTimeForYearlyCheckSoon = true;
+        }
         if(todaysDate.isAfter(yearlyCheckDate)) {
             isTimeForYearlyCheckSoon = false;
             isTimeForYearlyCheckNow = true;
-        } else if(LocalDate.now().plusDays(8).isAfter(yearlyCheckDate)) {
-            isTimeForYearlyCheckNow = false;
-            isTimeForYearlyCheckSoon = true;
-            thisYearsCheckDone = false;
         }
     }
 
@@ -66,7 +69,10 @@ public class Airplane implements iBookable{
      * Method that set yearlyCheckNow-boolean to false when yearly check is done.
      */
     public void yearlyCheckIsDone(){
-        thisYearsCheckDone = true;
+
+        int nextYear = LocalDate.now().getYear()+1;
+        yearlyCheckDate = LocalDate.of(nextYear, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
+
         isTimeForYearlyCheckNow = false;
         isTimeForYearlyCheckSoon = false;
     }
@@ -88,9 +94,10 @@ public class Airplane implements iBookable{
         return isTimeForYearlyCheckSoon;
     }
 
-    public boolean isThisYearsCheckDone() {
-        return thisYearsCheckDone;
+    public LocalDate getYearlyCheckDate() {
+        return yearlyCheckDate;
     }
+
 
     public void setnChecks(int nChecks) {
         this.nChecks = nChecks;

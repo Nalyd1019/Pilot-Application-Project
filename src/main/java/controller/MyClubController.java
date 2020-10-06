@@ -50,6 +50,7 @@ public class MyClubController implements Initializable {
             airplane.inspectYearlyCheck();
             MyClubListItem myClubListItem = listItemMap.get(airplane.getRegistration());
             airplaneListFlowPane.getChildren().add(myClubListItem);
+
             controlCheckStatus(airplane, myClubListItem);
             controlDistanceCheckStatus(airplane, myClubListItem);
         }
@@ -57,20 +58,22 @@ public class MyClubController implements Initializable {
 
     public void controlCheckStatus(Airplane airplane, MyClubListItem myClubListItem) {
 
-        if(airplane.isTimeForYearlyCheckNow()){
+        if(airplane.isTimeForYearlyCheckNow()) {
             myClubListItem.setStyle("-fx-border-color: red;");
             myClubListItem.checkIsDoneButton.toFront();
             myClubListItem.checkIsDoneButton.setText("Tillsyn utförd");
             myClubListItem.soonCheckLabel.getStyleClass().add("warning-background");
             myClubListItem.soonCheckLabel.setText("Dags för årstillsyn");
 
-        } else if(airplane.isTimeForYearlyCheckSoon()){
+        } else if(airplane.isTimeForYearlyCheckSoon()) {
             myClubListItem.setStyle("-fx-border-color: #FFCC00;");
             myClubListItem.soonCheckLabel.getStyleClass().add("warning-background");
-            myClubListItem.soonCheckLabel.setText("Årstillsyn inom 1 vecka");
-        } else if (airplane.isThisYearsCheckDone()){
+            myClubListItem.soonCheckLabel.setText("Årstillsyn: " + airplane.getYearlyCheckDate().toString() );
+
+        } else {
             myClubListItem.setStyle("-fx-border-color: white");
             myClubListItem.checkIsDoneButton.toBack();
+            myClubListItem.soonCheckLabel.setText("");
         }
     }
 
