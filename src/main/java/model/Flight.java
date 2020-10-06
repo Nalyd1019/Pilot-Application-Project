@@ -62,4 +62,8 @@ public final class Flight {
     public String getComment() {
         return comment;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
 }
