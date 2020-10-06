@@ -19,6 +19,7 @@ public class MyClubListItem extends AnchorPane {
     @FXML public Label soonCheckLabel;
     @FXML public Button checkIsDoneButton;
     @FXML public Label distanceCheckLabel;
+    @FXML public Button distanceCheckButton;
 
     private MyClubController myClubController;
     private Airplane airplane;
@@ -46,6 +47,11 @@ public class MyClubListItem extends AnchorPane {
         buttonIsClicked(airplane, this);
     }
 
+    @FXML
+    protected void onDistanceButtonClick(Event event) {
+        distanceCheckButtonClicked();
+    }
+
     private void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
         airplane.yearlyCheckIsDone();
        clubListItem.getStyleClass().clear();
@@ -53,6 +59,12 @@ public class MyClubListItem extends AnchorPane {
         soonCheckLabel.getStyleClass().remove("warning-background");
         soonCheckLabel.setText("");
     }
-    
+
+    private void distanceCheckButtonClicked() {
+        airplane.distanceCheckIsDone();
+        distanceCheckButton.toBack();
+        distanceCheckLabel.getStyleClass().remove("warning-background");
+        distanceCheckLabel.setText("");
+    }
 
 }

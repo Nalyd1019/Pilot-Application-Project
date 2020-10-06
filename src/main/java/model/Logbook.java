@@ -114,6 +114,7 @@ public class Logbook {
     }
 
 
+
     /**
      * Get amount of minutes an airplane has been flying - no hours included!
      * @param registration registration of the airplane

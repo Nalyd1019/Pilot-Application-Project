@@ -13,8 +13,10 @@ import javafx.scene.layout.FlowPane;
 import model.Airplane;
 import model.FlightBuddy;
 import model.FlyingClub;
+import model.Logbook;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
 
 public class MyClubController implements Initializable {
@@ -42,7 +44,6 @@ public class MyClubController implements Initializable {
 
     public void updateAirplaneList() {
         airplaneListFlowPane.getChildren().clear();
-
         List<Airplane> airplanes = flightBuddy.getCurrentClub().getAirplanes();
 
         for (Airplane airplane : airplanes) {
@@ -75,12 +76,19 @@ public class MyClubController implements Initializable {
 
     private void controlDistanceCheckStatus(Airplane airplane, MyClubListItem myClubListItem){
         if(airplane.isCheckNeededNow()) {
-            myClubListItem.distanceCheckLabel.setText("Flygplanet har snart flugit 250 km. Då är det dags för tillsyn.");
-        } else if(airplane.isCheckNeededSoon()) {
-            myClubListItem.distanceCheckLabel.getStyleClass().add("warning-background");
-            myClubListItem.distanceCheckLabel.setText("Flygplanet har flugit 250 km. Det är dags för tillsyn.");
+            myClubListItem.distanceCheckButton.toFront();
+            myClubListItem.distanceCheckLabel.setText("Flygplanet har flugit 250 h sedan tillsyn. Då är det dags för tillsyn.");
         }
+        // TODO - just nu implementeras inte en förvarning.
+        /* else if(airplane.isCheckNeededSoon()) {
+            myClubListItem.distanceCheckLabel.getStyleClass().add("warning-background");
+            myClubListItem.distanceCheckLabel.setText("Flygplanet har flugit 250 h sedan tillsyn. Det är dags för tillsyn.");
+        } */
     }
+
+
+
+
 
 
 // använder ej dessa för tillfället

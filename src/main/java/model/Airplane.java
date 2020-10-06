@@ -12,6 +12,8 @@ public class Airplane implements iBookable{
     private boolean isTimeForYearlyCheckNow = false;
     private boolean isTimeForYearlyCheckSoon = false;
 
+    private int nChecks = 0;
+
     public Airplane(String registration, Logbook logbook){
         this.registration = registration;
         this.logbook = logbook;
@@ -31,7 +33,7 @@ public class Airplane implements iBookable{
      * @return true if flight time is over 15000 minutes
      */
     public boolean isCheckNeededNow(){
-        return getTotalFlightTime() > 15000;
+        return getTotalFlightTime() - nChecks * 15000 > 15000;
     }
 
     /**
@@ -41,7 +43,6 @@ public class Airplane implements iBookable{
     public int getTotalFlightTime(){
         return logbook.getAirplaneTotalMinutes(registration);
     }
-
 
     /**
      * Method that checks if it is time for a yearly check soon or now. Date 1 week before yearlyCheckDate => check soon, after => check now.
@@ -61,7 +62,6 @@ public class Airplane implements iBookable{
         }
     }
 
-
     /**
      * Method that set yearlyCheckNow-boolean to false when yearly check is done.
      */
@@ -69,6 +69,11 @@ public class Airplane implements iBookable{
         thisYearsCheckDone = true;
         isTimeForYearlyCheckNow = false;
         isTimeForYearlyCheckSoon = false;
+    }
+
+
+    public void distanceCheckIsDone(){
+        nChecks++;
     }
 
     public String getRegistration() {
@@ -87,6 +92,13 @@ public class Airplane implements iBookable{
         return thisYearsCheckDone;
     }
 
+    public void setnChecks(int nChecks) {
+        this.nChecks = nChecks;
+    }
+
+    public int getnChecks() {
+        return nChecks;
+    }
 
 
 }

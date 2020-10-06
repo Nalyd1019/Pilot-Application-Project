@@ -66,4 +66,13 @@ public class LogbookTest {
         assertEquals(5, pilot.getTotalNStarts());
     }
 
+    @Test
+    public void testAirplaneDistanceCheck(){
+        Logbook logbook = new Logbook();
+        Airplane airplane = new Airplane("ABC", logbook);
+        logbook.addLogbookEntry(LocalDate.of(2020, 3, 2),0,30001,2,"GBG","STHLM", "Regn", "ABC", "test@gmail.com");
+        airplane.distanceCheckIsDone();
+        assertTrue(airplane.isCheckNeededNow());
+    }
+
 }
