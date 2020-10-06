@@ -41,6 +41,10 @@
     -fx-background-color: #FFCC00;
 }
 
+.thicker-border {
+    -fx-border-width: 5px;
+}
+
 .text-field {
     -fx-border-color: #000000;
     -fx-border-width: 1px;
