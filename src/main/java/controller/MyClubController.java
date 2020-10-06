@@ -50,6 +50,7 @@ public class MyClubController implements Initializable {
             MyClubListItem myClubListItem = listItemMap.get(airplane.getRegistration());
             airplaneListFlowPane.getChildren().add(myClubListItem);
             controlCheckStatus(airplane, myClubListItem);
+            controlDistanceCheckStatus(airplane, myClubListItem);
         }
     }
 
@@ -59,10 +60,12 @@ public class MyClubController implements Initializable {
             myClubListItem.setStyle("-fx-border-color: red;");
             myClubListItem.checkIsDoneButton.toFront();
             myClubListItem.checkIsDoneButton.setText("Tillsyn utförd");
+            myClubListItem.soonCheckLabel.getStyleClass().add("warning-background");
             myClubListItem.soonCheckLabel.setText("Dags för årstillsyn");
 
         } else if(airplane.isTimeForYearlyCheckSoon()){
             myClubListItem.setStyle("-fx-border-color: #FFCC00;");
+            myClubListItem.soonCheckLabel.getStyleClass().add("warning-background");
             myClubListItem.soonCheckLabel.setText("Årstillsyn inom 1 vecka");
         } else if (airplane.isThisYearsCheckDone()){
             myClubListItem.setStyle("-fx-border-color: white");
@@ -70,6 +73,14 @@ public class MyClubController implements Initializable {
         }
     }
 
+    private void controlDistanceCheckStatus(Airplane airplane, MyClubListItem myClubListItem){
+        if(airplane.isCheckNeededNow()) {
+            myClubListItem.distanceCheckLabel.setText("Flygplanet har snart flugit 250 km. Då är det dags för tillsyn.");
+        } else if(airplane.isCheckNeededSoon()) {
+            myClubListItem.distanceCheckLabel.getStyleClass().add("warning-background");
+            myClubListItem.distanceCheckLabel.setText("Flygplanet har flugit 250 km. Det är dags för tillsyn.");
+        }
+    }
 
 
 // använder ej dessa för tillfället
