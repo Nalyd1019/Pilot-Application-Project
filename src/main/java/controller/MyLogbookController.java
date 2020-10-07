@@ -1,9 +1,10 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import model.Flight;
 import model.FlightBuddy;
@@ -25,6 +26,15 @@ public class MyLogbookController implements Initializable {
     @FXML private Label nStartsLabel;
     @FXML private TableView<String> flightsTableView;
     @FXML private AnchorPane lightBox;
+    @FXML private AnchorPane lightBox2;
+    @FXML private ComboBox<String> airPlaneComboBox;
+    @FXML private DatePicker flightDatePicker;
+    @FXML private TextField nStartsTextField;
+    @FXML private TextField flightHoursTextField;
+    @FXML private TextField takeOffTextField;
+    @FXML private TextField destinationTextField;
+    @FXML private TextArea commentTextArea;
+    @FXML private TextField flightMinutesTextField;
 
     FlightBuddy flightBuddy = FlightBuddy.getInstance();
     Pilot pilot = flightBuddy.getCurrentUser();
@@ -33,7 +43,13 @@ public class MyLogbookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lightBox.setVisible(false);
+        lightBox2.setVisible(false);
         onClickLogBookLabel();
+        ObservableList<String> options = FXCollections.observableArrayList();
+        for (int i=0; i<flightBuddy.getCurrentClub().getAirplanes().size();i++){
+            options.add(flightBuddy.getCurrentClub().getAirplanes().get(i).getRegistration());
+        }
+        airPlaneComboBox.getItems().addAll(options);
     }
 
     @FXML
@@ -83,5 +99,21 @@ public class MyLogbookController implements Initializable {
     @FXML private void onClickAddFlight() {
         lightBox.toFront();
         lightBox.setVisible(true);
+        lightBox2.toFront();
+        lightBox2.setVisible(true);
+    }
+    @FXML private void exitLightBox(){
+        lightBox2.toBack();
+        lightBox.setVisible(false);
+        lightBox.toBack();
+        lightBox2.setVisible(false);
+    }
+    @FXML private void onClickLogFlight(){
+        pilot.getLogbook().addLogbookEntry(flightDatePicker.getValue(),Integer.parseInt(flightHoursTextField.getText()),
+                Integer.parseInt(flightMinutesTextField.getText()),Integer.parseInt(nStartsTextField.getText()),takeOffTextField.getText(),
+                destinationTextField.getText(),commentTextArea.getText(),airPlaneComboBox.getSelectionModel().getSelectedItem(),
+                pilot.getEmail());
+        populateTable();
+        exitLightBox();
     }
 }
