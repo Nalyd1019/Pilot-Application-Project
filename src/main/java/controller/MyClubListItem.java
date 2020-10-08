@@ -21,6 +21,7 @@ public class MyClubListItem extends AnchorPane {
     @FXML public Label distanceCheckLabel;
     @FXML public Button distanceCheckButton;
 
+
     private MyClubController myClubController;
     private Airplane airplane;
 

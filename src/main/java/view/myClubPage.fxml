@@ -8,11 +8,12 @@
 <AnchorPane prefHeight="653.0" prefWidth="1278.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyClubController">
    <children>
       <fx:include source="header.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Label fx:id="clubNameLabel" layoutX="270.0" layoutY="172.0" styleClass="text-larger" text="Flygklubb" />
+      <Label fx:id="clubNameLabel" layoutX="270.0" layoutY="116.0" styleClass="text-larger" text="Flygklubb" />
       <ScrollPane layoutX="270.0" layoutY="222.0" prefHeight="351.0" prefWidth="717.0">
          <content>
             <FlowPane fx:id="airplaneListFlowPane" prefHeight="351.0" prefWidth="713.0" />
          </content>
       </ScrollPane>
+      <Label fx:id="descriptionLabel" layoutX="276.0" layoutY="156.0" styleClass="header-text" text="Beskrivning" />
    </children>
 </AnchorPane>

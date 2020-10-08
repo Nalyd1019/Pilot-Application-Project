@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="myClubPageListItem" prefHeight="150.0" prefWidth="480.0" style="-fx-border-color: green;" styleClass="thicker-border" stylesheets="@stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="myClubPageListItem" prefHeight="150.0" prefWidth="400.0" style="-fx-border-color: green;" styleClass="thicker-border" stylesheets="@stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="checkIsDoneButton" layoutX="354.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#onClick" text="Button" />
+      <Button fx:id="checkIsDoneButton" layoutX="354.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#onClick" text="Button" AnchorPane.topAnchor="37.0" />
       <Button fx:id="distanceCheckButton" mnemonicParsing="false" onMouseClicked="#onDistanceButtonClick" text="Tillsyn klar" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="37.0" />
       <Label fx:id="registrationLabel" layoutX="32.0" layoutY="14.0" styleClass="text-larger" text="Label" />
       <Label fx:id="flightTimeLabel" layoutX="32.0" layoutY="42.0" styleClass="header-text" text="Label" AnchorPane.bottomAnchor="75.0" />

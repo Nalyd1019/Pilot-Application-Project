@@ -22,6 +22,7 @@ import java.util.*;
 public class MyClubController implements Initializable {
 
     @FXML private Label clubNameLabel;
+    @FXML public Label descriptionLabel;
     @FXML private FlowPane airplaneListFlowPane;
 
     private FlyingClub flyingClub;
@@ -33,7 +34,7 @@ public class MyClubController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clubNameLabel.setText(flightBuddy.getCurrentClub().getClubName());
-
+        descriptionLabel.setText("Här ser du din klubbs flygplan samt om de behöver tillsyn.");
 
         // TODO - For testing of distanceCheck
         // Airplane seuyb = flightBuddy.getCurrentClub().getAirplanes().get(0);
