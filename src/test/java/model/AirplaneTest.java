@@ -12,6 +12,13 @@ public class AirplaneTest {
     private Logbook logbook = new Logbook();
     private Airplane airplane = new Airplane("ABC", logbook);
 
+    @Test
+    public void airplaneFlightTimeTest(){
+        logbook.addLogbookEntry(LocalDate.of(2020, 2,2),3,34,2,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
+        logbook.addLogbookEntry(LocalDate.of(2020, 2,3),1,2,2,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
+        Airplane airplane = new Airplane("SE-543", logbook);
+        assertEquals(276, airplane.getTotalFlightTime());
+    }
 
     // Tests for distance check
     @Test
