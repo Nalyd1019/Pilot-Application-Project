@@ -48,6 +48,7 @@ public class MyLogbookController implements Initializable {
     ObservableList<Flight> data = FXCollections.observableArrayList();
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lightBox.setVisible(false);

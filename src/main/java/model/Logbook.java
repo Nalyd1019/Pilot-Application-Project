@@ -17,13 +17,12 @@ public class Logbook {
         flights = new ArrayList<>();
     }
 
-
     /**
      *
      * @param date the date of the flight
      * @param nHours how many hours the flight lasted
      * @param nMinutes how many minutes the flight lasted
-     * @param nStarts the amounts of starts on the flight (??)
+     * @param nStarts the amounts of starts on the flight
      * @param departurePlace the place of departure
      * @param destination the destination of the flight
      * @param comment any comments by the pilot
@@ -34,10 +33,6 @@ public class Logbook {
         flights.add(flight);
     }
 
-
-    public List<Flight> getFlights() {
-        return flights;
-    }
 
     /**
      * Method that returns all entries with the specific airplane's registration.
@@ -54,6 +49,7 @@ public class Logbook {
         return airplanesEntries;
     }
 
+
     /**
      * Method that gets all entries made by a specific pilot
      * @param pilotEmail the pilots email, the way to identify the pilot who made the entry
@@ -68,6 +64,7 @@ public class Logbook {
         }
         return pilotsEntries;
     }
+
 
     /**
      * Method that returns all entries too a specific destination
@@ -100,6 +97,7 @@ public class Logbook {
         return placeEntries;
     }
 
+
     /**
      * Get total amount of hours an airplane has been flying
      * @param registration the registration of the airplane
@@ -112,7 +110,6 @@ public class Logbook {
         }
         return hours;
     }
-
 
 
     /**
@@ -128,15 +125,17 @@ public class Logbook {
         return minutes;
     }
 
+
     /**
      * Method that returns total amount of minutes an airplane has been flying - minutes + hours
-     * @param registration
+     * @param registration the airplanes registration
      * @return the total amount of time an airplane has been flying, in minutes
      */
     public int getAirplaneTotalMinutes(String registration){
         int hoursToMinutes = getAirplaneFlightHours(registration) * 60;
         return getAirplaneFlightMinutes(registration) + hoursToMinutes;
     }
+
 
     /**
      * Method that returns amount of hours a pilot has been flying - no minutes
@@ -151,6 +150,7 @@ public class Logbook {
         return hours;
     }
 
+
     /**
      * Method that returns the amount of minutes a pilot has been flying - no hours included
      * @param email the pilots email
@@ -163,6 +163,7 @@ public class Logbook {
         }
         return minutes;
     }
+
 
     /**
      * Method that returns the amount of time a pilot has been flying - hours and minutes
@@ -187,6 +188,14 @@ public class Logbook {
         }
         return nStarts;
     }
+
+
+    // getters
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+
 
     // TODO - Denna metoden bör ej kunna användas, ska den t om tas bort? Endast för test nu
     public void clearLogbook() {

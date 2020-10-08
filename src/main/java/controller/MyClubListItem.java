@@ -70,4 +70,24 @@ public class MyClubListItem extends AnchorPane {
         distanceCheckLabel.setText("");
     }
 
+    void applyYearlyCheck() {
+        setStyle("-fx-border-color: red;");
+        checkIsDoneButton.toFront();
+        checkIsDoneButton.setText("Tillsyn utförd");
+        soonCheckLabel.getStyleClass().add("warning-background");
+        soonCheckLabel.setText("Dags för årstillsyn");
+    }
+
+     void applySoonYearlyCheck() {
+         setStyle("-fx-border-color: #FFCC00;");
+         soonCheckLabel.getStyleClass().add("warning-background");
+         soonCheckLabel.setText("Årstillsyn: " + airplane.getYearlyCheckDate().toString() );
+     }
+
+     void applyDistanceCheck() {
+         distanceCheckButton.toFront();
+         distanceCheckLabel.setText("Flygplanet har flugit 250 h sedan tillsyn. Då är det dags för tillsyn.");
+     }
+
+
 }
