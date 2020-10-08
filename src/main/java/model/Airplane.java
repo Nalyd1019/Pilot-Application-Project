@@ -27,7 +27,7 @@ public class Airplane implements iBookable{
      * @return true if flight time is over 10000 minutes
      */
     public boolean isCheckNeededSoon(){
-        return getTotalFlightTime() > 10000;
+        return getTotalFlightTime() - nChecks * 13000 > 13000;
     }
 
 
@@ -104,10 +104,7 @@ public class Airplane implements iBookable{
         return nChecks;
     }
 
-    public Logbook getLogbook() {
-        return logbook;
-    }
-
+    public Logbook getLogbook() { return logbook; }
 
 
     // TODO - Denna metoden bör ej användas, ska den t om tas bort? Endast för test nu

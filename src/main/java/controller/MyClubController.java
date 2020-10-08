@@ -8,8 +8,10 @@ import javafx.scene.layout.FlowPane;
 import model.Airplane;
 import model.FlightBuddy;
 import model.FlyingClub;
+import model.Logbook;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
 
 public class MyClubController implements Initializable {
@@ -34,12 +36,12 @@ public class MyClubController implements Initializable {
         descriptionLabel.setText("Här ser du din klubbs flygplan samt om de behöver tillsyn.");
 
         // TODO - For testing of distanceCheck
-        // Airplane seuyb = flightBuddy.getCurrentClub().getAirplanes().get(0);
-        // Logbook logSeuyb = seuyb.getLogbook();
-        // logSeuyb.addLogbookEntry(LocalDate.of(2020, 2, 2),0,15001,5,"depPlace","dest", "com", "SE-UYB", "test@gmail.com");
-        // seuyb.setnChecks(0);
+        //Airplane seuyb = flightBuddy.getCurrentClub().getAirplanes().get(0);
+        //Logbook logSeuyb = seuyb.getLogbook();
+        //logSeuyb.addLogbookEntry(LocalDate.of(2020, 2, 2),0,1005,5,"depPlace","dest", "com", "SE-UYB", "test@gmail.com");
+        //seuyb.setnChecks(0);
+        //seuyb.removeLogbookEntries();
         // clubNameLabel.setText(String.valueOf(seuyb.getnChecks()));
-        // seuyb.removeLogbookEntries();
         // TODO - testing over
 
         for (Airplane airplane : flightBuddy.getCurrentClub().getAirplanes()) {
@@ -86,8 +88,9 @@ public class MyClubController implements Initializable {
         }
     }
 
+
     /**
-     * Checks if a distance check is needed, if yes, method changing GUI is called
+     * Checks if a distance check is needed (now or soon), if yes, corresponding method changing GUI is called
      * @param airplane the airplane that may need check
      * @param myClubListItem the list item displaying the airplane
      */
@@ -96,11 +99,9 @@ public class MyClubController implements Initializable {
            myClubListItem.applyDistanceCheck();
         }
 
-        // TODO - just nu implementeras inte en förvarning.
-        /* else if(airplane.isCheckNeededSoon()) {
-            myClubListItem.distanceCheckLabel.getStyleClass().add("warning-background");
-            myClubListItem.distanceCheckLabel.setText("Flygplanet har flugit 250 h sedan tillsyn. Det är dags för tillsyn.");
-        } */
+        else if(airplane.isCheckNeededSoon()) {
+           myClubListItem.applySoonDistanceCheck();
+        }
     }
 
 }

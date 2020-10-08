@@ -111,4 +111,18 @@ public class MyClubListItem extends AnchorPane {
      }
 
 
+    /**
+     * Method that changes GUI when distance check soon is needed, displays hours until check
+     */
+    void applySoonDistanceCheck() {
+        int nChecks = airplane.getnChecks();
+        int totalTime = airplane.getTotalFlightTime();
+        int checkedTime = (nChecks*15000);
+
+        int minutesUntilCheck = 15000-(totalTime-checkedTime);
+        int hoursUntilCheck = minutesUntilCheck/60;
+
+        distanceCheckLabel.getStyleClass().add("warning-background");
+        distanceCheckLabel.setText("Flygplanet har snart flugit 250 h sedan tillsyn. Dags för tillsyn om " + hoursUntilCheck + " h");
+    }
 }

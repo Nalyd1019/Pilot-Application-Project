@@ -13,7 +13,7 @@ public class Logbook {
         this.flights = flights;
     }
 
-    public Logbook(){
+    Logbook(){
         flights = new ArrayList<>();
     }
 
@@ -39,7 +39,7 @@ public class Logbook {
      * @param registration the airplanes registration
      * @return list of entries with that airplane
      */
-    public List<Flight> getAirplanesEntries(String registration) {
+    private List<Flight> getAirplanesEntries(String registration) {
         List<Flight> airplanesEntries = new ArrayList<>();
         for(Flight fli : flights){
             if(registration.equals(fli.getAirplaneRegistration())) {
@@ -71,7 +71,7 @@ public class Logbook {
      * @param destination the destination of the entry
      * @return list of entries to that destination
      */
-    public List<Flight> getDestinationEntries(String destination) {
+    List<Flight> getDestinationEntries(String destination) {
         List<Flight> destinationEntries = new ArrayList<>();
         for(Flight fli : flights){
             if(destination.equals(fli.getDestination())) {
@@ -131,7 +131,7 @@ public class Logbook {
      * @param registration the airplanes registration
      * @return the total amount of time an airplane has been flying, in minutes
      */
-    public int getAirplaneTotalMinutes(String registration){
+    int getAirplaneTotalMinutes(String registration){
         int hoursToMinutes = getAirplaneFlightHours(registration) * 60;
         return getAirplaneFlightMinutes(registration) + hoursToMinutes;
     }
@@ -170,7 +170,7 @@ public class Logbook {
       * @param email the pilots email
      * @return the amount of time a pilot has been flying, in minutes
      */
-    public int getPilotTotalMinutes(String email){
+    int getPilotTotalMinutes(String email){
         int hoursToMinutes = getPilotFlightHours(email) * 60;
         return hoursToMinutes + getPilotFlightMinutes(email);
     }
@@ -181,7 +181,7 @@ public class Logbook {
      * @param pilotEmail the email of the pilot in question
      * @return the number of starts this pilot
      */
-    public int getPilotNumberOfStarts(String pilotEmail){
+    int getPilotNumberOfStarts(String pilotEmail){
         int nStarts = 0;
         for (Flight flight : getPilotsEntries(pilotEmail)) {
             nStarts = nStarts + flight.getnStarts();
@@ -191,14 +191,14 @@ public class Logbook {
 
 
     // getters
-    public List<Flight> getFlights() {
+    List<Flight> getFlights() {
         return flights;
     }
 
 
 
     // TODO - Denna metoden bör ej kunna användas, ska den t om tas bort? Endast för test nu
-    public void clearLogbook() {
+    void clearLogbook() {
       flights.clear();
     }
 
