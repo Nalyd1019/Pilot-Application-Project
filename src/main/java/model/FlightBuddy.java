@@ -53,6 +53,7 @@ public class FlightBuddy {
         createPilot("123", "123", "Test", "test@gmail.com", borasFlygklubb);
         Pilot p1 = new Pilot("pw","pw", "Dylan TestPilot", "dyltest@gmail.com");
         p1.addLicense(new License(License.FLIGHT, LocalDate.now().plusYears(2)));
+        p1.addLicense(new License(License.MEDICAL, LocalDate.now().plusYears(2)));
         skovdeFlygklubb.addMember(p1);
 
         flyingclubs.add(skovdeFlygklubb);
