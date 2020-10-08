@@ -23,6 +23,11 @@ public class MyClubController implements Initializable {
     private Map<String, MyClubListItem> listItemMap = new HashMap<String, MyClubListItem>();
 
 
+    /**
+     * The initialize method that sets up the controller, creates list items and sets label texts
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clubNameLabel.setText(flightBuddy.getCurrentClub().getClubName());
@@ -46,13 +51,17 @@ public class MyClubController implements Initializable {
     }
 
 
+    /**
+     * Method that populates the flowpane with clublistitems (airplanes)
+     * For all airplanes, it inspects if any checks are needed.
+     */
     private void updateAirplaneList() {
         airplaneListFlowPane.getChildren().clear();
         List<Airplane> airplanes = flightBuddy.getCurrentClub().getAirplanes();
 
         for (Airplane airplane : airplanes) {
-
             airplane.inspectYearlyCheck();
+
             MyClubListItem myClubListItem = listItemMap.get(airplane.getRegistration());
             airplaneListFlowPane.getChildren().add(myClubListItem);
 
@@ -62,6 +71,12 @@ public class MyClubController implements Initializable {
     }
 
 
+    /**
+     * Method that checks if it is time for yearly check soon or now.
+     * If one is true, corresponding method that changes GUI is called in MyClubListItem
+     * @param airplane the airplane that may need check
+     * @param myClubListItem the list item displaying the airplane
+     */
     private void controlCheckStatus(Airplane airplane, MyClubListItem myClubListItem) {
         if(airplane.isTimeForYearlyCheckNow()) {
             myClubListItem.applyYearlyCheck();
@@ -71,6 +86,11 @@ public class MyClubController implements Initializable {
         }
     }
 
+    /**
+     * Checks if a distance check is needed, if yes, method changing GUI is called
+     * @param airplane the airplane that may need check
+     * @param myClubListItem the list item displaying the airplane
+     */
     private void controlDistanceCheckStatus(Airplane airplane, MyClubListItem myClubListItem){
         if(airplane.isCheckNeededNow()) {
            myClubListItem.applyDistanceCheck();

@@ -25,8 +25,8 @@ public class MyClubListItem extends AnchorPane {
     private MyClubController myClubController;
     private Airplane airplane;
 
-    // test
-    public MyClubListItem(Airplane airplane, String registration, int flightTime, MyClubController myClubController) {
+
+    MyClubListItem(Airplane airplane, String registration, int flightTime, MyClubController myClubController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("myClubPageListItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -54,15 +54,24 @@ public class MyClubListItem extends AnchorPane {
         distanceCheckButtonClicked();
     }
 
+
+    /**
+     * Method that is called when yearly check button is clicked
+     * Makes appropriate changes in GUI
+     */
     private void buttonIsClicked(){
         airplane.yearlyCheckIsDone();
-        // clubListItem.getStyleClass().clear();
         setStyle("-fx-border-color: green");
         checkIsDoneButton.toBack();
         soonCheckLabel.getStyleClass().remove("warning-background");
         soonCheckLabel.setText("");
     }
 
+
+    /**
+     * Method that is called when distance check button is clicked
+     * Makes appropriate changes in GUI
+     */
     private void distanceCheckButtonClicked() {
         airplane.distanceCheckIsDone();
         distanceCheckButton.toBack();
@@ -70,6 +79,10 @@ public class MyClubListItem extends AnchorPane {
         distanceCheckLabel.setText("");
     }
 
+
+    /**
+     * Method that changes GUI when yearly check is needed
+     */
     void applyYearlyCheck() {
         setStyle("-fx-border-color: red;");
         checkIsDoneButton.toFront();
@@ -78,13 +91,21 @@ public class MyClubListItem extends AnchorPane {
         soonCheckLabel.setText("Dags för årstillsyn");
     }
 
-     void applySoonYearlyCheck() {
+
+    /**
+     * Method that changes GUI when yearly check soon is needed
+     */
+    void applySoonYearlyCheck() {
          setStyle("-fx-border-color: #FFCC00;");
          soonCheckLabel.getStyleClass().add("warning-background");
          soonCheckLabel.setText("Årstillsyn: " + airplane.getYearlyCheckDate().toString() );
      }
 
-     void applyDistanceCheck() {
+
+    /**
+     * Method that changes GUI when distance check is needed
+     */
+    void applyDistanceCheck() {
          distanceCheckButton.toFront();
          distanceCheckLabel.setText("Flygplanet har flugit 250 h sedan tillsyn. Då är det dags för tillsyn.");
      }
