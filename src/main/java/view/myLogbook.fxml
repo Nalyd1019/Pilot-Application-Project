@@ -73,13 +73,13 @@
             <Label styleClass="title-text" text="Loggbok" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0" />
             <TableView fx:id="flightsTableView" layoutX="100.0" layoutY="180.0" prefHeight="200.0" prefWidth="700.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="180.0">
               <columns>
-                <TableColumn editable="false" prefWidth="75.0" resizable="false" text="Datum" />
-                <TableColumn editable="false" prefWidth="75.0" text="Flygplan" />
-                  <TableColumn editable="false" prefWidth="75.0" text="Antal starter" />
-                  <TableColumn editable="false" prefWidth="75.0" text="Flygtid" />
-                  <TableColumn editable="false" prefWidth="75.0" text="Startplats" />
-                  <TableColumn editable="false" prefWidth="75.0" text="Destination" />
-                  <TableColumn editable="false" prefWidth="299.0" text="Kommentar" />
+                <TableColumn fx:id="dateCol" editable="false" prefWidth="100.0" resizable="false" text="Datum" />
+                <TableColumn fx:id="airPlaneCol" editable="false" prefWidth="75.0" text="Flygplan" />
+                  <TableColumn fx:id="nStartsCol" editable="false" prefWidth="75.0" text="Antal starter" />
+                  <TableColumn fx:id="flightTimeCol" editable="false" prefWidth="75.0" text="Flygtid" />
+                  <TableColumn fx:id="takeOffCol" editable="false" prefWidth="75.0" text="Startplats" />
+                  <TableColumn fx:id="destinationCol" editable="false" prefWidth="113.0" text="Destination" />
+                  <TableColumn fx:id="commentCol" editable="false" prefWidth="260.0" text="Kommentar" />
               </columns>
             </TableView>
             <Button layoutX="418.0" layoutY="655.0" mnemonicParsing="false" onMouseClicked="#onClickAddFlight" prefWidth="150.0" style="-fx-background-color: #7CAD6C; -fx-cursor: hand;" text="Lägg till flygning" />

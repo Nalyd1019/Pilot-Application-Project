@@ -5,13 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.Flight;
 import model.FlightBuddy;
 import model.Pilot;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class MyLogbookController implements Initializable {
@@ -24,7 +24,7 @@ public class MyLogbookController implements Initializable {
     @FXML private Label hoursLabel;
     @FXML private Label minutesLabel;
     @FXML private Label nStartsLabel;
-    @FXML private TableView<String> flightsTableView;
+    @FXML private TableView<Flight> flightsTableView;
     @FXML private AnchorPane lightBox;
     @FXML private AnchorPane lightBox2;
     @FXML private ComboBox<String> airPlaneComboBox;
@@ -35,9 +35,17 @@ public class MyLogbookController implements Initializable {
     @FXML private TextField destinationTextField;
     @FXML private TextArea commentTextArea;
     @FXML private TextField flightMinutesTextField;
+    @FXML private TableColumn<Flight,String> dateCol;
+    @FXML private TableColumn<Flight,String> airPlaneCol;
+    @FXML private TableColumn<Flight,Integer> nStartsCol;
+    @FXML private TableColumn<Flight,Integer> flightTimeCol;
+    @FXML private TableColumn<Flight,String> takeOffCol;
+    @FXML private TableColumn<Flight,String> destinationCol;
+    @FXML private TableColumn<Flight,String> commentCol;
 
     FlightBuddy flightBuddy = FlightBuddy.getInstance();
     Pilot pilot = flightBuddy.getCurrentUser();
+    ObservableList<Flight> data = FXCollections.observableArrayList();
 
 
     @Override
@@ -50,6 +58,15 @@ public class MyLogbookController implements Initializable {
             options.add(flightBuddy.getCurrentClub().getAirplanes().get(i).getRegistration());
         }
         airPlaneComboBox.getItems().addAll(options);
+        data.addAll(pilot.getLogbook().getPilotsEntries(pilot.getEmail()));
+        setCellValueFactory(dateCol,"date");
+        setCellValueFactory(airPlaneCol,"airplaneRegistration");
+        setCellValueFactory(nStartsCol,"nStarts");
+        setCellValueFactory(flightTimeCol,"nHours");
+        setCellValueFactory(takeOffCol,"departurePlace");
+        setCellValueFactory(destinationCol,"destination");
+        setCellValueFactory(commentCol, "comment");
+        flightsTableView.setItems(data);
     }
 
     @FXML
@@ -57,7 +74,6 @@ public class MyLogbookController implements Initializable {
         logBookAnchorPane.toFront();
         logBookLabel.setUnderline(true);
         statisticsLabel.setUnderline(false);
-        populateTable();
     }
 
     @FXML
@@ -81,21 +97,7 @@ public class MyLogbookController implements Initializable {
     private int getRemainingMinutes (int totalFlightTime, int totalHours){
         return totalFlightTime-(totalHours*60);
     }
-    private void populateTable(){
-        List<Flight> flights = pilot.getLogbook().getPilotsEntries(pilot.getEmail());
-        for (Flight flight : flights) {
-            setCellValue(0,flight.getDate().toString());
-            setCellValue(1,flight.getAirplaneRegistration());
-            setCellValue(2,Integer.toString(flight.getnStarts()));
-            setCellValue(3, flight.getnHours() + " h " + flight.getnMinutes() + " min");
-            setCellValue(4,flight.getDeparturePlace());
-            setCellValue(5, flight.getDestination());
-            setCellValue(6,flight.getComment());
-        }
-    }
-    private void setCellValue(int cell, String cellValue){
-        flightsTableView.getColumns().get(cell).setText(cellValue);
-    }
+
     @FXML private void onClickAddFlight() {
         lightBox.toFront();
         lightBox.setVisible(true);
@@ -113,7 +115,19 @@ public class MyLogbookController implements Initializable {
                 Integer.parseInt(flightMinutesTextField.getText()),Integer.parseInt(nStartsTextField.getText()),takeOffTextField.getText(),
                 destinationTextField.getText(),commentTextArea.getText(),airPlaneComboBox.getSelectionModel().getSelectedItem(),
                 pilot.getEmail());
-        populateTable();
+        data.add(pilot.getLogbook().getFlights().get(pilot.getLogbook().getFlights().size()-1));
+        clearInput();
         exitLightBox();
+    }
+    private <T> void setCellValueFactory(TableColumn<Flight,T> col, String attribute){
+        col.setCellValueFactory(new PropertyValueFactory<>(attribute));
+    }
+    private void clearInput(){
+        nStartsTextField.clear();
+        flightHoursTextField.clear();
+        takeOffTextField.clear();
+        destinationTextField.clear();
+        commentTextArea.clear();
+        flightMinutesTextField.clear();
     }
 }
