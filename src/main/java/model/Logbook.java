@@ -191,7 +191,7 @@ public class Logbook {
 
 
     // getters
-    List<Flight> getFlights() {
+    public List<Flight> getFlights() {
         return flights;
     }
 
