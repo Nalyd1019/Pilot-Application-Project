@@ -1,8 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
-import java.util.List;
 
 public class Airplane implements iBookable{
 
@@ -98,13 +96,22 @@ public class Airplane implements iBookable{
         return yearlyCheckDate;
     }
 
-
-    public void setnChecks(int nChecks) {
-        this.nChecks = nChecks;
-    }
-
     public int getnChecks() {
         return nChecks;
+    }
+
+    public Logbook getLogbook() {
+        return logbook;
+    }
+
+    // TODO - Denna metoden bör ej kunna användas, ska den t om tas bort? Endast för test nu
+    public void removeLogbookEntries() {
+        logbook.clearLogbook();
+    }
+
+    // TODO - Denna metoden används för testsyften, tas bort sedan!
+    public void setnChecks(int nChecks) {
+        this.nChecks = nChecks;
     }
 
 

@@ -38,7 +38,7 @@ public class MyClubListItem extends AnchorPane {
 
         this.airplane = airplane;
         this.registrationLabel.setText(registration);
-        this.flightTimeLabel.setText("Flygtid: " + String.valueOf(flightTime) + " minuter");
+        this.flightTimeLabel.setText("Flygtid: " + flightTime + " minuter");
         this.myClubController = myClubController;
     }
 

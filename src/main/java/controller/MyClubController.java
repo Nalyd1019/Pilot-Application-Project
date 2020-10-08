@@ -34,6 +34,16 @@ public class MyClubController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clubNameLabel.setText(flightBuddy.getCurrentClub().getClubName());
 
+
+        // TODO - For testing of distanceCheck
+        // Airplane seuyb = flightBuddy.getCurrentClub().getAirplanes().get(0);
+        // Logbook logSeuyb = seuyb.getLogbook();
+        // logSeuyb.addLogbookEntry(LocalDate.of(2020, 2, 2),0,15001,5,"depPlace","dest", "com", "SE-UYB", "test@gmail.com");
+        // seuyb.setnChecks(0);
+        // clubNameLabel.setText(String.valueOf(seuyb.getnChecks()));
+        // seuyb.removeLogbookEntries();
+        // TODO - testing over
+
         for (Airplane airplane : flightBuddy.getCurrentClub().getAirplanes()) {
             MyClubListItem myClubListItem = new MyClubListItem(airplane, airplane.getRegistration(), airplane.getTotalFlightTime(), this);
             listItemMap.put(airplane.getRegistration(), myClubListItem);
@@ -47,6 +57,7 @@ public class MyClubController implements Initializable {
         List<Airplane> airplanes = flightBuddy.getCurrentClub().getAirplanes();
 
         for (Airplane airplane : airplanes) {
+
             airplane.inspectYearlyCheck();
             MyClubListItem myClubListItem = listItemMap.get(airplane.getRegistration());
             airplaneListFlowPane.getChildren().add(myClubListItem);
@@ -94,7 +105,7 @@ public class MyClubController implements Initializable {
 
 
 
-// använder ej dessa för tillfället
+// använder ej dessa för tillfället TODO - Ta bort
     private void addCheckIsDoneButton(MyClubListItem clubListItem, Airplane airplane){
         Button button = new Button();
         clubListItem.getChildren().add(button);

@@ -188,4 +188,9 @@ public class Logbook {
         return nStarts;
     }
 
+    // TODO - Denna metoden bör ej kunna användas, ska den t om tas bort? Endast för test nu
+    public void clearLogbook() {
+      flights.clear();
+    }
+
 }
