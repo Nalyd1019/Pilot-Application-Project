@@ -82,10 +82,6 @@ public class MyClubController implements Initializable {
             myClubListItem.soonCheckLabel.getStyleClass().add("warning-background");
             myClubListItem.soonCheckLabel.setText("Årstillsyn: " + airplane.getYearlyCheckDate().toString() );
 
-        } else {
-            myClubListItem.setStyle("-fx-border-color: white");
-            myClubListItem.checkIsDoneButton.toBack();
-            myClubListItem.soonCheckLabel.setText("");
         }
     }
 

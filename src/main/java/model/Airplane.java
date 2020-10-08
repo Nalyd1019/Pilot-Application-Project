@@ -7,7 +7,8 @@ public class Airplane implements iBookable{
     private Logbook logbook;
     private String registration;
 
-    private LocalDate yearlyCheckDate = LocalDate.of(2010, 10,4);
+    // Obs, ändrat yearlycheckdate i json-filen för att testa
+    private LocalDate yearlyCheckDate = LocalDate.of(2020, 10,4);
 
     private boolean isTimeForYearlyCheckNow;
     private boolean isTimeForYearlyCheckSoon;
@@ -20,6 +21,7 @@ public class Airplane implements iBookable{
     }
 
 
+    // TODO - Implement this method
     /**
      * Method to see if check is needed soon
      * @return true if flight time is over 10000 minutes
@@ -28,13 +30,15 @@ public class Airplane implements iBookable{
         return getTotalFlightTime() > 10000;
     }
 
+
     /**
-     * Method to see if check is needed now
-     * @return true if flight time is over 15000 minutes
+     * Controls if distance check is needed, which is 250 hours after the last check.
+     * @return true if flight time is 250 since last check.
      */
     public boolean isCheckNeededNow(){
         return getTotalFlightTime() - nChecks * 15000 > 15000;
     }
+
 
     /**
      * Method that gives total flight time for a specific airplane
@@ -44,14 +48,12 @@ public class Airplane implements iBookable{
         return logbook.getAirplaneTotalMinutes(registration);
     }
 
+
     /**
      * Method that checks if it is time for a yearly check soon or now. Date 1 week before yearlyCheckDate => check soon, after => check now.
      */
     public void inspectYearlyCheck(){
         LocalDate todaysDate = LocalDate.now();
-
-        // Only for testing
-        // yearlyCheckDate = LocalDate.of(2020,10,7);
 
         if(todaysDate.plusDays(8).isAfter(yearlyCheckDate)) {
             isTimeForYearlyCheckNow = false;
@@ -63,26 +65,25 @@ public class Airplane implements iBookable{
         }
     }
 
+
     /**
-     * Method that set yearlyCheckNow-boolean to false when yearly check is done.
+     * Method that sets yearly check date to one year from date method is called
      */
     public void yearlyCheckIsDone(){
-
         int nextYear = LocalDate.now().getYear()+1;
         yearlyCheckDate = LocalDate.of(nextYear, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
-
-        isTimeForYearlyCheckNow = false;
-        isTimeForYearlyCheckSoon = false;
     }
 
 
+    /**
+     * Keeps track of amount of checks in order to calculate when 250 has gone
+     */
     public void distanceCheckIsDone(){
         nChecks++;
     }
 
 
     // Getters
-
     public String getRegistration() {
         return registration;
     }
@@ -109,7 +110,7 @@ public class Airplane implements iBookable{
 
 
 
-    // TODO - Denna metoden bör ej kunna användas, ska den t om tas bort? Endast för test nu
+    // TODO - Denna metoden bör ej användas, ska den t om tas bort? Endast för test nu
     public void removeLogbookEntries() {
         logbook.clearLogbook();
     }

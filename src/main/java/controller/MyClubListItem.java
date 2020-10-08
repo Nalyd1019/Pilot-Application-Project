@@ -41,11 +41,12 @@ public class MyClubListItem extends AnchorPane {
         this.registrationLabel.setText(registration);
         this.flightTimeLabel.setText("Flygtid: " + flightTime + " minuter");
         this.myClubController = myClubController;
+        this.soonCheckLabel.setText(" ");
     }
 
     @FXML
     protected void onClick(Event event){
-        buttonIsClicked(airplane, this);
+        buttonIsClicked();
     }
 
     @FXML
@@ -53,10 +54,11 @@ public class MyClubListItem extends AnchorPane {
         distanceCheckButtonClicked();
     }
 
-    private void buttonIsClicked(Airplane airplane, MyClubListItem clubListItem){
+    private void buttonIsClicked(){
         airplane.yearlyCheckIsDone();
-        clubListItem.getStyleClass().clear();
-        myClubController.controlCheckStatus(airplane, clubListItem);
+        // clubListItem.getStyleClass().clear();
+        setStyle("-fx-border-color: green");
+        checkIsDoneButton.toBack();
         soonCheckLabel.getStyleClass().remove("warning-background");
         soonCheckLabel.setText("");
     }
