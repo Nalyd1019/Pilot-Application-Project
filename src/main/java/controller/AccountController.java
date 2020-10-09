@@ -22,11 +22,7 @@ public class AccountController implements Initializable {
     @FXML private TextField emailTextField;
     @FXML private TextField medicalCertTextField;
     @FXML private TextField flightCertTextField;
-    @FXML private Label nameErrorLabel;
-    @FXML private Label passwordErrorLabel;
     @FXML private Label emailErrorLabel;
-    @FXML private Label medicalCertErrorLabel;
-    @FXML private Label flightCertErrorLabel;
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
 
@@ -58,7 +54,7 @@ public class AccountController implements Initializable {
     /**
      * saves the new data the user has put into the textFields to currentUser
      */
-    @FXML public void updateUserInfo() {
+    @FXML private void updateUserInfo() {
         Pilot pilot = flightBuddy.getCurrentUser();
         if ((!flightBuddy.userExists(emailTextField.getText()) || pilot.getEmail().equals(emailTextField.getText()))&&!emptyTextField(emailTextField)) {
             confirmedControlColorChange(emailTextField);
