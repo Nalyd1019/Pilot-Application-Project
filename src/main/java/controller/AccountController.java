@@ -30,6 +30,11 @@ public class AccountController implements Initializable {
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
 
+    /**
+     * the initialize method that runs after the contructor and the FXML fields have been injected
+     * @param url ??
+     * @param resourceBundle ??
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameTextField.setText(flightBuddy.getCurrentUser().getName());
@@ -50,6 +55,9 @@ public class AccountController implements Initializable {
 
     // TODO - skriva javadoc
 
+    /**
+     * saves the new data the user has put into the textFields to currentUser
+     */
     @FXML public void updateUserInfo() {
         Pilot pilot = flightBuddy.getCurrentUser();
         if ((!flightBuddy.userExists(emailTextField.getText()) || pilot.getEmail().equals(emailTextField.getText()))&&!emptyTextField(emailTextField)) {
