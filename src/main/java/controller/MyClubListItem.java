@@ -16,10 +16,10 @@ public class MyClubListItem extends AnchorPane {
 
     @FXML private Label registrationLabel;
     @FXML private Label flightTimeLabel;
-    @FXML public Label soonCheckLabel;
-    @FXML public Button checkIsDoneButton;
-    @FXML public Label distanceCheckLabel;
-    @FXML public Button distanceCheckButton;
+    @FXML private Label soonCheckLabel;
+    @FXML private Button checkIsDoneButton;
+    @FXML private Label distanceCheckLabel;
+    @FXML private Button distanceCheckButton;
 
 
     private MyClubController myClubController;
@@ -41,7 +41,7 @@ public class MyClubListItem extends AnchorPane {
         this.registrationLabel.setText(registration);
         this.flightTimeLabel.setText("Flygtid: " + flightTime + " minuter");
         this.myClubController = myClubController;
-        this.soonCheckLabel.setText(" ");
+        this.soonCheckLabel.setText("Datum för årskontroll: " + airplane.getYearlyCheckDate().toString());
     }
 
     @FXML

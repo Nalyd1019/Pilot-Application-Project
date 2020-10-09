@@ -8,7 +8,7 @@ public class Airplane implements iBookable{
     private String registration;
 
     // Obs, ändrat yearlycheckdate i json-filen för att testa
-    private LocalDate yearlyCheckDate = LocalDate.of(2020, 10,4);
+    private LocalDate yearlyCheckDate;
 
     private boolean isTimeForYearlyCheckNow;
     private boolean isTimeForYearlyCheckSoon;
@@ -18,6 +18,7 @@ public class Airplane implements iBookable{
     public Airplane(String registration, Logbook logbook){
         this.registration = registration;
         this.logbook = logbook;
+        this.yearlyCheckDate = LocalDate.of(2020,10,4);
     }
 
 

@@ -37,6 +37,12 @@
     -fx-text-fill: #000000;
 }
 
+.text-body {
+    -fx-font-size: 14;
+    -fx-font-family: "Arial Hebrew Scholar";
+    -fx-text-fill: #000000;
+}
+
 .warning-background{
     -fx-background-color: #FFCC00;
 }
