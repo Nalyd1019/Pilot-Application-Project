@@ -22,14 +22,15 @@ public class AccountController implements Initializable {
     @FXML private TextField emailTextField;
     @FXML private TextField medicalCertTextField;
     @FXML private TextField flightCertTextField;
-    @FXML private Label nameErrorLabel;
-    @FXML private Label passwordErrorLabel;
     @FXML private Label emailErrorLabel;
-    @FXML private Label medicalCertErrorLabel;
-    @FXML private Label flightCertErrorLabel;
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
 
+    /**
+     * the initialize method that runs after the contructor and the FXML fields have been injected
+     * @param url ??
+     * @param resourceBundle ??
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameTextField.setText(flightBuddy.getCurrentUser().getName());
@@ -50,7 +51,10 @@ public class AccountController implements Initializable {
 
     // TODO - skriva javadoc
 
-    @FXML public void updateUserInfo() {
+    /**
+     * saves the new data the user has put into the textFields to currentUser
+     */
+    @FXML private void updateUserInfo() {
         Pilot pilot = flightBuddy.getCurrentUser();
         if ((!flightBuddy.userExists(emailTextField.getText()) || pilot.getEmail().equals(emailTextField.getText()))&&!emptyTextField(emailTextField)) {
             confirmedControlColorChange(emailTextField);

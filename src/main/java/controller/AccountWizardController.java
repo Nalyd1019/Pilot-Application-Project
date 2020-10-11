@@ -14,7 +14,6 @@ import model.License;
 import model.Pilot;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AccountWizardController implements Initializable {
@@ -66,7 +65,7 @@ public class AccountWizardController implements Initializable {
      * the account set-up wizard
      * @param event any event from the user
      */
-    @FXML public void onClickfirstPageNext(Event event){
+    @FXML private void onClickfirstPageNext(Event event){
         flyingClub = nameToFlyingClub(flyingClubComboBox.getSelectionModel().getSelectedItem());
         if (flyingClub != null){
             confirmedControlColorChange(flyingClubComboBox);
@@ -89,7 +88,7 @@ public class AccountWizardController implements Initializable {
      * returns the user to the log in page
      * @param event any event from the user
      */
-    @FXML public void onClickpageOneBack(Event event){
+    @FXML private void onClickpageOneBack(Event event){
         ViewNavigator.LoadView(ViewNavigator.LOGIN);
     }
 
@@ -97,7 +96,7 @@ public class AccountWizardController implements Initializable {
      * Takes the user back one step, from page two to page one
      * @param event any event from the user
      */
-    @FXML public void onClickpageTwoBack(Event event){
+    @FXML private void onClickpageTwoBack(Event event){
         pageOne.toFront();
         stepTwo.setStyle(null);
         stepOne.setStyle("-fx-background-color: #7DAD6C");
@@ -108,7 +107,7 @@ public class AccountWizardController implements Initializable {
      * the account set-up wizard. Also creates a new pilot/user in order to store the information given by the user.
      * @param event any event from the user
      */
-    @FXML public void onClickpageTwoNext(Event event){
+    @FXML private void onClickpageTwoNext(Event event){
         if (checkUserInput()) {
             pilot = new Pilot(pageTwoPasswordTextField.getText(),pageTwoPasswordVerificationTextField.getText(),
                     pageTwoNameTextField.getText(),pageTwoEmailTextField.getText());
@@ -124,7 +123,7 @@ public class AccountWizardController implements Initializable {
      * Takes the user back one step, from page three to page two
      * @param event any event from the user
      */
-    @FXML public void onClickpageThreeBack(Event event){
+    @FXML private void onClickpageThreeBack(Event event){
         pageTwo.toFront();
         stepThree.setStyle(null);
         stepTwo.setStyle("-fx-background-color: #7DAD6C");
@@ -136,7 +135,7 @@ public class AccountWizardController implements Initializable {
      * main page, logged in to their new account.
      * @param event any event from the user
      */
-    @FXML public void onClickpageThreeDone(Event event){
+    @FXML private void onClickpageThreeDone(Event event){
         boolean nStarts = validFlightTime(nStartsTextField);
         boolean flightHours = validFlightTime(flightHoursTextField);
         boolean flyingExpiration = dateIsSelected(flightLicenseExpiration);

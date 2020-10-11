@@ -39,15 +39,15 @@ public final class Flight {
         return departurePlace;
     }
 
-    public int getnHours() {
+    public int getNHours() {
         return nHours;
     }
 
-    public int getnMinutes() {
+    public int getNMinutes() {
         return nMinutes;
     }
 
-    public int getnStarts() {
+    public int getNStarts() {
         return nStarts;
     }
 
