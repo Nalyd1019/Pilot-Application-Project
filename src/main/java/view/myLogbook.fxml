@@ -13,7 +13,6 @@
 
 <AnchorPane prefHeight="774.0" prefWidth="1319.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyLogbookController">
    <children>
-      <AnchorPane fx:id="lightBox" onMouseClicked="#exitLightBox" opacity="0.5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="lightBox2" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="60.0">
          <children>
             <Label layoutX="100.0" layoutY="85.0" styleClass="title-text" text="Logga en flyggning" />
@@ -37,6 +36,7 @@
             <Label layoutX="510.0" layoutY="207.0" styleClass="text-larger" text="min" />
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="lightBox" onMouseClicked="#exitLightBox" opacity="0.5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <fx:include source="header.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Label fx:id="logBookLabel" layoutX="168.0" layoutY="250.0" onMouseClicked="#onClickLogBookLabel" style="-fx-cursor: hand;" styleClass="title-text" text="Loggbok" AnchorPane.leftAnchor="90.0" />
       <Label fx:id="statisticsLabel" layoutX="245.0" layoutY="430.0" onMouseClicked="#onClickStatisticsLabel" style="-fx-cursor: hand;" styleClass="title-text" text="Statistik" AnchorPane.leftAnchor="90.0" />
@@ -76,10 +76,11 @@
                 <TableColumn fx:id="dateCol" editable="false" prefWidth="100.0" resizable="false" text="Datum" />
                 <TableColumn fx:id="airPlaneCol" editable="false" prefWidth="75.0" text="Flygplan" />
                   <TableColumn fx:id="nStartsCol" editable="false" prefWidth="75.0" text="Antal starter" />
-                  <TableColumn fx:id="flightTimeCol" editable="false" prefWidth="75.0" text="Flygtid" />
+                  <TableColumn fx:id="flightHoursTimeCol" editable="false" prefWidth="75.0" text="Timmar" />
+                  <TableColumn fx:id="flightMinutesTimeCol" editable="false" prefWidth="75.0" text="Minuter" />
                   <TableColumn fx:id="takeOffCol" editable="false" prefWidth="75.0" text="Startplats" />
                   <TableColumn fx:id="destinationCol" editable="false" prefWidth="113.0" text="Destination" />
-                  <TableColumn fx:id="commentCol" editable="false" prefWidth="260.0" text="Kommentar" />
+                  <TableColumn fx:id="commentCol" editable="false" prefWidth="160.0" text="Kommentar" />
               </columns>
             </TableView>
             <Button layoutX="418.0" layoutY="655.0" mnemonicParsing="false" onMouseClicked="#onClickAddFlight" prefWidth="150.0" style="-fx-background-color: #7CAD6C; -fx-cursor: hand;" text="Lägg till flygning" />

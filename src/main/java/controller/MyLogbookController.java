@@ -38,10 +38,11 @@ public class MyLogbookController implements Initializable {
     @FXML private TableColumn<Flight,String> dateCol;
     @FXML private TableColumn<Flight,String> airPlaneCol;
     @FXML private TableColumn<Flight,Integer> nStartsCol;
-    @FXML private TableColumn<Flight,Integer> flightTimeCol;
+    @FXML private TableColumn<Flight,Integer> flightHoursTimeCol;
     @FXML private TableColumn<Flight,String> takeOffCol;
     @FXML private TableColumn<Flight,String> destinationCol;
     @FXML private TableColumn<Flight,String> commentCol;
+    @FXML private TableColumn<Flight,Integer> flightMinutesTimeCol;
 
     FlightBuddy flightBuddy = FlightBuddy.getInstance();
     Pilot pilot = flightBuddy.getCurrentUser();
@@ -68,7 +69,8 @@ public class MyLogbookController implements Initializable {
         setCellValueFactory(dateCol,"date");
         setCellValueFactory(airPlaneCol,"airplaneRegistration");
         setCellValueFactory(nStartsCol,"nStarts");
-        setCellValueFactory(flightTimeCol,"nHours");
+        setCellValueFactory(flightHoursTimeCol,"nHours");
+        setCellValueFactory(flightMinutesTimeCol,"nMinutes");
         setCellValueFactory(takeOffCol,"departurePlace");
         setCellValueFactory(destinationCol,"destination");
         setCellValueFactory(commentCol, "comment");

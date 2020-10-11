@@ -2,7 +2,6 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Logbook {
@@ -106,7 +105,7 @@ public class Logbook {
     private int getAirplaneFlightHours(String registration) {
         int hours = 0;
         for (Flight flight : getAirplanesEntries(registration)) {
-            hours = hours + flight.getnHours();
+            hours = hours + flight.getNHours();
         }
         return hours;
     }
@@ -120,7 +119,7 @@ public class Logbook {
     private int getAirplaneFlightMinutes(String registration) {
         int minutes = 0;
         for (Flight flight : getAirplanesEntries(registration)) {
-            minutes = minutes + flight.getnMinutes();
+            minutes = minutes + flight.getNMinutes();
         }
         return minutes;
     }
@@ -145,7 +144,7 @@ public class Logbook {
     private int getPilotFlightHours(String email){
         int hours = 0;
         for (Flight flight : getPilotsEntries(email)) {
-            hours = hours + flight.getnHours();
+            hours = hours + flight.getNHours();
         }
         return hours;
     }
@@ -159,7 +158,7 @@ public class Logbook {
     private int getPilotFlightMinutes(String email){
         int minutes = 0;
         for (Flight flight : getPilotsEntries(email)) {
-            minutes = minutes + flight.getnHours();
+            minutes = minutes + flight.getNHours();
         }
         return minutes;
     }
@@ -182,11 +181,11 @@ public class Logbook {
      * @return the number of starts this pilot
      */
     int getPilotNumberOfStarts(String pilotEmail){
-        int nStarts = 0;
+        int starts = 0;
         for (Flight flight : getPilotsEntries(pilotEmail)) {
-            nStarts = nStarts + flight.getnStarts();
+            starts = starts + flight.getNStarts();
         }
-        return nStarts;
+        return starts;
     }
 
 
