@@ -33,9 +33,7 @@ public class AccountWizardController implements Initializable {
     @FXML private DatePicker flightLicenseExpiration;
     @FXML private DatePicker medicalLicenseExpiration;
 
-    @FXML private Button stepOne;
-    @FXML private Button stepTwo;
-    @FXML private Button stepThree;
+
 
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
@@ -54,7 +52,6 @@ public class AccountWizardController implements Initializable {
             options.add(flightBuddy.getFlyingclubs().get(i).getClubName());
         }
         flyingClubComboBox.getItems().addAll(options);
-        stepOne.setStyle("-fx-background-color: #7DAD6C");
 
     }
 
@@ -72,8 +69,6 @@ public class AccountWizardController implements Initializable {
             if (flyingClub.getPassword().equals(flyingClubPasswordTextField.getText())){
                 confirmedControlColorChange(flyingClubPasswordTextField);
                 pageTwo.toFront();
-                stepOne.setStyle(null);
-                stepTwo.setStyle("-fx-background-color: #7DAD6C");
             }
             else{
                 errorControlColorChange(flyingClubPasswordTextField);
@@ -98,8 +93,7 @@ public class AccountWizardController implements Initializable {
      */
     @FXML private void onClickpageTwoBack(Event event){
         pageOne.toFront();
-        stepTwo.setStyle(null);
-        stepOne.setStyle("-fx-background-color: #7DAD6C");
+
     }
 
     /**
@@ -112,8 +106,7 @@ public class AccountWizardController implements Initializable {
             pilot = new Pilot(pageTwoPasswordTextField.getText(),pageTwoPasswordVerificationTextField.getText(),
                     pageTwoNameTextField.getText(),pageTwoEmailTextField.getText());
             pageThree.toFront();
-            stepTwo.setStyle(null);
-            stepThree.setStyle("-fx-background-color: #7DAD6C");
+
         }
 
 
@@ -125,8 +118,7 @@ public class AccountWizardController implements Initializable {
      */
     @FXML private void onClickpageThreeBack(Event event){
         pageTwo.toFront();
-        stepThree.setStyle(null);
-        stepTwo.setStyle("-fx-background-color: #7DAD6C");
+
     }
 
     /**
@@ -149,7 +141,6 @@ public class AccountWizardController implements Initializable {
             flightBuddy.setCurrentUser(pilot);
             flightBuddy.setCurrentClub(flyingClub);
             ViewNavigator.LoadView(ViewNavigator.START);
-            stepThree.setStyle(null);
         }
     }
     private boolean checkUserInput(){

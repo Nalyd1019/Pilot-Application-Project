@@ -8,68 +8,75 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" style="-fx-background-color: #E5E5E5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountWizardController">
    <children>
       <HBox alignment="CENTER" style="-fx-background-color: #E5E5E5;">
          <children>
-            <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;">
+            <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;" stylesheets="@stylesheet.css">
                <children>
                   <AnchorPane fx:id="pageTwo" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;">
                      <children>
-                        <Button layoutX="199.0" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="36.0" prefWidth="36.0" text="1" AnchorPane.leftAnchor="199.0" AnchorPane.topAnchor="73.0" />
-                        <Button fx:id="stepTwo" layoutX="283.0" layoutY="71.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="2" AnchorPane.leftAnchor="283.0" AnchorPane.topAnchor="71.0" />
-                        <Button layoutX="359.0" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="36.0" prefWidth="36.0" text="3" AnchorPane.leftAnchor="359.0" AnchorPane.topAnchor="71.0" />
-                        <Label layoutX="137.0" layoutY="125.0" text="Namn" />
-                        <Label layoutX="137.0" layoutY="183.0" text="Lösenord" />
-                        <Label layoutX="333.0" layoutY="125.0" text="Email" />
-                        <TextField fx:id="pageTwoNameTextField" layoutX="137.0" layoutY="142.0" />
-                        <TextField fx:id="pageTwoPasswordTextField" layoutX="137.0" layoutY="200.0" />
-                        <TextField fx:id="pageTwoEmailTextField" layoutX="333.0" layoutY="142.0" />
-                        <Button layoutX="273.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" text="Nästa" />
-                        <Button layoutX="272.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" text="Tillbaka" />
-                        <TextField fx:id="pageTwoPasswordVerificationTextField" layoutX="333.0" layoutY="200.0" />
-                        <Label layoutX="333.0" layoutY="183.0" text="Lösenords verifiering" />
+                        <Button fx:id="step21" layoutX="385.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="1" AnchorPane.leftAnchor="385.0" AnchorPane.topAnchor="180.0" />
+                        <Button fx:id="step22" layoutX="565.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="2" AnchorPane.leftAnchor="565.0" AnchorPane.topAnchor="180.0" />
+                        <Button fx:id="step23" layoutX="745.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage" text="3" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="180.0" />
+                        <Label layoutX="395.0" layoutY="277.0" styleClass="text-larger" text="Namn" />
+                        <Label layoutX="630.0" layoutY="277.0" styleClass="text-larger" text="Email" />
+                        <Label layoutX="395.0" layoutY="378.0" styleClass="text-larger" text="Lösenord" />
+                        <Label layoutX="630.0" layoutY="378.0" styleClass="text-larger" text="Bekräfta lösenord" />
+                        <TextField fx:id="pageTwoNameTextField" layoutX="395.0" layoutY="312.0" prefHeight="35.0" prefWidth="186.0" />
+                        <TextField fx:id="pageTwoEmailTextField" layoutX="630.0" layoutY="312.0" prefHeight="35.0" prefWidth="186.0" />
+                        <TextField fx:id="pageTwoPasswordTextField" layoutX="395.0" layoutY="413.0" prefHeight="35.0" prefWidth="186.0" />
+                        <TextField fx:id="pageTwoPasswordVerificationTextField" layoutX="630.0" layoutY="413.0" prefHeight="35.0" prefWidth="186.0" />
+                        <Button layoutX="470.0" layoutY="480.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="70.0" prefWidth="250.0" styleClass="green-button" text="Nästa" />
+                        <Button layoutX="470.0" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="38.0" prefWidth="250.0" styleClass="grey-button" text="Tillbaka" />
                         <Label fx:id="emailErrorLabel" layoutX="413.0" layoutY="117.0" prefHeight="17.0" prefWidth="127.0" />
+                        <Line layoutX="546.0" layoutY="210.0" startX="-82.0" />
+                        <Line layoutX="727.0" layoutY="210.0" startX="-82.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="pageThree" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;">
                      <children>
-                        <Button layoutX="199.0" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="36.0" prefWidth="36.0" text="1" />
-                        <Button layoutX="283.0" layoutY="73.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeBack" prefHeight="36.0" prefWidth="36.0" text="2" />
-                        <Button fx:id="stepThree" layoutX="361.0" layoutY="73.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" text="3" />
-                        <Label fx:id="nStartsLabel" layoutX="170.0" layoutY="138.0" text="Antal starter" />
-                        <Label fx:id="flightHoursLabel" layoutX="328.0" layoutY="138.0" text="Flygtimmar" />
-                        <TextField fx:id="nStartsTextField" layoutX="170.0" layoutY="166.0" prefHeight="10.0" prefWidth="98.0" />
-                        <TextField fx:id="flightHoursTextField" layoutX="310.0" layoutY="167.0" prefHeight="10.0" prefWidth="98.0" />
-                        <Button layoutX="275.0" layoutY="276.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeDone" text="Klar" />
-                        <Button layoutX="273.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeBack" text="Tillbaka" />
-                        <Label layoutX="321.0" layoutY="204.0" text="Medical utgår" />
-                        <Label layoutX="161.0" layoutY="204.0" text="Flygcertifikat utgår" />
-                        <DatePicker fx:id="flightLicenseExpiration" layoutX="85.0" layoutY="233.0" />
-                        <DatePicker fx:id="medicalLicenseExpiration" layoutX="314.0" layoutY="233.0" />
+                        <Button fx:id="step31" layoutX="385.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="1" />
+                        <Button fx:id="step32" layoutX="565.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeBack" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="2" />
+                        <Button fx:id="step33" layoutX="745.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="3" />
+                        <Label fx:id="nStartsLabel" layoutX="435.0" layoutY="253.0" styleClass="text-larger" text="Antal starter" />
+                        <Label fx:id="flightHoursLabel" layoutX="627.0" layoutY="253.0" styleClass="text-larger" text="Flygtimmar" />
+                        <TextField fx:id="nStartsTextField" layoutX="435.0" layoutY="290.0" prefHeight="35.0" prefWidth="130.0" />
+                        <TextField fx:id="flightHoursTextField" layoutX="627.0" layoutY="290.0" prefHeight="35.0" prefWidth="120.0" />
+                        <Button layoutX="470.0" layoutY="480.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeDone" prefHeight="70.0" prefWidth="250.0" styleClass="green-button" text="Klar" />
+                        <Button layoutX="470.0" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#onClickpageThreeBack" prefHeight="38.0" prefWidth="250.0" styleClass="grey-button" text="Tillbaka" />
+                        <Label layoutX="432.0" layoutY="401.0" styleClass="text-larger" text="Medical utgår" />
+                        <Label layoutX="434.0" layoutY="334.0" styleClass="text-larger" text="Flygcertifikat utgår" />
+                        <DatePicker fx:id="flightLicenseExpiration" layoutX="434.0" layoutY="371.0" prefHeight="27.0" prefWidth="340.0" />
+                        <DatePicker fx:id="medicalLicenseExpiration" layoutX="435.0" layoutY="436.0" prefHeight="27.0" prefWidth="340.0" />
+                        <Line layoutX="546.0" layoutY="210.0" startX="-82.0" />
+                        <Line layoutX="727.0" layoutY="210.0" startX="-82.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="pageOne" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;" styleClass="background">
+                  <AnchorPane fx:id="pageOne" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;" styleClass="background" stylesheets="@stylesheet.css">
                      <children>
-                        <Button fx:id="stepOne" layoutX="418.0" layoutY="184.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" text="1" AnchorPane.leftAnchor="418.0" AnchorPane.topAnchor="184.0" />
-                        <Button layoutX="572.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#onClickfirstPageNext" prefHeight="45.0" prefWidth="45.0" text="2" AnchorPane.leftAnchor="572.0" AnchorPane.topAnchor="183.0" />
-                        <Button layoutX="745.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="45.0" prefWidth="45.0" text="3" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="184.0" />
-                        <ComboBox fx:id="flyingClubComboBox" layoutX="526.0" layoutY="337.0" prefHeight="36.0" prefWidth="149.0" AnchorPane.leftAnchor="526.0" AnchorPane.topAnchor="337.0" />
-                        <Label layoutX="526.0" layoutY="299.0" prefHeight="25.0" prefWidth="136.0" text="Välj flygklubb" AnchorPane.leftAnchor="526.0" AnchorPane.topAnchor="299.0">
+                        <Button fx:id="step11" layoutX="385.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="1" AnchorPane.leftAnchor="385.0" AnchorPane.topAnchor="180.0" />
+                        <Button fx:id="step12" layoutX="565.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickfirstPageNext" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage" text="2" AnchorPane.leftAnchor="565.0" AnchorPane.topAnchor="180.0" />
+                        <ComboBox fx:id="flyingClubComboBox" layoutX="470.0" layoutY="315.0" prefHeight="40.0" prefWidth="250.0" styleClass="combobox" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="315.0" />
+                        <Label layoutX="470.0" layoutY="270.0" prefHeight="35.0" prefWidth="216.0" styleClass="text-larger" stylesheets="@stylesheet.css" text="Välj flygklubb" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="270.0">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="525.0" layoutY="425.0" text="Flygklubbslösenord">
+                        <Label layoutX="470.0" layoutY="375.0" styleClass="text-larger" text="Flygklubbslösenord">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="flyingClubPasswordTextField" layoutX="526.0" layoutY="462.0" prefHeight="17.0" prefWidth="149.0" />
-                        <Button fx:id="firstPageNext" layoutX="554.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#onClickfirstPageNext" prefHeight="43.0" prefWidth="80.0" text="Nästa" />
-                        <Button layoutX="557.0" layoutY="591.0" mnemonicParsing="false" onMouseClicked="#onClickpageOneBack" prefHeight="43.0" prefWidth="80.0" text="Tillbaka" />
+                        <TextField fx:id="flyingClubPasswordTextField" layoutX="470.0" layoutY="420.0" prefHeight="40.0" prefWidth="250.0" />
+                        <Button fx:id="firstPageNext" layoutX="470.0" layoutY="480.0" mnemonicParsing="false" onMouseClicked="#onClickfirstPageNext" prefHeight="70.0" prefWidth="250.0" styleClass="green-button" text="Nästa" />
+                        <Button layoutX="470.0" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#onClickpageOneBack" prefHeight="38.0" prefWidth="250.0" styleClass="grey-button" text="Tillbaka" />
+                        <Line layoutX="546.0" layoutY="210.0" startX="-82.0" />
+                        <Line layoutX="727.0" layoutY="210.0" startX="-82.0" />
+                        <Button fx:id="step13" layoutX="745.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage" text="3" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="180.0" />
                      </children>
                   </AnchorPane>
                </children>

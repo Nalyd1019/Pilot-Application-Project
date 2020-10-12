@@ -5,7 +5,44 @@
 }
 
 .green-button {
-    
+	-fx-background-color: #7DAD6C;
+	-fx-background-radius: 0px;
+	-fx-font-size: 24;
+    	-fx-font-family: "Arial Hebrew Scholar";
+    	-fx-text-fill: #FFFFFF;
+ 
+}
+
+.grey-button {
+	-fx-background-color: #C4C4C4;
+	-fx-background-radius: 0px; 
+	-fx-font-size: 18;
+    	-fx-font-family: "Arial Hebrew Scholar";
+    	-fx-text-fill: #332E2D ;
+}
+
+.combobox{
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #000000;
+    	-fx-border-width: 1px;
+    	-fx-border-radius: 1px;
+}
+
+.wizard-stage{
+	-fx-background-color: #C4C4C4;
+	-fx-background-radius: 60px;
+	-fx-font-size: 18;
+    	-fx-font-family: "Arial Hebrew Scholar";
+    	-fx-text-fill: #000000 ;
+}
+
+.wizard-stage-green{
+	-fx-background-color: #7DAD6C;
+	-fx-background-radius: 60px;
+	-fx-font-size: 18;
+    	-fx-font-family: "Arial Hebrew Scholar";
+    	-fx-text-fill: #000000 ;
+
 }
 
 .header-text {
