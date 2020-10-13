@@ -38,7 +38,7 @@ public class BookingHandlerTest {
         bookingHandler.createBooking(4, 16, pilot2, airplane1);
         bookingHandler.createBooking(2, 14, pilot2, airplane1);
 
-        assertEquals(2, bookingHandler.getUsersBookings("lisa@mail.com").size());
+        assertEquals(2, bookingHandler.getUsersBookings("pilot2@email.com").size());
     }
 
     @Test
