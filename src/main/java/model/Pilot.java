@@ -142,5 +142,12 @@ public class Pilot implements iBorrower{
         this.email = email;
     }
 
+
+
+    @Override
+    public String getLogin() {
+        return email;
+    }
+
 }
 

@@ -39,7 +39,10 @@ public class FlightBuddy {
      */
     public void initializeClubs(){
         FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingHandler());
-        skovdeFlygklubb.addPlane(new Airplane("SE-UKE", new Logbook()));
+        Airplane seUKE = new Airplane("SE-UKE", new Logbook());
+        skovdeFlygklubb.addPlane(seUKE);
+
+        // TODO - alla dessa behöver ändras ?
         skovdeFlygklubb.addPlane(new Airplane("SE-UDU", new Logbook()));
 
         FlyingClub falbygdensFlygklubb = new FlyingClub("Falbygdens Flygklubb", new BookingHandler());
@@ -60,7 +63,7 @@ public class FlightBuddy {
         flyingclubs.add(borasFlygklubb);
         flyingclubs.add(falbygdensFlygklubb);
 
-        skovdeFlygklubb.getBookingHandler().createBooking(10,3,"dyltest@gmail.com", "SE-UKE");
+        skovdeFlygklubb.getBookingHandler().createBooking(10,3,p1, seUKE);
 
     }
 

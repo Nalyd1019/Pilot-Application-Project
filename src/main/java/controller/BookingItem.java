@@ -24,7 +24,7 @@ public class BookingItem extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        airplaneRegLabel.setText(booking.getAirplaneRegistration());
+        airplaneRegLabel.setText(booking.getBookable().getRegistration());
 
     }
 }

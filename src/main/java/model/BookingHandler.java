@@ -38,9 +38,9 @@ public class BookingHandler {
      * Method that creates a booking and adds it to the list with all bookings.
      * @param startTime the time the booking starts.
      * @param day the day of the booked time, 1 is monday and 7 is sunday.
-     * @param pilotEmail the pilot's email-address, his login
-     * @param airplaneRegistration the booked airplanes registration
-     */
+    // * @param pilotEmail the pilot's email-address, his login
+    // * @param airplaneRegistration the booked airplanes registration
+     */ /*
     public void createBooking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
         {
             if (timeIsAvailable(day, startTime)) {
@@ -49,6 +49,19 @@ public class BookingHandler {
             } // TODO - fix else-statement?
         }
     }
+    */
+
+
+
+    public void createBooking(int startTime, int day, iBorrower borrower, iBookable bookable) {
+        {
+            if (timeIsAvailable(day, startTime)) {
+                Booking booking = new Booking(startTime, day, borrower, bookable);
+                bookings.add(booking);
+            } // TODO - fix else-statement?
+        }
+    }
+
 
     /**
      * A method that takes the id of a booking and removes that booking from the list of bookings
@@ -64,7 +77,8 @@ public class BookingHandler {
      * Method that returns a list of all bookings a certain pilot has made
      * @param pilotEmail the pilot's email
      * @return ist of the bookings that pilot has made
-     */
+     */ /* //
+
         public List<Booking> getUsersBookings(String pilotEmail){
         List<Booking> usersBookings = new ArrayList<>();
         for(Booking booking : this.bookings) {
@@ -74,12 +88,28 @@ public class BookingHandler {
         }
         return usersBookings;
         }
+        */
+
+    public List<Booking> getUsersBookings(String pilotEmail){
+        List<Booking> usersBookings = new ArrayList<>();
+        for(Booking booking : this.bookings) {
+            if(pilotEmail.equals(booking.getBorrower().getLogin())){
+                usersBookings.add(booking);
+            }
+        }
+        return usersBookings;
+    }
+
+
+
+
 
     /**
      * Method that returns a lust of all bookings made on an airplane
      * @param registration the airplane's registration
      * @return list of the bookings of that airplane
      */
+    /*
     public List<Booking> getAirplanesBookings(String registration){
         List<Booking> airplanesBookings = new ArrayList<>();
         for(Booking booking : this.bookings) {
@@ -88,6 +118,18 @@ public class BookingHandler {
             }
         }
         return airplanesBookings;
+    }
+
+     */
+
+    public List<Booking> getAirplanesBookings(String registration) {
+        List<Booking> airplanesBookings = new ArrayList<>();
+        for (Booking booking : this.bookings) {
+            if(registration.equals(booking.getBookable().getRegistration())) {
+                airplanesBookings.add(booking);
+            }
+        }
+        return bookings;
     }
 
 

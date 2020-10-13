@@ -2,25 +2,25 @@ package model;
 
 public final class Booking {
 
-    private iBookable airplane;
-    private iBorrower pilot;
-    private final String pilotEmail;
-    private final String airplaneRegistration;
+    private iBookable bookable;
+    private iBorrower borrower;
+    // private final String pilotEmail;
+    // private final String airplaneRegistration;
     private final int bookingID;
     private static int  nextID = 0; // TODO - blir detta ett problem för immutability?
 
     private final int startTime;
     private final int day;
 
-    // TODO - what constructor will take
-   /* public Booking(int startTime, int day, iBorrower pilot, iBookable airplane) {
+    public Booking(int startTime, int day, iBorrower borrower, iBookable bookable) {
         this.startTime = startTime;
         this.day = day;
-        this.pilot = pilot;
-        this.airplane = airplane;
-    } */
-
-
+        this.borrower = borrower;
+        this.bookable = bookable;
+        this.bookingID = nextID;
+        nextID++;
+    }
+/*
    Booking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
        this.startTime = startTime;
        this.day = day;
@@ -30,6 +30,8 @@ public final class Booking {
        nextID++;
    }
 
+
+ */
     int getDay() {
         return day;
     }
@@ -38,10 +40,21 @@ public final class Booking {
         return startTime;
     }
 
+    /*
     String getPilotEmail() { return pilotEmail;
     }
 
+
     public String getAirplaneRegistration() { return airplaneRegistration;
+    }
+     */
+
+    public iBookable getBookable() {
+        return bookable;
+    }
+
+    public iBorrower getBorrower() {
+        return borrower;
     }
 
     public int getBookingID() {
