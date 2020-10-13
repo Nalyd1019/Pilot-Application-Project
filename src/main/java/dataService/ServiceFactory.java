@@ -10,7 +10,7 @@ public class ServiceFactory {
      * @return DataService
      */
     public static IdataService getService(){
-        IdataService idataService = new JSONSerializer();
+        IdataService idataService = new JSONSaver();
         return idataService;
     }
 }
