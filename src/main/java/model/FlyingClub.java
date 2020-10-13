@@ -54,4 +54,14 @@ public class FlyingClub {
     public BookingHandler getBookingHandler() {
         return bookingHandler;
     }
+
+    public List<String> getAirplaneReg(){
+
+        List<String> airplaneRegs = new ArrayList<>();
+
+        for (Airplane airplane : airplanes){
+            airplaneRegs.add(airplane.getRegistration());
+        }
+        return airplaneRegs;
+    }
 }

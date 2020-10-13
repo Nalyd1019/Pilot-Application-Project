@@ -89,6 +89,10 @@ public class Airplane implements iBookable{
         return registration;
     }
 
+    public String setRegistration(String registration){
+        return this.registration = registration;
+    }
+
     public boolean isTimeForYearlyCheckNow() {
         return isTimeForYearlyCheckNow;
     }
