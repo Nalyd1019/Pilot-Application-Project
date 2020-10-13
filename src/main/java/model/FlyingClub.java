@@ -64,4 +64,17 @@ public class FlyingClub {
         }
         return airplaneRegs;
     }
+
+    // TODO obs måste refaktoriseras!
+    public Airplane getAirplaneFromRegistration(String registration) {
+        Airplane airplane = null;
+
+        for(Airplane a : airplanes) {
+            if(registration.equals(a.getRegistration())) {
+                airplane = a;
+            }
+        }
+        return airplane;
+    }
+
 }

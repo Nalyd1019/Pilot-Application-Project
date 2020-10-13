@@ -111,7 +111,6 @@ public class Airplane implements iBookable{
 
     public Logbook getLogbook() { return logbook; }
 
-
     // TODO - Denna metoden bör ej användas, ska den t om tas bort? Endast för test nu
     public void removeLogbookEntries() {
         logbook.clearLogbook();

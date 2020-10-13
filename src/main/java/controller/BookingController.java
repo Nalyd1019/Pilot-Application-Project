@@ -12,10 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import model.Airplane;
-import model.BookingHandler;
-import model.FlightBuddy;
-import model.FlyingClub;
+import model.*;
 
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -65,8 +62,6 @@ public class BookingController implements Initializable {
 
     }
 
-
-
     @FXML public void openDetailView(){
         bookFlightDetailView.toFront();
     }
@@ -74,6 +69,7 @@ public class BookingController implements Initializable {
     @FXML public void closeDetailView(){
         bookFlightPage.toFront();
     }
+
 
     private void selectedFlight(){
         pickFlightCombo.getItems().addAll(flightBuddy.getCurrentClub().getAirplaneReg());
@@ -267,10 +263,13 @@ public class BookingController implements Initializable {
 
         int startTime = Integer.parseInt(newStartTime);
         int day = 1;//Integer.parseInt(dayLabel.getText());
-        String pilotEmail = flightBuddy.getCurrentUser().getEmail();
-        String registration = planeRegLabel.getText();
+        Pilot pilot = flightBuddy.getCurrentUser();
+      //  Airplane airplane = flightBuddy.getCurrentClub().
+        Airplane airplane = flightBuddy.getCurrentClub().getAirplaneFromRegistration(planeRegLabel.getText());
+        //TODO - lös sättet att komma åt flygplanet
+     //   String registration = planeRegLabel.getText();
 
-        currentClubBookingHandler.createBooking(startTime, day, pilotEmail, registration);
+        currentClubBookingHandler.createBooking(startTime, day, pilot, airplane);
 
     }
 
