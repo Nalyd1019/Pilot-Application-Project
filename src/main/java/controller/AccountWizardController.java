@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.event.Event;
 import model.FlightBuddy;
-import model.FlyingClub;
 import model.License;
 import model.Pilot;
 
@@ -37,7 +36,6 @@ public class AccountWizardController extends AbstractInputErrorController implem
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
     private Pilot pilot;
-    private FlyingClub flyingClub;
 
     /**
      * the initialize method that runs after the contructor and the FXML fields have been injected
@@ -47,8 +45,8 @@ public class AccountWizardController extends AbstractInputErrorController implem
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> options = FXCollections.observableArrayList();
-        for (int i = 0; i<flightBuddy.getFlyingclubs().size(); i++){
-            options.add(flightBuddy.getFlyingclubs().get(i).getClubName());
+        for (int i = 0; i<flightBuddy.getNFlyingClubs(); i++){
+            options.add(flightBuddy.getFlyingClubName(i));
         }
         flyingClubComboBox.getItems().addAll(options);
 
@@ -62,10 +60,9 @@ public class AccountWizardController extends AbstractInputErrorController implem
      * @param event any event from the user
      */
     @FXML private void onClickfirstPageNext(Event event){
-        flyingClub = nameToFlyingClub(flyingClubComboBox.getSelectionModel().getSelectedItem());
-        if (flyingClub != null){
+        if (comboBoxHasSelectedValue(flyingClubComboBox)){
             confirmedControlColorChange(flyingClubComboBox);
-            if (flyingClub.getPassword().equals(flyingClubPasswordTextField.getText())){
+            if (flightBuddy.flyingClubMatchingPassword(flyingClubComboBox.getSelectionModel().getSelectedItem(),flyingClubPasswordTextField.getText())){
                 confirmedControlColorChange(flyingClubPasswordTextField);
                 pageTwo.toFront();
             }
@@ -136,9 +133,8 @@ public class AccountWizardController extends AbstractInputErrorController implem
             pilot.setStartHours(Integer.parseInt(flightHoursTextField.getText()));
             pilot.addLicense(License.FLIGHT, flightLicenseExpiration.getValue());
             pilot.addLicense(License.MEDICAL, medicalLicenseExpiration.getValue());
-            flyingClub.addMember(pilot);
+            flightBuddy.addMemberToCurrentClub(pilot);
             flightBuddy.setCurrentUser(pilot);
-            flightBuddy.setCurrentClub(flyingClub);
             ViewNavigator.LoadView(ViewNavigator.START);
         }
     }
@@ -161,14 +157,6 @@ public class AccountWizardController extends AbstractInputErrorController implem
                     }
         return false;
     }
-    private FlyingClub nameToFlyingClub(String flyingClubName){
-        for (int i =0; i<flightBuddy.getFlyingclubs().size(); i++){
-            if (flightBuddy.getFlyingclubs().get(i).getClubName().equals(flyingClubName)){
-                return flightBuddy.getFlyingclubs().get(i);
-            }
-        }
-        return null;
-    }
     private boolean equalPassword(){
         if (!emptyTextField(pageTwoPasswordTextField)&& pageTwoPasswordTextField.getText().equals
                 (pageTwoPasswordVerificationTextField.getText())){
@@ -180,4 +168,5 @@ public class AccountWizardController extends AbstractInputErrorController implem
         errorControlColorChange(pageTwoPasswordVerificationTextField);
         return false;
     }
+
 }
