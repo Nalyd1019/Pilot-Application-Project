@@ -27,6 +27,10 @@ public class FlyingClub {
         this.password = password;
     }
 
+    public static FlyingClub copy(FlyingClub flyingClub1){
+        return new FlyingClub(flyingClub1.getClubName(),flyingClub1.getBookingHandler(),flyingClub1.getPassword());
+    }
+
     public void addMember(Pilot pilot){
         pilots.add(pilot);
     }
@@ -76,5 +80,4 @@ public class FlyingClub {
         }
         return airplane;
     }
-
 }
