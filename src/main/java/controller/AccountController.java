@@ -2,11 +2,8 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import model.FlightBuddy;
 import model.License;
 import model.Pilot;
@@ -15,7 +12,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class AccountController implements Initializable {
+public class AccountController extends AbstractInputErrorController implements Initializable {
 
     @FXML private TextField nameTextField;
     @FXML private TextField passwordTextField;
@@ -49,8 +46,6 @@ public class AccountController implements Initializable {
         return null;
     }
 
-    // TODO - skriva javadoc
-
     /**
      * saves the new data the user has put into the textFields to currentUser
      */
@@ -75,27 +70,5 @@ public class AccountController implements Initializable {
             emailErrorLabel.setText("Email redan registrerad");
             errorLabelColorChange(emailErrorLabel);
         }
-    }
-    //Dessa metoder till en abstrakt superklass?
-    private void errorControlColorChange(Control control){
-        controlColorChange(control, Color.RED);
-    }
-    private void confirmedControlColorChange(Control control){
-        controlColorChange(control,Color.GREEN);
-    }
-    private void controlColorChange(Control control, Color color){
-        control.setBorder(new Border(new BorderStroke(color, BorderStrokeStyle.SOLID,
-                CornerRadii.EMPTY,new BorderWidths(1))));
-    }
-    private void errorLabelColorChange(Label label){
-        label.setTextFill(Color.RED);
-    }
-    private boolean emptyTextField(TextField textField){
-        if (textField.getText().isEmpty()){
-            errorControlColorChange(textField);
-            return true;
-        }
-        confirmedControlColorChange(textField);
-        return false;
     }
 }
