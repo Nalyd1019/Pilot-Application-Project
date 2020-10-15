@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -113,12 +114,12 @@ public class FlightBuddy {
         return false;
     }
 
-    /**
-     * getter for the list of flyingClubs
-     * @return the list of all the flyingClubs
-     */
-    public List<FlyingClub> getFlyingclubs() {
-        return flyingclubs;
+    public String getFlyingClubName(int index){
+        return flyingclubs.get(index).getClubName();
+    }
+
+    public int getNFlyingClubs(){
+        return flyingclubs.size();
     }
 
     /**
@@ -142,5 +143,33 @@ public class FlightBuddy {
     }
     public FlyingClub getCurrentClub() {
         return currentClub;
+    }
+    //inte bra metod
+    public boolean flyingClubMatchingPassword(String flyingClubName, String password){
+        for (FlyingClub flyingclub : flyingclubs) {
+            if (flyingclub.getClubName().equals(flyingClubName)) {
+                currentClub = flyingclub;
+                return flyingclub.getPassword().equals(password);
+            }
+        }
+        return false;
+    }
+    public void addMemberToCurrentClub(Pilot pilot){
+        currentClub.addMember(pilot);
+    }
+    //försök till defensive copying
+    /*
+    public List<FlyingClub> getFlyingclubs() {
+        List<FlyingClub> copy = new ArrayList<>();
+        for (FlyingClub flyingclub : flyingclubs) {
+            copy.add(FlyingClub.copy(flyingclub));
+        }
+        return copy;
+    }
+
+     */
+
+    public List<FlyingClub> getFlyingclubs() {
+        return flyingclubs;
     }
 }

@@ -14,7 +14,7 @@ import model.Pilot;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MyLogbookController implements Initializable {
+public class MyLogbookController extends AbstractInputErrorController implements Initializable {
 
     @FXML
     private AnchorPane logBookAnchorPane;
@@ -119,13 +119,22 @@ public class MyLogbookController implements Initializable {
         lightBox2.setVisible(false);
     }
     @FXML private void onClickLogFlight(){
-        pilot.getLogbook().addLogbookEntry(flightDatePicker.getValue(),Integer.parseInt(flightHoursTextField.getText()),
-                Integer.parseInt(flightMinutesTextField.getText()),Integer.parseInt(nStartsTextField.getText()),takeOffTextField.getText(),
-                destinationTextField.getText(),commentTextArea.getText(),airPlaneComboBox.getSelectionModel().getSelectedItem(),
-                pilot.getEmail());
-        data.add(pilot.getLogbook().getFlights().get(pilot.getLogbook().getFlights().size()-1));
-        clearInput();
-        exitLightBox();
+        boolean date = comboBoxHasSelectedValue(flightDatePicker);
+        boolean nStarts = validIntegerInTextField(nStartsTextField);
+        boolean flightHours = validIntegerInTextField(flightHoursTextField);
+        boolean flightMinutes = validIntegerInTextField(flightMinutesTextField);
+        boolean takeoff = !emptyTextField(takeOffTextField);
+        boolean destination = !emptyTextField(destinationTextField);
+        boolean airplane = comboBoxHasSelectedValue(airPlaneComboBox);
+        if (date&&nStarts&&flightHours&&flightMinutes&&takeoff&&destination&&airplane) {
+            pilot.getLogbook().addLogbookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
+                    Integer.parseInt(flightMinutesTextField.getText()), Integer.parseInt(nStartsTextField.getText()), takeOffTextField.getText(),
+                    destinationTextField.getText(), commentTextArea.getText(), airPlaneComboBox.getSelectionModel().getSelectedItem(),
+                    pilot.getEmail());
+            data.add(pilot.getLogbook().getFlights().get(pilot.getLogbook().getFlights().size() - 1));
+            clearInput();
+            exitLightBox();
+        }
     }
     private <T> void setCellValueFactory(TableColumn<Flight,T> col, String attribute){
         col.setCellValueFactory(new PropertyValueFactory<>(attribute));

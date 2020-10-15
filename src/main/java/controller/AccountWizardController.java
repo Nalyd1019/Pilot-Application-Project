@@ -7,16 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.event.Event;
-import javafx.scene.paint.Color;
 import model.FlightBuddy;
-import model.FlyingClub;
 import model.License;
 import model.Pilot;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AccountWizardController implements Initializable {
+public class AccountWizardController extends AbstractInputErrorController implements Initializable {
 
     @FXML private AnchorPane pageOne;
     @FXML private AnchorPane pageTwo;
@@ -38,7 +36,6 @@ public class AccountWizardController implements Initializable {
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
     private Pilot pilot;
-    private FlyingClub flyingClub;
 
     /**
      * the initialize method that runs after the contructor and the FXML fields have been injected
@@ -48,8 +45,8 @@ public class AccountWizardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> options = FXCollections.observableArrayList();
-        for (int i = 0; i<flightBuddy.getFlyingclubs().size(); i++){
-            options.add(flightBuddy.getFlyingclubs().get(i).getClubName());
+        for (int i = 0; i<flightBuddy.getNFlyingClubs(); i++){
+            options.add(flightBuddy.getFlyingClubName(i));
         }
         flyingClubComboBox.getItems().addAll(options);
 
@@ -63,10 +60,9 @@ public class AccountWizardController implements Initializable {
      * @param event any event from the user
      */
     @FXML private void onClickfirstPageNext(Event event){
-        flyingClub = nameToFlyingClub(flyingClubComboBox.getSelectionModel().getSelectedItem());
-        if (flyingClub != null){
+        if (comboBoxHasSelectedValue(flyingClubComboBox)){
             confirmedControlColorChange(flyingClubComboBox);
-            if (flyingClub.getPassword().equals(flyingClubPasswordTextField.getText())){
+            if (flightBuddy.flyingClubMatchingPassword(flyingClubComboBox.getSelectionModel().getSelectedItem(),flyingClubPasswordTextField.getText())){
                 confirmedControlColorChange(flyingClubPasswordTextField);
                 pageTwo.toFront();
             }
@@ -128,25 +124,24 @@ public class AccountWizardController implements Initializable {
      * @param event any event from the user
      */
     @FXML private void onClickpageThreeDone(Event event){
-        boolean nStarts = validFlightTime(nStartsTextField);
-        boolean flightHours = validFlightTime(flightHoursTextField);
-        boolean flyingExpiration = dateIsSelected(flightLicenseExpiration);
-        boolean medicalExpiration = dateIsSelected(medicalLicenseExpiration);
+        boolean nStarts = validIntegerInTextField(nStartsTextField);
+        boolean flightHours = validIntegerInTextField(flightHoursTextField);
+        boolean flyingExpiration = comboBoxHasSelectedValue(flightLicenseExpiration);
+        boolean medicalExpiration = comboBoxHasSelectedValue(medicalLicenseExpiration);
         if (nStarts&&flightHours&&flyingExpiration&&medicalExpiration){
             pilot.setnStarts(Integer.parseInt(nStartsTextField.getText()));
             pilot.setStartHours(Integer.parseInt(flightHoursTextField.getText()));
             pilot.addLicense(License.FLIGHT, flightLicenseExpiration.getValue());
             pilot.addLicense(License.MEDICAL, medicalLicenseExpiration.getValue());
-            flyingClub.addMember(pilot);
+            flightBuddy.addMemberToCurrentClub(pilot);
             flightBuddy.setCurrentUser(pilot);
-            flightBuddy.setCurrentClub(flyingClub);
             ViewNavigator.LoadView(ViewNavigator.START);
         }
     }
     private boolean checkUserInput(){
         boolean exists = !emailExists();
         boolean equalPassword = equalPassword();
-        boolean validName = validName();
+        boolean validName = !emptyTextField(pageTwoNameTextField);
         return exists&&equalPassword&&validName;
     }
     //Flyttas till modellen?
@@ -162,42 +157,6 @@ public class AccountWizardController implements Initializable {
                     }
         return false;
     }
-    private void errorControlColorChange(Control control){
-        controlColorChange(control, Color.RED);
-    }
-    private void confirmedControlColorChange(Control control){
-        controlColorChange(control,Color.GREEN);
-    }
-    private void controlColorChange(Control control, Color color){
-        control.setBorder(new Border(new BorderStroke(color, BorderStrokeStyle.SOLID,
-                CornerRadii.EMPTY,new BorderWidths(1))));
-    }
-
-    private void errorLabelColorChange(Label label){
-        label.setTextFill(Color.RED);
-    }
-
-    private boolean validFlightTime(TextField textField){
-        try {
-            if (Integer.parseInt(textField.getText())<0){
-                errorControlColorChange(textField);
-                return false;
-        }
-        }        //Totalt wack
-        catch (NumberFormatException e){
-            errorControlColorChange(textField);
-            return false;
-        }
-        return true;
-    }
-    private FlyingClub nameToFlyingClub(String s){
-        for (int i =0; i<flightBuddy.getFlyingclubs().size(); i++){
-            if (flightBuddy.getFlyingclubs().get(i).getClubName().equals(s)){
-                return flightBuddy.getFlyingclubs().get(i);
-            }
-        }
-        return null;
-    }
     private boolean equalPassword(){
         if (!emptyTextField(pageTwoPasswordTextField)&& pageTwoPasswordTextField.getText().equals
                 (pageTwoPasswordVerificationTextField.getText())){
@@ -209,28 +168,5 @@ public class AccountWizardController implements Initializable {
         errorControlColorChange(pageTwoPasswordVerificationTextField);
         return false;
     }
-    private boolean validName(){
-        if (!pageTwoNameTextField.getText().isEmpty()){
-            confirmedControlColorChange(pageTwoNameTextField);
-            return true;
-        }
-        errorControlColorChange(pageTwoNameTextField);
-        return false;
-    }
-    private boolean emptyTextField(TextField textField){
-        if (textField.getText().isEmpty()){
-            errorControlColorChange(textField);
-            return true;
-        }
-        confirmedControlColorChange(textField);
-        return false;
-    }
-    private boolean dateIsSelected(DatePicker datePicker){
-        if (datePicker.getValue() == null){
-            errorControlColorChange(datePicker);
-            return false;
-        }
-        confirmedControlColorChange(datePicker);
-        return true;
-    }
+
 }
