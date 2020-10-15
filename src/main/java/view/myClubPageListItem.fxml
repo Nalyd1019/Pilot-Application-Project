@@ -6,12 +6,12 @@
 
 <fx:root fx:id="myClubPageListItem" prefHeight="150.0" prefWidth="400.0" style="-fx-border-color: green;" styleClass="thicker-border" stylesheets="@stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="checkIsDoneButton" layoutX="354.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#onClick" text="Button" AnchorPane.topAnchor="37.0" />
-      <Button fx:id="distanceCheckButton" mnemonicParsing="false" onMouseClicked="#onDistanceButtonClick" text="Tillsyn klar" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="37.0" />
+      <Button fx:id="checkIsDoneButton" layoutX="354.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#onClick" styleClass="li-button" text="Button" AnchorPane.topAnchor="37.0" />
+      <Button fx:id="distanceCheckButton" mnemonicParsing="false" onMouseClicked="#onDistanceButtonClick" styleClass="li-button" text="Tillsyn klar" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="37.0" />
       <Label fx:id="registrationLabel" layoutX="32.0" layoutY="14.0" styleClass="text-larger" text="Label" />
       <Label fx:id="flightTimeLabel" layoutX="32.0" layoutY="42.0" styleClass="header-text" text="Label" AnchorPane.bottomAnchor="75.0" />
-      <Label fx:id="soonCheckLabel" alignment="CENTER" layoutX="32.0" layoutY="64.0" prefHeight="20.0" prefWidth="267.0" styleClass="text-body" text="Label" AnchorPane.bottomAnchor="50.0" />
+      <Label fx:id="soonCheckLabel" alignment="CENTER" layoutX="32.0" layoutY="64.0" prefHeight="20.0" prefWidth="242.0" styleClass="text-body" text="Label" AnchorPane.bottomAnchor="55.0" />
       <AnchorPane layoutX="284.0" layoutY="9.0" prefHeight="84.0" prefWidth="710.0" style="-fx-background-color: whitesmoke;" />
-      <Label fx:id="distanceCheckLabel" layoutX="32.0" layoutY="116.0" styleClass="header-text" text=" " />
+      <Label fx:id="distanceCheckLabel" layoutX="32.0" layoutY="108.0" prefHeight="20.0" prefWidth="225.0" styleClass="text-body" text=" " />
    </children>
 </fx:root>

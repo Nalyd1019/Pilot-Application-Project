@@ -1,10 +1,8 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.GregorianCalendar;
 
 public final class Flight {
-    private GregorianCalendar gregorianCalendar;
     private LocalDate date;
     private final int nHours;
     private final int nMinutes;
@@ -53,10 +51,6 @@ public final class Flight {
 
     public String getPilotEmail() {
         return pilotEmail;
-    }
-
-    public GregorianCalendar getGregorianCalendar() {
-        return gregorianCalendar;
     }
 
     public String getComment() {

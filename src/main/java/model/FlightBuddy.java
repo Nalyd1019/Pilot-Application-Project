@@ -42,7 +42,6 @@ public class FlightBuddy {
         Airplane seUKE = new Airplane("SE-UKE", new Logbook());
         skovdeFlygklubb.addPlane(seUKE);
 
-        // TODO - alla dessa behöver ändras ?
         skovdeFlygklubb.addPlane(new Airplane("SE-UDU", new Logbook()));
 
         FlyingClub falbygdensFlygklubb = new FlyingClub("Falbygdens Flygklubb", new BookingHandler());

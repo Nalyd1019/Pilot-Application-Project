@@ -21,6 +21,15 @@
     	-fx-text-fill: #332E2D ;
 }
 
+.li-button {
+	-fx-background-color: #7DAD6C;
+	-fx-background-radius: 0px;
+	-fx-font-size: 18;
+    	-fx-font-family: "Arial Hebrew Scholar";
+    	-fx-text-fill: #FFFFFF;
+
+}
+
 .combobox{
 	-fx-background-color: #FFFFFF;
 	-fx-border-color: #000000;

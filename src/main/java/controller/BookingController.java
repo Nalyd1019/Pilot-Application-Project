@@ -72,6 +72,7 @@ public class BookingController implements Initializable {
 
 
     private void selectedFlight(){
+
         pickFlightCombo.getItems().addAll(flightBuddy.getCurrentClub().getAirplaneReg());
 
         pickFlightCombo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
