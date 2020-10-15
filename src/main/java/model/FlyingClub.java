@@ -1,14 +1,17 @@
 package model;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlyingClub {
+public class FlyingClub{
     private List<Pilot> pilots = new ArrayList<>();
     private BookingHandler bookingHandler;
     private List<Airplane> airplanes = new ArrayList<>();
     private String password;
     private String clubName;
+    private List<Event> events = new ArrayList<>();
 
     public FlyingClub (String clubName, BookingHandler bookingHandler){
         this.clubName = clubName;
@@ -80,4 +83,16 @@ public class FlyingClub {
         }
         return airplane;
     }
+
+    public void createFlyingEventBookings(LocalDate date, int starTime, int endTime, iBorrower borrower){
+        FlyingEvent event = new FlyingEvent(date, starTime, endTime);
+        for (Airplane airlane : event.getAirplanes()){
+            for (int timeSlots : event.slotsDuringEvent()){
+                bookingHandler.createBooking(timeSlots, date.getDayOfWeek().getValue(), borrower, airlane);
+                
+            }
+        }
+
+    }
+
 }

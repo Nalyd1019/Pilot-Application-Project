@@ -15,14 +15,16 @@ public class FlyingEvent extends Event {
         super(date, startTime, endTime);
     }
 
-    List<Integer> timeSlotsNeeded(){
+    List<Integer> slotsDuringEvent(){
         List<Integer> slotsDuringEvent = new ArrayList<>();
         for (Integer slot : bookingsSlots){
             if (slot>startTime && slot<endTime)
                 slotsDuringEvent.add(slot);
         }
         return slotsDuringEvent;
-
     }
 
+     List<Airplane> getAirplanes() {
+        return airplanes;
+    }
 }
