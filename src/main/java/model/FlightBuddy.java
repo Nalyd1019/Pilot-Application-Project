@@ -159,11 +159,18 @@ public class FlightBuddy {
         currentClub.addMember(pilot);
     }
     //försök till defensive copying
+    /*
     public List<FlyingClub> getFlyingclubs() {
         List<FlyingClub> copy = new ArrayList<>();
         for (FlyingClub flyingclub : flyingclubs) {
             copy.add(FlyingClub.copy(flyingclub));
         }
         return copy;
+    }
+
+     */
+
+    public List<FlyingClub> getFlyingclubs() {
+        return flyingclubs;
     }
 }
