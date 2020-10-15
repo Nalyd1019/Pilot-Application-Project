@@ -21,8 +21,6 @@ public class Airplane implements iBookable{
         this.yearlyCheckDate = LocalDate.of(2020,10,4);
     }
 
-
-    // TODO - Implement this method
     /**
      * Method to see if check is needed soon
      * @return true if flight time is over 10000 minutes

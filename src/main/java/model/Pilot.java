@@ -73,7 +73,6 @@ public class Pilot implements iBorrower{
     }
 
 
-    // TODO - Såhär kan metoden som ger flygtid se ut om man har en variabel starttid i Pilot
     public int getPilotFlightTime(){
        int startHoursToMinutes = startHours * 60;
        return logbook.getPilotTotalMinutes(email) + startHoursToMinutes;
