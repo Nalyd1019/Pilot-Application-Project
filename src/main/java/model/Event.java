@@ -8,8 +8,8 @@ public class Event {
 
     private List<Pilot> pilotsAttending = new ArrayList<>();
     private LocalDate date;
-    private int startTime;
-    private int endTime;
+    protected int startTime;
+    protected int endTime;
     private String description;
 
     public Event(LocalDate date, int startTime, int endTime) {
