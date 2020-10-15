@@ -11,14 +11,15 @@ public class FlyingEvent extends Event {
 
     private final List<Integer> bookingsSlots = List.of(7,9,11,13,15,17);
 
-    public FlyingEvent(LocalDate date, int startTime, int endTime) {
-        super(date, startTime, endTime);
+    public FlyingEvent(LocalDate date, int startTime, int endTime, String description, List<Airplane> airplanes) {
+        super(date, startTime, endTime, description);
+        this.airplanes = airplanes;
     }
 
-    List<Integer> slotsDuringEvent(){
+    protected List<Integer> slotsDuringEvent(){
         List<Integer> slotsDuringEvent = new ArrayList<>();
         for (Integer slot : bookingsSlots){
-            if (slot>startTime && slot<endTime)
+            if (slot>=startTime && slot<endTime)
                 slotsDuringEvent.add(slot);
         }
         return slotsDuringEvent;

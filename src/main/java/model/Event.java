@@ -12,13 +12,18 @@ public class Event {
     protected int endTime;
     private String description;
 
-    public Event(LocalDate date, int startTime, int endTime) {
+    public Event(LocalDate date, int startTime, int endTime, String description) {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.description = description;
     }
 
     void addAttendingPilot(Pilot p){
         pilotsAttending.add(p);
+    }
+
+    public List<Pilot> getPilotsAttending() {
+        return pilotsAttending;
     }
 }
