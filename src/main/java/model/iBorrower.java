@@ -2,6 +2,6 @@ package model;
 
 public interface iBorrower {
 
+    public String getEmail();
 
-    public String getLogin();
 }

@@ -92,7 +92,7 @@ public class BookingHandler {
     public List<Booking> getUsersBookings(String pilotEmail){
         List<Booking> usersBookings = new ArrayList<>();
         for(Booking booking : this.bookings) {
-            if(pilotEmail.equals(booking.getBorrower().getLogin())){
+            if(pilotEmail.equals(booking.getBorrower().getEmail())){
                 usersBookings.add(booking);
             }
         }

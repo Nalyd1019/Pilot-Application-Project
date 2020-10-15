@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import model.Airplane;
 import model.FlightBuddy;
@@ -19,6 +20,7 @@ public class MyClubController implements Initializable {
     @FXML private Label clubNameLabel;
     @FXML public Label descriptionLabel;
     @FXML private FlowPane airplaneListFlowPane;
+    @FXML private ScrollPane scrollPane;
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
 
@@ -32,6 +34,10 @@ public class MyClubController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+
         clubNameLabel.setText(flightBuddy.getCurrentClub().getClubName());
         descriptionLabel.setText("Här ser du din klubbs flygplan samt om de behöver tillsyn.");
 

@@ -4,7 +4,6 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -108,11 +107,6 @@ public class Pilot implements iBorrower{
         return licenses;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-
     public void setStartHours(int startHours) {
         this.startHours = startHours;
     }
@@ -141,10 +135,8 @@ public class Pilot implements iBorrower{
         this.email = email;
     }
 
-
-
     @Override
-    public String getLogin() {
+    public String getEmail() {
         return email;
     }
 

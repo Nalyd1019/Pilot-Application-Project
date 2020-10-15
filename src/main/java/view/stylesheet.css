@@ -93,8 +93,16 @@
     -fx-background-color: #FFCC00;
 }
 
-.thicker-border {
-    -fx-border-width: 5px;
+.check-now-border {
+    -fx-border-color: red;
+}
+
+.check-soon-border {
+    -fx-border-color: #FFCC00;
+}
+
+.check-done-border {
+    -fx-border-color: #F5F5F5;
 }
 
 .text-field {
