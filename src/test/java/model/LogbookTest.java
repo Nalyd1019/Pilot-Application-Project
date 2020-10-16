@@ -34,7 +34,7 @@ public class LogbookTest {
 
     @Test
     public void getPilotsNStarts() {
-        pilot.getLogbook().addLogbookEntry(LocalDate.of(2020, 2, 2),2,34,5,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
+        pilot.createLogbookEntry(LocalDate.of(2020, 2, 2),2,34,5,"GBG","STHLM", "Regn", "SE-543", "test@gmail.com");
         assertEquals(5, pilot.getTotalNStarts());
     }
 

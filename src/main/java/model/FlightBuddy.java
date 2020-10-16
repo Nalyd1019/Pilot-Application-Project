@@ -2,7 +2,6 @@ package model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 
@@ -134,10 +133,6 @@ public class FlightBuddy {
         this.currentUser = currentUser;
     }
 
-    public void setCurrentClub(FlyingClub currentClub) {
-        this.currentClub = currentClub;
-    }
-
     public Pilot getCurrentUser() {
         return currentUser;
     }
@@ -171,5 +166,29 @@ public class FlightBuddy {
 
     public List<FlyingClub> getFlyingclubs() {
         return flyingclubs;
+    }
+    public List<String> getAirplaneReg(){
+        return currentClub.getAirplaneReg();
+    }
+    public void addAirplaneLogBookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail){
+        currentClub.addAirplaneLogBookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
+    }
+    public List<Flight> getPilotsEntries(){
+        return currentUser.getPilotsEntries(currentUser.getEmail());
+    }
+    public int getPilotNStarts(){
+        return currentUser.getTotalNStarts();
+    }
+    public int getPilotFlightTime(){
+        return currentUser.getPilotFlightTime();
+    }
+    public void createPilotLogbookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail ){
+        currentUser.createLogbookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
+    }
+    public String getPilotEmail(){
+        return currentUser.getEmail();
+    }
+    public Flight getPilotLastEntry(){
+        return currentUser.getLastEntry();
     }
 }

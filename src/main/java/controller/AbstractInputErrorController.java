@@ -48,4 +48,5 @@ public class AbstractInputErrorController {
         }
         return true;
     }
+    //TODO - lägga till metod för att kolla om giltlig e-post
 }

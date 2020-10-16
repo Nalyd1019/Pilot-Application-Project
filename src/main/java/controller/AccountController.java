@@ -32,7 +32,7 @@ public class AccountController extends AbstractInputErrorController implements I
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameTextField.setText(flightBuddy.getCurrentUser().getName());
         passwordTextField.setText(flightBuddy.getCurrentUser().getPassword());
-        emailTextField.setText(flightBuddy.getCurrentUser().getEmail());
+        emailTextField.setText(flightBuddy.getPilotEmail());
         medicalCertTextField.setText(Objects.requireNonNull(getWantedLicense(License.MEDICAL)).getExpirationDate());
         flightCertTextField.setText(Objects.requireNonNull(getWantedLicense(License.FLIGHT)).getExpirationDate());
     }
@@ -51,7 +51,7 @@ public class AccountController extends AbstractInputErrorController implements I
      */
     @FXML private void updateUserInfo() {
         Pilot pilot = flightBuddy.getCurrentUser();
-        if ((!flightBuddy.userExists(emailTextField.getText()) || pilot.getEmail().equals(emailTextField.getText()))&&!emptyTextField(emailTextField)) {
+        if ((!flightBuddy.userExists(emailTextField.getText()) || flightBuddy.getPilotEmail().equals(emailTextField.getText()))&&!emptyTextField(emailTextField)) {
             confirmedControlColorChange(emailTextField);
             boolean newName = emptyTextField(nameTextField);
             boolean newPassword = emptyTextField(passwordTextField);

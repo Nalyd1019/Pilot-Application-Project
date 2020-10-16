@@ -41,7 +41,7 @@ public class StartPageController implements Initializable {
             licenseItemMap.put(license.getLicenseName(),licenseItem);
         }
 
-        for (Booking booking : currentClubBookingHandler.getUsersBookings(flightBuddy.getCurrentUser().getEmail()) ){
+        for (Booking booking : currentClubBookingHandler.getUsersBookings(flightBuddy.getPilotEmail()) ){
             BookingItem bookingItem = new BookingItem(booking);
             bookingItemMap.put(booking.getBookingID(), bookingItem);
         }
@@ -64,7 +64,7 @@ public class StartPageController implements Initializable {
         bookingFlowpane.getChildren().clear();
 
 
-        List<Booking> bookings = currentClubBookingHandler.getUsersBookings(flightBuddy.getCurrentUser().getEmail());
+        List<Booking> bookings = currentClubBookingHandler.getUsersBookings(flightBuddy.getPilotEmail());
 
         for (Booking booking : bookings){
             BookingItem bookingItem = bookingItemMap.get(booking.getBookingID());

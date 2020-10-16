@@ -109,6 +109,10 @@ public class Airplane implements iBookable{
 
     public Logbook getLogbook() { return logbook; }
 
+    void addLogBookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail){
+        logbook.addLogbookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
+    }
+
     // TODO - Denna metoden bör ej användas, ska den t om tas bort? Endast för test nu
     public void removeLogbookEntries() {
         logbook.clearLogbook();
