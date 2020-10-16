@@ -29,14 +29,14 @@ public final class Booking {
        this.bookingID = nextID;
        nextID++;
    }
+   
+   */
 
-
- */
-    int getDay() {
+    public int getDay() {
         return day;
     }
 
-    int getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 

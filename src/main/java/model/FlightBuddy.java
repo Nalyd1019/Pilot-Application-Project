@@ -117,9 +117,10 @@ public class FlightBuddy {
         return flyingclubs.get(index).getClubName();
     }
 
-    public int getNFlyingClubs(){
+    public int getNFlyingClubs() {
         return flyingclubs.size();
     }
+
 
     /**
      * setter for the list of flyingClubs
@@ -163,7 +164,6 @@ public class FlightBuddy {
     }
 
      */
-
     public List<FlyingClub> getFlyingclubs() {
         return flyingclubs;
     }
