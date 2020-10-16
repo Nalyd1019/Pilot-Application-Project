@@ -5,6 +5,7 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 
 
 public class Pilot implements iBorrower{
@@ -15,13 +16,14 @@ public class Pilot implements iBorrower{
     private String email;
     private int startHours;
     private int nStarts;
+
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
     
 
     public Pilot(String password1, String password2, String name, String email) {
         if (password1.equals(password2)) {               //så att användaren skriver in rätt lösen båda gångerna
-            password = password1;
-       //     password = passwordAuthentication.hash(password1.toCharArray());
+            StrongPasswordEncryptor pwEncrypt = new StrongPasswordEncryptor();
+            password = pwEncrypt.encryptPassword(password1);
             this.name = name;
             this.email = email;
         }
@@ -42,8 +44,8 @@ public class Pilot implements iBorrower{
      * @return true if the given combination matches the data, else returns false
      */
     public boolean validateLogin(String email, String password){
-        return this.email.equals(email) && this.password.equals(password);
-  //      return this.email.equals(email) && passwordAuthentication.authenticate(password.toCharArray(), this.password);
+        StrongPasswordEncryptor pwEncrypt = new StrongPasswordEncryptor();
+        return this.email.equals(email) && pwEncrypt.checkPassword(password, this.password);
     }
 
     public int getTotalNStarts(){
