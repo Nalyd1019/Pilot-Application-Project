@@ -27,7 +27,7 @@ public class Logbook {
      * @param comment any comments by the pilot
      * @param airplaneRegistration the registration of the aircraft
      */
-    public void addLogbookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
+    void addLogbookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
         Flight flight = new Flight(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
         flights.add(flight);
     }
@@ -54,7 +54,7 @@ public class Logbook {
      * @param pilotEmail the pilots email, the way to identify the pilot who made the entry
      * @return all entries made by that pilot
      */
-    public List<Flight> getPilotsEntries(String pilotEmail) {
+    List<Flight> getPilotsEntries(String pilotEmail) {
         List<Flight> pilotsEntries = new ArrayList<>();
         for(Flight fli : flights){
             if(pilotEmail.equals(fli.getPilotEmail())) {
@@ -186,6 +186,9 @@ public class Logbook {
             starts = starts + flight.getNStarts();
         }
         return starts;
+    }
+    Flight getLastEntry(){
+        return flights.get(flights.size()-1);
     }
 
 

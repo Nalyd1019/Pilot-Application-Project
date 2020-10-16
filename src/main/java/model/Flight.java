@@ -13,7 +13,8 @@ public final class Flight {
     private final String airplaneRegistration;
     private final String pilotEmail;
 
-    public Flight(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail) {
+    public Flight(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination,
+                  String comment, String airplaneRegistration, String pilotEmail) {
         this.date = date;
         this.nHours = nHours;
         this.nMinutes = nMinutes;

@@ -9,7 +9,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.Flight;
 import model.FlightBuddy;
-import model.Pilot;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,7 +44,6 @@ public class MyLogbookController extends AbstractInputErrorController implements
     @FXML private TableColumn<Flight,Integer> flightMinutesTimeCol;
 
     FlightBuddy flightBuddy = FlightBuddy.getInstance();
-    Pilot pilot = flightBuddy.getCurrentUser();
     ObservableList<Flight> data = FXCollections.observableArrayList();
 
 
@@ -61,11 +59,9 @@ public class MyLogbookController extends AbstractInputErrorController implements
         lightBox2.setVisible(false);
         onClickLogBookLabel();
         ObservableList<String> options = FXCollections.observableArrayList();
-        for (int i=0; i<flightBuddy.getCurrentClub().getAirplanes().size();i++){
-            options.add(flightBuddy.getCurrentClub().getAirplanes().get(i).getRegistration());
-        }
+        options.addAll(flightBuddy.getAirplaneReg());
         airPlaneComboBox.getItems().addAll(options);
-        data.addAll(pilot.getLogbook().getPilotsEntries(pilot.getEmail()));
+        data.addAll(flightBuddy.getPilotsEntries());
         setCellValueFactory(dateCol,"date");
         setCellValueFactory(airPlaneCol,"airplaneRegistration");
         setCellValueFactory(nStartsCol,"nStarts");
@@ -89,10 +85,10 @@ public class MyLogbookController extends AbstractInputErrorController implements
         statisticsAnchorPane.toFront();
         statisticsLabel.setUnderline(true);
         logBookLabel.setUnderline(false);
-        nStartsLabel.setText(Integer.toString(pilot.getTotalNStarts()));
-        hoursLabel.setText(Integer.toString(getTotalFlightHours(pilot.getPilotFlightTime())));
-        minutesLabel.setText(Integer.toString(getRemainingMinutes(pilot.getPilotFlightTime(),
-                getTotalFlightHours(pilot.getPilotFlightTime()))));
+        nStartsLabel.setText(Integer.toString(flightBuddy.getPilotNStarts()));
+        hoursLabel.setText(Integer.toString(getTotalFlightHours(flightBuddy.getPilotFlightTime())));
+        minutesLabel.setText(Integer.toString(getRemainingMinutes(flightBuddy.getPilotFlightTime(),
+                getTotalFlightHours(flightBuddy.getPilotFlightTime()))));
     }
 
     private int getTotalFlightHours(int totalMinutes){
@@ -122,16 +118,20 @@ public class MyLogbookController extends AbstractInputErrorController implements
         boolean date = comboBoxHasSelectedValue(flightDatePicker);
         boolean nStarts = validIntegerInTextField(nStartsTextField);
         boolean flightHours = validIntegerInTextField(flightHoursTextField);
-        boolean flightMinutes = validIntegerInTextField(flightMinutesTextField);
+        boolean flightMinutes = validIntegerInTextField(flightMinutesTextField) && Integer.parseInt(flightMinutesTextField.getText())<60;
         boolean takeoff = !emptyTextField(takeOffTextField);
         boolean destination = !emptyTextField(destinationTextField);
         boolean airplane = comboBoxHasSelectedValue(airPlaneComboBox);
         if (date&&nStarts&&flightHours&&flightMinutes&&takeoff&&destination&&airplane) {
-            pilot.getLogbook().addLogbookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
+            flightBuddy.createPilotLogbookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
                     Integer.parseInt(flightMinutesTextField.getText()), Integer.parseInt(nStartsTextField.getText()), takeOffTextField.getText(),
                     destinationTextField.getText(), commentTextArea.getText(), airPlaneComboBox.getSelectionModel().getSelectedItem(),
-                    pilot.getEmail());
-            data.add(pilot.getLogbook().getFlights().get(pilot.getLogbook().getFlights().size() - 1));
+                    flightBuddy.getPilotEmail());
+            flightBuddy.addAirplaneLogBookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
+                    Integer.parseInt(flightMinutesTextField.getText()), Integer.parseInt(nStartsTextField.getText()), takeOffTextField.getText(),
+                    destinationTextField.getText(), commentTextArea.getText(), airPlaneComboBox.getSelectionModel().getSelectedItem(),
+                    flightBuddy.getPilotEmail());
+            data.add(flightBuddy.getPilotLastEntry());
             clearInput();
             exitLightBox();
         }

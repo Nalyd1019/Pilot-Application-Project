@@ -1,5 +1,6 @@
 package model;
 
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -84,6 +85,12 @@ public class FlyingClub{
         return airplane;
     }
 
+    void addAirplaneLogBookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail){
+        Airplane airplane = getAirplaneFromRegistration(airplaneRegistration);
+        airplane.addLogBookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
+    }
+
+
     public void createFlyingEventBookings(LocalDate date, int starTime, int endTime, iBorrower borrower, String description, List<Airplane> airplanes){
         FlyingEvent event = new FlyingEvent(date, starTime, endTime, description, airplanes);
         for (Airplane airlane : event.getAirplanes()){
@@ -94,5 +101,4 @@ public class FlyingClub{
         }
 
     }
-
 }
