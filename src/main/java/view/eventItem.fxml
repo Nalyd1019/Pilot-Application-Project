@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<fx:root fx:id="eventItem" maxWidth="690.0" prefHeight="150.0" prefWidth="690.0" styleClass="thicker-border" stylesheets="@stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="eventStartTime" layoutX="57.0" layoutY="44.0" text="17:00" />
+      <Label fx:id="eventEndTime" layoutX="101.0" layoutY="44.0" text="18:00" />
+      <Label fx:id="eventStartTime2" layoutX="91.0" layoutY="44.0" text="-" />
+      <Label fx:id="eventItemLabel" layoutX="57.0" layoutY="61.0" styleClass="text-larger" text="Event name" />
+      <CheckBox fx:id="acceptEventCheckbox" layoutX="577.0" layoutY="68.0" mnemonicParsing="false" text="Kommer" />
+      <Text fx:id="eventDescription" layoutX="218.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="290.22900390625" />
+   </children>
+</fx:root>
