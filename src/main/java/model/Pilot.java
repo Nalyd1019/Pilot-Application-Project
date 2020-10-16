@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class Pilot implements iBorrower{
-   private Logbook logbook = new Logbook();
+    private Logbook logbook = new Logbook();
     private List<License> licenses = new ArrayList<>();
     private String password;
     private String name;
@@ -16,12 +16,12 @@ public class Pilot implements iBorrower{
     private int startHours;
     private int nStarts;
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
-    
+
 
     public Pilot(String password1, String password2, String name, String email) {
         if (password1.equals(password2)) {               //så att användaren skriver in rätt lösen båda gångerna
             password = password1;
-       //     password = passwordAuthentication.hash(password1.toCharArray());
+            //     password = passwordAuthentication.hash(password1.toCharArray());
             this.name = name;
             this.email = email;
         }
@@ -43,17 +43,13 @@ public class Pilot implements iBorrower{
      */
     public boolean validateLogin(String email, String password){
         return this.email.equals(email) && this.password.equals(password);
-  //      return this.email.equals(email) && passwordAuthentication.authenticate(password.toCharArray(), this.password);
+        //      return this.email.equals(email) && passwordAuthentication.authenticate(password.toCharArray(), this.password);
     }
 
-    public int getTotalNStarts(){
+    int getTotalNStarts(){
         return logbook.getPilotNumberOfStarts(email) + nStarts;
     }
 
-
-    public Logbook getLogbook() {
-        return logbook;
-    }
 
     /**
      * Method that creates a entry in the logbook
@@ -67,15 +63,17 @@ public class Pilot implements iBorrower{
      * @param airplaneRegistration the registration of the airplane
      * @param pilotEmail the pilots email
      */
-    public void createLogbookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail ){
+    void createLogbookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail ){
         logbook.addLogbookEntry(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
     }
 
 
-    public int getPilotFlightTime(){
-       int startHoursToMinutes = startHours * 60;
-       return logbook.getPilotTotalMinutes(email) + startHoursToMinutes;
+    // TODO - Såhär kan metoden som ger flygtid se ut om man har en variabel starttid i Pilot
+    int getPilotFlightTime(){
+        int startHoursToMinutes = startHours * 60;
+        return logbook.getPilotTotalMinutes(email) + startHoursToMinutes;
     }
+
 
 
 
@@ -107,6 +105,13 @@ public class Pilot implements iBorrower{
         return licenses;
     }
 
+
+    public String getEmail() {
+        return email;
+    }
+
+
+
     public void setStartHours(int startHours) {
         this.startHours = startHours;
     }
@@ -135,9 +140,12 @@ public class Pilot implements iBorrower{
         this.email = email;
     }
 
-    @Override
-    public String getEmail() {
-        return email;
+    List<model.Flight> getPilotsEntries(String pilotEmail){
+        return logbook.getPilotsEntries(pilotEmail);
+    }
+
+    model.Flight getLastEntry(){
+        return logbook.getLastEntry();
     }
 
 }
