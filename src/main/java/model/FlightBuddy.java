@@ -58,6 +58,8 @@ public class FlightBuddy {
         p1.addLicense(new License(License.MEDICAL, LocalDate.now().plusYears(2)));
         skovdeFlygklubb.addMember(p1);
 
+        skovdeFlygklubb.getEvents().add(new Event(LocalDate.now(), 10,18,"Segelflygets dag"));
+
         flyingclubs.add(skovdeFlygklubb);
         flyingclubs.add(borasFlygklubb);
         flyingclubs.add(falbygdensFlygklubb);

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane prefHeight="653.0" prefWidth="1278.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyClubController">
+<AnchorPane prefHeight="653.0" prefWidth="1278.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyClubController">
    <children>
       <fx:include source="header.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Label fx:id="clubNameLabel" layoutX="62.0" layoutY="120.0" styleClass="text-larger" text="Flygklubb" />
@@ -14,7 +14,7 @@
             <FlowPane fx:id="airplaneListFlowPane" prefHeight="351.0" prefWidth="505.0" />
          </content>
       </ScrollPane>
-      <ScrollPane fx:id="scrollPane1" layoutX="663.0" layoutY="226.0" prefHeight="346.0" prefWidth="520.0">
+      <ScrollPane fx:id="scrollPane1" layoutX="646.0" layoutY="228.0" prefHeight="346.0" prefWidth="520.0">
          <content>
             <FlowPane fx:id="eventFlowPane" prefHeight="351.0" prefWidth="505.0" />
          </content>

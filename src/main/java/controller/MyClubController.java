@@ -55,7 +55,7 @@ public class MyClubController implements Initializable {
         }
 
         for (Event event : flightBuddy.getCurrentClub().getEvents()){
-            EventListItem eventListItem = new EventListItem(event.getDescription());
+            EventListItem eventListItem = new EventListItem(event);
             eventListItemMap.put(event.getDescription(), eventListItem);
         }
 

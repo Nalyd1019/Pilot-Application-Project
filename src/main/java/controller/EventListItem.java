@@ -5,14 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import model.Airplane;
+import model.Event;
 
 import java.io.IOException;
 
 public class EventListItem extends AnchorPane {
 
     @FXML private Label eventName;
+    @FXML private Label eventStartTime;
+    @FXML private Label eventEndTime;
 
-    EventListItem(String eventName) {
+    EventListItem(Event event) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("eventItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -23,7 +26,9 @@ public class EventListItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        this.eventName.setText(eventName);
+        eventName.setText(event.getDescription());
+        eventStartTime.setText(String.valueOf(event.getStartTime()));
+        eventEndTime.setText(String.valueOf(event.getEndTime()));
 
     }
 
