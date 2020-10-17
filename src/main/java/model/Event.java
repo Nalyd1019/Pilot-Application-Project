@@ -26,4 +26,20 @@ public class Event {
     public List<Pilot> getPilotsAttending() {
         return pilotsAttending;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public int getEndTime() {
+        return endTime;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

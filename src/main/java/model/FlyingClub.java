@@ -101,4 +101,8 @@ public class FlyingClub{
         }
 
     }
+
+    public List<Event> getEvents() {
+        return events;
+    }
 }

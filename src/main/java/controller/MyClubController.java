@@ -6,10 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
-import model.Airplane;
-import model.FlightBuddy;
-import model.FlyingClub;
-import model.Logbook;
+import model.*;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -21,10 +18,12 @@ public class MyClubController implements Initializable {
     @FXML public Label descriptionLabel;
     @FXML private FlowPane airplaneListFlowPane;
     @FXML private ScrollPane scrollPane;
+    @FXML private FlowPane eventFlowPane;
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
 
     private Map<String, MyClubListItem> listItemMap = new HashMap<String, MyClubListItem>();
+    private Map<String, EventListItem> eventListItemMap = new HashMap<>();
 
 
     /**
@@ -55,7 +54,14 @@ public class MyClubController implements Initializable {
             listItemMap.put(airplane.getRegistration(), myClubListItem);
         }
 
-         updateAirplaneList();
+        for (Event event : flightBuddy.getCurrentClub().getEvents()){
+            EventListItem eventListItem = new EventListItem(event.getDescription());
+            eventListItemMap.put(event.getDescription(), eventListItem);
+        }
+
+        updateAirplaneList();
+        updateEventList();
+
     }
 
 
@@ -76,6 +82,11 @@ public class MyClubController implements Initializable {
             controlCheckStatus(airplane, myClubListItem);
             controlDistanceCheckStatus(airplane, myClubListItem);
         }
+    }
+
+    private void updateEventList(){
+        eventFlowPane.getChildren().clear();
+
     }
 
 
