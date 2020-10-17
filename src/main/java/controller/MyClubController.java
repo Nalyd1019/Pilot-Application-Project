@@ -86,6 +86,12 @@ public class MyClubController implements Initializable {
 
     private void updateEventList(){
         eventFlowPane.getChildren().clear();
+        List<Event> events = flightBuddy.getCurrentClub().getEvents();
+
+        for (Event event : events){
+            EventListItem eventListItem = eventListItemMap.get(event.getDescription());
+            eventFlowPane.getChildren().add(eventListItem);
+        }
 
     }
 
