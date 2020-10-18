@@ -3,7 +3,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
 <fx:root fx:id="eventItem" maxWidth="690.0" prefHeight="150.0" prefWidth="390.0" styleClass="thicker-border" stylesheets="@stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -11,7 +10,7 @@
       <Label fx:id="eventEndTime" layoutX="101.0" layoutY="44.0" text="18:00" />
       <Label fx:id="eventStartTime2" layoutX="91.0" layoutY="44.0" text="-" />
       <Label fx:id="eventName" layoutX="57.0" layoutY="61.0" styleClass="text-larger" text="Event name" />
-      <CheckBox fx:id="acceptEventCheckbox" layoutX="577.0" layoutY="68.0" mnemonicParsing="false" text="Kommer" />
-      <Text fx:id="eventDescription" layoutX="218.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="290.22900390625" />
+      <CheckBox fx:id="acceptEventCheckbox" layoutX="419.0" layoutY="67.0" mnemonicParsing="false" text="Kommer" />
+      <Label fx:id="eventDescription" layoutX="229.0" layoutY="70.0" prefHeight="17.0" prefWidth="205.0" text="Label" />
    </children>
 </fx:root>

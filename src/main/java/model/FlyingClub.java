@@ -91,8 +91,8 @@ public class FlyingClub{
     }
 
 
-    public void createFlyingEventBookings(LocalDate date, int starTime, int endTime, iBorrower borrower, String description, List<Airplane> airplanes){
-        FlyingEvent event = new FlyingEvent(date, starTime, endTime, description, airplanes);
+    public void createFlyingEventBookings(LocalDate date, int starTime, int endTime, iBorrower borrower, String description, String detailDesc, List<Airplane> airplanes){
+        FlyingEvent event = new FlyingEvent(date, starTime, endTime, description,detailDesc, airplanes);
         for (Airplane airlane : event.getAirplanes()){
             for (int timeSlots : event.slotsDuringEvent()){
                 bookingHandler.createBooking(timeSlots, date.getDayOfWeek().getValue(), borrower, airlane);

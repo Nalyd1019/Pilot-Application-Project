@@ -11,15 +11,17 @@ public class Event {
     protected int startTime;
     protected int endTime;
     private String description;
+    private String detailedDesc;
 
-    public Event(LocalDate date, int startTime, int endTime, String description) {
+    public Event(LocalDate date, int startTime, int endTime, String description, String detailedDesc) {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.description = description;
+        this.detailedDesc = detailedDesc;
     }
 
-    void addAttendingPilot(Pilot p){
+    public void addAttendingPilot(Pilot p){
         pilotsAttending.add(p);
     }
 
@@ -41,5 +43,9 @@ public class Event {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getDetailedDesc() {
+        return detailedDesc;
     }
 }

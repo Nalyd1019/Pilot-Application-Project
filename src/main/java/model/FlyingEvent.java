@@ -11,8 +11,8 @@ public class FlyingEvent extends Event {
 
     private final List<Integer> bookingsSlots = List.of(7,9,11,13,15,17);
 
-    public FlyingEvent(LocalDate date, int startTime, int endTime, String description, List<Airplane> airplanes) {
-        super(date, startTime, endTime, description);
+    public FlyingEvent(LocalDate date, int startTime, int endTime, String description, String detailDesc, List<Airplane> airplanes) {
+        super(date, startTime, endTime, description, detailDesc);
         this.airplanes = airplanes;
     }
 
