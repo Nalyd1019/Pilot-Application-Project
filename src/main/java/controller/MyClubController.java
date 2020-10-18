@@ -93,6 +93,7 @@ public class MyClubController implements Initializable {
 
         for (Event event : events){
             EventListItem eventListItem = eventListItemMap.get(event.getDescription());
+            eventListItem.updateCheckboxes();
             eventFlowPane.getChildren().add(eventListItem);
         }
 

@@ -22,7 +22,8 @@ public class Event {
     }
 
     public void addAttendingPilot(Pilot p){
-        pilotsAttending.add(p);
+        if (!pilotsAttending.contains(p))
+            pilotsAttending.add(p);
     }
 
     public List<Pilot> getPilotsAttending() {

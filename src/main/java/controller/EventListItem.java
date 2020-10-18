@@ -24,6 +24,7 @@ public class EventListItem extends AnchorPane {
     @FXML private CheckBox acceptEventCheckbox;
 
     private Pilot currentUser = FlightBuddy.getInstance().getCurrentUser();
+    private Event event;
 
     EventListItem(Event event) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("eventItem.fxml"));
@@ -36,14 +37,17 @@ public class EventListItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        this.event = event;
+
         eventName.setText(event.getDescription());
         eventStartTime.setText(String.valueOf(event.getStartTime()));
         eventEndTime.setText(String.valueOf(event.getEndTime()));
         eventDescription.setText(event.getDetailedDesc());
 
+
+        updateCheckboxes();
         acceptEventCheckbox.setText("Kommer");
         acceptEventCheckbox.setVisible(true);
-        if (event.getPilotsAttending().contains(currentUser))
 
         checkboxListener(event);
 
@@ -63,5 +67,12 @@ public class EventListItem extends AnchorPane {
         });
     }
 
+    void updateCheckboxes(){
+        for (Pilot pilot : event.getPilotsAttending()){
+            if (pilot.getEmail().equals(currentUser.getEmail())){
+                acceptEventCheckbox.setSelected(true);
+            }
+        }
+    }
 
 }
