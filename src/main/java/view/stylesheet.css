@@ -116,6 +116,20 @@
 
 }
 
+.remove-focus {
+    -fx-focus-color: transparent;
+}
+
+.check-now-border {
+    -fx-border-color: red;
+}
+.check-soon-border {
+    -fx-border-color: #FFCC00;
+}
+.check-done-border {
+    -fx-border-color: #FFFFFF;
+}
+
 
 
 /*------------------------- Booking Handler ------------------------------*/

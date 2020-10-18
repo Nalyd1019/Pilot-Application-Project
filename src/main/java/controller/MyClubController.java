@@ -62,6 +62,9 @@ public class MyClubController implements Initializable {
         updateAirplaneList();
         updateEventList();
 
+        airplaneListFlowPane.getStyleClass().add("remove-focus");
+        scrollPane.getStyleClass().add("remove-focus");
+
     }
 
 

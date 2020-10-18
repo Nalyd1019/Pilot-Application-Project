@@ -20,6 +20,7 @@ public class MyClubListItem extends AnchorPane {
     @FXML private Button checkIsDoneButton;
     @FXML private Label distanceCheckLabel;
     @FXML private Button distanceCheckButton;
+    @FXML private AnchorPane myClubPageListItem;
 
 
     private MyClubController myClubController;
@@ -64,7 +65,7 @@ public class MyClubListItem extends AnchorPane {
         checkIsDoneButton.toBack();
         soonCheckLabel.getStyleClass().remove("warning-background");
         soonCheckLabel.setText("");
-        registrationLabel.getStyleClass().add("check-done-border");
+        myClubPageListItem.getStyleClass().add("check-done-border");
     }
 
 
@@ -75,7 +76,7 @@ public class MyClubListItem extends AnchorPane {
     private void distanceCheckButtonClicked() {
         airplane.distanceCheckIsDone();
         distanceCheckButton.toBack();
-        registrationLabel.getStyleClass().add("check-done-border");
+        myClubPageListItem.getStyleClass().add("check-done-border");
         distanceCheckLabel.getStyleClass().remove("warning-background");
         distanceCheckLabel.setText("");
     }
@@ -87,7 +88,7 @@ public class MyClubListItem extends AnchorPane {
     void applyYearlyCheck() {
         checkIsDoneButton.toFront();
         checkIsDoneButton.setText("Tillsyn utförd");
-        registrationLabel.getStyleClass().add("check-now-border");
+        myClubPageListItem.getStyleClass().add("check-now-border");
         soonCheckLabel.getStyleClass().add("warning-background");
         soonCheckLabel.setText("Dags för årstillsyn");
     }
@@ -98,7 +99,7 @@ public class MyClubListItem extends AnchorPane {
      */
     void applySoonYearlyCheck() {
          soonCheckLabel.getStyleClass().add("warning-background");
-        registrationLabel.getStyleClass().add("check-soon-border");
+        myClubPageListItem.getStyleClass().add("check-soon-border");
         soonCheckLabel.setText("Årstillsyn: " + airplane.getYearlyCheckDate().toString() );
      }
 
@@ -107,7 +108,7 @@ public class MyClubListItem extends AnchorPane {
      * Method that changes GUI when distance check is needed
      */
     void applyDistanceCheck() {
-        registrationLabel.getStyleClass().add("check-now-border");
+        myClubPageListItem.getStyleClass().add("check-now-border");
          distanceCheckButton.toFront();
          distanceCheckLabel.setText("Flygplanet har flugit 250 h sedan tillsyn. Då är det dags för tillsyn.");
      }
@@ -124,7 +125,7 @@ public class MyClubListItem extends AnchorPane {
         int minutesUntilCheck = 15000-(totalTime-checkedTime);
         int hoursUntilCheck = minutesUntilCheck/60;
 
-        registrationLabel.getStyleClass().add("check-soon-background");
+        myClubPageListItem.getStyleClass().add("check-soon-background");
         distanceCheckLabel.getStyleClass().add("warning-background");
         distanceCheckLabel.setText("Flygplanet har snart flugit 250 h sedan tillsyn. Dags för tillsyn om " + hoursUntilCheck + " h");
     }

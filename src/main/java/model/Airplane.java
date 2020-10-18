@@ -2,6 +2,9 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * The airplane has a logbook in which all flights are logged.
+ */
 public class Airplane implements iBookable{
 
     private Logbook logbook;
