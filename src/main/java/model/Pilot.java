@@ -110,8 +110,6 @@ public class Pilot implements iBorrower{
         return email;
     }
 
-
-
     public void setStartHours(int startHours) {
         this.startHours = startHours;
     }
