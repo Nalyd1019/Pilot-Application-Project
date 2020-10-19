@@ -6,11 +6,12 @@
 
 <fx:root fx:id="eventItem" maxWidth="690.0" prefHeight="150.0" prefWidth="390.0" styleClass="thicker-border" stylesheets="@stylesheet.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="eventStartTime" layoutX="57.0" layoutY="44.0" text="17:00" />
-      <Label fx:id="eventEndTime" layoutX="101.0" layoutY="44.0" text="18:00" />
-      <Label fx:id="eventStartTime2" layoutX="91.0" layoutY="44.0" text="-" />
-      <Label fx:id="eventName" layoutX="57.0" layoutY="61.0" styleClass="text-larger" text="Event name" />
-      <CheckBox fx:id="acceptEventCheckbox" layoutX="419.0" layoutY="67.0" mnemonicParsing="false" text="Kommer" />
+      <Label fx:id="eventStartTime" layoutX="23.0" layoutY="44.0" text="17:00" />
+      <Label fx:id="eventEndTime" layoutX="56.0" layoutY="44.0" text="18:00" />
+      <Label fx:id="eventStartTime2" layoutX="49.0" layoutY="44.0" text="-" />
+      <Label fx:id="eventName" layoutX="23.0" layoutY="61.0" styleClass="text-larger" text="Event name" />
+      <CheckBox fx:id="acceptEventCheckbox" layoutX="419.0" layoutY="67.0" mnemonicParsing="false" prefWidth="74.0" text="Kommer" />
       <Label fx:id="eventDescription" layoutX="229.0" layoutY="70.0" prefHeight="17.0" prefWidth="205.0" text="Label" />
+      <Label fx:id="dateLabel" layoutX="24.0" layoutY="25.0" text="Label" />
    </children>
 </fx:root>

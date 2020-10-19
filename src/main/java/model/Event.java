@@ -26,6 +26,13 @@ public class Event {
             pilotsAttending.add(p);
     }
 
+    boolean isLaterThan(Event event){
+        if (this.getDate().isAfter(event.getDate()))
+            return true;
+        return false;
+    }
+
+
     public List<Pilot> getPilotsAttending() {
         return pilotsAttending;
     }

@@ -4,6 +4,7 @@ package model;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FlyingClub{
@@ -103,6 +104,16 @@ public class FlyingClub{
     }
 
     public List<Event> getEvents() {
+        return events;
+    }
+
+    public List<Event> getSortedEvents(){
+        for (int i = 0; i < events.size()-1; i++){
+                if (events.get(i).isLaterThan(events.get(i + 1))) {
+                    Collections.swap(events, i, i + 1);
+                }
+
+        }
         return events;
     }
 }
