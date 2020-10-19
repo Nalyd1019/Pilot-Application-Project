@@ -7,15 +7,39 @@ import java.time.LocalDate;
  */
 public class Airplane implements iBookable{
 
+    /**
+     * The airplane has a logbook in which all flights are logged.
+     */
     private Logbook logbook;
+
+
+    /**
+     * The airplane has a registration, like a name.
+     */
     private String registration;
 
     // Obs, ändrat yearlycheckdate i json-filen för att testa
+
+    /**
+     * The date of the yearly check, changes yearly.
+     */
     private LocalDate yearlyCheckDate;
 
+
+    /**
+     * Is set to true if a year has gone since the last yearly check.
+     */
     private boolean isTimeForYearlyCheckNow;
+
+    /**
+     *  Is set to true if it is less than one week to yearly check.
+     */
     private boolean isTimeForYearlyCheckSoon;
 
+
+    /**
+     * This int keeps track of how many time the airplane has had a Distance check.
+     */
     private int nChecks = 0;
 
     public Airplane(String registration, Logbook logbook){
@@ -84,6 +108,22 @@ public class Airplane implements iBookable{
         nChecks++;
     }
 
+    /**
+     * Adds an entry to the logbook.
+     * @param date The date the flight took place.
+     * @param nHours Amount of hours the flight lasted.
+     * @param nMinutes Amount of minutes the flight lasted.
+     * @param nStarts How many starts the flight had.
+     * @param departurePlace The place of departure.
+     * @param destination The destination of the flight.
+     * @param comment Any comment made by the pilot.
+     * @param airplaneRegistration The airplanes registration.
+     * @param pilotEmail The email of the pilot.
+     */
+    void addLogBookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail){
+        logbook.addLogbookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
+    }
+
 
     // Getters
     public String getRegistration() {
@@ -112,9 +152,6 @@ public class Airplane implements iBookable{
 
     public Logbook getLogbook() { return logbook; }
 
-    void addLogBookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail){
-        logbook.addLogbookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
-    }
 
     // TODO - Denna metoden bör ej användas, ska den t om tas bort? Endast för test nu
     public void removeLogbookEntries() {
