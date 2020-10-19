@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <Label alignment="CENTER" prefHeight="86.0" prefWidth="1200.0" text="Logga in">
          <font>
@@ -20,7 +20,7 @@
             <Insets top="-150.0" />
          </VBox.margin>
       </Label>
-      <Label prefHeight="24.0" prefWidth="180.0" text="E-mail">
+      <Label prefHeight="24.0" prefWidth="180.0" styleClass="text-body" text="E-mail">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -30,7 +30,7 @@
             <Insets bottom="5.0" />
          </VBox.margin>
       </TextField>
-      <Label prefHeight="18.0" prefWidth="179.0" text="Lösenord" />
+      <Label prefHeight="18.0" prefWidth="179.0" styleClass="text-body" text="Lösenord" />
       <StackPane>
          <children>
             <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" />
@@ -42,13 +42,13 @@
             <Insets top="5.0" />
          </VBox.margin>
       </CheckBox>
-      <Button fx:id="logInButton" mnemonicParsing="false" text="Logga in">
+      <Button fx:id="logInButton" mnemonicParsing="false" styleClass="green-button" text="Logga in">
          <VBox.margin>
             <Insets bottom="5.0" top="20.0" />
          </VBox.margin>
       </Button>
-      <Label alignment="CENTER" text="eller" textAlignment="CENTER" />
-      <Button fx:id="createAccountButton" mnemonicParsing="false" text="Skapa konto">
+      <Label alignment="CENTER" styleClass="text-body" text="eller" textAlignment="CENTER" />
+      <Button fx:id="createAccountButton" mnemonicParsing="false" styleClass="grey-button" text="Skapa konto">
          <VBox.margin>
             <Insets top="5.0" />
          </VBox.margin>
