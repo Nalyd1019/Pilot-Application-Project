@@ -11,7 +11,7 @@ public class PilotTest {
 
     @Test
     public void addLicense() {
-        Pilot pilot = new Pilot("Kalle", "Kalle", "Karl", "karl1337@email.com");
+        Pilot pilot = new Pilot("Kalle",  "Karl", "karl1337@email.com");
 
         pilot.addLicense("Medical License", LocalDate.of(2020, 10, 1));
         assertTrue(pilot.getLicenses().size() == 1);
@@ -20,7 +20,7 @@ public class PilotTest {
 
     @Test
     public void addLicenses() {
-        Pilot pilot = new Pilot("Kalle", "Kalle", "Karl", "karl1337@email.com");
+        Pilot pilot = new Pilot("Kalle",  "Karl", "karl1337@email.com");
 
         pilot.addLicense("Medical License", LocalDate.of(2020, 10, 1));
         pilot.addLicense("Medical License", LocalDate.of(2020, 10, 1));
@@ -31,7 +31,7 @@ public class PilotTest {
 
     @Test
     public void checkLicenseExpirationTest() {
-        Pilot pilot = new Pilot("Kalle", "Kalle", "Karl", "karl1337@email.com");
+        Pilot pilot = new Pilot("Kalle",  "Karl", "karl1337@email.com");
 
         pilot.addLicense("Medical License", LocalDate.now().plusDays(10));
         pilot.addLicense("Medical License", LocalDate.now());
@@ -45,7 +45,7 @@ public class PilotTest {
 
     @Test
     public void checkLicenseSoonExpirationTest() {
-        Pilot pilot = new Pilot("Kalle", "Kalle", "Karl", "karl1337@email.com");
+        Pilot pilot = new Pilot("Kalle",  "Karl", "karl1337@email.com");
 
         pilot.addLicense("Medical License", LocalDate.now().plusDays(10));
         pilot.addLicense("Medical License", LocalDate.now());

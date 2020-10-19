@@ -16,7 +16,7 @@ public class FlyingClubTest {
     @Test
     public void addMemberTest(){
         FlyingClub skovdeMotorFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingHandler());
-        skovdeMotorFlygklubb.addMember(new Pilot("Kalle","Kalle","Karl","karl1337@email.com"));
+        skovdeMotorFlygklubb.addMember(new Pilot("Kalle","Karl","karl1337@email.com"));
         assertTrue(skovdeMotorFlygklubb.getPilots().size()==1);
 
     }

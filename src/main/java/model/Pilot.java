@@ -20,14 +20,11 @@ public class Pilot implements iBorrower{
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
 
 
-    public Pilot(String password1, String password2, String name, String email) {
-        if (password1.equals(password2)) {               //så att användaren skriver in rätt lösen båda gångerna
-
+    public Pilot(String password1, String name, String email) {
             StrongPasswordEncryptor pwEncrypt = new StrongPasswordEncryptor();
             password = pwEncrypt.encryptPassword(password1);
             this.name = name;
             this.email = email;
-        }
     }
 
     /**
