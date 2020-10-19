@@ -26,7 +26,7 @@ public class License {
     }
 
 
-    public void checkIfExpiredSoon(){
+    private void checkIfExpiredSoon(){
         for (int i = 0; i < 7; i++){
             if (date.plusDays(i).toString().equals(expirationDate)){
                 soonExpired = true;
@@ -34,7 +34,7 @@ public class License {
         }
     }
 
-    public void checkIfExpired(){
+    private void checkIfExpired(){
         if(date.isAfter(LocalDate.parse(expirationDate))) {
             expired = true;
         }
@@ -42,10 +42,12 @@ public class License {
 
 
     public boolean isSoonExpired() {
+        checkIfExpiredSoon();
         return soonExpired;
     }
 
     public boolean isExpired() {
+        checkIfExpired();
         return expired;
     }
 

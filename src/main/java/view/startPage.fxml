@@ -8,12 +8,12 @@
 
 <AnchorPane prefHeight="745.0" prefWidth="1327.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartPageController">
    <children>
-      <Label layoutX="117.0" layoutY="225.0" prefHeight="29.0" prefWidth="172.0" text="Mina kommande bokningar" />
+      <Label layoutX="117.0" layoutY="225.0" prefHeight="29.0" styleClass="text-body" text="Mina kommande bokningar" />
       <fx:include source="header.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <FlowPane fx:id="bookingFlowpane" layoutX="117.0" layoutY="254.0" prefHeight="155.0" prefWidth="389.0" styleClass="windows" />
-      <Button fx:id="bookButton" layoutX="257.0" layoutY="440.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" text="Boka Flygtid" />
-      <Label layoutX="664.0" layoutY="231.0" prefHeight="18.0" prefWidth="87.0" text="Mina certifikat" />
-      <FlowPane fx:id="licenseFlowpane" layoutX="664.0" layoutY="254.0" prefHeight="155.0" prefWidth="328.0" styleClass="windows" />
+      <FlowPane fx:id="bookingFlowpane" layoutX="117.0" layoutY="254.0" prefHeight="170.0" prefWidth="389.0" styleClass="windows" vgap="5.0" />
+      <Button fx:id="bookButton" layoutX="230.0" layoutY="438.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="163.0" styleClass="green-button" text="Boka Flygtid" />
+      <Label layoutX="664.0" layoutY="231.0" prefHeight="18.0" styleClass="text-body" text="Mina certifikat" />
+      <FlowPane fx:id="licenseFlowpane" layoutX="664.0" layoutY="254.0" maxHeight="-Infinity" prefHeight="165.0" prefWidth="328.0" styleClass="windows" vgap="2.0" />
       <Label fx:id="welcomeLabel" layoutX="117.0" layoutY="123.0" prefHeight="45.0" prefWidth="572.0">
          <font>
             <Font size="36.0" />

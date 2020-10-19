@@ -15,6 +15,8 @@ public class LicenseItem extends AnchorPane {
     private Label licenseName;
     @FXML
     private Label dateLabel;
+    @FXML
+    private Label expireSoonLabel;
 
 
     public LicenseItem(License license) {
@@ -30,6 +32,22 @@ public class LicenseItem extends AnchorPane {
 
         licenseName.setText(license.getLicenseName());
         dateLabel.setText("Utgår " + license.getExpirationDate());
+    }
+
+    public void expiryDateCheck(License license){
+        if (license.isExpired()){
+            //red text + border  ..
+            this.getStyleClass().add("check-now-border");
+            expireSoonLabel.setText("Certifikat har utgått!");
+            expireSoonLabel.getStyleClass().add("warning-background");
+            dateLabel.setText("Utgick " + license.getExpirationDate());
+        }
+        else if (license.isSoonExpired()) {
+            //yellow text + border
+            this.getStyleClass().add("check-soon-border");
+            expireSoonLabel.setText("Certifikat utgår snart!");
+            expireSoonLabel.getStyleClass().add("warning-background");
+        }
     }
 
 }

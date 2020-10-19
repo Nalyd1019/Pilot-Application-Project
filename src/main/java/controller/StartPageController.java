@@ -82,8 +82,11 @@ public class StartPageController implements Initializable {
         for(License license : licenses){
             LicenseItem licenseItem = licenseItemMap.get(license.getLicenseName());
             licenseFlowpane.getChildren().add(licenseItem);
+            licenseItem.expiryDateCheck(license);
         }
 
     }
+
+
 
 }

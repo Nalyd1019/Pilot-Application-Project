@@ -105,6 +105,10 @@
     -fx-border-color: #F5F5F5;
 }
 
+.check-initial-border {
+    -fx-border-color: green;
+}
+
 .text-field {
     -fx-border-color: #000000;
     -fx-border-width: 1px;
