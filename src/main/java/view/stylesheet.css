@@ -12,6 +12,10 @@
     	-fx-text-fill: #FFFFFF;
  
 }
+.green-button:hover {
+    -fx-background-color: #709c60;
+}
+
 
 .grey-button {
 	-fx-background-color: #C4C4C4;
@@ -21,6 +25,11 @@
     	-fx-text-fill: #332E2D ;
 }
 
+
+.grey-button:hover {
+    -fx-background-color: #b3b3b3;
+}
+
 .li-button {
 	-fx-background-color: #7DAD6C;
 	-fx-background-radius: 0px;
@@ -28,6 +37,9 @@
     	-fx-font-family: "Arial Hebrew Scholar";
     	-fx-text-fill: #FFFFFF;
 
+}
+.li-button:hover {
+    -fx-background-color: #709c60;
 }
 
 .combobox{
