@@ -87,7 +87,7 @@ public class MyClubListItem extends AnchorPane {
      */
     void applyYearlyCheck() {
         checkIsDoneButton.toFront();
-        checkIsDoneButton.setText("Tillsyn utförd");
+        checkIsDoneButton.setText("Årstillsyn klar");
         myClubPageListItem.getStyleClass().add("check-now-border");
         soonCheckLabel.getStyleClass().add("warning-background");
         soonCheckLabel.setText("Dags för årstillsyn");
@@ -109,8 +109,9 @@ public class MyClubListItem extends AnchorPane {
      */
     void applyDistanceCheck() {
         myClubPageListItem.getStyleClass().add("check-now-border");
+        distanceCheckLabel.getStyleClass().add("warning-background");
          distanceCheckButton.toFront();
-         distanceCheckLabel.setText("Flygplanet har flugit 250 h sedan tillsyn. Då är det dags för tillsyn.");
+         distanceCheckLabel.setText("Flugit 250 h sedan tillsyn, dags för ny kontroll!");
      }
 
 
@@ -127,6 +128,6 @@ public class MyClubListItem extends AnchorPane {
 
         myClubPageListItem.getStyleClass().add("check-soon-background");
         distanceCheckLabel.getStyleClass().add("warning-background");
-        distanceCheckLabel.setText("Flygplanet har snart flugit 250 h sedan tillsyn. Dags för tillsyn om " + hoursUntilCheck + " h");
+        distanceCheckLabel.setText(" Dags för tillsyn om " + hoursUntilCheck + " h");
     }
 }

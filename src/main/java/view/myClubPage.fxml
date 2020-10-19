@@ -11,7 +11,7 @@
       <Label fx:id="clubNameLabel" layoutX="62.0" layoutY="120.0" styleClass="text-larger" text="Flygklubb" />
       <ScrollPane fx:id="scrollPane" layoutX="62.0" layoutY="225.0" prefHeight="351.0" prefWidth="520.0">
          <content>
-            <FlowPane fx:id="airplaneListFlowPane" prefHeight="351.0" prefWidth="505.0" />
+            <FlowPane fx:id="airplaneListFlowPane" prefHeight="351.0" prefWidth="520.0" />
          </content>
       </ScrollPane>
       <ScrollPane fx:id="scrollPane1" layoutX="646.0" layoutY="228.0" prefHeight="346.0" prefWidth="520.0">
