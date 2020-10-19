@@ -54,7 +54,7 @@ public class MyClubController implements Initializable {
             listItemMap.put(airplane.getRegistration(), myClubListItem);
         }
 
-        for (Event event : flightBuddy.getCurrentClub().getEvents()){
+        for (Event event : flightBuddy.getCurrentClub().getSortedEvents()){
             EventListItem eventListItem = new EventListItem(event);
             eventListItemMap.put(event.getDescription(), eventListItem);
         }
@@ -89,7 +89,7 @@ public class MyClubController implements Initializable {
 
     private void updateEventList(){
         eventFlowPane.getChildren().clear();
-        List<Event> events = flightBuddy.getCurrentClub().getEvents();
+        List<Event> events = flightBuddy.getCurrentClub().getSortedEvents();
 
         for (Event event : events){
             EventListItem eventListItem = eventListItemMap.get(event.getDescription());
