@@ -10,7 +10,7 @@ import static junit.framework.TestCase.*;
 public class LogbookTest {
 
     private Logbook logbook = new Logbook();
-    private Pilot pilot = new Pilot("a", "a", "bosse", "test@gmail.com");
+    private Pilot pilot = new Pilot("a", "bosse", "test@gmail.com");
 
 
     @Test

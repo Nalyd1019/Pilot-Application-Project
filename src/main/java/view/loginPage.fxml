@@ -42,6 +42,11 @@
             <Insets top="5.0" />
          </VBox.margin>
       </CheckBox>
+      <Label fx:id="userNotFoundLabel" prefHeight="17.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
       <Button fx:id="logInButton" mnemonicParsing="false" styleClass="green-button" text="Logga in">
          <VBox.margin>
             <Insets bottom="5.0" top="20.0" />

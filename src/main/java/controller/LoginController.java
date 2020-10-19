@@ -9,12 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.FlightBuddy;
+import model.FlyingClub;
+import model.Pilot;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 
 
 import java.io.IOException;
@@ -30,6 +30,7 @@ public class LoginController implements Initializable {
     @FXML private TextField passwordTextField;
     @FXML private CheckBox showPasswordCheckBox;
     @FXML private Button createAccountButton;
+    @FXML private Label userNotFoundLabel;
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
 
     private String password;
@@ -41,18 +42,57 @@ public class LoginController implements Initializable {
         createAccountButton.setOnMouseClicked(mouseEvent -> onClickNewUser());
         setupPasswordField();
         setupPasswordCheckBox();
-
+        setupEmailField();
 
     }
 
     public void logIn(){
+        /*
         if (flightBuddy.validateLogIn(emailTextField.getText(),password)){
             ViewNavigator.LoadView(ViewNavigator.START);
         }
+
+         */
+
+        if (flightBuddy.userExists(emailTextField.getText())) {
+            verifyLogin();
+        }
+        else {
+            incorrectInput();
+        }
+    }
+
+    private void incorrectInput(){
+        userNotFoundLabel.setText("Fel E-mail eller lösenord");
+        userNotFoundLabel.setStyle("-fx-text-fill: red");
+    }
+
+    private void verifyLogin(){
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        Pilot user = flightBuddy.getUser(emailTextField.getText());
+        FlyingClub userClub = flightBuddy.getUserClub(emailTextField.getText());
+        String userEmail = user.getEmail();
+        String userPassword = user.getPassword();
+
+        if (userEmail.equals(emailTextField.getText()) && encryptor.checkPassword(password, userPassword)){
+            flightBuddy.setCurrentUser(user);
+            flightBuddy.setCurrentClub(userClub);
+            ViewNavigator.LoadView(ViewNavigator.START);
+        }
+        else {
+            incorrectInput();
+        }
+
     }
 
     public void onClickNewUser(){
         ViewNavigator.LoadView(ViewNavigator.NEWUSER);
+    }
+
+    private void setupEmailField(){
+        emailTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            userNotFoundLabel.setText("");
+        });
     }
 
     public void setupPasswordField(){
@@ -61,10 +101,12 @@ public class LoginController implements Initializable {
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
             password = newValue;
             passwordTextField.setText(password);
+            userNotFoundLabel.setText("");
         });
         passwordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             password = newValue;
             passwordField.setText(password);
+            userNotFoundLabel.setText("");
         });
     }
 

@@ -53,7 +53,7 @@ public class FlightBuddy {
         borasFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
         createPilot("123", "123", "Test", "test@gmail.com", borasFlygklubb);
-        Pilot p1 = new Pilot("pw","pw", "Dylan TestPilot", "dyltest@gmail.com");
+        Pilot p1 = new Pilot("pw", "Dylan TestPilot", "dyltest@gmail.com");
         p1.addLicense(new License(License.FLIGHT, LocalDate.now().plusYears(2)));
         p1.addLicense(new License(License.MEDICAL, LocalDate.now().plusYears(2)));
         skovdeFlygklubb.addMember(p1);
@@ -79,7 +79,7 @@ public class FlightBuddy {
      */
     protected void createPilot(String password, String passwordconfirmation,String name, String email, FlyingClub flyingClub){
         currentClub = flyingClub;
-        currentUser = new Pilot(password,passwordconfirmation,name,email);
+        currentUser = new Pilot(password,name,email);
        // if (currentUser.nameSet())
         currentClub.addMember(currentUser);
     }
@@ -116,6 +116,30 @@ public class FlightBuddy {
         return false;
     }
 
+    public Pilot getUser(String userEmail){
+        for (FlyingClub flyingclub : flyingclubs) {
+            int n = flyingclub.getPilots().size();
+            for (int j = 0; j < n; j++) {
+                if (flyingclub.getPilots().get(j).getEmail().equals(userEmail)) {
+                    return flyingclub.getPilots().get(j);
+                }
+            }
+        }
+        return null;
+    }
+
+    public FlyingClub getUserClub(String userEmail){
+        for (FlyingClub flyingclub : flyingclubs) {
+            int n = flyingclub.getPilots().size();
+            for (int j = 0; j < n; j++) {
+                if (flyingclub.getPilots().get(j).getEmail().equals(userEmail)) {
+                    return flyingclub;
+                }
+            }
+        }
+        return null;
+    }
+
     public String getFlyingClubName(int index){
         return flyingclubs.get(index).getClubName();
     }
@@ -140,6 +164,11 @@ public class FlightBuddy {
     public Pilot getCurrentUser() {
         return currentUser;
     }
+
+    public void setCurrentClub(FlyingClub currentClub){
+        this.currentClub = currentClub;
+    }
+
     public FlyingClub getCurrentClub() {
         return currentClub;
     }

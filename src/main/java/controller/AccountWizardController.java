@@ -10,6 +10,7 @@ import javafx.event.Event;
 import model.FlightBuddy;
 import model.License;
 import model.Pilot;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -99,7 +100,8 @@ public class AccountWizardController extends AbstractInputErrorController implem
      */
     @FXML private void onClickpageTwoNext(Event event){
         if (checkUserInput()) {
-            pilot = new Pilot(pageTwoPasswordTextField.getText(),pageTwoPasswordVerificationTextField.getText(),
+            StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+            pilot = new Pilot(encryptor.encryptPassword(pageTwoPasswordTextField.getText()),
                     pageTwoNameTextField.getText(),pageTwoEmailTextField.getText());
             pageThree.toFront();
 
