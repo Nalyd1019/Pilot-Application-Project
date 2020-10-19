@@ -2,9 +2,6 @@ package model;
 
 import java.time.LocalDate;
 
-/**
- * The airplane has a logbook in which all flights are logged.
- */
 public class Airplane implements iBookable{
 
     /**
@@ -18,8 +15,8 @@ public class Airplane implements iBookable{
      */
     private String registration;
 
-    // Obs, ändrat yearlycheckdate i json-filen för att testa
 
+    // Obs, ändrat yearlycheckdate i json-filen för att testa
     /**
      * The date of the yearly check, changes yearly.
      */
