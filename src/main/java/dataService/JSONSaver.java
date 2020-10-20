@@ -26,8 +26,10 @@ class JSONSaver implements IdataService {
     public void save(List<FlyingClub> flyingClubList) throws IOException {
 
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
-        gsonBuilder.registerTypeAdapter(iBookable.class, new IBookableAdapter());
-        gsonBuilder.registerTypeAdapter(iBorrower.class, new IBorrowerAdapter());
+        //gsonBuilder.registerTypeAdapter(iBookable.class, new IBookableAdapter());
+        //gsonBuilder.registerTypeAdapter(iBorrower.class, new IBorrowerAdapter());
+        gsonBuilder.registerTypeAdapter(iBorrower.class, new InterfaceAdapter<iBorrower>());
+        gsonBuilder.registerTypeAdapter(iBookable.class, new InterfaceAdapter<iBookable>());
         Gson gson = gsonBuilder.create();
         String json= gson.toJson(flyingClubList);
         Writer writer = new FileWriter(savedData);
@@ -44,8 +46,10 @@ class JSONSaver implements IdataService {
     public List<FlyingClub> load() throws FileNotFoundException {
 
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
-        gsonBuilder.registerTypeAdapter(iBookable.class, new IBookableAdapter());
-        gsonBuilder.registerTypeAdapter(iBorrower.class, new IBorrowerAdapter());
+        //gsonBuilder.registerTypeAdapter(iBookable.class, new IBookableAdapter());
+        //gsonBuilder.registerTypeAdapter(iBorrower.class, new IBorrowerAdapter());
+        gsonBuilder.registerTypeAdapter(iBorrower.class, new InterfaceAdapter<iBorrower>());
+        gsonBuilder.registerTypeAdapter(iBookable.class, new InterfaceAdapter<iBookable>());
         Gson gson = gsonBuilder.create();
         JsonArray jsonList = gson.fromJson(new FileReader(savedData), JsonArray.class);
         List<FlyingClub> flyingClubs = new ArrayList<>();
