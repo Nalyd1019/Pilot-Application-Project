@@ -5,7 +5,6 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.jasypt.util.password.StrongPasswordEncryptor;
 
 /**
  * author
@@ -47,12 +46,10 @@ public class Pilot implements iBorrower {
      */
     private int nStarts;
 
-    //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
 
 
     public Pilot(String password1, String name, String email) {
-            StrongPasswordEncryptor pwEncrypt = new StrongPasswordEncryptor();
-            password = pwEncrypt.encryptPassword(password1);
+            password = password1;
             this.name = name;
             this.email = email;
     }
@@ -63,17 +60,6 @@ public class Pilot implements iBorrower {
      */
     protected boolean nameSet(){
         return name!=null;
-    }
-
-    /**
-     *  Method that checks if a given combination of email and password matches the data in the instance
-     * @param email the email the user tries to login with
-     * @param password the password the user tries to login with
-     * @return true if the given combination matches the data, else returns false
-     */
-    public boolean validateLogin(String email, String password){
-        StrongPasswordEncryptor pwEncrypt = new StrongPasswordEncryptor();
-        return this.email.equals(email) && pwEncrypt.checkPassword(password, this.password);
     }
 
     int getTotalNStarts(){
