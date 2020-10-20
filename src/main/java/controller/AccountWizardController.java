@@ -151,13 +151,12 @@ public class AccountWizardController extends AbstractInputErrorController implem
         if (emptyTextField(pageTwoEmailTextField)) {
             return true;
         }
-            if (flightBuddy.userExists(pageTwoEmailTextField.getText())){
-                        errorLabelColorChange(emailErrorLabel);
-                        emailErrorLabel.setText("Email redan registrerad");
-                        errorControlColorChange(pageTwoEmailTextField);
-                        return true;
-                    }
-        return false;
+        else if (flightBuddy.userExists(pageTwoEmailTextField.getText())){
+            errorLabelColorChange(emailErrorLabel);
+            emailErrorLabel.setText("Email redan registrerad");
+            errorControlColorChange(pageTwoEmailTextField);
+            return true;
+        } else return !(validEmail(pageTwoEmailTextField,emailErrorLabel));
     }
     private boolean equalPassword(){
         if (!emptyTextField(pageTwoPasswordTextField)&& pageTwoPasswordTextField.getText().equals
@@ -170,5 +169,4 @@ public class AccountWizardController extends AbstractInputErrorController implem
         errorControlColorChange(pageTwoPasswordVerificationTextField);
         return false;
     }
-
 }
