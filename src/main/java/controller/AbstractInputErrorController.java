@@ -4,6 +4,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+/**
+ * @Author Albert Lund
+ * Abstract controller class that holds logic for checking user input and giving simple feedback to the user
+ */
 public class AbstractInputErrorController {
 
     void errorControlColorChange(Control control){

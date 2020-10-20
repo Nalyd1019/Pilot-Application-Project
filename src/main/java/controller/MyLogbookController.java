@@ -11,7 +11,13 @@ import model.Flight;
 import model.FlightBuddy;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+/**
+ * @Author Albert Lund
+ * Controller for the fxml file myLogBook.fxml
+ */
 
 public class MyLogbookController extends AbstractInputErrorController implements Initializable {
 
@@ -49,7 +55,7 @@ public class MyLogbookController extends AbstractInputErrorController implements
 
     /**
      * the initialize method that runs after the contructor and the FXML fields have been injected. Sets up the tableView
-     * with its TableColumns
+     * with its TableColumns. Also makes so the datepicker only allows past dates
      * @param url ??
      * @param resourceBundle ??
      */
@@ -71,6 +77,13 @@ public class MyLogbookController extends AbstractInputErrorController implements
         setCellValueFactory(destinationCol,"destination");
         setCellValueFactory(commentCol, "comment");
         flightsTableView.setItems(data);
+        flightDatePicker.setDayCellFactory(param -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
+            }
+        });
     }
 
     @FXML
@@ -122,7 +135,8 @@ public class MyLogbookController extends AbstractInputErrorController implements
         boolean takeoff = !emptyTextField(takeOffTextField);
         boolean destination = !emptyTextField(destinationTextField);
         boolean airplane = comboBoxHasSelectedValue(airPlaneComboBox);
-        if (date&&nStarts&&flightHours&&flightMinutes&&takeoff&&destination&&airplane) {
+        boolean comment = commentCheck();
+        if (date&&nStarts&&flightHours&&flightMinutes&&takeoff&&destination&&airplane&&comment) {
             flightBuddy.createPilotLogbookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
                     Integer.parseInt(flightMinutesTextField.getText()), Integer.parseInt(nStartsTextField.getText()), takeOffTextField.getText(),
                     destinationTextField.getText(), commentTextArea.getText(), airPlaneComboBox.getSelectionModel().getSelectedItem(),
@@ -146,5 +160,14 @@ public class MyLogbookController extends AbstractInputErrorController implements
         destinationTextField.clear();
         commentTextArea.clear();
         flightMinutesTextField.clear();
+    }
+    //TODO Temporär?
+    private boolean commentCheck(){
+        if (commentTextArea.getText().length()>26){
+            errorControlColorChange(commentTextArea);
+            return false;
+        }
+        confirmedControlColorChange(commentTextArea);
+        return true;
     }
 }

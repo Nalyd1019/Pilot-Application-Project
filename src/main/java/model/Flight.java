@@ -75,23 +75,23 @@ public final class Flight {
         return airplaneRegistration;
     }
 
-    String getDestination() {
+    public String getDestination() {
         return destination;
     }
 
-    String getDeparturePlace() {
+    public String getDeparturePlace() {
         return departurePlace;
     }
 
-    int getNHours() {
+    public int getNHours() {
         return nHours;
     }
 
-    int getNMinutes() {
+    public int getNMinutes() {
         return nMinutes;
     }
 
-    int getNStarts() {
+    public int getNStarts() {
         return nStarts;
     }
 
