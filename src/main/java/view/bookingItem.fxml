@@ -6,5 +6,7 @@
 <fx:root fx:id="bookingItem" prefHeight="83.0" prefWidth="485.0" style="-fx-border-color: green;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="airplaneRegLabel" layoutX="40.0" layoutY="33.0" text="Label" />
+      <Label fx:id="dayLabel" layoutX="108.0" layoutY="33.0" text="Label" />
+      <Label fx:id="timeLabel" layoutX="162.0" layoutY="33.0" text="Label" />
    </children>
 </fx:root>
