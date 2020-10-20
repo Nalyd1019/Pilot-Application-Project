@@ -13,15 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.*;
 
-import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.*;
 
 public class BookingController implements Initializable {
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
-    private iBorrower iBorrower;
-    private  iBookable iBookable;
 
     private List<Integer> weekNr = new ArrayList<>();
     private List<String> weekNames = new ArrayList<>();
@@ -322,13 +319,8 @@ public class BookingController implements Initializable {
             }
         }
 
-
-        //Ska det verkligen vara iBorrower och iBookable? Måste vara string för att kunna välja email och reg.
-        iBorrower pilotEmail = null;
-        iBookable registration = null;
-
-        //String pilotEmail = flightBuddy.getCurrentUser().getEmail();
-        //String registration = planeRegLabel.getText();
+        iBorrower pilotEmail = flightBuddy.getCurrentUser();
+        iBookable registration = flightBuddy.getCurrentClub().getAirplaneFromRegistration(planeRegLabel.getText());
 
 
         currentClubBookingHandler.createBooking(startTime, day, pilotEmail, registration);
