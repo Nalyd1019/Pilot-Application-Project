@@ -8,8 +8,8 @@ public class BookingHandlerTest {
 
     private BookingHandler bookingHandler = new BookingHandler();
     private Airplane airplane1 = new Airplane("airplane1", new Logbook());
-    Pilot pilot1 = new Pilot("123",  "pilot1", "pilot1@email.com");
-    Pilot pilot2 = new Pilot("123",  "pilot2", "pilot2@email.com");
+    private Pilot pilot1 = new Pilot("123",  "pilot1", "pilot1@email.com");
+    private Pilot pilot2 = new Pilot("123",  "pilot2", "pilot2@email.com");
 
 
     @Test
@@ -17,6 +17,26 @@ public class BookingHandlerTest {
         bookingHandler.createBooking(1, 14, pilot1, airplane1);
         assertEquals(1, bookingHandler.getBookings().size());
     }
+
+    @Test
+    public void createBookingCorrectDayTest() {
+        bookingHandler.createBooking(1,2, pilot1, airplane1);
+        assertEquals(bookingHandler.getBookings().get(0).getDay(), 2);
+    }
+
+    @Test
+    public void createBookingCorrectPilotTest() {
+        bookingHandler.createBooking(1,2, pilot1, airplane1);
+        assertEquals(bookingHandler.getBookings().get(0).getBorrower(), pilot1);
+    }
+
+
+    @Test
+    public void createBookingNotCorrectPilotTest() {
+        bookingHandler.createBooking(1,2, pilot2, airplane1);
+        assertNotSame(bookingHandler.getBookings().get(0).getBorrower(), pilot1);
+    }
+
 
     @Test
     public void createTwoBookingsSame(){

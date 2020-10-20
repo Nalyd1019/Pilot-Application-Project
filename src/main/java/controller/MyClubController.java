@@ -41,12 +41,9 @@ public class MyClubController implements Initializable {
         descriptionLabel.setText("Här ser du din klubbs flygplan samt om de behöver kontroll/tillsyn.");
 
         // TODO - For testing of distanceCheck
-        //Airplane seuyb = flightBuddy.getCurrentClub().getAirplanes().get(0);
-        //Logbook logSeuyb = seuyb.getLogbook();
         //logSeuyb.addLogbookEntry(LocalDate.of(2020, 2, 2),0,1005,5,"depPlace","dest", "com", "SE-UYB", "test@gmail.com");
         //seuyb.setnChecks(0);
         //seuyb.removeLogbookEntries();
-        // clubNameLabel.setText(String.valueOf(seuyb.getnChecks()));
         // TODO - testing over
 
         for (Airplane airplane : flightBuddy.getCurrentClub().getAirplanes()) {
