@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import model.Booking;
-import model.BookingHandler;
+import model.BookingSystem;
 import model.FlightBuddy;
 import model.License;
 
@@ -27,7 +27,7 @@ public class StartPageController implements Initializable {
     private Map<String, LicenseItem> licenseItemMap = new HashMap<String, LicenseItem>();
     private Map<Integer, BookingItem> bookingItemMap = new HashMap<>();
 
-    BookingHandler currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
+    BookingSystem currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
 
 
     @Override

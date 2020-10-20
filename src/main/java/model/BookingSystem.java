@@ -10,18 +10,18 @@ import java.util.NoSuchElementException;
  * When creating a booking, BookingSystem also makes sure that the time chosen is available.
  */
 
-public class BookingHandler {
+public class BookingSystem {
 
     /**
      * A list that contains all bookings.
      */
     private List<Booking> bookings;
 
-    public BookingHandler(List<Booking> bookings) {
+    public BookingSystem(List<Booking> bookings) {
         this.bookings = bookings;
     }
 
-    BookingHandler() {
+    BookingSystem() {
         bookings = new ArrayList<>();
     }
 
