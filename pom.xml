@@ -47,6 +47,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                 <target>9</target>
             </configuration>
         </plugin>
+		<plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+        <version>2.0</version>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -80,6 +85,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
           <artifactId>gson</artifactId>
           <version>2.8.5</version>
       </dependency>
+	  
 </dependencies>
   <reporting>
 <plugins>
