@@ -52,11 +52,6 @@ public class FlightBuddy {
         FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingHandler(),"hej");
         borasFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
-        createPilot("123", "123", "Test", "test@gmail.com", borasFlygklubb);
-        Pilot p1 = new Pilot("pw", "Dylan TestPilot", "dyltest@gmail.com");
-        p1.addLicense(new License(License.FLIGHT, LocalDate.now().plusYears(2)));
-        p1.addLicense(new License(License.MEDICAL, LocalDate.now().plusYears(2)));
-        skovdeFlygklubb.addMember(p1);
 
         skovdeFlygklubb.getEvents().add(new Event(LocalDate.now().plusDays(1), 10,18,"Segelflygets dag", "En rolig dag"));
         skovdeFlygklubb.getEvents().add(new Event(LocalDate.now(), 10,19,"Prova pa dag", "En rolig dag"));
@@ -65,7 +60,6 @@ public class FlightBuddy {
         flyingclubs.add(borasFlygklubb);
         flyingclubs.add(falbygdensFlygklubb);
 
-        skovdeFlygklubb.getBookingHandler().createBooking(10,3,p1, seUKE);
 
     }
 
@@ -84,25 +78,6 @@ public class FlightBuddy {
         currentClub.addMember(currentUser);
     }
 
-    /**
-     * Method that checks if there exists a combination of the given username and password when a user tries to login
-     * @param email the email the user tries to login with
-     * @param password the password the user tries to login with
-     * @return true if the given combination of email and password exists, else returns false
-     */
-    public boolean validateLogIn(String email, String password){
-        for (FlyingClub flyingclub : flyingclubs) {
-            int n = flyingclub.getPilots().size();
-            for (int j = 0; j < n; j++) {
-                if (flyingclub.getPilots().get(j).validateLogin(email, password)) {
-                    currentClub = flyingclub;
-                    currentUser = flyingclub.getPilots().get(j);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     public boolean userExists(String email){
         for (FlyingClub flyingclub : flyingclubs) {
