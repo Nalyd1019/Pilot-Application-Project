@@ -8,13 +8,40 @@ import java.util.List;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 
-public class Pilot implements iBorrower{
+public class Pilot implements iBorrower {
+    /**
+     * The pilot has a logbook with flights.
+     */
     private Logbook logbook = new Logbook();
+
+    /**
+     * Licenses needed to be able to fly.
+     */
     private List<License> licenses = new ArrayList<>();
+
+    /**
+     * A password needed to log in.
+     */
     private String password;
+
+    /**
+     * The name of the pilot.
+     */
     private String name;
+
+    /**
+     * The pilots email, used to log in.
+     */
     private String email;
+
+    /**
+     * The amount of hours the pilot had flown.
+     */
     private int startHours;
+
+    /**
+     * The amount of starts the pilot had made.
+     */
     private int nStarts;
 
     //private PasswordAuthentication passwordAuthentication = new PasswordAuthentication();
@@ -68,7 +95,6 @@ public class Pilot implements iBorrower{
     }
 
 
-    // TODO - Såhär kan metoden som ger flygtid se ut om man har en variabel starttid i Pilot
     int getPilotFlightTime(){
         int startHoursToMinutes = startHours * 60;
         return logbook.getPilotTotalMinutes(email) + startHoursToMinutes;
@@ -97,7 +123,7 @@ public class Pilot implements iBorrower{
         }
     }
 
-    public void addLicense(License license){
+    void addLicense(License license){
         licenses.add(license);
     }
 
@@ -106,6 +132,7 @@ public class Pilot implements iBorrower{
     }
 
 
+    // Setters and getters
     public String getEmail() {
         return email;
     }
