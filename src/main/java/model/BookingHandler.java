@@ -54,7 +54,7 @@ public class BookingHandler {
             if (timeIsAvailable(day, startTime)) {
                 Booking booking = new Booking(startTime, day, borrower, bookable);
                 bookings.add(booking);
-            } // TODO - fix else-statement?
+            }
         }
     }
 
