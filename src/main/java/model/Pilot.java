@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
-
+/**
+ * author
+ * Pilot represents a pilot, which is someone able to book items. 
+ */
 public class Pilot implements iBorrower {
     /**
      * The pilot has a logbook with flights.
