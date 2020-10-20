@@ -74,7 +74,7 @@ public class FlyingClub{
         return airplaneRegs;
     }
 
-    // TODO obs måste refaktoriseras!
+    // TODO obs måste refaktoriseras?
     public Airplane getAirplaneFromRegistration(String registration) {
         Airplane airplane = null;
 
