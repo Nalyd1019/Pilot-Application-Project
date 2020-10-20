@@ -87,10 +87,10 @@ public class MyClubListItem extends AnchorPane {
      */
     void applyYearlyCheck() {
         checkIsDoneButton.toFront();
-        checkIsDoneButton.setText("Årstillsyn klar");
+        checkIsDoneButton.setText("Årskontroll klar");
         myClubPageListItem.getStyleClass().add("check-now-border");
         soonCheckLabel.getStyleClass().add("warning-background");
-        soonCheckLabel.setText("Dags för årstillsyn");
+        soonCheckLabel.setText("Dags för årskontroll");
     }
 
 
@@ -100,7 +100,7 @@ public class MyClubListItem extends AnchorPane {
     void applySoonYearlyCheck() {
          soonCheckLabel.getStyleClass().add("warning-background");
         myClubPageListItem.getStyleClass().add("check-soon-border");
-        soonCheckLabel.setText("Årstillsyn: " + airplane.getYearlyCheckDate().toString() );
+        soonCheckLabel.setText("Årskontroll: " + airplane.getYearlyCheckDate().toString() );
      }
 
 

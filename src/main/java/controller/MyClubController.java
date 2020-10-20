@@ -38,7 +38,7 @@ public class MyClubController implements Initializable {
         scrollPane.setFitToHeight(true);
 
         clubNameLabel.setText(flightBuddy.getCurrentClub().getClubName());
-        descriptionLabel.setText("Här ser du din klubbs flygplan samt om de behöver tillsyn.");
+        descriptionLabel.setText("Här ser du din klubbs flygplan samt om de behöver kontroll/tillsyn.");
 
         // TODO - For testing of distanceCheck
         //Airplane seuyb = flightBuddy.getCurrentClub().getAirplanes().get(0);
