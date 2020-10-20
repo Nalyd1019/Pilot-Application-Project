@@ -2,6 +2,10 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * @author Lisa Samuelsson
+ * Airplane represents an airplane, which is a bookable item.
+ */
 public class Airplane implements iBookable{
 
     /**
@@ -124,10 +128,6 @@ public class Airplane implements iBookable{
     // Getters
     public String getRegistration() {
         return registration;
-    }
-
-    public String setRegistration(String registration){
-        return this.registration = registration;
     }
 
     public boolean isTimeForYearlyCheckNow() {

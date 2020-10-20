@@ -4,8 +4,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Lisa Samuelsson
+ * The logbook holds flights, and can be filtered based on elements in the flight.
+ */
 public class Logbook {
 
+    /**
+     * A list of all all flights in the logbook.
+     */
     private List<Flight> flights;
 
     public Logbook(List<Flight> flights) {

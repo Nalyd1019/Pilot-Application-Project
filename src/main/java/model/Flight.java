@@ -2,12 +2,12 @@ package model;
 
 import java.time.LocalDate;
 
-public final class Flight {
 
-    /**
-     * @author Lisa Samuelsson
-     * The class is responsible for saving data about a flight and keeping it immutable. 
-     */
+/**
+ * @author Lisa Samuelsson
+ * The class is responsible for saving data about a flight and keeping it immutable.
+ */
+public final class Flight {
 
     /**
      * The date the flight took place.
@@ -55,6 +55,7 @@ public final class Flight {
     private final String pilotEmail;
 
 
+
     public Flight(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination,
                   String comment, String airplaneRegistration, String pilotEmail) {
         this.date = date;
@@ -70,28 +71,27 @@ public final class Flight {
 
 
     // Getters
-
     public String getAirplaneRegistration() {
         return airplaneRegistration;
     }
 
-    public String getDestination() {
+    String getDestination() {
         return destination;
     }
 
-    public String getDeparturePlace() {
+    String getDeparturePlace() {
         return departurePlace;
     }
 
-    public int getNHours() {
+    int getNHours() {
         return nHours;
     }
 
-    public int getNMinutes() {
+    int getNMinutes() {
         return nMinutes;
     }
 
-    public int getNStarts() {
+    int getNStarts() {
         return nStarts;
     }
 
