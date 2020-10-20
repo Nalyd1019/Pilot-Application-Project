@@ -40,7 +40,7 @@ public class MyClubListItem extends AnchorPane {
 
         this.airplane = airplane;
         this.registrationLabel.setText(registration);
-        this.flightTimeLabel.setText("Flygtid: " + flightTime + " minuter");
+        this.flightTimeLabel.setText("Flygtid: " + flightTime/60 + " h " + flightTime%60 + " min");
         this.myClubController = myClubController;
         this.soonCheckLabel.setText("Datum för årskontroll: " + airplane.getYearlyCheckDate().toString());
     }
@@ -111,7 +111,7 @@ public class MyClubListItem extends AnchorPane {
         myClubPageListItem.getStyleClass().add("check-now-border");
         distanceCheckLabel.getStyleClass().add("warning-background");
          distanceCheckButton.toFront();
-         distanceCheckLabel.setText("Flugit 250 h sedan tillsyn, dags för ny kontroll!");
+         distanceCheckLabel.setText("Dags för ny tillsyn!");
      }
 
 
@@ -126,8 +126,6 @@ public class MyClubListItem extends AnchorPane {
         int minutesUntilCheck = 15000-(totalTime-checkedTime);
         int hoursUntilCheck = minutesUntilCheck/60;
 
-        myClubPageListItem.getStyleClass().add("check-soon-background");
-        distanceCheckLabel.getStyleClass().add("warning-background");
         distanceCheckLabel.setText(" Dags för tillsyn om " + hoursUntilCheck + " h");
     }
 }

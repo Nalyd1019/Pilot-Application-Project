@@ -9,7 +9,6 @@ public class Airplane implements iBookable{
      */
     private Logbook logbook;
 
-
     /**
      * The airplane has a registration, like a name.
      */
