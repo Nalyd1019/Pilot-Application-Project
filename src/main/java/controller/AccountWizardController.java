@@ -15,6 +15,11 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the fxml file accountWizard which helps the user create a new account
+ * @Author Albert Lund &
+ */
+
 public class AccountWizardController extends AbstractInputErrorController implements Initializable {
 
     @FXML private AnchorPane pageOne;

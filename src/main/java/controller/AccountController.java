@@ -12,6 +12,10 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * @Author Albert Lund
+ * Controller for the fxml file myAccountPage
+ */
 public class AccountController extends AbstractInputErrorController implements Initializable {
 
     @FXML private TextField nameTextField;
