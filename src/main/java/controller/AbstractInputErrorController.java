@@ -48,5 +48,15 @@ public class AbstractInputErrorController {
         }
         return true;
     }
-    //TODO - lägga till metod för att kolla om giltlig e-post
+    boolean validEmail(TextField textField, Label errorLabel){
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        if (textField.getText().matches(regex)){
+            confirmedControlColorChange(textField);
+            return true;
+        }
+        errorControlColorChange(textField);
+        errorLabel.setText("Ej giltlig e-postadress");
+        errorControlColorChange(errorLabel);
+        return false;
+    }
 }

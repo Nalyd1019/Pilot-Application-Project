@@ -51,7 +51,7 @@ public class AccountController extends AbstractInputErrorController implements I
      */
     @FXML private void updateUserInfo() {
         Pilot pilot = flightBuddy.getCurrentUser();
-        if ((!flightBuddy.userExists(emailTextField.getText()) || flightBuddy.getPilotEmail().equals(emailTextField.getText()))&&!emptyTextField(emailTextField)) {
+        if (emailCheck()) {
             confirmedControlColorChange(emailTextField);
             boolean newName = emptyTextField(nameTextField);
             boolean newPassword = emptyTextField(passwordTextField);
@@ -65,10 +65,17 @@ public class AccountController extends AbstractInputErrorController implements I
                 Objects.requireNonNull(getWantedLicense(License.FLIGHT)).setExpirationDate(flightCertTextField.getText());
             }
         }
-        else {
+    }
+    private boolean emailCheck() {
+        if (flightBuddy.userExists(emailTextField.getText()) || flightBuddy.getPilotEmail().equals(emailTextField.getText())) {
             errorControlColorChange(emailTextField);
             emailErrorLabel.setText("Email redan registrerad");
             errorLabelColorChange(emailErrorLabel);
-        }
+            return false;
+        } else if (emptyTextField(emailTextField)) {
+            emailErrorLabel.setText("Email måste fyllas i");
+            errorLabelColorChange(emailErrorLabel);
+            return false;
+        } else return (validEmail(emailTextField, emailErrorLabel));
     }
 }
