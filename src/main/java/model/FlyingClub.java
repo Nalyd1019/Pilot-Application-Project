@@ -1,7 +1,6 @@
 package model;
 
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,13 +8,13 @@ import java.util.List;
 
 public class FlyingClub{
     private List<Pilot> pilots = new ArrayList<>();
-    private BookingHandler bookingHandler;
+    private BookingSystem bookingHandler;
     private List<Airplane> airplanes = new ArrayList<>();
     private String password;
     private String clubName;
     private List<Event> events = new ArrayList<>();
 
-    public FlyingClub (String clubName, BookingHandler bookingHandler){
+    public FlyingClub (String clubName, BookingSystem bookingHandler){
         this.clubName = clubName;
         this.bookingHandler = bookingHandler;
     }
@@ -26,7 +25,7 @@ public class FlyingClub{
      * @param bookingHandler the bookinghandler the FLyingClub will use
      * @param password the password required in order to create an account with the FlyingClub
      */
-    public FlyingClub(String clubName, BookingHandler bookingHandler, String password){
+    public FlyingClub(String clubName, BookingSystem bookingHandler, String password){
         this.clubName = clubName;
         this.bookingHandler = bookingHandler;
         this.password = password;
@@ -60,7 +59,7 @@ public class FlyingClub{
         return password;
     }
 
-    public BookingHandler getBookingHandler() {
+    public BookingSystem getBookingHandler() {
         return bookingHandler;
     }
 

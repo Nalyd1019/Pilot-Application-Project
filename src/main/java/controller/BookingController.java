@@ -26,7 +26,7 @@ public class BookingController implements Initializable {
 
     private Map<Integer, String> weekdayNameMap = new HashMap<>();
 
-    BookingHandler currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
+    BookingSystem currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
 
     @FXML private ComboBox pickFlightCombo;
     @FXML private ComboBox pickDayCombo;

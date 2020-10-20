@@ -38,18 +38,18 @@ public class FlightBuddy {
      * method (should) no longer used
      */
     public void initializeClubs(){
-        FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingHandler());
+        FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingSystem());
         Airplane seUKE = new Airplane("SE-UKE", new Logbook());
         skovdeFlygklubb.addPlane(seUKE);
 
         skovdeFlygklubb.addPlane(new Airplane("SE-UDU", new Logbook()));
 
-        FlyingClub falbygdensFlygklubb = new FlyingClub("Falbygdens Flygklubb", new BookingHandler());
+        FlyingClub falbygdensFlygklubb = new FlyingClub("Falbygdens Flygklubb", new BookingSystem());
         falbygdensFlygklubb.addPlane(new Airplane("SE-UMY", new Logbook()));
         falbygdensFlygklubb.addPlane(new Airplane("SE-UND", new Logbook()));
         falbygdensFlygklubb.addPlane(new Airplane("SE-SKV", new Logbook()));
 
-        FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingHandler(),"hej");
+        FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingSystem(),"hej");
         borasFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
 

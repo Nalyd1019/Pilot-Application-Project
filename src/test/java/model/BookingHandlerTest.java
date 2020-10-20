@@ -6,7 +6,7 @@ import static junit.framework.TestCase.*;
 
 public class BookingHandlerTest {
 
-    private BookingHandler bookingHandler = new BookingHandler();
+    private BookingSystem bookingHandler = new BookingSystem();
     private Airplane airplane1 = new Airplane("airplane1", new Logbook());
     private Pilot pilot1 = new Pilot("123",  "pilot1", "pilot1@email.com");
     private Pilot pilot2 = new Pilot("123",  "pilot2", "pilot2@email.com");
