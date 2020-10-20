@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import model.Booking;
-import model.BookingHandler;
+import model.BookingSystem;
 import model.FlightBuddy;
 import model.License;
 
@@ -27,16 +27,16 @@ public class StartPageController implements Initializable {
     private Map<String, LicenseItem> licenseItemMap = new HashMap<String, LicenseItem>();
     private Map<Integer, BookingItem> bookingItemMap = new HashMap<>();
 
-    BookingHandler currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
+    BookingSystem currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        welcomeLabel.setText("Välkommen " + flightBuddy.getCurrentUser().getName());
+        welcomeLabel.setText("Välkommen " + flightBuddy.getPilotName());
         welcomeButton();
 
-        for(License license : flightBuddy.getCurrentUser().getLicenses()){
+        for(License license : flightBuddy.getPilotLicenses()){
             LicenseItem licenseItem = new LicenseItem(license);
             licenseItemMap.put(license.getLicenseName(),licenseItem);
         }
@@ -77,7 +77,7 @@ public class StartPageController implements Initializable {
     private void updateLicenseList(){
         licenseFlowpane.getChildren().clear();
 
-        List<License> licenses = flightBuddy.getCurrentUser().getLicenses();
+        List<License> licenses = flightBuddy.getPilotLicenses();
 
         for(License license : licenses){
             LicenseItem licenseItem = licenseItemMap.get(license.getLicenseName());

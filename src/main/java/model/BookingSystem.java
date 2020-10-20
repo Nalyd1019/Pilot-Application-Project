@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class BookingHandler {
+public class BookingSystem {
 
     private List<Booking> bookings;
 
-    public BookingHandler(List<Booking> bookings) {
+    public BookingSystem(List<Booking> bookings) {
         this.bookings = bookings;
     }
 
-    public BookingHandler() {
+    public BookingSystem() {
         bookings = new ArrayList<>();
     }
 

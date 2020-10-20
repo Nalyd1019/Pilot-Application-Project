@@ -133,8 +133,8 @@ public class AccountWizardController extends AbstractInputErrorController implem
         if (nStarts&&flightHours&&flyingExpiration&&medicalExpiration){
             pilot.setnStarts(Integer.parseInt(nStartsTextField.getText()));
             pilot.setStartHours(Integer.parseInt(flightHoursTextField.getText()));
-            pilot.addLicense(License.FLIGHT, flightLicenseExpiration.getValue());
-            pilot.addLicense(License.MEDICAL, medicalLicenseExpiration.getValue());
+            pilot.addLicense(FlightBuddy.FLIGHTLICENSE, flightLicenseExpiration.getValue());
+            pilot.addLicense(FlightBuddy.MEDICALLICENSE, medicalLicenseExpiration.getValue());
             flightBuddy.addMemberToCurrentClub(pilot);
             flightBuddy.setCurrentUser(pilot);
             ViewNavigator.LoadView(ViewNavigator.START);
@@ -151,13 +151,12 @@ public class AccountWizardController extends AbstractInputErrorController implem
         if (emptyTextField(pageTwoEmailTextField)) {
             return true;
         }
-            if (flightBuddy.userExists(pageTwoEmailTextField.getText())){
+        else if (flightBuddy.userExists(pageTwoEmailTextField.getText())){
                         errorLabelColorChange(emailErrorLabel);
                         emailErrorLabel.setText("Email redan registrerad");
                         errorControlColorChange(pageTwoEmailTextField);
                         return true;
-                    }
-        return false;
+                    } else return !(validEmail(pageTwoEmailTextField,emailErrorLabel));
     }
     private boolean equalPassword(){
         if (!emptyTextField(pageTwoPasswordTextField)&& pageTwoPasswordTextField.getText().equals

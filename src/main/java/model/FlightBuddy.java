@@ -7,6 +7,8 @@ import java.util.List;
 
 public class FlightBuddy {
 
+    public static final String MEDICALLICENSE = "Medical License";
+    public static final String FLIGHTLICENSE = "Flight License";
 
     private List<FlyingClub> flyingclubs = new ArrayList<>();
     private Pilot currentUser;
@@ -38,24 +40,24 @@ public class FlightBuddy {
      * method (should) no longer used
      */
     public void initializeClubs(){
-        FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingHandler());
+        FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingSystem());
         Airplane seUKE = new Airplane("SE-UKE", new Logbook());
         skovdeFlygklubb.addPlane(seUKE);
 
         skovdeFlygklubb.addPlane(new Airplane("SE-UDU", new Logbook()));
 
-        FlyingClub falbygdensFlygklubb = new FlyingClub("Falbygdens Flygklubb", new BookingHandler());
+        FlyingClub falbygdensFlygklubb = new FlyingClub("Falbygdens Flygklubb", new BookingSystem());
         falbygdensFlygklubb.addPlane(new Airplane("SE-UMY", new Logbook()));
         falbygdensFlygklubb.addPlane(new Airplane("SE-UND", new Logbook()));
         falbygdensFlygklubb.addPlane(new Airplane("SE-SKV", new Logbook()));
 
-        FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingHandler(),"hej");
+        FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingSystem(),"hej");
         borasFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
         createPilot("123", "123", "Test", "test@gmail.com", borasFlygklubb);
         Pilot p1 = new Pilot("pw", "Dylan TestPilot", "dyltest@gmail.com");
-        p1.addLicense(new License(License.FLIGHT, LocalDate.now().plusYears(2)));
-        p1.addLicense(new License(License.MEDICAL, LocalDate.now().plusYears(2)));
+        p1.addLicense(new License(FLIGHTLICENSE, LocalDate.now().plusYears(2)));
+        p1.addLicense(new License(MEDICALLICENSE, LocalDate.now().plusYears(2)));
         skovdeFlygklubb.addMember(p1);
 
         skovdeFlygklubb.getEvents().add(new Event(LocalDate.now().plusDays(1), 10,18,"Segelflygets dag", "En rolig dag"));
@@ -161,8 +163,12 @@ public class FlightBuddy {
         this.currentUser = currentUser;
     }
 
-    public Pilot getCurrentUser() {
-        return currentUser;
+    public String getPilotName(){
+        return currentUser.getName();
+    }
+
+    public String getPilotPassword(){
+        return currentUser.getPassword();
     }
 
     public void setCurrentClub(FlyingClub currentClub){
@@ -173,6 +179,12 @@ public class FlightBuddy {
         return currentClub;
     }
     //inte bra metod
+
+
+    public Pilot getCurrentUser() {
+        return currentUser;
+    }
+
     public boolean flyingClubMatchingPassword(String flyingClubName, String password){
         for (FlyingClub flyingclub : flyingclubs) {
             if (flyingclub.getClubName().equals(flyingClubName)) {
@@ -222,5 +234,23 @@ public class FlightBuddy {
     }
     public Flight getPilotLastEntry(){
         return currentUser.getLastEntry();
+    }
+    public String getWantedeLicenseExpirationDate(String type){
+        return currentUser.getWantedLicenseExpirationDate(type);
+    }
+    public void setPilotName(String name){
+        currentUser.setName(name);
+    }
+    public void setPilotEmail(String email){
+        currentUser.setEmail(email);
+    }
+    public void setPilotPassword(String password){
+        currentUser.setPassword(password);
+    }
+    public void setPilotLicenseExpirationDate(String date,String type){
+        currentUser.setLicenseExpirationDate(date,type);
+    }
+    public List<License> getPilotLicenses(){
+        return currentUser.getLicenses();
     }
 }

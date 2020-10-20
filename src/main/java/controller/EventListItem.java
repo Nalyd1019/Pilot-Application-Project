@@ -24,7 +24,7 @@ public class EventListItem extends AnchorPane {
     @FXML private CheckBox acceptEventCheckbox;
     @FXML private Label dateLabel;
 
-    private Pilot currentUser = FlightBuddy.getInstance().getCurrentUser();
+    private FlightBuddy flightBuddy = FlightBuddy.getInstance();
     private Event event;
 
     EventListItem(Event event) {
@@ -60,9 +60,9 @@ public class EventListItem extends AnchorPane {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (newValue){
-                    event.addAttendingPilot(currentUser);
+                    event.addAttendingPilot(flightBuddy.getCurrentUser());
                 } else{
-                    event.getPilotsAttending().remove(currentUser);
+                    event.getPilotsAttending().remove(flightBuddy.getCurrentUser());
                 }
 
             }
@@ -71,7 +71,7 @@ public class EventListItem extends AnchorPane {
 
     void updateCheckboxes(){
         for (Pilot pilot : event.getPilotsAttending()){
-            if (pilot.getEmail().equals(currentUser.getEmail())){
+            if (pilot.getEmail().equals(flightBuddy.getPilotEmail())){
                 acceptEventCheckbox.setSelected(true);
             }
         }
