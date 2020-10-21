@@ -14,6 +14,8 @@ public class FlightBuddy {
     private List<FlyingClub> flyingclubs = new ArrayList<>();
     private Pilot currentUser;
     private  FlyingClub currentClub;
+    public static final String MEDICALLICENSE = "Medical License";
+    public static final String FLIGHTLICENSE = "Flight License";
 
     /**
      * private constructor in order to make a singleton pattern
@@ -227,6 +229,14 @@ public class FlightBuddy {
         return currentUser.getPilotFlightTime();
     }
 
+    public String getPilotName(){
+        return currentUser.getName();
+    }
+
+    public String getPilotPassword(){
+        return currentUser.getPassword();
+    }
+
     /**
      * creates a logbook entry with the provided information for a pilot
      * @param date date of the flight
@@ -256,5 +266,23 @@ public class FlightBuddy {
      */
     public Flight getPilotLastEntry(){
         return currentUser.getLastEntry();
+    }
+    public String getWantedeLicenseExpirationDate(String type){
+        return currentUser.getWantedLicenseExpirationDate(type);
+    }
+    public void setPilotName(String name){
+        currentUser.setName(name);
+    }
+    public void setPilotEmail(String email){
+        currentUser.setEmail(email);
+    }
+    public void setPilotPassword(String password){
+        currentUser.setPassword(password);
+    }
+    public void setPilotLicenseExpirationDate(String date,String type){
+        currentUser.setLicenseExpirationDate(date,type);
+    }
+    public List<License> getPilotLicenses(){
+        return currentUser.getLicenses();
     }
 }

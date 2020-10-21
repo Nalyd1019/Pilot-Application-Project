@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.event.Event;
 import model.FlightBuddy;
-import model.License;
 import model.Pilot;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
@@ -138,8 +137,8 @@ public class AccountWizardController extends AbstractInputErrorController implem
         if (nStarts&&flightHours&&flyingExpiration&&medicalExpiration){
             pilot.setnStarts(Integer.parseInt(nStartsTextField.getText()));
             pilot.setStartHours(Integer.parseInt(flightHoursTextField.getText()));
-            pilot.addLicense(License.FLIGHT, flightLicenseExpiration.getValue());
-            pilot.addLicense(License.MEDICAL, medicalLicenseExpiration.getValue());
+            pilot.addLicense(FlightBuddy.FLIGHTLICENSE, flightLicenseExpiration.getValue());
+            pilot.addLicense(FlightBuddy.MEDICALLICENSE, medicalLicenseExpiration.getValue());
             flightBuddy.addMemberToCurrentClub(pilot);
             flightBuddy.setCurrentUser(pilot);
             ViewNavigator.LoadView(ViewNavigator.START);

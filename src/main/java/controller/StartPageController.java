@@ -36,7 +36,7 @@ public class StartPageController implements Initializable {
         welcomeLabel.setText("Välkommen " + flightBuddy.getCurrentUser().getName());
         welcomeButton();
 
-        for(License license : flightBuddy.getCurrentUser().getLicenses()){
+        for(License license : flightBuddy.getPilotLicenses()){
             LicenseItem licenseItem = new LicenseItem(license);
             licenseItemMap.put(license.getLicenseName(),licenseItem);
         }
@@ -77,7 +77,7 @@ public class StartPageController implements Initializable {
     private void updateLicenseList(){
         licenseFlowpane.getChildren().clear();
 
-        List<License> licenses = flightBuddy.getCurrentUser().getLicenses();
+        List<License> licenses = flightBuddy.getPilotLicenses();
 
         for(License license : licenses){
             LicenseItem licenseItem = licenseItemMap.get(license.getLicenseName());
