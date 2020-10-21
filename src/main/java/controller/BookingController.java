@@ -324,6 +324,8 @@ public class BookingController implements Initializable {
 
 
         currentClubBookingHandler.createBooking(startTime, day, pilotEmail, registration);
+        lightbox.toBack();
+        makeBooked();
 
     }
 
