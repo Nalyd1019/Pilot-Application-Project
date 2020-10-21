@@ -23,7 +23,7 @@ public class Airplane implements iBookable{
     /**
      * The date of the yearly check, changes yearly.
      */
-    private LocalDate yearlyCheckDate;
+    private LocalDate yearlyCheckDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth()-1);
 
 
     /**
@@ -45,7 +45,7 @@ public class Airplane implements iBookable{
     public Airplane(String registration, Logbook logbook){
         this.registration = registration;
         this.logbook = logbook;
-        this.yearlyCheckDate = LocalDate.of(2020,10,4);
+        //this.yearlyCheckDate = LocalDate.of(2020,10,4);
     }
 
     /**
@@ -97,7 +97,8 @@ public class Airplane implements iBookable{
      */
     public void yearlyCheckIsDone(){
         int nextYear = LocalDate.now().getYear()+1;
-        yearlyCheckDate = LocalDate.of(nextYear, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth());
+        setYearlyCheckDate(LocalDate.of(nextYear, LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth()));
+        isTimeForYearlyCheckNow = false;
     }
 
 
@@ -148,6 +149,9 @@ public class Airplane implements iBookable{
 
     public Logbook getLogbook() { return logbook; }
 
+    public void setYearlyCheckDate(LocalDate yearlyCheckDate) {
+        this.yearlyCheckDate = yearlyCheckDate;
+    }
 
     // TODO - Denna metoden bör ej användas, ska den t om tas bort? Endast för test nu
     public void removeLogbookEntries() {
