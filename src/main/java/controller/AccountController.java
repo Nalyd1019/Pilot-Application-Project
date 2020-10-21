@@ -5,8 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.FlightBuddy;
-import model.License;
-import model.Pilot;
 
 import java.net.URL;
 import java.util.Objects;
@@ -34,27 +32,17 @@ public class AccountController extends AbstractInputErrorController implements I
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nameTextField.setText(flightBuddy.getCurrentUser().getName());
-        passwordTextField.setText(flightBuddy.getCurrentUser().getPassword());
+        nameTextField.setText(flightBuddy.getPilotName());
+        passwordTextField.setText(flightBuddy.getPilotPassword());
         emailTextField.setText(flightBuddy.getPilotEmail());
-        medicalCertTextField.setText(Objects.requireNonNull(getWantedLicense(License.MEDICAL)).getExpirationDate());
-        flightCertTextField.setText(Objects.requireNonNull(getWantedLicense(License.FLIGHT)).getExpirationDate());
-    }
-
-    private License getWantedLicense(String s){
-        for (int i=0; i<flightBuddy.getCurrentUser().getLicenses().size(); i++){
-            if (flightBuddy.getCurrentUser().getLicenses().get(i).getLicenseName().equals(s)) {
-                return flightBuddy.getCurrentUser().getLicenses().get(i);
-            }
-        }
-        return null;
+        medicalCertTextField.setText(Objects.requireNonNull(flightBuddy.getWantedeLicenseExpirationDate(FlightBuddy.MEDICALLICENSE)));
+        flightCertTextField.setText(Objects.requireNonNull(flightBuddy.getWantedeLicenseExpirationDate(FlightBuddy.FLIGHTLICENSE)));
     }
 
     /**
      * saves the new data the user has put into the textFields to currentUser
      */
     @FXML private void updateUserInfo() {
-        Pilot pilot = flightBuddy.getCurrentUser();
         if (emailCheck()) {
             confirmedControlColorChange(emailTextField);
             boolean newName = emptyTextField(nameTextField);
@@ -62,11 +50,11 @@ public class AccountController extends AbstractInputErrorController implements I
             boolean newMedical = emptyTextField(medicalCertTextField);
             boolean newFlight = emptyTextField(flightCertTextField);
             if (!newName&&!newPassword&&!newMedical&&!newFlight){
-                pilot.setName(nameTextField.getText());
-                pilot.setPassword(passwordTextField.getText());
-                pilot.setEmail(emailTextField.getText());
-                Objects.requireNonNull(getWantedLicense(License.MEDICAL)).setExpirationDate(medicalCertTextField.getText());
-                Objects.requireNonNull(getWantedLicense(License.FLIGHT)).setExpirationDate(flightCertTextField.getText());
+                flightBuddy.setPilotName(nameTextField.getText());
+                flightBuddy.setPilotPassword(passwordTextField.getText());
+                flightBuddy.setPilotEmail(emailTextField.getText());
+                flightBuddy.setPilotLicenseExpirationDate(medicalCertTextField.getText(),FlightBuddy.MEDICALLICENSE);
+                flightBuddy.setPilotLicenseExpirationDate(flightCertTextField.getText(),FlightBuddy.FLIGHTLICENSE);
             }
         }
     }

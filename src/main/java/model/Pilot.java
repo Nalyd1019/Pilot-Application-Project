@@ -5,6 +5,7 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * author
@@ -116,7 +117,7 @@ public class Pilot implements iBorrower {
         licenses.add(license);
     }
 
-    public List<License> getLicenses() {
+    List<License> getLicenses() {
         return licenses;
     }
 
@@ -160,6 +161,21 @@ public class Pilot implements iBorrower {
 
     model.Flight getLastEntry(){
         return logbook.getLastEntry();
+    }
+    private License getWantedLicense(String type){
+        for (License licens : licenses) {
+            if (licens.getLicenseName().equals(type)) {
+                return licens;
+            }
+        }
+        return null;
+    }
+    String getWantedLicenseExpirationDate(String type){
+        return Objects.requireNonNull(getWantedLicense(type)).getExpirationDate();
+    }
+
+    void setLicenseExpirationDate(String date, String type){
+        Objects.requireNonNull(getWantedLicense(type)).setExpirationDate(date);
     }
 
 }
