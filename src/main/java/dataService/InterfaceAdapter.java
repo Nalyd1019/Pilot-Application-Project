@@ -6,10 +6,17 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 
+/**
+ * Class in order for GSON to be able to serialize and deserialize interfaces. Taken from GSON recomendations.
+ * @param <T> What type to deserialize to.
+ */
+
 public class InterfaceAdapter<T> implements JsonSerializer, JsonDeserializer {
 
     private static final String CLASSNAME = "CLASSNAME";
     private static final String DATA = "DATA";
+
+
 
     public T deserialize(JsonElement jsonElement, Type type,
                          JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
