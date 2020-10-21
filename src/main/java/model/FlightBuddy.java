@@ -4,7 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * The facade of the model
+ * @Author Albert Lund &
+ */
 public class FlightBuddy {
 
 
@@ -78,7 +81,11 @@ public class FlightBuddy {
         currentClub.addMember(currentUser);
     }
 
-
+    /**
+     * checks if a user with the provided email exists in the system
+     * @param email the email which is to be checked if it exists already
+     * @return true if a user with the provided email already exists, otherwise false
+     */
     public boolean userExists(String email){
         for (FlyingClub flyingclub : flyingclubs) {
             int n = flyingclub.getPilots().size();
@@ -115,10 +122,17 @@ public class FlightBuddy {
         return null;
     }
 
+    /**
+     * @param index the position the club have in the list of flyingclubs
+     * @return the name of a flyingclub
+     */
     public String getFlyingClubName(int index){
         return flyingclubs.get(index).getClubName();
     }
 
+    /**
+     * @return the amount of flyingclubs
+     */
     public int getNFlyingClubs() {
         return flyingclubs.size();
     }
@@ -148,6 +162,13 @@ public class FlightBuddy {
         return currentClub;
     }
     //inte bra metod
+
+    /**
+     * checks if the provided flyingClub and password match
+     * @param flyingClubName the name of the flyingClub
+     * @param password the provided password
+     * @return true if the password match, otherwise false
+     */
     public boolean flyingClubMatchingPassword(String flyingClubName, String password){
         for (FlyingClub flyingclub : flyingclubs) {
             if (flyingclub.getClubName().equals(flyingClubName)) {
@@ -157,44 +178,82 @@ public class FlightBuddy {
         }
         return false;
     }
+
+    /**
+     * adds a member to a flyingclub
+     * @param pilot the pilot which is to be added
+     */
     public void addMemberToCurrentClub(Pilot pilot){
         currentClub.addMember(pilot);
     }
-    //försök till defensive copying
-    /*
-    public List<FlyingClub> getFlyingclubs() {
-        List<FlyingClub> copy = new ArrayList<>();
-        for (FlyingClub flyingclub : flyingclubs) {
-            copy.add(FlyingClub.copy(flyingclub));
-        }
-        return copy;
-    }
-
-     */
     public List<FlyingClub> getFlyingclubs() {
         return flyingclubs;
     }
     public List<String> getAirplaneReg(){
         return currentClub.getAirplaneReg();
     }
+
+    /**
+     * creates a logbook entry with the provided information for an airplane
+     * @param date date of the flight
+     * @param nHours how many hours the flight took
+     * @param nMinutes amount of minutes the flight took, excluding the full hours
+     * @param nStarts the total amount of starts the pilot took during the flight
+     * @param departurePlace where the pilot departed from
+     * @param destination where the pilot eventually landed
+     * @param comment any comment the pilot desires to give about the flight
+     * @param airplaneRegistration the registration of the airplane which was used during the flight
+     * @param pilotEmail the email of the pilot that flew
+     */
     public void addAirplaneLogBookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail){
         currentClub.addAirplaneLogBookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
     }
     public List<Flight> getPilotsEntries(){
         return currentUser.getPilotsEntries(currentUser.getEmail());
     }
+
+    /**
+     *
+     * @return the total amount of starts the pilot has
+     */
     public int getPilotNStarts(){
         return currentUser.getTotalNStarts();
     }
+
+    /**
+     * @return the total airborne time the pilot has
+     */
     public int getPilotFlightTime(){
         return currentUser.getPilotFlightTime();
     }
+
+    /**
+     * creates a logbook entry with the provided information for a pilot
+     * @param date date of the flight
+     * @param nHours how many hours the flight took
+     * @param nMinutes amount of minutes the flight took, excluding the full hours
+     * @param nStarts the total amount of starts the pilot took during the flight
+     * @param departurePlace where the pilot departed from
+     * @param destination where the pilot eventually landed
+     * @param comment any comment the pilot desires to give about the flight
+     * @param airplaneRegistration the registration of the airplane which was used during the flight
+     * @param pilotEmail the email of the pilot that flew
+     */
     public void createPilotLogbookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail ){
         currentUser.createLogbookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
     }
+
+    /**
+     * getter for the current pilotemail
+     * @return String with the pilots email
+     */
     public String getPilotEmail(){
         return currentUser.getEmail();
     }
+
+    /**
+     * @return the last entry of the current users LogBook entry
+     */
     public Flight getPilotLastEntry(){
         return currentUser.getLastEntry();
     }
