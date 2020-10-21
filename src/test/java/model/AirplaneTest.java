@@ -48,6 +48,22 @@ public class AirplaneTest {
         assertTrue(airplane.isCheckNeededNow());
     }
 
+    @Test
+    public void isCheckNeededTest(){
+        assertTrue(!airplane.isCheckNeededSoon());
+    }
+
+    @Test
+    public void yearlyCheckTest1(){
+        assertTrue(!airplane.isTimeForYearlyCheckNow());
+    }
+
+    @Test
+    public void yearlyCheckTest2(){
+        airplane.inspectYearlyCheck();
+        assertTrue(airplane.isTimeForYearlyCheckNow());
+    }
+
 
 
 }

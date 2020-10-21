@@ -30,7 +30,7 @@ public class EventTest {
 
 
     @Test
-    public void slotsDuringEventTest(){
+    public void slotsDuringEventTest2(){
         boolean first = flyingEvent2.slotsDuringEvent().contains(9);
         boolean second = flyingEvent2.slotsDuringEvent().contains(11);
         boolean third = !flyingEvent2.slotsDuringEvent().contains(13);
