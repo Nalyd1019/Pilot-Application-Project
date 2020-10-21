@@ -267,21 +267,51 @@ public class FlightBuddy {
     public Flight getPilotLastEntry(){
         return currentUser.getLastEntry();
     }
+
+    /**
+     * @param type either a MEDICALLICENSE or FLIGHTLICENSE
+     * @return the expiration date of a desired License
+     */
     public String getWantedeLicenseExpirationDate(String type){
         return currentUser.getWantedLicenseExpirationDate(type);
     }
+
+    /**
+     * sets the name of the currentuser
+     * @param name the desired name
+     */
     public void setPilotName(String name){
         currentUser.setName(name);
     }
+
+    /**
+     * sets the email of the currentuser
+     * @param email the desired email
+     */
     public void setPilotEmail(String email){
         currentUser.setEmail(email);
     }
+
+    /**
+     * sets the password of the currentuser
+     * @param password the desired password
+     */
     public void setPilotPassword(String password){
         currentUser.setPassword(password);
     }
+
+    /**
+     * sets expiration date of one of the users licenses
+     * @param date the date the license expires
+     * @param type the type of the license, either MEDICALLICENSE or FLIGHTLICENSE
+     */
     public void setPilotLicenseExpirationDate(String date,String type){
         currentUser.setLicenseExpirationDate(date,type);
     }
+
+    /**
+     * @return a list of the users licenses
+     */
     public List<License> getPilotLicenses(){
         return currentUser.getLicenses();
     }
