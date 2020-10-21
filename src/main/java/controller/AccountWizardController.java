@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.event.Event;
 import model.FlightBuddy;
-import model.Pilot;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import java.net.URL;
@@ -40,7 +39,7 @@ public class AccountWizardController extends AbstractInputErrorController implem
 
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
-    private Pilot pilot;
+    StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
 
     /**
      * the initialize method that runs after the contructor and the FXML fields have been injected
@@ -104,9 +103,6 @@ public class AccountWizardController extends AbstractInputErrorController implem
      */
     @FXML private void onClickpageTwoNext(Event event){
         if (checkUserInput()) {
-            StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
-            pilot = new Pilot(encryptor.encryptPassword(pageTwoPasswordTextField.getText()),
-                    pageTwoNameTextField.getText(),pageTwoEmailTextField.getText());
             pageThree.toFront();
 
         }
@@ -135,12 +131,9 @@ public class AccountWizardController extends AbstractInputErrorController implem
         boolean flyingExpiration = comboBoxHasSelectedValue(flightLicenseExpiration);
         boolean medicalExpiration = comboBoxHasSelectedValue(medicalLicenseExpiration);
         if (nStarts&&flightHours&&flyingExpiration&&medicalExpiration){
-            pilot.setnStarts(Integer.parseInt(nStartsTextField.getText()));
-            pilot.setStartHours(Integer.parseInt(flightHoursTextField.getText()));
-            pilot.addLicense(FlightBuddy.FLIGHTLICENSE, flightLicenseExpiration.getValue());
-            pilot.addLicense(FlightBuddy.MEDICALLICENSE, medicalLicenseExpiration.getValue());
-            flightBuddy.addMemberToCurrentClub(pilot);
-            flightBuddy.setCurrentUser(pilot);
+            flightBuddy.addMemberToCurrentClub(encryptor.encryptPassword(pageTwoPasswordTextField.getText()),pageTwoNameTextField.getText(),pageTwoEmailTextField.getText(),
+                    Integer.parseInt(nStartsTextField.getText()),Integer.parseInt(flightHoursTextField.getText()),
+                    medicalLicenseExpiration.getValue(),flightLicenseExpiration.getValue());
             ViewNavigator.LoadView(ViewNavigator.START);
         }
     }
