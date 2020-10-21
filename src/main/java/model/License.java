@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
+
 public class License {
     public static final String MEDICAL = "Medical License";
     public static final String FLIGHT = "Flight License";

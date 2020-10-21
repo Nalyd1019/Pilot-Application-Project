@@ -194,6 +194,11 @@ public class Logbook {
         }
         return starts;
     }
+
+    /**
+     * Method that is used to get latest entry in logbook.
+     * @return the last Flight that was added to list flights
+     */
     Flight getLastEntry(){
         return flights.get(flights.size()-1);
     }

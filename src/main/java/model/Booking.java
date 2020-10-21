@@ -1,16 +1,41 @@
 package model;
 
+/**
+ * @author Lisa Samuelsson
+ * Booking represents a booking made by a borrower, and stores information about this booking.
+ */
 public final class Booking {
 
+    /**
+     * The object that is booked.
+     */
     private iBookable bookable;
-    private iBorrower borrower;
-    // private final String pilotEmail;
-    // private final String airplaneRegistration;
-    private final int bookingID;
-    private static int  nextID = 0; // TODO - blir detta ett problem för immutability?
 
+    /**
+     * The one that has booked the object.
+     */
+    private iBorrower borrower;
+
+    /**
+     * An ID that keeps track of the booking.
+     */
+    private final int bookingID;
+
+    /**
+     * The first booking has ID zero.
+     */
+    private static int nextID = 0; // TODO - blir detta ett problem för immutability?
+
+    /**
+     * The time of day the booking starts.
+     */
     private final int startTime;
+
+    /**
+     * The day of the week the booking takes place.
+     */
     private final int day;
+
 
     public Booking(int startTime, int day, iBorrower borrower, iBookable bookable) {
         this.startTime = startTime;
@@ -20,18 +45,8 @@ public final class Booking {
         this.bookingID = nextID;
         nextID++;
     }
-/*
-   Booking(int startTime, int day, String pilotEmail, String airplaneRegistration) {
-       this.startTime = startTime;
-       this.day = day;
-       this.pilotEmail = pilotEmail;
-       this.airplaneRegistration = airplaneRegistration;
-       this.bookingID = nextID;
-       nextID++;
-   }
-   
-   */
 
+    // Getters
     public int getDay() {
         return day;
     }
@@ -39,15 +54,6 @@ public final class Booking {
     public int getStartTime() {
         return startTime;
     }
-
-    /*
-    String getPilotEmail() { return pilotEmail;
-    }
-
-
-    public String getAirplaneRegistration() { return airplaneRegistration;
-    }
-     */
 
     public iBookable getBookable() {
         return bookable;

@@ -27,24 +27,21 @@ public class MyClubController implements Initializable {
 
 
     /**
-     * The initialize method that sets up the controller, creates list items and sets label texts
+     * The initialize method that sets up the controller, creates list items and sets basic styling
      * @param url
      * @param resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setFitToWidth(true);
-        scrollPane.setFitToHeight(true);
 
-        clubNameLabel.setText(flightBuddy.getCurrentClub().getClubName());
-        descriptionLabel.setText("Här ser du din klubbs flygplan samt om de behöver kontroll/tillsyn.");
+        setUpStyling();
 
         // TODO - For testing of distanceCheck
         //logSeuyb.addLogbookEntry(LocalDate.of(2020, 2, 2),0,1005,5,"depPlace","dest", "com", "SE-UYB", "test@gmail.com");
         //seuyb.setnChecks(0);
         //seuyb.removeLogbookEntries();
         // TODO - testing over
+
 
         for (Airplane airplane : flightBuddy.getCurrentClub().getAirplanes()) {
             MyClubListItem myClubListItem = new MyClubListItem(airplane, airplane.getRegistration(), airplane.getTotalFlightTime(), this);
@@ -58,9 +55,6 @@ public class MyClubController implements Initializable {
 
         updateAirplaneList();
         updateEventList();
-
-        airplaneListFlowPane.getStyleClass().add("remove-focus");
-        scrollPane.getStyleClass().add("remove-focus");
 
     }
 
@@ -84,6 +78,7 @@ public class MyClubController implements Initializable {
         }
     }
 
+    // TODO - javadoc
     private void updateEventList(){
         eventFlowPane.getChildren().clear();
         List<Event> events = flightBuddy.getCurrentClub().getSortedEvents();
@@ -126,6 +121,21 @@ public class MyClubController implements Initializable {
         else if(airplane.isCheckNeededSoon()) {
            myClubListItem.applySoonDistanceCheck();
         }
+    }
+
+
+    /**
+     * Method that sets styling on the page, including text to the labels.
+     */
+    private void setUpStyling() {
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+
+        clubNameLabel.setText(flightBuddy.getCurrentClub().getClubName());
+        descriptionLabel.setText("Här ser du din klubbs flygplan samt om de behöver kontroll/tillsyn.");
+
+        airplaneListFlowPane.getStyleClass().add("remove-focus");
+        scrollPane.getStyleClass().add("remove-focus");
     }
 
 }
