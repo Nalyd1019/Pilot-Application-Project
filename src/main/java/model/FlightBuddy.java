@@ -166,7 +166,7 @@ public class FlightBuddy {
     //inte bra metod
 
     /**
-     * checks if the provided flyingClub and password match
+     * checks if the provided flyingClub and password match, also sets the currentClub if they do
      * @param flyingClubName the name of the flyingClub
      * @param password the provided password
      * @return true if the password match, otherwise false
@@ -182,11 +182,24 @@ public class FlightBuddy {
     }
 
     /**
-     * adds a member to a flyingclub
-     * @param pilot the pilot which is to be added
+     * creates a new pilot and adds them to the currentclub
+     * @param password the desired password for the new user
+     * @param name the desired name
+     * @param email the desired email
+     * @param nStarts the amount of starts the user have before they created an account
+     * @param nHours the amount of flighthours the user had before creating an account
+     * @param medicalExpiration the expirationdate of the users medical license
+     * @param flightExpiration the expirationdate of the users flight license
      */
-    public void addMemberToCurrentClub(Pilot pilot){
+    public void addMemberToCurrentClub(String password, String name, String email, int nStarts, int nHours, LocalDate medicalExpiration,
+    LocalDate flightExpiration){
+        Pilot pilot = new Pilot(password,name,email);
+        pilot.setnStarts(nStarts);
+        pilot.setStartHours(nHours);
+        pilot.addLicense(MEDICALLICENSE,medicalExpiration);
+        pilot.addLicense(FLIGHTLICENSE,flightExpiration);
         currentClub.addMember(pilot);
+        currentUser = pilot;
     }
     public List<FlyingClub> getFlyingclubs() {
         return flyingclubs;

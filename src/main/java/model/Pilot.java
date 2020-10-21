@@ -49,7 +49,7 @@ public class Pilot implements iBorrower {
 
 
 
-    public Pilot(String password1, String name, String email) {
+    Pilot(String password1, String name, String email) {
             password = password1;
             this.name = name;
             this.email = email;
@@ -127,11 +127,11 @@ public class Pilot implements iBorrower {
         return email;
     }
 
-    public void setStartHours(int startHours) {
+    void setStartHours(int startHours) {
         this.startHours = startHours;
     }
 
-    public void setnStarts(int nStarts) {
+    void setnStarts(int nStarts) {
         this.nStarts = nStarts;
     }
 
