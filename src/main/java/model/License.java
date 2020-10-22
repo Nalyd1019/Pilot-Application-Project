@@ -24,7 +24,7 @@ public class License {
      * @param expirationDate The day the license expires.
      */
 
-    public License(String licenseName, LocalDate expirationDate){
+    License(String licenseName, LocalDate expirationDate){
         this.licenseName = licenseName;
         this.expirationDate = expirationDate.toString();
         checkIfExpiredSoon();
@@ -80,7 +80,7 @@ public class License {
         return expirationDate;
     }
 
-    public void setExpirationDate(String expirationDate) {
+    void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
 }

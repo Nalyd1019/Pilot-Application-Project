@@ -26,7 +26,7 @@ public class LicenseItem extends AnchorPane {
      * Constructor for the class
      * @param license the license which is to be represented visually
      */
-    public LicenseItem(License license) {
+    LicenseItem(License license) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("licenseItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

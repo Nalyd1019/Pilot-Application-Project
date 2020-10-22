@@ -17,10 +17,6 @@ public class BookingSystem {
      */
     private List<Booking> bookings;
 
-    public BookingSystem(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
     BookingSystem() {
         bookings = new ArrayList<>();
     }

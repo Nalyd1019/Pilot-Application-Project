@@ -76,7 +76,7 @@ public class FlightBuddy {
      * @param email the pilots email, will be used when login in
      * @param flyingClub the flyingClub the pilot belongs to
      */
-    protected void createPilot(String password, String passwordconfirmation,String name, String email, FlyingClub flyingClub){
+     void createPilot(String password, String passwordconfirmation,String name, String email, FlyingClub flyingClub){
         currentClub = flyingClub;
         currentUser = new Pilot(password,name,email);
        // if (currentUser.nameSet())

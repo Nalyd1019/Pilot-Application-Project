@@ -37,7 +37,7 @@ public final class Booking {
     private final int day;
 
 
-    public Booking(int startTime, int day, iBorrower borrower, iBookable bookable) {
+    Booking(int startTime, int day, iBorrower borrower, iBookable bookable) {
         this.startTime = startTime;
         this.day = day;
         this.borrower = borrower;
