@@ -42,7 +42,7 @@ public class MyClubController implements Initializable {
         setUpStyling();
 
         for (Airplane airplane : flightBuddy.getCurrentClub().getAirplanes()) {
-            MyClubListItem myClubListItem = new MyClubListItem(airplane, airplane.getRegistration(), airplane.getTotalFlightTime(), this);
+            MyClubListItem myClubListItem = new MyClubListItem(airplane, airplane.getRegistration(), airplane.getTotalFlightTime());
             listItemMap.put(airplane.getRegistration(), myClubListItem);
         }
 

@@ -25,12 +25,10 @@ public class MyClubListItem extends AnchorPane {
     @FXML private Button distanceCheckButton;
     @FXML private AnchorPane myClubPageListItem;
 
-
-    private MyClubController myClubController;
     private Airplane airplane;
 
 
-    MyClubListItem(Airplane airplane, String registration, int flightTime, MyClubController myClubController) {
+    MyClubListItem(Airplane airplane, String registration, int flightTime) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("myClubPageListItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -44,7 +42,6 @@ public class MyClubListItem extends AnchorPane {
         this.airplane = airplane;
         this.registrationLabel.setText(registration);
         this.flightTimeLabel.setText("Flygtid: " + flightTime/60 + " h " + flightTime%60 + " min");
-        this.myClubController = myClubController;
         this.soonCheckLabel.setText("Datum för årskontroll: " + airplane.getYearlyCheckDate().toString());
     }
 
