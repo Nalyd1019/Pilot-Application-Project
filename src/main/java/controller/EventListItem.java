@@ -13,6 +13,10 @@ import model.Pilot;
 
 import java.io.IOException;
 
+/**
+ * @Author Dylan Osolian
+ * A controller for the EventListItem that represents one event.
+ */
 public class EventListItem extends AnchorPane {
 
     @FXML private Label eventName;
@@ -26,6 +30,10 @@ public class EventListItem extends AnchorPane {
     private Pilot currentUser = FlightBuddy.getInstance().getCurrentUser();
     private Event event;
 
+    /**
+     * Constructor for the EventListItem, initializes and makes the fxml file display relevant informatioon about the event.
+     * @param event the event that the listItem represents
+     */
     EventListItem(Event event) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("eventItem.fxml"));
         fxmlLoader.setRoot(this);
@@ -55,6 +63,10 @@ public class EventListItem extends AnchorPane {
 
     }
 
+    /**
+     * Listener to the checkbox to check if the user is attending the event or not.
+     * @param event The event the listItem represents.
+     */
     private void checkboxListener(Event event){
         acceptEventCheckbox.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
@@ -69,6 +81,9 @@ public class EventListItem extends AnchorPane {
         });
     }
 
+    /**
+     * Method to update checkboxes in order for them to show the same setting that has previosly been selected by the user
+     */
     void updateCheckboxes(){
         for (Pilot pilot : event.getPilotsAttending()){
             if (pilot.getEmail().equals(currentUser.getEmail())){

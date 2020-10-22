@@ -8,6 +8,10 @@ import model.Booking;
 
 import java.io.IOException;
 
+/**
+ * @Author Dylan Osolian
+ *  A controller for BookingItem that represents one booking.
+ */
 public class BookingItem extends AnchorPane {
 
     @FXML
@@ -15,6 +19,10 @@ public class BookingItem extends AnchorPane {
     @FXML Label dayLabel;
     @FXML Label timeLabel;
 
+    /**
+     * Constructor for the BookingItem, initializes and makes the fxml file display relevant informatioon about the booking.
+     * @param booking The booking which the Item represents.
+     */
     public BookingItem(Booking booking) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("bookingItem.fxml"));
         fxmlLoader.setRoot(this);
@@ -31,6 +39,11 @@ public class BookingItem extends AnchorPane {
 
     }
 
+    /**
+     * Method that returns which day of the week an int represents.
+     * @param i The int which represents a day of the week.
+     * @return A string which is a day of the week
+     */
     private String getDayFromInt(int i){
         switch (i){
             case 1:

@@ -42,8 +42,8 @@ public final class Booking {
         this.day = day;
         this.borrower = borrower;
         this.bookable = bookable;
-        this.bookingID = nextID;
         nextID++;
+        this.bookingID = nextID;
     }
 
     // Getters
