@@ -80,7 +80,7 @@ public class FlyingClub{
      * @param registration The registration of the desired airplane
      * @return The airplane with same registration as the one that the method is called with.
      */
-    public Airplane getAirplaneFromRegistration(String registration) {
+     public Airplane getAirplaneFromRegistration(String registration) {
         Airplane airplane = new Airplane("", new Logbook());
 
         for(Airplane a : airplanes) {
@@ -109,7 +109,7 @@ public class FlyingClub{
 
     }
 
-    public List<Event> getEvents() {
+    List<Event> getEvents() {
         return events;
     }
 

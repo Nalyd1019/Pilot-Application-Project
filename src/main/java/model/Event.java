@@ -25,7 +25,7 @@ public class Event {
      * @param description a general description of the event.
      * @param detailedDesc a detailed description of the event.
      */
-    public Event(LocalDate date, int startTime, int endTime, String description, String detailedDesc) {
+     Event(LocalDate date, int startTime, int endTime, String description, String detailedDesc) {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;

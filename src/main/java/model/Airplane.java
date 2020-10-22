@@ -42,7 +42,7 @@ public class Airplane implements iBookable{
      */
     private int nChecks = 0;
 
-    public Airplane(String registration, Logbook logbook){
+    Airplane(String registration, Logbook logbook){
         this.registration = registration;
         this.logbook = logbook;
         //this.yearlyCheckDate = LocalDate.of(2020,10,4);

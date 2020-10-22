@@ -23,7 +23,7 @@ public class FlyingEvent extends Event {
      * @param detailDesc see super class
      * @param airplanes list of airplanes that will be available during the event.
      */
-    public FlyingEvent(LocalDate date, int startTime, int endTime, String description, String detailDesc, List<Airplane> airplanes) {
+     FlyingEvent(LocalDate date, int startTime, int endTime, String description, String detailDesc, List<Airplane> airplanes) {
         super(date, startTime, endTime, description, detailDesc);
         this.airplanes = airplanes;
     }
