@@ -283,7 +283,8 @@ public class FlightBuddy {
 
     /**
      * @param type either a MEDICALLICENSE or FLIGHTLICENSE
-     * @return the expiration date of a desired License
+     * @return the expiration date of a desired License, null if the input string is neither of MEDICALLICENSE or
+     * FLIGHTLICENSE
      */
     public String getWantedeLicenseExpirationDate(String type){
         return currentUser.getWantedLicenseExpirationDate(type);

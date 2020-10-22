@@ -14,6 +14,10 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller linked to the fxml file loginPage
+ * @Author Albert Lund &
+ */
 public class LoginController implements Initializable {
 
     @FXML private Button logInButton;
@@ -77,6 +81,9 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * Loads the accountWizard if the user clicks on the button to create a new user
+     */
     public void onClickNewUser(){
         ViewNavigator.LoadView(ViewNavigator.NEWUSER);
     }
