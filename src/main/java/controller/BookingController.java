@@ -16,6 +16,10 @@ import model.*;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * @author
+ * Controller for the fxml file bookingPage, where the user can book flights.
+ */
 public class BookingController implements Initializable {
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();

@@ -8,10 +8,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * author
+ * @author
  * Pilot represents a pilot, which is someone able to book items. 
  */
 public class Pilot implements iBorrower {
+
     /**
      * The pilot has a logbook with flights.
      */

@@ -12,6 +12,11 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
 
+
+/**
+ * @author Lisa Samuelsson &
+ * Controller for the fxml file myClubPage which shows the wizard information about the club.
+ */
 public class MyClubController implements Initializable {
 
     @FXML private Label clubNameLabel;
@@ -35,13 +40,6 @@ public class MyClubController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         setUpStyling();
-
-        // TODO - For testing of distanceCheck
-        //logSeuyb.addLogbookEntry(LocalDate.of(2020, 2, 2),0,1005,5,"depPlace","dest", "com", "SE-UYB", "test@gmail.com");
-        //seuyb.setnChecks(0);
-        //seuyb.removeLogbookEntries();
-        // TODO - testing over
-
 
         for (Airplane airplane : flightBuddy.getCurrentClub().getAirplanes()) {
             MyClubListItem myClubListItem = new MyClubListItem(airplane, airplane.getRegistration(), airplane.getTotalFlightTime(), this);

@@ -11,7 +11,10 @@ import model.Airplane;
 
 import java.io.IOException;
 
-
+/**
+ * @author Lisa Samuelsson
+ * Controller for the fxml file myClubPageListItem which shows information about an airplane belonging to the club.
+ */
 public class MyClubListItem extends AnchorPane {
 
     @FXML private Label registrationLabel;
