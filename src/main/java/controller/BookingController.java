@@ -234,6 +234,7 @@ public class BookingController implements Initializable {
                     break;
                 } else if (!bookedButtons.contains(button)) {
                     button.setStyle("-fx-background-color: #7CAD6C");
+                    button.setDisable(false);
                 }
             }
         }
@@ -370,9 +371,7 @@ public class BookingController implements Initializable {
 
                 currentClubBookingHandler.createBooking(startTime, day, pilotEmail, registration);
                 lightbox.toBack();
-
-
-
+                makeBooked();
 
     }
 
