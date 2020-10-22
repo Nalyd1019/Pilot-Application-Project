@@ -81,7 +81,7 @@ public class FlyingClub{
      * @return The airplane with same registration as the one that the method is called with.
      */
     public Airplane getAirplaneFromRegistration(String registration) {
-        Airplane airplane = null;
+        Airplane airplane = new Airplane("", new Logbook());
 
         for(Airplane a : airplanes) {
             // this statement should always be true wherever the method is used
