@@ -73,11 +73,18 @@ public class FlyingClub{
         return airplaneRegs;
     }
 
-    // TODO obs måste refaktoriseras?
+    /**
+     * This method returns the airplane with a certain registration.
+     * If no airplane with this registration exists, the method returns a "dummy" airplane with empty strings.
+     * The method is used with caution, only when fixed values can be entered.
+     * @param registration The registration of the desired airplane
+     * @return The airplane with same registration as the one that the method is called with.
+     */
     public Airplane getAirplaneFromRegistration(String registration) {
         Airplane airplane = null;
 
         for(Airplane a : airplanes) {
+            // this statement should always be true wherever the method is used
             if(registration.equals(a.getRegistration())) {
                 airplane = a;
             }
