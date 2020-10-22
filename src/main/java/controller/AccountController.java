@@ -27,8 +27,6 @@ public class AccountController extends AbstractInputErrorController implements I
 
     /**
      * the initialize method that runs after the contructor and the FXML fields have been injected
-     * @param url ??
-     * @param resourceBundle ??
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
  * @Author Albert Lund
  * Abstract controller class that holds logic for checking user input and giving simple feedback to the user
  */
-public class AbstractInputErrorController {
+public abstract class AbstractInputErrorController {
 
     /**
      * Colors the border of the controller to red, signaling an erroneous input from the user
