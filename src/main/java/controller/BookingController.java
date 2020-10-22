@@ -13,13 +13,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.*;
 
+import java.awt.print.Book;
 import java.net.URL;
 import java.util.*;
 
 /**
- * @author
- * Controller for the fxml file bookingPage, where the user can book flights.
+ * @author Malin Rosén
+ * Controller for the booking system that populates the buttons and creates the bookings.
  */
+
 public class BookingController implements Initializable {
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
@@ -53,14 +55,13 @@ public class BookingController implements Initializable {
 
 
     /**
-     * The initialize method that
+     * The initialize method that populates all the necessary fields.
      * @param url
      * @param resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        bookPlaneButton.setStyle("-fx-background-color: #7CAD6C");
         weekdaysNames();
         weekdaysNr();
 
@@ -68,14 +69,10 @@ public class BookingController implements Initializable {
             weekdayNameMap.put(weekdayNumber, weekNames.get(weekdayNumber-1));
         }
 
-
         selectedFlight();
         selectedDay();
         populateButtons();
         populateDetailView();
-        makeBooked();
-
-        System.out.println(pickDayCombo.getValue());
 
     }
 
@@ -86,15 +83,15 @@ public class BookingController implements Initializable {
 
         if (pickFlightCombo.getValue() == null && pickDayCombo.getValue() == null) {
 
-            pickComboBoxLabel.setText("Vänligen välj en dag och ett flyg");
+            pickComboBoxLabel.setText("Vänligen välj en dag och ett flyg.");
 
         } else if (pickDayCombo.getValue() == null){
 
-            pickComboBoxLabel.setText("Vänligen välj en dag och ett flyg");
+            pickComboBoxLabel.setText("Vänligen välj en dag.");
 
         } else if (pickFlightCombo.getValue() == null){
 
-            pickComboBoxLabel.setText("Vänligen välj en dag och ett flyg");
+            pickComboBoxLabel.setText("Vänligen välj ett flyg.");
 
         } else {
             pickComboBoxLabel.setText("");
@@ -114,6 +111,7 @@ public class BookingController implements Initializable {
     /**
      * A method that checks what flight registration number is currently selected in the pickFlight combobox and
      * passes it to the label that shows the registration number in the detailview.
+     * It also updates the makeBooked method so the booked time slots change with what flight is currently selected.
      */
     private void selectedFlight(){
         pickFlightCombo.getItems().addAll(flightBuddy.getCurrentClub().getAirplaneReg());
@@ -132,6 +130,7 @@ public class BookingController implements Initializable {
     /**
      * A method that checks what day is currently selected in the pickDay combobox and passes it to the
      * label that shows the day in the detailview.
+     * It also updates the makeBooked method so the booked time slots change with what day is currently selected.
      */
     private void selectedDay(){
         pickDayCombo.getItems().addAll(weekdayNameMap.values());
@@ -219,23 +218,26 @@ public class BookingController implements Initializable {
         }
     }
 
-    //Måste fixa så att den kollar på dagen och flygplanet också
-
     /**
      * A method that changes the background color of the buttons with time slots that are booked.
      */
     private void makeBooked(){
-        for (Booking booking : currentClubBookingHandler.getBookings()){
-            for (Button button : buttonList){
+
+        List<Button> bookedButtons = new ArrayList<>();
+
+        for (Booking booking : currentClubBookingHandler.getBookings()) {
+            for (Button button : buttonList) {
                 if (isBooked(booking, button)){
                     button.setStyle("-fx-background-color: #C4C4C4");
-                } else {
+                    bookedButtons.add(button);
+                    button.setDisable(true);
+                    break;
+                } else if (!bookedButtons.contains(button)) {
                     button.setStyle("-fx-background-color: #7CAD6C");
                 }
             }
         }
     }
-
 
     /**
      * A method that checks if the time slot is booked.
@@ -368,7 +370,6 @@ public class BookingController implements Initializable {
 
                 currentClubBookingHandler.createBooking(startTime, day, pilotEmail, registration);
                 lightbox.toBack();
-                makeBooked();
 
 
 
