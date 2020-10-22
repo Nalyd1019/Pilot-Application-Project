@@ -4,10 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import model.Airplane;
 import model.License;
 
 import java.io.IOException;
+
+/**
+ * Controller for the class licenseItem which purpose is to make a visualisation of a license object
+ * @Author
+ */
 
 public class LicenseItem extends AnchorPane {
 
@@ -18,7 +22,10 @@ public class LicenseItem extends AnchorPane {
     @FXML
     private Label expireSoonLabel;
 
-
+    /**
+     * Constructor for the class
+     * @param license the license which is to be represented visually
+     */
     public LicenseItem(License license) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("licenseItem.fxml"));
         fxmlLoader.setRoot(this);
@@ -34,7 +41,11 @@ public class LicenseItem extends AnchorPane {
         dateLabel.setText("Utgår " + license.getExpirationDate());
     }
 
-    public void expiryDateCheck(License license){
+    /**
+     * Updates the visualisation of the item if the license has expired or will do soon
+     * @param license the license which needs its expiration date checked
+     */
+    void expiryDateCheck(License license){
         if (license.isExpired()){
             //red text + border  ..
             this.getStyleClass().add("check-now-border");

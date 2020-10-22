@@ -85,7 +85,7 @@ public class BookingSystem {
     }
 
     /**
-     * Method that returns a lust of all bookings made on an airplane
+     * Method that returns a list of all bookings made on an airplane
      * @param registration the airplane's registration
      * @return list of the bookings of that airplane
      */

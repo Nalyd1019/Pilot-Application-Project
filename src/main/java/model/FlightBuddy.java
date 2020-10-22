@@ -100,6 +100,11 @@ public class FlightBuddy {
         return false;
     }
 
+    /**
+     * returns a pilot if there is one with an email matching the one provided
+     * @param userEmail the email to the pilot which needs to be retrieved
+     * @return a Pilot which email matches the one provided
+     */
     public Pilot getUser(String userEmail){
         for (FlyingClub flyingclub : flyingclubs) {
             int n = flyingclub.getPilots().size();
@@ -112,6 +117,11 @@ public class FlightBuddy {
         return null;
     }
 
+    /**
+     * checks if there exists a user with the provided email and returns the Pilots FlyingClub
+     * @param userEmail the email to the pilot which club needs to be retrieved
+     * @return the FlyingClub of the Pilot which email was provided
+     */
     public FlyingClub getUserClub(String userEmail){
         for (FlyingClub flyingclub : flyingclubs) {
             int n = flyingclub.getPilots().size();
@@ -223,6 +233,10 @@ public class FlightBuddy {
     public void addAirplaneLogBookEntry(LocalDate date, int nHours, int nMinutes, int nStarts, String departurePlace, String destination, String comment, String airplaneRegistration, String pilotEmail){
         currentClub.addAirplaneLogBookEntry(date,nHours,nMinutes,nStarts,departurePlace,destination,comment,airplaneRegistration,pilotEmail);
     }
+
+    /**
+     * @return a list of all the currentUsers flights
+     */
     public List<Flight> getPilotsEntries(){
         return currentUser.getPilotsEntries(currentUser.getEmail());
     }
@@ -242,10 +256,16 @@ public class FlightBuddy {
         return currentUser.getPilotFlightTime();
     }
 
+    /**
+     * @return the currentUsers name
+     */
     public String getPilotName(){
         return currentUser.getName();
     }
 
+    /**
+     * @return the currentUsers password
+     */
     public String getPilotPassword(){
         return currentUser.getPassword();
     }

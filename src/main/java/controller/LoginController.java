@@ -31,7 +31,10 @@ public class LoginController implements Initializable {
 
     private String password;
 
-
+    /**
+     * the initialize method that runs after the contructor and the FXML fields have been injected. Also sets up the
+     * email and password textfields, as well as the password checkbox.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         logInButton.setOnMouseClicked(mouseEvent -> logIn());
@@ -42,6 +45,10 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * Logs in the user and takes them to the startpage if they have provided a user with the matching password, else
+     * the method keeps the user at the login page and provides an errormessage
+     */
     public void logIn(){
         /*
         if (flightBuddy.validateLogIn(emailTextField.getText(),password)){
@@ -94,7 +101,7 @@ public class LoginController implements Initializable {
         });
     }
 
-    public void setupPasswordField(){
+    private void setupPasswordField(){
         passwordField.toFront();
 
         passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -109,7 +116,7 @@ public class LoginController implements Initializable {
         });
     }
 
-    public void setupPasswordCheckBox(){
+    private void setupPasswordCheckBox(){
         showPasswordCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {

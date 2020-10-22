@@ -15,6 +15,10 @@ import model.License;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * @Author
+ * Controller for the fxml file startPage
+ */
 public class StartPageController implements Initializable {
 
     private FlightBuddy flightBuddy = FlightBuddy.getInstance();
@@ -27,9 +31,12 @@ public class StartPageController implements Initializable {
     private Map<String, LicenseItem> licenseItemMap = new HashMap<String, LicenseItem>();
     private Map<Integer, BookingItem> bookingItemMap = new HashMap<>();
 
-    BookingSystem currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
+    private BookingSystem currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
 
-
+    /**
+     * the initialize method that runs after the contructor and the FXML fields have been injected. Also sets text for
+     * welcome label, fills up both the licenseItemMap and the bookingItemMap and updates the lists in the view.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
