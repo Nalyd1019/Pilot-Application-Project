@@ -23,6 +23,7 @@ public class EventListItem extends AnchorPane {
     @FXML private Label eventDescription;
     @FXML private CheckBox acceptEventCheckbox;
     @FXML private Label dateLabel;
+    @FXML private Label numberAcceptedLabel;
 
     private Pilot currentUser = FlightBuddy.getInstance().getCurrentUser();
     private Event event;
@@ -45,6 +46,7 @@ public class EventListItem extends AnchorPane {
         eventEndTime.setText(String.valueOf(event.getEndTime()));
         eventDescription.setText(event.getDetailedDesc());
         dateLabel.setText(event.getDate().toString());
+        numberAcceptedLabel.setText(String.valueOf(event.getPilotsAttending().size()));
 
 
         updateCheckboxes();

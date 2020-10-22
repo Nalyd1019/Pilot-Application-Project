@@ -36,6 +36,7 @@ public class BookingController implements Initializable {
     @FXML private Label startTimeLabel;
     @FXML private Label endTimeLabel;
     @FXML private Label dayLabel;
+    @FXML private Label pickComboBoxLabel;
     @FXML private Button bookPlaneButton;
     @FXML private AnchorPane lightbox;
 
@@ -78,8 +79,25 @@ public class BookingController implements Initializable {
      * A method that opens the lightbox that contains the detail view when the user clicks on a timeslot.
      */
     @FXML public void openLightBox(){
-        lightbox.toFront();
+
+        if (pickFlightCombo.getValue() == null && pickDayCombo.getValue() == null) {
+
+            pickComboBoxLabel.setText("Vänligen välj en dag och ett flyg");
+
+        } else if (pickDayCombo.getValue() == null){
+
+            pickComboBoxLabel.setText("Vänligen välj en dag och ett flyg");
+
+        } else if (pickFlightCombo.getValue() == null){
+
+            pickComboBoxLabel.setText("Vänligen välj en dag och ett flyg");
+
+        } else {
+            pickComboBoxLabel.setText("");
+            lightbox.toFront();
+        }
     }
+
 
     /**
      * Closes the lightbox/detail view to show the timeslots again.
@@ -101,6 +119,7 @@ public class BookingController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 planeRegLabel.setText(newValue);
+                makeBooked();
             }
         });
 
@@ -119,6 +138,7 @@ public class BookingController implements Initializable {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
               dayLabel.setText(String.valueOf(newValue));
+              makeBooked();
 
             }
         });
@@ -195,20 +215,39 @@ public class BookingController implements Initializable {
         }
     }
 
-    //Måste fixa så att den kollar på dagen också
+    //Måste fixa så att den kollar på dagen och flygplanet också
 
     /**
-     * A method that checks if a time slot is booked, and if it is change its background color.
+     * A method that changes the background color of the buttons with time slots that are booked.
      */
     private void makeBooked(){
         for (Booking booking : currentClubBookingHandler.getBookings()){
             for (Button button : buttonList){
-                if (button.getText().matches(booking.getStartTime() + ":00")){
+                if (isBooked(booking, button)){
                     button.setStyle("-fx-background-color: #C4C4C4");
+                } else {
+                    button.setStyle("-fx-background-color: #7CAD6C");
                 }
             }
         }
+    }
 
+
+    /**
+     * A method that checks if the time slot is booked.
+     * @param booking The booking that is checked if it's booked or not.
+     * @param button The button that is pressed to book a flight.
+     * @return A bool that confirms if the time slot is booked or not.
+     */
+    private boolean isBooked(Booking booking, Button button){
+        if (weekdayNameMap.get(booking.getDay()).equals(pickDayCombo.getValue())){
+            if (booking.getBookable().getRegistration().equals(pickFlightCombo.getValue())){
+                if (button.getText().matches(booking.getStartTime() + ":00")){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -302,30 +341,33 @@ public class BookingController implements Initializable {
     @FXML private void createBooking(){
 
 
-        String startTimeLabelText = startTimeLabel.getText();
-        StringBuilder sb = new StringBuilder(startTimeLabelText);
-        StringBuilder removeFromLabel = sb.delete(2,5);
-        String newStartTime = removeFromLabel.toString();
+                String startTimeLabelText = startTimeLabel.getText();
+                StringBuilder sb = new StringBuilder(startTimeLabelText);
+                StringBuilder removeFromLabel = sb.delete(2,5);
+                String newStartTime = removeFromLabel.toString();
 
 
-        int startTime = Integer.parseInt(newStartTime);
+                int startTime = Integer.parseInt(newStartTime);
 
-        int day = 0;
-        
-        for (int i = 1; i < 8; i++) {
-            if (weekdayNameMap.get(i).matches(dayLabel.getText())){
-                day = i;
-                break;
-            }
-        }
+                int day = 0;
 
-        iBorrower pilotEmail = flightBuddy.getCurrentUser();
-        iBookable registration = flightBuddy.getCurrentClub().getAirplaneFromRegistration(planeRegLabel.getText());
+                for (int i = 1; i < 8; i++) {
+                    if (weekdayNameMap.get(i).matches(dayLabel.getText())){
+                        day = i;
+                        break;
+                    }
+                }
+
+                iBorrower pilotEmail = flightBuddy.getCurrentUser();
+                iBookable registration = flightBuddy.getCurrentClub().getAirplaneFromRegistration(planeRegLabel.getText());
 
 
-        currentClubBookingHandler.createBooking(startTime, day, pilotEmail, registration);
-        lightbox.toBack();
-        makeBooked();
+                currentClubBookingHandler.createBooking(startTime, day, pilotEmail, registration);
+                lightbox.toBack();
+                makeBooked();
+
+
+
 
     }
 

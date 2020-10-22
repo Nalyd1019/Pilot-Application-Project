@@ -146,7 +146,11 @@
     -fx-border-color: #FFFFFF;
 }
 
+#eventName {
+    -fx-text-fill: #7CAD6C;
+}
 
-
-/*------------------------- Booking Handler ------------------------------*/
+.bookingButton {
+    -fx-background-color: #7CAD6C
+}
 
