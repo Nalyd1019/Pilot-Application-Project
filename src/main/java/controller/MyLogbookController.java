@@ -56,8 +56,6 @@ public class MyLogbookController extends AbstractInputErrorController implements
     /**
      * the initialize method that runs after the contructor and the FXML fields have been injected. Sets up the tableView
      * with its TableColumns. Also makes so the datepicker only allows past dates
-     * @param url ??
-     * @param resourceBundle ??
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

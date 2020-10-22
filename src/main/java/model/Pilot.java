@@ -85,17 +85,21 @@ public class Pilot implements iBorrower {
         logbook.addLogbookEntry(date, nHours, nMinutes, nStarts, departurePlace, destination, comment, airplaneRegistration, pilotEmail);
     }
 
-
+    /**
+     * Method that returns the total amount of flight time the user has in minutes
+     * @return the total flight time
+     */
     int getPilotFlightTime(){
         int startHoursToMinutes = startHours * 60;
         return logbook.getPilotTotalMinutes(email) + startHoursToMinutes;
     }
 
-
-
-
-
-    public void addLicense(String name, LocalDate expirationDate){
+    /**
+     * Adds a license to the the users list of licenses
+     * @param name
+     * @param expirationDate
+     */
+    void addLicense(String name, LocalDate expirationDate){
         License license = new License(name, expirationDate);
         licenses.add(license);
     }
@@ -112,10 +116,6 @@ public class Pilot implements iBorrower {
                 System.out.println("Den här licensen går inte ur snart");
             }
         }
-    }
-
-    void addLicense(License license){
-        licenses.add(license);
     }
 
     List<License> getLicenses() {
