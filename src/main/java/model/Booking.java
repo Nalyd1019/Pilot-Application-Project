@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 /**
  * @author Lisa Samuelsson
  * Booking represents a booking made by a borrower, and stores information about this booking.
@@ -20,11 +22,7 @@ public final class Booking {
      * An ID that keeps track of the booking.
      */
     private final int bookingID;
-
-    /**
-     * The first booking has ID zero.
-     */
-    private static int nextID = 0;
+    
 
     /**
      * The time of day the booking starts.
@@ -42,8 +40,7 @@ public final class Booking {
         this.day = day;
         this.borrower = borrower;
         this.bookable = bookable;
-        nextID++;
-        this.bookingID = nextID;
+        this.bookingID = new Random().nextInt();
     }
 
     // Getters
