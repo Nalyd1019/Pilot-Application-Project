@@ -11,7 +11,7 @@ import java.util.Objects;
  * @author
  * Pilot represents a pilot, which is someone able to book items. 
  */
-public class Pilot implements iBorrower {
+public class Pilot implements IBorrower {
 
     /**
      * The pilot has a logbook with flights.

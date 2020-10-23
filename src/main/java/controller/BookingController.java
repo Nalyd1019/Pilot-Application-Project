@@ -13,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.*;
 
-import java.awt.print.Book;
 import java.net.URL;
 import java.util.*;
 
@@ -365,8 +364,8 @@ public class BookingController implements Initializable {
                     }
                 }
 
-                iBorrower pilotEmail = flightBuddy.getCurrentUser();
-                iBookable registration = flightBuddy.getCurrentClub().getAirplaneFromRegistration(planeRegLabel.getText());
+                IBorrower pilotEmail = flightBuddy.getCurrentUser();
+                IBookable registration = flightBuddy.getCurrentClub().getAirplaneFromRegistration(planeRegLabel.getText());
 
 
                 currentClubBookingHandler.createBooking(startTime, day, pilotEmail, registration);

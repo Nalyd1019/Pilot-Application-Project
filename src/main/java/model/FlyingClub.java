@@ -129,7 +129,7 @@ public class FlyingClub{
      * Method to create a FlyingEvent, method creates the event and also books the airplanes that will be used during the event.
      * (Method currently not implemented to GUI)
      */
-    public void createFlyingEventBookings(LocalDate date, int starTime, int endTime, iBorrower borrower, String description, String detailDesc, List<Airplane> airplanes){
+    public void createFlyingEventBookings(LocalDate date, int starTime, int endTime, IBorrower borrower, String description, String detailDesc, List<Airplane> airplanes){
         FlyingEvent event = new FlyingEvent(date, starTime, endTime, description,detailDesc, airplanes);
         for (Airplane airlane : event.getAirplanes()){
             for (int timeSlots : event.slotsDuringEvent()){

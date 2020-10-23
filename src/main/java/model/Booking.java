@@ -11,18 +11,18 @@ public final class Booking {
     /**
      * The object that is booked.
      */
-    private iBookable bookable;
+    private IBookable bookable;
 
     /**
      * The one that has booked the object.
      */
-    private iBorrower borrower;
+    private IBorrower borrower;
 
     /**
      * An ID that keeps track of the booking.
      */
     private final int bookingID;
-    
+
 
     /**
      * The time of day the booking starts.
@@ -35,7 +35,7 @@ public final class Booking {
     private final int day;
 
 
-    Booking(int startTime, int day, iBorrower borrower, iBookable bookable) {
+    Booking(int startTime, int day, IBorrower borrower, IBookable bookable) {
         this.startTime = startTime;
         this.day = day;
         this.borrower = borrower;
@@ -52,11 +52,11 @@ public final class Booking {
         return startTime;
     }
 
-    public iBookable getBookable() {
+    public IBookable getBookable() {
         return bookable;
     }
 
-    public iBorrower getBorrower() {
+    public IBorrower getBorrower() {
         return borrower;
     }
 

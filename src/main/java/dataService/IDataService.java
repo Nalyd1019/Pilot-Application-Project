@@ -11,7 +11,7 @@ import java.util.List;
  * Interface that represents a data service which can both load and save data.
  */
 
-public interface IdataService {
+public interface IDataService {
 
     List<FlyingClub> load() throws FileNotFoundException;
     void save(List<FlyingClub> flyingClubs) throws IOException;

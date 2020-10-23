@@ -45,7 +45,7 @@ public class BookingSystem {
      * @param borrower the one that makes a booking
      * @param bookable the item that is booked
      */
-    public void createBooking(int startTime, int day, iBorrower borrower, iBookable bookable) {
+    public void createBooking(int startTime, int day, IBorrower borrower, IBookable bookable) {
         {
             if (timeIsAvailable(day, startTime)) {
                 Booking booking = new Booking(startTime, day, borrower, bookable);

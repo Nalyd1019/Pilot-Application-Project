@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * @author Lisa Samuelsson
  * Airplane represents an airplane, which is a bookable item.
  */
-public class Airplane implements iBookable{
+public class Airplane implements IBookable {
 
     /**
      * The airplane has a logbook in which all flights are logged.

@@ -1,5 +1,5 @@
 import controller.ViewNavigator;
-import dataService.IdataService;
+import dataService.IDataService;
 import dataService.ServiceFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import model.FlightBuddy;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public final class Main extends Application {
@@ -39,7 +38,7 @@ public final class Main extends Application {
 	@Override
 	public void stop() throws IOException {
 		FlightBuddy flightBuddy = FlightBuddy.getInstance();
-		IdataService idataService = ServiceFactory.getService();
+		IDataService idataService = ServiceFactory.getService();
 		idataService.save(flightBuddy.getFlyingclubs());
 	}
 
@@ -56,7 +55,7 @@ public final class Main extends Application {
 	}
 	private void initializeData() throws Exception{
 		FlightBuddy flightBuddy = FlightBuddy.getInstance();
-		IdataService idataService = ServiceFactory.getService();
+		IDataService idataService = ServiceFactory.getService();
 		File data = new File("src/main/java/resources/savedData.json");
 		data.createNewFile();
 

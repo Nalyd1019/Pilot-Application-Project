@@ -2,8 +2,8 @@ package dataService;
 
 import com.google.gson.*;
 import model.FlyingClub;
-import model.iBookable;
-import model.iBorrower;
+import model.IBookable;
+import model.IBorrower;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
  * Class thats responsible for saving data used in application in a JSON file.
  */
 
-class JSONSaver implements IdataService {
+class JSONSaver implements IDataService {
 
     private static String savedData = "src/main/java/resources/savedData.json";
 
@@ -28,8 +28,8 @@ class JSONSaver implements IdataService {
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
         //gsonBuilder.registerTypeAdapter(iBookable.class, new IBookableAdapter());
         //gsonBuilder.registerTypeAdapter(iBorrower.class, new IBorrowerAdapter());
-        gsonBuilder.registerTypeAdapter(iBorrower.class, new InterfaceAdapter<iBorrower>());
-        gsonBuilder.registerTypeAdapter(iBookable.class, new InterfaceAdapter<iBookable>());
+        gsonBuilder.registerTypeAdapter(IBorrower.class, new InterfaceAdapter<IBorrower>());
+        gsonBuilder.registerTypeAdapter(IBookable.class, new InterfaceAdapter<IBookable>());
         Gson gson = gsonBuilder.create();
         String json= gson.toJson(flyingClubList);
         Writer writer = new FileWriter(savedData);
@@ -48,8 +48,8 @@ class JSONSaver implements IdataService {
         GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
         //gsonBuilder.registerTypeAdapter(iBookable.class, new IBookableAdapter());
         //gsonBuilder.registerTypeAdapter(iBorrower.class, new IBorrowerAdapter());
-        gsonBuilder.registerTypeAdapter(iBorrower.class, new InterfaceAdapter<iBorrower>());
-        gsonBuilder.registerTypeAdapter(iBookable.class, new InterfaceAdapter<iBookable>());
+        gsonBuilder.registerTypeAdapter(IBorrower.class, new InterfaceAdapter<IBorrower>());
+        gsonBuilder.registerTypeAdapter(IBookable.class, new InterfaceAdapter<IBookable>());
         Gson gson = gsonBuilder.create();
         JsonArray jsonList = gson.fromJson(new FileReader(savedData), JsonArray.class);
         List<FlyingClub> flyingClubs = new ArrayList<>();
