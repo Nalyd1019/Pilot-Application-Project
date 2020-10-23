@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.event.Event;
-import model.FlightBuddy;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import java.net.URL;
@@ -37,8 +36,6 @@ public class AccountWizardController extends AbstractInputErrorController implem
 
 
 
-
-    private FlightBuddy flightBuddy = FlightBuddy.getInstance();
     StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
 
     /**
@@ -49,8 +46,8 @@ public class AccountWizardController extends AbstractInputErrorController implem
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> options = FXCollections.observableArrayList();
-        for (int i = 0; i<flightBuddy.getNFlyingClubs(); i++){
-            options.add(flightBuddy.getFlyingClubName(i));
+        for (int i = 0; i<getFlightBuddy().getNFlyingClubs(); i++){
+            options.add(getFlightBuddy().getFlyingClubName(i));
         }
         flyingClubComboBox.getItems().addAll(options);
 
@@ -66,7 +63,7 @@ public class AccountWizardController extends AbstractInputErrorController implem
     @FXML private void onClickfirstPageNext(Event event){
         if (comboBoxHasSelectedValue(flyingClubComboBox)){
             confirmedControlColorChange(flyingClubComboBox);
-            if (flightBuddy.flyingClubMatchingPassword(flyingClubComboBox.getSelectionModel().getSelectedItem(),flyingClubPasswordTextField.getText())){
+            if (getFlightBuddy().flyingClubMatchingPassword(flyingClubComboBox.getSelectionModel().getSelectedItem(),flyingClubPasswordTextField.getText())){
                 confirmedControlColorChange(flyingClubPasswordTextField);
                 pageTwo.toFront();
             }
@@ -131,7 +128,7 @@ public class AccountWizardController extends AbstractInputErrorController implem
         boolean flyingExpiration = comboBoxHasSelectedValue(flightLicenseExpiration);
         boolean medicalExpiration = comboBoxHasSelectedValue(medicalLicenseExpiration);
         if (nStarts&&flightHours&&flyingExpiration&&medicalExpiration){
-            flightBuddy.addMemberToCurrentClub(encryptor.encryptPassword(pageTwoPasswordField.getText()),pageTwoNameTextField.getText(),pageTwoEmailTextField.getText(),
+            getFlightBuddy().addMemberToCurrentClub(encryptor.encryptPassword(pageTwoPasswordField.getText()),pageTwoNameTextField.getText(),pageTwoEmailTextField.getText(),
                     Integer.parseInt(nStartsTextField.getText()),Integer.parseInt(flightHoursTextField.getText()),
                     medicalLicenseExpiration.getValue(),flightLicenseExpiration.getValue());
             ViewNavigator.LoadView(ViewNavigator.START);
@@ -148,7 +145,7 @@ public class AccountWizardController extends AbstractInputErrorController implem
         if (emptyTextField(pageTwoEmailTextField)) {
             return true;
         }
-        else if (flightBuddy.userExists(pageTwoEmailTextField.getText())){
+        else if (getFlightBuddy().userExists(pageTwoEmailTextField.getText())){
             errorLabelColorChange(emailErrorLabel);
             emailErrorLabel.setText("Email redan registrerad");
             errorControlColorChange(pageTwoEmailTextField);

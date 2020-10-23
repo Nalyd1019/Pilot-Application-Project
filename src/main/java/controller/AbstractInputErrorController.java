@@ -3,12 +3,17 @@ package controller;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import model.FlightBuddy;
 
 /**
  * @Author Albert Lund
  * Abstract controller class that holds logic for checking user input and giving simple feedback to the user
  */
 public abstract class AbstractInputErrorController {
+
+    private FlightBuddy flightBuddy = FlightBuddy.getInstance();
+    private String medicalLicense = FlightBuddy.MEDICALLICENSE;
+    private String flightLicense = FlightBuddy.FLIGHTLICENSE;
 
     /**
      * Colors the border of the controller to red, signaling an erroneous input from the user
@@ -107,5 +112,17 @@ public abstract class AbstractInputErrorController {
         errorLabel.setText("Ej giltlig e-postadress");
         errorControlColorChange(errorLabel);
         return false;
+    }
+
+    public FlightBuddy getFlightBuddy() {
+        return flightBuddy;
+    }
+
+    public String getMedicalLicense() {
+        return medicalLicense;
+    }
+
+    public String getFlightLicense() {
+        return flightLicense;
     }
 }
