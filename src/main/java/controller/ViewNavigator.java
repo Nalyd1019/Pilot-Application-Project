@@ -35,8 +35,8 @@ public class ViewNavigator {
      */
     public static void LoadView(String fxml){
         try {
-            Parent root = FXMLLoader.load(ViewNavigator.class.getClassLoader().getResource(fxml));
             CURRENT_PAGE = fxml;
+            Parent root = FXMLLoader.load(ViewNavigator.class.getClassLoader().getResource(fxml));
             System.out.println(root);
             mainStage.getScene().setRoot(root);
         } catch (IOException e) {

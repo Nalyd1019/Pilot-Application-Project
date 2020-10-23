@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * @Author
+ * @Author Dylan Osolian & Samuel Dahlberg
  * Controller for the fxml file startPage
  */
 public class StartPageController implements Initializable {

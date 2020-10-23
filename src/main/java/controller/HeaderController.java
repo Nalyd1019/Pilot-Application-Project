@@ -5,10 +5,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+/**
+ * @Author Samuel Dahlberg
+ * Controller class for the header fxml file.
+ */
 public class HeaderController implements Initializable {
 
     @FXML private Hyperlink startLink;
@@ -19,8 +25,14 @@ public class HeaderController implements Initializable {
     @FXML private Hyperlink logoutLink;
     @FXML private ImageView logoImage;
 
+    /**
+     * The initialize method that runs when loading a page containing the header.
+     * The method sets the logoimage and makes all links lead to the correct page.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setLinkBold(ViewNavigator.getCurrentPage());
+
         logoImage.setImage(new Image(getClass().getClassLoader().getResourceAsStream("GliderSilhouette.png")));
         startLink.setOnMouseClicked(mouseEvent -> ViewNavigator.LoadView(ViewNavigator.START));
         clubLink.setOnMouseClicked(mouseEvent -> ViewNavigator.LoadView(ViewNavigator.CLUB));
@@ -29,16 +41,23 @@ public class HeaderController implements Initializable {
         bookingLink.setOnMouseClicked(mouseEvent -> ViewNavigator.LoadView(ViewNavigator.BOOKING));
         logoutLink.setOnMouseClicked(mouseEvent -> logout());
 
-        //setLinkBold(ViewNavigator.getCurrentPage());
+        startLink.setBorder(Border.EMPTY);
+        clubLink.setBorder(Border.EMPTY);
+        accountLink.setBorder(Border.EMPTY);
+        logbookLink.setBorder(Border.EMPTY);
+        bookingLink.setBorder(Border.EMPTY);
+        logoutLink.setBorder(Border.EMPTY);
+
 
     }
 
     private void logout(){
-        //currentuser = null
         ViewNavigator.LoadView(ViewNavigator.LOGIN);
     }
 
-    //TODO: add method to make link bold+underlined when clicked
+    /**
+     * Method styling the current page's link to be bold
+     */
     private void setLinkBold(String currentPage) {
         switch (currentPage) {
             case ViewNavigator.START:

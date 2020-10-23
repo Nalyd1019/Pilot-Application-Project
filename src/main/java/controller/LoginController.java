@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 /**
  * Controller linked to the fxml file loginPage
- * @Author Albert Lund &
+ * @Author Albert Lund & Samuel Dahlberg
  */
 public class LoginController implements Initializable {
 
