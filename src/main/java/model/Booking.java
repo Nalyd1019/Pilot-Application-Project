@@ -24,7 +24,7 @@ public final class Booking {
     /**
      * The first booking has ID zero.
      */
-    private static int nextID = 0; // TODO - blir detta ett problem för immutability?
+    private static int nextID = 0;
 
     /**
      * The time of day the booking starts.

@@ -18,13 +18,10 @@ public class Airplane implements iBookable{
      */
     private String registration;
 
-
-    // Obs, ändrat yearlycheckdate i json-filen för att testa
     /**
-     * The date of the yearly check, changes yearly.
+     * The date of the yearly check, changes yearly after the first check.
      */
     private LocalDate yearlyCheckDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonth(), LocalDate.now().getDayOfMonth()-1);
-
 
     /**
      * Is set to true if a year has gone since the last yearly check.
@@ -42,10 +39,15 @@ public class Airplane implements iBookable{
      */
     private int nChecks = 0;
 
+
+    /**
+     * The constructor for airplane
+     * @param registration the airplanes registration
+     * @param logbook the airplanes logbook
+     */
     Airplane(String registration, Logbook logbook){
         this.registration = registration;
         this.logbook = logbook;
-        //this.yearlyCheckDate = LocalDate.of(2020,10,4);
     }
 
     /**
@@ -103,7 +105,7 @@ public class Airplane implements iBookable{
 
 
     /**
-     * Keeps track of amount of checks in order to calculate when 250 has gone
+     * Adds 1 to nChecks when a check is done, then used to calculate when 250 hours has gone
      */
     public void distanceCheckIsDone(){
         nChecks++;
@@ -156,11 +158,6 @@ public class Airplane implements iBookable{
     // TODO - Denna metoden bör ej användas, ska den t om tas bort? Endast för test nu
     public void removeLogbookEntries() {
         logbook.clearLogbook();
-    }
-
-    // TODO - Denna metoden används för testsyften, tas bort sedan!
-    public void setnChecks(int nChecks) {
-        this.nChecks = nChecks;
     }
 
 
