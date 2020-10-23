@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.Flight;
-import model.FlightBuddy;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -49,7 +48,6 @@ public class MyLogbookController extends AbstractInputErrorController implements
     @FXML private TableColumn<Flight,String> commentCol;
     @FXML private TableColumn<Flight,Integer> flightMinutesTimeCol;
 
-    FlightBuddy flightBuddy = FlightBuddy.getInstance();
     ObservableList<Flight> data = FXCollections.observableArrayList();
 
 
@@ -63,9 +61,9 @@ public class MyLogbookController extends AbstractInputErrorController implements
         lightBox2.setVisible(false);
         onClickLogBookLabel();
         ObservableList<String> options = FXCollections.observableArrayList();
-        options.addAll(flightBuddy.getAirplaneReg());
+        options.addAll(getFlightBuddy().getAirplaneReg());
         airPlaneComboBox.getItems().addAll(options);
-        data.addAll(flightBuddy.getPilotsEntries());
+        data.addAll(getFlightBuddy().getPilotsEntries());
         setCellValueFactory(dateCol,"date");
         setCellValueFactory(airPlaneCol,"airplaneRegistration");
         setCellValueFactory(nStartsCol,"nStarts");
@@ -96,10 +94,10 @@ public class MyLogbookController extends AbstractInputErrorController implements
         statisticsAnchorPane.toFront();
         statisticsLabel.setUnderline(true);
         logBookLabel.setUnderline(false);
-        nStartsLabel.setText(Integer.toString(flightBuddy.getPilotNStarts()));
-        hoursLabel.setText(Integer.toString(getTotalFlightHours(flightBuddy.getPilotFlightTime())));
-        minutesLabel.setText(Integer.toString(getRemainingMinutes(flightBuddy.getPilotFlightTime(),
-                getTotalFlightHours(flightBuddy.getPilotFlightTime()))));
+        nStartsLabel.setText(Integer.toString(getFlightBuddy().getPilotNStarts()));
+        hoursLabel.setText(Integer.toString(getTotalFlightHours(getFlightBuddy().getPilotFlightTime())));
+        minutesLabel.setText(Integer.toString(getRemainingMinutes(getFlightBuddy().getPilotFlightTime(),
+                getTotalFlightHours(getFlightBuddy().getPilotFlightTime()))));
     }
 
     private int getTotalFlightHours(int totalMinutes){
@@ -135,15 +133,15 @@ public class MyLogbookController extends AbstractInputErrorController implements
         boolean airplane = comboBoxHasSelectedValue(airPlaneComboBox);
         boolean comment = commentCheck();
         if (date&&nStarts&&flightHours&&flightMinutes&&takeoff&&destination&&airplane&&comment) {
-            flightBuddy.createPilotLogbookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
+            getFlightBuddy().createPilotLogbookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
                     Integer.parseInt(flightMinutesTextField.getText()), Integer.parseInt(nStartsTextField.getText()), takeOffTextField.getText(),
                     destinationTextField.getText(), commentTextArea.getText(), airPlaneComboBox.getSelectionModel().getSelectedItem(),
-                    flightBuddy.getPilotEmail());
-            flightBuddy.addAirplaneLogBookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
+                    getFlightBuddy().getPilotEmail());
+            getFlightBuddy().addAirplaneLogBookEntry(flightDatePicker.getValue(), Integer.parseInt(flightHoursTextField.getText()),
                     Integer.parseInt(flightMinutesTextField.getText()), Integer.parseInt(nStartsTextField.getText()), takeOffTextField.getText(),
                     destinationTextField.getText(), commentTextArea.getText(), airPlaneComboBox.getSelectionModel().getSelectedItem(),
-                    flightBuddy.getPilotEmail());
-            data.add(flightBuddy.getPilotLastEntry());
+                    getFlightBuddy().getPilotEmail());
+            data.add(getFlightBuddy().getPilotLastEntry());
             clearInput();
             exitLightBox();
         }

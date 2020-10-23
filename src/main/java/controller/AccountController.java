@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import model.FlightBuddy;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import java.net.URL;
@@ -37,7 +36,7 @@ public class AccountController extends AbstractInputErrorController implements I
     @FXML private Label passwordChangedLabel;
     @FXML private Button changePasswordButton;
 
-    private FlightBuddy flightBuddy = FlightBuddy.getInstance();
+
 
     /**
      * the initialize method that runs after the contructor and the FXML fields have been injected
@@ -46,10 +45,10 @@ public class AccountController extends AbstractInputErrorController implements I
     public void initialize(URL url, ResourceBundle resourceBundle) {
         passwordChangedLabel.setVisible(false);
         changesSavedLabel.setVisible(false);
-        nameTextField.setText(flightBuddy.getPilotName());
-        emailTextField.setText(flightBuddy.getPilotEmail());
-        medicalCertTextField.setText(Objects.requireNonNull(flightBuddy.getWantedeLicenseExpirationDate(FlightBuddy.MEDICALLICENSE)));
-        flightCertTextField.setText(Objects.requireNonNull(flightBuddy.getWantedeLicenseExpirationDate(FlightBuddy.FLIGHTLICENSE)));
+        nameTextField.setText(getFlightBuddy().getPilotName());
+        emailTextField.setText(getFlightBuddy().getPilotEmail());
+        medicalCertTextField.setText(Objects.requireNonNull(getFlightBuddy().getWantedeLicenseExpirationDate(getMedicalLicense())));
+        flightCertTextField.setText(Objects.requireNonNull(getFlightBuddy().getWantedeLicenseExpirationDate(getFlightLicense())));
 
         saveChangesButton.setOnMouseClicked(mouseEvent -> updateUserInfo());
         changePasswordButton.setOnMouseClicked(mouseEvent -> changePassword());
@@ -66,10 +65,10 @@ public class AccountController extends AbstractInputErrorController implements I
             boolean newMedical = emptyTextField(medicalCertTextField);
             boolean newFlight = emptyTextField(flightCertTextField);
             if (!newName&&!newMedical&&!newFlight){
-                flightBuddy.setPilotName(nameTextField.getText());
-                flightBuddy.setPilotEmail(emailTextField.getText());
-                flightBuddy.setPilotLicenseExpirationDate(medicalCertTextField.getText(),FlightBuddy.MEDICALLICENSE);
-                flightBuddy.setPilotLicenseExpirationDate(flightCertTextField.getText(),FlightBuddy.FLIGHTLICENSE);
+                getFlightBuddy().setPilotName(nameTextField.getText());
+                getFlightBuddy().setPilotEmail(emailTextField.getText());
+                getFlightBuddy().setPilotLicenseExpirationDate(medicalCertTextField.getText(),getMedicalLicense());
+                getFlightBuddy().setPilotLicenseExpirationDate(flightCertTextField.getText(),getFlightLicense());
 
                 changesSavedLabel.setVisible(true);
                 CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(() -> {
@@ -79,7 +78,7 @@ public class AccountController extends AbstractInputErrorController implements I
         }
     }
     private boolean emailCheck() {
-        if (flightBuddy.userExists(emailTextField.getText()) || flightBuddy.getPilotEmail().equals(emailTextField.getText())) {
+        if (getFlightBuddy().userExists(emailTextField.getText()) || getFlightBuddy().getPilotEmail().equals(emailTextField.getText())) {
             errorControlColorChange(emailTextField);
             emailErrorLabel.setText("Email redan registrerad");
             errorLabelColorChange(emailErrorLabel);
@@ -110,7 +109,7 @@ public class AccountController extends AbstractInputErrorController implements I
             String pwField = newPasswordField.getText();
             System.out.println(pwField);
             String newPassword = encryptor.encryptPassword(pwField);
-            flightBuddy.setPilotPassword(newPassword);
+            getFlightBuddy().setPilotPassword(newPassword);
 
             passwordChangedLabel.setVisible(true);
             CompletableFuture.delayedExecutor(3, TimeUnit.SECONDS).execute(() -> {
@@ -125,7 +124,7 @@ public class AccountController extends AbstractInputErrorController implements I
 
     private Boolean isCorrectCurrentPassword(){
         StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
-        String userPassword = flightBuddy.getCurrentUser().getPassword();
+        String userPassword = getFlightBuddy().getCurrentUser().getPassword();
         String inputPassword = currentPasswordField.getText();
         return encryptor.checkPassword(inputPassword, userPassword);
     }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @author
+ * @author Albert Lund
  * Pilot represents a pilot, which is someone able to book items. 
  */
 public class Pilot implements iBorrower {
@@ -49,7 +49,12 @@ public class Pilot implements iBorrower {
     private int nStarts;
 
 
-
+    /**
+     * Constructor for the class
+     * @param password1 the desired password for the user
+     * @param name name of the pilot
+     * @param email email to the pilot
+     */
     Pilot(String password1, String name, String email) {
             password = password1;
             this.name = name;
@@ -64,6 +69,10 @@ public class Pilot implements iBorrower {
         return name!=null;
     }
 
+    /**
+     * Method that returns the total amount of starts the pilot have in their career
+     * @return the total amount of starts/takeoffs
+     */
     int getTotalNStarts(){
         return logbook.getPilotNumberOfStarts(email) + nStarts;
     }
@@ -96,14 +105,17 @@ public class Pilot implements iBorrower {
 
     /**
      * Adds a license to the the users list of licenses
-     * @param name
-     * @param expirationDate
+     * @param type the type of the new license. Can either be FlightBuddy.MEDICALLICENSE or FlightBuddy.FLIGHTLICENSE
+     * @param expirationDate the expiration date of the new license
      */
-    void addLicense(String name, LocalDate expirationDate){
-        License license = new License(name, expirationDate);
+    void addLicense(String type, LocalDate expirationDate){
+        License license = new License(type, expirationDate);
         licenses.add(license);
     }
 
+    /**
+     * Checks if any of the pilots licenses have or is about to expire
+     */
     public void checkLicenseExpiration(){
         List<License> licenses = new ArrayList<>();
 
@@ -118,14 +130,17 @@ public class Pilot implements iBorrower {
         }
     }
 
+    // Setters and getters
     List<License> getLicenses() {
         return licenses;
     }
 
-
-    // Setters and getters
     public String getEmail() {
         return email;
+    }
+
+    public String getName() {
+        return name;
     }
 
     void setStartHours(int startHours) {
@@ -140,10 +155,6 @@ public class Pilot implements iBorrower {
         return password;
     }
 
-    public String getName() {
-        return name;
-    }
-
     void setPassword(String password) {
         this.password = password;
     }
@@ -156,13 +167,18 @@ public class Pilot implements iBorrower {
         this.email = email;
     }
 
-    List<model.Flight> getPilotsEntries(String pilotEmail){
+    List<Flight> getPilotsEntries(String pilotEmail){
         return logbook.getPilotsEntries(pilotEmail);
     }
 
-    model.Flight getLastEntry(){
+    /**
+     * Method that returns the last entry of the pilots logbook
+     * @return the last entry in the pilots entry
+     */
+    Flight getLastEntry(){
         return logbook.getLastEntry();
     }
+
     private License getWantedLicense(String type){
         for (License licens : licenses) {
             if (licens.getLicenseName().equals(type)) {
@@ -171,10 +187,23 @@ public class Pilot implements iBorrower {
         }
         return null;
     }
+
+    /**
+     * Method that returns a licenses expiration date, either Flight or Medical depending on the parameter type
+     * @param type the type of the license which expiration date needs to be retrieved. Can either be
+     *             FlightBuddy.MEDICALLICENSE orFlightBuddy.FLIGHTLICENSE
+     * @return the expiration date of the specified license
+     */
     String getWantedLicenseExpirationDate(String type){
         return Objects.requireNonNull(getWantedLicense(type)).getExpirationDate();
     }
 
+    /**
+     * Sets the expiration date of one of the Pilots licenses, either Flight or Medical depending on the parameter type
+     * @param date the new expiration date of the specified license
+     * @param type the type of the license which expiration date needs to be set. Can either be
+     *             FlightBuddy.MEDICALLICENSE or FlightBuddy.FLIGHTLICENSE
+     */
     void setLicenseExpirationDate(String date, String type){
         Objects.requireNonNull(getWantedLicense(type)).setExpirationDate(date);
     }

@@ -35,10 +35,6 @@ public class FlyingClub{
         this.password = password;
     }
 
-    public static FlyingClub copy(FlyingClub flyingClub1){
-        return new FlyingClub(flyingClub1.getClubName(),flyingClub1.getBookingHandler(),flyingClub1.getPassword());
-    }
-
     /**
      * Adds a pilot to the flying club
      * @param pilot pilot to add

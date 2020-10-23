@@ -40,26 +40,28 @@ public class FlightBuddy {
     }
 
     /**
-     * method (should) no longer used
+     * method runs if the json file is empty and creates three flyingclubs
      */
     public void initializeClubs(){
-        FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingSystem());
+        FlyingClub skovdeFlygklubb = new FlyingClub("Skövde Flygklubb", new BookingSystem(),"bövdeblygklubb");
         Airplane seUKE = new Airplane("SE-UKE", new Logbook());
         skovdeFlygklubb.addPlane(seUKE);
 
         skovdeFlygklubb.addPlane(new Airplane("SE-UDU", new Logbook()));
 
-        FlyingClub falbygdensFlygklubb = new FlyingClub("Falbygdens Flygklubb", new BookingSystem());
+        FlyingClub falbygdensFlygklubb = new FlyingClub("Falbygdens Flygklubb", new BookingSystem(),"khallonsaftärgott");
         falbygdensFlygklubb.addPlane(new Airplane("SE-UMY", new Logbook()));
         falbygdensFlygklubb.addPlane(new Airplane("SE-UND", new Logbook()));
         falbygdensFlygklubb.addPlane(new Airplane("SE-SKV", new Logbook()));
 
-        FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingSystem(),"hej");
+        FlyingClub borasFlygklubb = new FlyingClub("Borås Flygklubb", new BookingSystem(),"KalleWhoop");
         borasFlygklubb.addPlane(new Airplane("SE-UYB", new Logbook()));
         borasFlygklubb.addPlane(new Airplane("SE-UMN", new Logbook()));
 
         skovdeFlygklubb.getEvents().add(new Event(LocalDate.now().plusDays(1), 10,18,"Segelflygets dag", "En rolig dag"));
         skovdeFlygklubb.getEvents().add(new Event(LocalDate.now(), 10,19,"Prova pa dag", "En rolig dag"));
+        falbygdensFlygklubb.getEvents().add(new Event(LocalDate.now().plusDays(45),13,17,"Julbasar","Kom å mys i klubbstugan"));
+        borasFlygklubb.getEvents().add(new Event(LocalDate.now().plusDays(10),9,18,"Juniortävling","Kom å tävla eller heja"));
 
         flyingclubs.add(skovdeFlygklubb);
         flyingclubs.add(borasFlygklubb);
