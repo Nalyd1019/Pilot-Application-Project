@@ -209,11 +209,4 @@ public class Logbook {
         return flights;
     }
 
-
-
-    // TODO - Denna metoden bör ej kunna användas, ska den t om tas bort? Endast för test nu
-    void clearLogbook() {
-      flights.clear();
-    }
-
 }

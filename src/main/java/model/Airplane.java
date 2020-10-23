@@ -151,14 +151,8 @@ public class Airplane implements IBookable {
 
     public Logbook getLogbook() { return logbook; }
 
-    public void setYearlyCheckDate(LocalDate yearlyCheckDate) {
+    private void setYearlyCheckDate(LocalDate yearlyCheckDate) {
         this.yearlyCheckDate = yearlyCheckDate;
     }
-
-    // TODO - Denna metoden bör ej användas, ska den t om tas bort? Endast för test nu
-    public void removeLogbookEntries() {
-        logbook.clearLogbook();
-    }
-
 
 }
