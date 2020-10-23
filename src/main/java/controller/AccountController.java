@@ -54,6 +54,7 @@ public class AccountController extends AbstractInputErrorController implements I
 
         saveChangesButton.setOnMouseClicked(mouseEvent -> updateUserInfo());
         changePasswordButton.setOnMouseClicked(mouseEvent -> changePassword());
+        setupErrorListeners();
     }
 
     /**
@@ -131,6 +132,18 @@ public class AccountController extends AbstractInputErrorController implements I
         String newPassword = newPasswordField.getText();
         String confirmedPassword = confirmPasswordField.getText();
         return newPassword.equals(confirmedPassword);
+    }
+
+    void setupErrorListeners(){
+        currentPasswordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            currentPasswordErrorLabel.setText("");
+        });
+        newPasswordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            confirmPasswordErrorLabel.setText("");
+        });
+        confirmPasswordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            confirmPasswordErrorLabel.setText("");
+        });
     }
 
 }
