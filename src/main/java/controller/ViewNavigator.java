@@ -3,11 +3,12 @@ package controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-
-import javax.swing.text.View;
 import java.io.IOException;
-import java.net.URL;
 
+/**
+ * @Author Samuel Dahlberg
+ * Controller class that manages all screen changes during runtime by changing fxml root node
+ */
 public class ViewNavigator {
     public static final String LOGIN = "loginPage.fxml";
     public static final String START = "startPage.fxml";
@@ -20,11 +21,18 @@ public class ViewNavigator {
     private static String CURRENT_PAGE = "loginPage.fxml";
     private static Stage mainStage;
 
-
+    /**
+     * method used at launch of program to gain access to main stage
+     * @param mainStage
+     */
     public static void setMainStage(Stage mainStage){
         ViewNavigator.mainStage = mainStage;
     }
 
+    /**
+     * Method that changes root node on the main stage current scene.
+     * @param fxml
+     */
     public static void LoadView(String fxml){
         try {
             Parent root = FXMLLoader.load(ViewNavigator.class.getClassLoader().getResource(fxml));

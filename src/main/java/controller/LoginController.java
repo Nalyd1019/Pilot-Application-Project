@@ -45,18 +45,8 @@ public class LoginController implements Initializable {
 
     }
 
-    /**
-     * Logs in the user and takes them to the startpage if they have provided a user with the matching password, else
-     * the method keeps the user at the login page and provides an errormessage
-     */
+
     public void logIn(){
-        /*
-        if (flightBuddy.validateLogIn(emailTextField.getText(),password)){
-            ViewNavigator.LoadView(ViewNavigator.START);
-        }
-
-         */
-
         if (flightBuddy.userExists(emailTextField.getText())) {
             verifyLogin();
         }
@@ -70,6 +60,10 @@ public class LoginController implements Initializable {
         userNotFoundLabel.setStyle("-fx-text-fill: red");
     }
 
+    /**
+     * Logs in the user and takes them to the startpage if they have provided a user with the matching password, else
+     * the method keeps the user at the login page and provides an errormessage
+     */
     private void verifyLogin(){
         StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
         Pilot user = flightBuddy.getUser(emailTextField.getText());
@@ -101,6 +95,10 @@ public class LoginController implements Initializable {
         });
     }
 
+    /**
+     * method that sets up listeners for the password field and the password text field that copies input from the
+     * field that is active to the other one
+     */
     private void setupPasswordField(){
         passwordField.toFront();
 
@@ -116,6 +114,9 @@ public class LoginController implements Initializable {
         });
     }
 
+    /**
+     * method adding listener to the show password checkbox that brings the relevant text field to the front.
+     */
     private void setupPasswordCheckBox(){
         showPasswordCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override

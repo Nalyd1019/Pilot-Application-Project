@@ -34,7 +34,7 @@ public class StartPageController implements Initializable {
     private BookingSystem currentClubBookingHandler = flightBuddy.getCurrentClub().getBookingHandler();
 
     /**
-     * the initialize method that runs after the contructor and the FXML fields have been injected. Also sets text for
+     * the initialize method that runs after the constructor and the FXML fields have been injected. Also sets text for
      * welcome label, fills up both the licenseItemMap and the bookingItemMap and updates the lists in the view.
      */
     @Override
@@ -67,6 +67,9 @@ public class StartPageController implements Initializable {
         });
     }
 
+    /**
+     * method that populates the pilots start page with the pilots current bookings.
+     */
     private void updateBookingList(){
         bookingFlowpane.getChildren().clear();
 
@@ -81,6 +84,9 @@ public class StartPageController implements Initializable {
 
     }
 
+    /**
+     * method that populates the pilots start page with the pilots current licenses
+     */
     private void updateLicenseList(){
         licenseFlowpane.getChildren().clear();
 

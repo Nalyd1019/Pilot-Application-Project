@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.FlightBuddy;
-import model.Pilot;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import java.net.URL;
@@ -92,12 +91,15 @@ public class AccountController extends AbstractInputErrorController implements I
         } else return (validEmail(emailTextField, emailErrorLabel));
     }
 
+    /**
+     * Method that controls that valid input has been given and if so changes the current users password
+     */
     private void changePassword(){
-        if (!isCorrectCurrentPassword()){
+        if (!isCorrectCurrentPassword() || currentPasswordField.getText().isEmpty()){
             currentPasswordField.setText("");
             currentPasswordErrorLabel.setText("Fel nuvarande lösenord!");
         }
-        else if (!isCorrectConfirmedPassword()){
+        else if (!isCorrectConfirmedPassword() || confirmPasswordField.getText().isEmpty()){
             confirmPasswordField.setText("");
             newPasswordField.setText("");
             confirmPasswordErrorLabel.setText("matchar ej med nytt lösenord!");
@@ -134,6 +136,9 @@ public class AccountController extends AbstractInputErrorController implements I
         return newPassword.equals(confirmedPassword);
     }
 
+    /**
+     * sets up listeners for the password fields to clear the error labels when user is trying to fix said error
+     */
     void setupErrorListeners(){
         currentPasswordField.textProperty().addListener((observable, oldValue, newValue) -> {
             currentPasswordErrorLabel.setText("");
