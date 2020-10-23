@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -17,6 +18,26 @@
          <children>
             <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;" stylesheets="@stylesheet.css">
                <children>
+                  <AnchorPane fx:id="pageTwo" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;">
+                     <children>
+                        <Button fx:id="step21" layoutX="385.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="1" AnchorPane.leftAnchor="385.0" AnchorPane.topAnchor="180.0" />
+                        <Button fx:id="step22" layoutX="565.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="2" AnchorPane.leftAnchor="565.0" AnchorPane.topAnchor="180.0" />
+                        <Button fx:id="step23" layoutX="745.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage" text="3" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="180.0" />
+                        <Label layoutX="395.0" layoutY="277.0" styleClass="text-larger" text="Namn" />
+                        <Label layoutX="630.0" layoutY="277.0" styleClass="text-larger" text="Email" />
+                        <Label layoutX="395.0" layoutY="378.0" styleClass="text-larger" text="Lösenord" />
+                        <Label layoutX="630.0" layoutY="378.0" styleClass="text-larger" text="Bekräfta lösenord" />
+                        <TextField fx:id="pageTwoNameTextField" layoutX="395.0" layoutY="312.0" prefHeight="35.0" prefWidth="186.0" />
+                        <TextField fx:id="pageTwoEmailTextField" layoutX="630.0" layoutY="312.0" prefHeight="35.0" prefWidth="186.0" />
+                        <Button layoutX="470.0" layoutY="480.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="70.0" prefWidth="250.0" styleClass="green-button" text="Nästa" />
+                        <Button layoutX="470.0" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="38.0" prefWidth="250.0" styleClass="grey-button" text="Tillbaka" />
+                        <Label fx:id="emailErrorLabel" layoutX="850.0" layoutY="318.0" prefHeight="17.0" prefWidth="127.0" />
+                        <Line layoutX="546.0" layoutY="210.0" startX="-82.0" />
+                        <Line layoutX="727.0" layoutY="210.0" startX="-82.0" />
+                        <PasswordField fx:id="pageTwoPasswordTextField" layoutX="395.0" layoutY="413.0" prefHeight="35.0" prefWidth="186.0" />
+                        <PasswordField fx:id="pageTwoPasswordVerificationTextField" layoutX="630.0" layoutY="413.0" prefHeight="35.0" prefWidth="186.0" />
+                     </children>
+                  </AnchorPane>
                   <AnchorPane fx:id="pageThree" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;">
                      <children>
                         <Button fx:id="step31" layoutX="385.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="1" />
@@ -32,26 +53,6 @@
                         <Label layoutX="434.0" layoutY="334.0" styleClass="text-larger" text="Flygcertifikat utgår" />
                         <DatePicker fx:id="flightLicenseExpiration" layoutX="434.0" layoutY="371.0" prefHeight="27.0" prefWidth="340.0" />
                         <DatePicker fx:id="medicalLicenseExpiration" layoutX="435.0" layoutY="436.0" prefHeight="27.0" prefWidth="340.0" />
-                        <Line layoutX="546.0" layoutY="210.0" startX="-82.0" />
-                        <Line layoutX="727.0" layoutY="210.0" startX="-82.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="pageTwo" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #E5E5E5;">
-                     <children>
-                        <Button fx:id="step21" layoutX="385.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="1" AnchorPane.leftAnchor="385.0" AnchorPane.topAnchor="180.0" />
-                        <Button fx:id="step22" layoutX="565.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage-green" text="2" AnchorPane.leftAnchor="565.0" AnchorPane.topAnchor="180.0" />
-                        <Button fx:id="step23" layoutX="745.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="60.0" prefWidth="60.0" styleClass="wizard-stage" text="3" AnchorPane.leftAnchor="745.0" AnchorPane.topAnchor="180.0" />
-                        <Label layoutX="395.0" layoutY="277.0" styleClass="text-larger" text="Namn" />
-                        <Label layoutX="630.0" layoutY="277.0" styleClass="text-larger" text="Email" />
-                        <Label layoutX="395.0" layoutY="378.0" styleClass="text-larger" text="Lösenord" />
-                        <Label layoutX="630.0" layoutY="378.0" styleClass="text-larger" text="Bekräfta lösenord" />
-                        <TextField fx:id="pageTwoNameTextField" layoutX="395.0" layoutY="312.0" prefHeight="35.0" prefWidth="186.0" />
-                        <TextField fx:id="pageTwoEmailTextField" layoutX="630.0" layoutY="312.0" prefHeight="35.0" prefWidth="186.0" />
-                        <TextField fx:id="pageTwoPasswordTextField" layoutX="395.0" layoutY="413.0" prefHeight="35.0" prefWidth="186.0" />
-                        <TextField fx:id="pageTwoPasswordVerificationTextField" layoutX="630.0" layoutY="413.0" prefHeight="35.0" prefWidth="186.0" />
-                        <Button layoutX="470.0" layoutY="480.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoNext" prefHeight="70.0" prefWidth="250.0" styleClass="green-button" text="Nästa" />
-                        <Button layoutX="470.0" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#onClickpageTwoBack" prefHeight="38.0" prefWidth="250.0" styleClass="grey-button" text="Tillbaka" />
-                        <Label fx:id="emailErrorLabel" layoutX="850.0" layoutY="318.0" prefHeight="17.0" prefWidth="127.0" />
                         <Line layoutX="546.0" layoutY="210.0" startX="-82.0" />
                         <Line layoutX="727.0" layoutY="210.0" startX="-82.0" />
                      </children>

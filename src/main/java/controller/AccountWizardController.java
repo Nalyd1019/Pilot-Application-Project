@@ -26,8 +26,8 @@ public class AccountWizardController extends AbstractInputErrorController implem
     @FXML private ComboBox<String> flyingClubComboBox;
     @FXML private TextField pageTwoNameTextField;
     @FXML private TextField pageTwoEmailTextField;
-    @FXML private TextField pageTwoPasswordTextField;
-    @FXML private TextField pageTwoPasswordVerificationTextField;
+    @FXML private PasswordField pageTwoPasswordField;
+    @FXML private PasswordField pageTwoPasswordVerificationField;
     @FXML private Label emailErrorLabel;
     @FXML private TextField nStartsTextField;
     @FXML private TextField flightHoursTextField;
@@ -131,7 +131,7 @@ public class AccountWizardController extends AbstractInputErrorController implem
         boolean flyingExpiration = comboBoxHasSelectedValue(flightLicenseExpiration);
         boolean medicalExpiration = comboBoxHasSelectedValue(medicalLicenseExpiration);
         if (nStarts&&flightHours&&flyingExpiration&&medicalExpiration){
-            flightBuddy.addMemberToCurrentClub(encryptor.encryptPassword(pageTwoPasswordTextField.getText()),pageTwoNameTextField.getText(),pageTwoEmailTextField.getText(),
+            flightBuddy.addMemberToCurrentClub(encryptor.encryptPassword(pageTwoPasswordField.getText()),pageTwoNameTextField.getText(),pageTwoEmailTextField.getText(),
                     Integer.parseInt(nStartsTextField.getText()),Integer.parseInt(flightHoursTextField.getText()),
                     medicalLicenseExpiration.getValue(),flightLicenseExpiration.getValue());
             ViewNavigator.LoadView(ViewNavigator.START);
@@ -156,14 +156,14 @@ public class AccountWizardController extends AbstractInputErrorController implem
         } else return !(validEmail(pageTwoEmailTextField,emailErrorLabel));
     }
     private boolean equalPassword(){
-        if (!emptyTextField(pageTwoPasswordTextField)&& pageTwoPasswordTextField.getText().equals
-                (pageTwoPasswordVerificationTextField.getText())){
-            confirmedControlColorChange(pageTwoPasswordTextField);
-            confirmedControlColorChange(pageTwoPasswordVerificationTextField);
+        if (!emptyTextField(pageTwoPasswordField)&& pageTwoPasswordField.getText().equals
+                (pageTwoPasswordVerificationField.getText())){
+            confirmedControlColorChange(pageTwoPasswordField);
+            confirmedControlColorChange(pageTwoPasswordVerificationField);
             return true;
         }
-        errorControlColorChange(pageTwoPasswordTextField);
-        errorControlColorChange(pageTwoPasswordVerificationTextField);
+        errorControlColorChange(pageTwoPasswordField);
+        errorControlColorChange(pageTwoPasswordVerificationField);
         return false;
     }
 }
