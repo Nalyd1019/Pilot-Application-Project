@@ -77,7 +77,7 @@ public class BookingHandlerTest {
         bookingHandler.createBooking(4, 16, pilot2, airplane1);
         bookingHandler.createBooking(2, 14, pilot2, airplane1);
 
-        bookingHandler.removeBooking(1);
+        bookingHandler.removeBooking(bookingHandler.getBookings().get(0).getBookingID());
 
         assertEquals(2, bookingHandler.getBookings().size());
 
